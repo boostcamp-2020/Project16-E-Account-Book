@@ -2,6 +2,20 @@
 
 # Sprint 1
 
+## 💻 Day 5
+
+### 📌 아토믹 디자인 UI 컴포넌트 분석
+
+예시) 로그인페이지
+![](https://i.imgur.com/XB80Zr4.png)
+- 하나의 화면을 템플릿 , 유기체, 분자, 원자 순으로 컴포넌트를 쪼개서 분석 하였다.
+- 템플릿은 페이지에 할당되기 직전의 단위, 유기체는 템플릿을 이루기 위한 하나의 단위, 분자는 두개이상의 원자의 결합으로 하나의 기능 또는 UI를 담당하는 단위, 원자는 컴포넌트의 최소단위로 결정하였다. 
+
+### 📌 고찰
+
+- atomic design 단위 기준에 대해 어느정도는 상세하게 정해줄 필요가 있어서 함께 고찰했다.
+
+
 ## 💻 Day 4
 
 ### 📌 [기획서 PPT 제작하기](https://docs.google.com/presentation/d/12thfKEWAuGru1yVTi6mcAODbiICVqvVCyn-8CdVm-co/edit#slide=id.ga2bfb3af26_0_54)
