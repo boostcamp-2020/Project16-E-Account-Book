@@ -1,5 +1,82 @@
 # ✨ sprint ✨
 
+# Sprint 2
+
+## 💻 Day 1
+
+### 📌 BE 프로젝트 생성
+* `ts-node` : Typescript 파일을 실행시킬 수 있음
+* `@types/node`, `@types/koa` : `TypeScript`에서 인식하도록 `node`와 `koa`의 Type을 가져온다
+* prettier 설정
+    * `'` 을 사용하기로 결정
+    * 최대 width는 `100`으로 결정
+    * 탭은 스페이스바 `2`개를 사용하기로 결정
+* eslint 설정
+    * `eslint:recommended`
+    * var 사용금지
+    * sourceType : `module`
+* 테스트 코드 작성을 위한 `jest` 설치
+
+참고: [TypeScript로 Koa 서버 돌리기](https://code-masterjung.tistory.com/46)
+
+### 📌 BE 폴더 구조 설계
+```bash
+.
+├── app.ts
+├── config
+├── package-lock.json
+├── package.json
+├── src # 각 기능별로 폴더를 만들어 controller, router, service를 생성하기로 결정함
+│   └── user
+│       ├── controller.ts
+│       ├── router.ts
+│       └── service.ts
+└── tsconfig.json
+```
+
+### 📌 FE 프로젝트 생성
+참고: [CRA with TypeScript](https://create-react-app.dev/docs/adding-typescript/)
+
+### 📌 FE 폴더 구조 설계
+```bash
+.
+├── README.md
+├── package-lock.json
+├── package.json
+├── public
+├── src
+│   ├── App.css
+│   ├── App.test.tsx
+│   ├── App.tsx
+│   ├── components # atomic design에 근거하여 폴더를 구성함
+│   │   ├── atoms
+│   │   │   └── button
+│   │   │       └── OAuthButton
+│   │   │           ├── index.tsx
+│   │   │           └── stories.tsx
+│   │   ├── molecules
+│   │   ├── organisms
+│   │   └── templates
+│   ├── index.css
+│   ├── index.tsx
+│   ├── logo.svg
+│   ├── reducers    # Reducer들을 작성하여 관리
+│   ├── store       # Store들을 모아서 관리
+│   ├── theme       # 색상 및 테마 관련된 값을 관리
+│   ├── utils       # 자주 사용되는 유틸들을 관리
+│   ├── views       # Pages 폴더
+|   └── hooks       # custom hook들을 관리
+└── tsconfig.json
+
+```
+### 📌 WEB 아키텍쳐 설계
+![](https://i.imgur.com/3izZ7Mf.png)
+
+### 📌 FE NCP 서버 생성 
+- 도메인 설정
+- 공인 IP 적용
+- 인증서기반 SSH 적용
+
 # Sprint 1
 
 ## 💻 Day 5
