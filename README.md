@@ -46,7 +46,7 @@
 
 ### BE
 | <img width= 50 src="https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1566913457/noticon/eh4d0dnic4n1neth3fui.png"> | <img width= 50 src="https://i.imgur.com/OJDBuQy.png"> | <img width= 50 src="https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1603423163/noticon/az0cvs28lm7gxoowlsva.png"> | <img width= 50 src="https://i.imgur.com/1lgBkrb.png"> |
-| :--: | :--: | :--: | :--: | :--: | :--: |
+| :--: | :--: | :--: | :--: |
 | TypeScript | Koa | MySQL | PM2 |
 
 </br>
