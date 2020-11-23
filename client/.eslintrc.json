@@ -6,7 +6,11 @@
     "extends": [
         "plugin:react/recommended",
         "airbnb",
-        "plugin:prettier/recommended"
+        "plugin:prettier/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript",
+        "plugin:@typescript-eslint/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -19,7 +23,8 @@
     "plugins": [
         "react",
         "@typescript-eslint",
-        "prettier"
+        "prettier",
+        "import"
     ],
     "rules": {
         "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
@@ -28,7 +33,23 @@
         "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": ["error"],
         "prettier/prettier": "error",
-        "react/jsx-one-expression-per-line": [0, { "allow": "none" }]
+        "react/jsx-one-expression-per-line": [0, { "allow": "none" }],
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+              "js": "never",
+              "jsx": "never",
+              "ts": "never",
+              "tsx": "never"
+            }
+         ],
+         "react/jsx-props-no-spreading": [0, {
+            "html": "ignore" ,
+            "custom": "ignore" ,
+            "explicitSpread": "ignore",
+            "exceptions": []
+        }]
     }
 }
 
