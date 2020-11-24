@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "~/*": ["./*"],
+      "@theme/*": ["theme/*"],
+      "@utils/*": ["utils/*"],
+      "@atoms/*": ["components/atoms/*"],
+      "@molecules/*": ["components/molecules/*"],
+      "@organisms/*": ["components/organisms/*"],
+      "@templates/*": ["components/templates/*"],
+      "@views/*": ["views/*"],
+      "@reducers/*": ["reducers/*"],
+      "@store/*": ["store/*"],
+      "@hooks/*": ["hooks/*"]
+    }
+  }
+}

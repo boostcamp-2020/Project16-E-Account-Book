@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^5.8.0",
     "@storybook/addon-actions": "^6.1.2",
     "@storybook/addon-essentials": "^6.1.2",
     "@storybook/addon-links": "^6.1.2",
@@ -16,6 +17,7 @@
     "@types/node": "^12.19.6",
     "@types/react": "^16.14.1",
     "@types/react-dom": "^16.9.10",
+    "craco-alias": "^2.1.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
@@ -23,6 +25,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "craco": "craco start",
     "start": "export PORT=8000 && react-scripts start",
     "start_window": "set PORT=8000 && react-scripts start",
     "build": "react-scripts build",
@@ -68,7 +71,6 @@
     "@typescript-eslint/eslint-plugin": "^4.8.1",
     "@typescript-eslint/parser": "^4.8.1",
     "babel-loader": "^8.1.0",
-    "eslint": "^7.14.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-import": "^2.22.1",
