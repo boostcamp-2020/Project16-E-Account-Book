@@ -1,9 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import Logo from '@svg/naver-logo.svg';
+import Naver from '@svg/naver-logo.svg';
+import GitHub from '@svg/github-logo.svg';
 
 interface Props {
   onClick: () => void;
+  site: string;
+  backgroundColor: string;
+  children: React.ReactChild;
 }
 
 const OAuthButton = styled.button`
@@ -19,22 +23,22 @@ const OAuthIcon = styled.img`
   height: 100%;
 `;
 
-const OAuthName = styled.div`
+const OAuthName = styled.div<Props>`
   display: flex;
   flex: 1;
   justify-content: center;
   align-items: center;
   height: 100%;
-  background-color: #4fa42b;
+  background-color: ${(props) => props.backgroundColor};
   color: white;
   border-radius: 5px;
 `;
 
-const oauthButton: React.FC<Props> = ({ onClick }: Props) => {
+const oauthButton: React.FC<Props> = ({ onClick, backgroundColor, site, children }: Props) => {
   return (
     <OAuthButton onClick={onClick}>
-      <OAuthIcon src={Logo} alt="logo" />
-      <OAuthName>네이버 계정으로 로그인</OAuthName>
+      <OAuthIcon src={site === 'Naver' ? Naver : GitHub} alt="logo" />
+      <OAuthName backgroundColor={backgroundColor}>{children}</OAuthName>
     </OAuthButton>
   );
 };
