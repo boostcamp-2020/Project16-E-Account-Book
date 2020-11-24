@@ -2,6 +2,123 @@
 
 # Sprint 2
 
+## 💻 Day 2
+
+### 📌 Mac, Window 설정 충돌
+- `CRLF 문제` -> eslint 설정으로 해결 
+
+### 📌 VS Code Typescirpt 버전 오류 해결
+- node_module의 typescript 버전과 vscode에서 지원하는 typescript 버전이 맞지 않아 계속해서 오류가 발생하는 문제가 있었음
+- .vscode/setting.json 파일에서 TS상위버전 작업영역 추가 가능하도록 변경
+- [참고1](https://stackoverflow.com/questions/50432556/cannot-use-jsx-unless-the-jsx-flag-is-provided), [참고2](https://stackoverflow.com/questions/39668731/what-typescript-version-is-visual-studio-code-using-how-to-update-it), [참고3](https://code.visualstudio.com/docs/typescript/typescript-compiling)
+
+### 📌 색상 관리 규칙 정의
+- Theme 디렉토리 안에 color.ts 파일에서 관리
+- object 안 object 구조로 작성하기로 결정함
+- 색상의 유지보수의 용이성을 고려하여 작업 단위로 선언하여 관리
+```typescript
+const myColor: Colors = {
+  primary: {
+    dark: '#FFB421',
+    main: '#F4C239',
+    light: '#FFE6A0',
+    accent: '#7392FF',
+    reject: '#FF7373',
+    cancel: '#C4C4C4',
+  },
+  money: {
+    expenditure: '#7392FF',
+    income: '#F4C239',
+  },
+  header: {
+    dark: '#7A5A00',
+    light: '#FFFFFF',
+  },
+  background: {
+    lightGray: '#EEEEEE',
+  },
+};
+
+```
+
+### 📌 파일 경로 수정
+- [CRA eject](https://create-react-app.dev/docs/alternatives-to-ejecting/)
+    - eject를 통해 CRA에서 Webpack과 Babel을 분리
+- [Webpack Alias](https://webpack.js.org/configuration/resolve/#resolvealias)
+    - 추출된 webpack.config.js에 alias를 통해 @alias 경로 추가
+- [~~Craco~~](https://7stocks.tistory.com/127)
+    - eject로 해결
+    - 
+### 📌 Client Alias 설정
+- eject 를 사용해서 webpack config 추출후 customize 
+```
+alias: {
+        '@atoms': path.resolve(__dirname, '../src/components/atoms/'),
+        '@molecules': path.resolve(__dirname, '../src/components/molecules/'),
+        '@organisms': path.resolve(__dirname, '../src/components/organisms/'),
+        '@templates': path.resolve(__dirname, '../src/components/templates/'),
+
+        '@theme': path.resolve(__dirname, '../src/theme/'),
+        '@utils': path.resolve(__dirname, '../src/utils/'),
+        '@views': path.resolve(__dirname, '../src/views/'),
+        '@reducers': path.resolve(__dirname, '../src/reducers/'),
+        '@store': path.resolve(__dirname, '../src/store/'),
+        '@hooks': path.resolve(__dirname, '../src/hooks/'),
+        ...
+```
+
+### 📌 Storybook 샘플 데이터 생성 및 설정
+- .storybook/main.js(preset 파일) 에서 alias 적용 (웹팩 config 설정)
+- components/atoms/button/SampleButton 에서 적용할 수 있는 샘플 Atom 컴포넌트 생성
+- SampleButton 컴포넌트 생성 
+```typescript
+//SampleButton.tsx
+
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import myColor from '@theme/color';
+
+const Button = styled.button`
+  width: 100px;
+  height: 100px;
+  background-color: ${myColor.primary.accent}};
+`;
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <Button onClick={() => setCount(count + 1)}>Click me</Button>
+    </div>
+  );
+}
+
+export default Example;
+```
+- 스토리북에 등록하기 
+```typescript
+//SampleButton.stories.tsx
+
+import React from 'react';
+import SampleButton from './SampleButton';
+
+export default {
+  title: 'Atoms',
+  component: [SampleButton],
+};
+
+export const samplebtn = () => {
+  return <SampleButton />;
+};
+
+samplebtn.story = {
+  name: 'MySampleButton',
+};
+```
+
+
 ## 💻 Day 1
 
 ### 📌 BE 프로젝트 생성
