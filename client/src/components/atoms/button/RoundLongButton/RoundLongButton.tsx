@@ -16,9 +16,7 @@ const defaultProps = {
 };
 
 const Button = styled.button<Props>`
-  width: 10rem;
-  min-width: 60px;
-  max-width: 80px;
+  width: 90%;
   font-size: 1rem;
   border: 0px;
   border-radius: 25px;
@@ -28,7 +26,7 @@ const Button = styled.button<Props>`
   color: ${(props) => props.color};
 `;
 
-const RoundShortButton: React.FC<Props> = ({ backColor, color, children, onClick }: Props) => {
+const RoundLongButton: React.FC<Props> = ({ backColor, color, children, onClick }: Props) => {
   return (
     <Button onClick={onClick} backColor={backColor} color={color}>
       {children}
@@ -36,6 +34,6 @@ const RoundShortButton: React.FC<Props> = ({ backColor, color, children, onClick
   );
 };
 
-RoundShortButton.defaultProps = defaultProps;
+RoundLongButton.defaultProps = defaultProps;
 
-export default RoundShortButton;
+export default RoundLongButton;
