@@ -24,9 +24,15 @@ const Svg = styled.svg`
   xmlns: http://www.w3.org/2000/svg';
 `;
 
-function CreateButton(props): JSX.Element {
+interface Props {
+  onClick: () => void;
+}
+
+const defaultProps = {};
+
+const CreateButton: React.FC<Props> = ({ onClick }: Props): JSX.Element => {
   return (
-    <Button onClick={props.onClick}>
+    <Button onClick={onClick}>
       <Svg>
         <defs>
           <filter
@@ -60,11 +66,13 @@ function CreateButton(props): JSX.Element {
           strokeWidth="2"
           filter="url(#shadow-filter)"
         />
-        <line x1="20" x2="30" y1="25" y2="25" stroke={myColor.primary.kakaoBlack} strokeWidth="2" />
-        <line x1="25" x2="25" y1="20" y2="30" stroke={myColor.primary.kakaoBlack} strokeWidth="2" />
+        <line x1="20" x2="30" y1="25" y2="25" stroke={myColor.primary.brown} strokeWidth="2" />
+        <line x1="25" x2="25" y1="20" y2="30" stroke={myColor.primary.brown} strokeWidth="2" />
       </Svg>
     </Button>
   );
-}
+};
+
+CreateButton.defaultProps = defaultProps;
 
 export default CreateButton;
