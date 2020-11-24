@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import myColor from '@theme/color';
+
+interface Props {
+  onClick?: () => void;
+}
+
+const defaultProps = {
+  onClick: undefined,
+};
 
 const HomeButton = styled.button`
-  width: 30%;
   height: 100%;
-  background-color: ${myColor.primary.main}};
   border: 0;
 `;
 
-function homeButton() {
-  const [count, setCount] = useState(0);
+const homeButton: React.FC<Props> = ({ onClick }: Props) => {
+  return <HomeButton onClick={onClick}>Honey in Money</HomeButton>;
+};
 
-  function onClickHandler(e: MouseEvent) {
-    e.preventDefault();
-    setCount(count + 1);
-  }
-
-  return <HomeButton onClick={onClickHandler}>Honey in Money{count}</HomeButton>;
-}
+homeButton.defaultProps = defaultProps;
 
 export default homeButton;

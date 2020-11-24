@@ -2,12 +2,16 @@ import React from 'react';
 import HomeButton from './HomeButton';
 
 export default {
-  title: 'Atoms',
+  title: 'Atoms/Button/HomeButton',
   component: [HomeButton],
 };
 
-export const homebtn = () => {
-  return <HomeButton />;
+const onClick = (): boolean => {
+  return true;
+};
+
+export const homebtn = (): JSX.Element => {
+  return <HomeButton onClick={onClick} />;
 };
 
 homebtn.story = {

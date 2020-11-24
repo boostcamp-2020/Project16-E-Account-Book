@@ -12,7 +12,9 @@
       "@views/*": ["src/views/*"],
       "@reducers/*": ["src/reducers/*"],
       "@store/*": ["src/store/*"],
-      "@hooks/*": ["src/hooks/*"]
+      "@hooks/*": ["src/hooks/*"],
+      "@svg/*": ["src/asserts/svg/*"],
+      "@img/*": ["src/asserts/img/*"]
     }
   }
 }
