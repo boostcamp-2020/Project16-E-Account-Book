@@ -14,6 +14,7 @@ const myColor: Colors = {
     accent: '#7392FF',
     reject: '#FF7373',
     cancel: '#C4C4C4',
+    lightGray: '#EEEEEE',
   },
   money: {
     expenditure: '#7392FF',
