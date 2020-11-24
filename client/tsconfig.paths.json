@@ -1,18 +1,18 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
       "~/*": ["./*"],
-      "@theme/*": ["theme/*"],
-      "@utils/*": ["utils/*"],
-      "@atoms/*": ["components/atoms/*"],
-      "@molecules/*": ["components/molecules/*"],
-      "@organisms/*": ["components/organisms/*"],
-      "@templates/*": ["components/templates/*"],
-      "@views/*": ["views/*"],
-      "@reducers/*": ["reducers/*"],
-      "@store/*": ["store/*"],
-      "@hooks/*": ["hooks/*"]
+      "@theme/*": ["src/theme/*"],
+      "@utils/*": ["src/utils/*"],
+      "@atoms/*": ["src/components/atoms/*"],
+      "@molecules/*": ["src/components/molecules/*"],
+      "@organisms/*": ["src/components/organisms/*"],
+      "@templates/*": ["src/components/templates/*"],
+      "@views/*": ["src/views/*"],
+      "@reducers/*": ["src/reducers/*"],
+      "@store/*": ["src/store/*"],
+      "@hooks/*": ["src/hooks/*"]
     }
   }
 }
