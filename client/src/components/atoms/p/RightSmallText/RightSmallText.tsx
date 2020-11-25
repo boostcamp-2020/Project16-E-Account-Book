@@ -13,7 +13,7 @@ interface TextProps {
 }
 
 const defaultProps = {
-  color: myColor.primary.kakaoBlack,
+  color: myColor.primary.black,
   fontSize: '12px',
   fontWeight: 'normal',
 };
