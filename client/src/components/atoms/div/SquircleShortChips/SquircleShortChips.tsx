@@ -22,7 +22,6 @@ const Chips = styled.div<ChipsProps>`
   justify-content: center;
   text-align: center;
   font-size: 0.3rem;
-  font-weight: bold;
   width: 3rem;
   height: 1rem;
   background-color: ${(props) => props.backgroundColor};
