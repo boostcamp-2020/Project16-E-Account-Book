@@ -23,7 +23,7 @@ const Chips = styled.div<ChipsProps>`
   text-align: center;
   font-size: 0.3rem;
   width: 3rem;
-  height: 1rem;
+  height: 1.2rem;
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.color};
   border-radius: 3px;
