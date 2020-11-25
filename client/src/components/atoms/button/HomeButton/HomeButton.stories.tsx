@@ -10,10 +10,10 @@ const onClick = (): boolean => {
   return true;
 };
 
-export const homebtn = (): JSX.Element => {
+export const homeButton = (): JSX.Element => {
   return <HomeButton onClick={onClick} />;
 };
 
-homebtn.story = {
+homeButton.story = {
   name: 'HomeButton',
 };
