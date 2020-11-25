@@ -6,10 +6,10 @@ export default {
   component: [CreateButton],
 };
 
-export const createBtn = (): JSX.Element => {
+export const createButton = (): JSX.Element => {
   return <CreateButton onClick={() => {}} />;
 };
 
-createBtn.story = {
+createButton.story = {
   name: 'CreateButton',
 };
