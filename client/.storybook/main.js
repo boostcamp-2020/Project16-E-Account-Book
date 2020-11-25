@@ -25,7 +25,15 @@ module.exports = {
       '@reducers': path.resolve(__dirname, '../src/reducers/'),
       '@store': path.resolve(__dirname, '../src/store/'),
       '@hooks': path.resolve(__dirname, '../src/hooks/'),
+      '@svg': path.resolve(__dirname, '../src/asserts/svg/'),
+      '@img': path.resolve(__dirname, '../src/asserts/img/'),
     };
+
+    config.module.rules.push({
+      test: /\.svg$/,
+      loader: 'file-loader'
+
+    });
 
     // Return the altered config
     return config;
