@@ -10,8 +10,8 @@ const onClick = (): boolean => {
   return true;
 };
 
-export const githubbtn = (): JSX.Element => {
-  const oauthSite = 'Github';
+export const githubButton = (): JSX.Element => {
+  const oauthSite = 'GitHub';
   const backgroundColor = '#444444';
   return (
     <OAuthButton site={oauthSite} backgroundColor={backgroundColor} onClick={onClick}>
@@ -20,7 +20,7 @@ export const githubbtn = (): JSX.Element => {
   );
 };
 
-export const naverbtn = (): JSX.Element => {
+export const naverButton = (): JSX.Element => {
   const oauthSite = 'Naver';
   const backgroundColor = '#4fa42b';
   return (
@@ -30,10 +30,10 @@ export const naverbtn = (): JSX.Element => {
   );
 };
 
-githubbtn.story = {
+githubButton.story = {
   name: 'gitHubButton',
 };
 
-naverbtn.story = {
+naverButton.story = {
   name: 'naverButton',
 };

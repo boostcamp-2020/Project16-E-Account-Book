@@ -12,6 +12,7 @@ interface Props {
 
 const OAuthButton = styled.button`
   width: 50%;
+  max-width: 300px;
   height: 75px;
   border: 0;
   display: flex;
@@ -35,9 +36,19 @@ const OAuthName = styled.div<Props>`
 `;
 
 const oauthButton: React.FC<Props> = ({ onClick, backgroundColor, site, children }: Props) => {
+  const selectSite = (oauth: string) => {
+    switch (oauth) {
+      case 'Naver':
+        return Naver;
+      case 'GitHub':
+        return GitHub;
+      default:
+        return Naver;
+    }
+  };
   return (
     <OAuthButton onClick={onClick}>
-      <OAuthIcon src={site === 'Naver' ? Naver : GitHub} alt="logo" />
+      <OAuthIcon src={selectSite(site)} alt="logo" />
       <OAuthName backgroundColor={backgroundColor}>{children}</OAuthName>
     </OAuthButton>
   );
