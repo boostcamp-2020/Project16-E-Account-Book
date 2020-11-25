@@ -5,12 +5,13 @@ import myColor from '@theme/color';
 interface Props {
   height?: string;
   backgroundColor?: string;
-  children: React.ReactChild;
+  children?: React.ReactChild;
 }
 
 const defaultProps = {
   height: '200px',
   backgroundColor: myColor.primary.main,
+  children: undefined,
 };
 
 const Div = styled.div<Props>`
