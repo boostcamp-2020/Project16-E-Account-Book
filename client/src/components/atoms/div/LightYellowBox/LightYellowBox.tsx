@@ -9,9 +9,9 @@ const LightYellowBox = styled.div`
 
 const InBox = styled.div`
   position: absolute;
-  width: 100%;
+  width: 0;
   height: 0;
-  border-left: 35vw solid transparent;
+  border-left: 100vw solid transparent;
   border-top: 30vw solid #ffe6a0;
   opacity: 0.37;
 `;

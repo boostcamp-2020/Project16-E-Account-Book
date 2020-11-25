@@ -9,9 +9,8 @@ const YellowBox = styled.div`
 
 const InBox = styled.div`
   position: absolute;
-  width: 100%;
-  height: 0;
-  border-right: 35vw solid transparent;
+  width: 0%;
+  border-right: 100vw solid transparent;
   border-top: 30vw solid #f4c238;
 `;
 
