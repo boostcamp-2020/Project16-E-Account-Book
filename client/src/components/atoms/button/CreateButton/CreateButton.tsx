@@ -30,7 +30,7 @@ interface Props {
 
 const defaultProps = {};
 
-const CreateButton: React.FC<Props> = ({ onClick }: Props): JSX.Element => {
+const CreateButton: React.FC<Props> = ({ onClick }: Props) => {
   return (
     <Button onClick={onClick}>
       <Svg>
