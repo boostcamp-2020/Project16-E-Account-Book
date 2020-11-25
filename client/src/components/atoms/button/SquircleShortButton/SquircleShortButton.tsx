@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import myColor from '@theme/color';
 
 interface Props {
-  backColor?: string;
+  backgroundColor?: string;
   color?: string;
   children: React.ReactChild;
   onClick?: () => void;
 }
 
 const defaultProps = {
-  backColor: myColor.primary.lightGray,
+  backgroundColor: myColor.primary.lightGray,
   color: myColor.primary.accent,
   onClick: undefined,
 };
@@ -25,13 +25,18 @@ const Button = styled.button<Props>`
   border-radius: 5px;
   cursor: pointer;
   padding: 0.4rem 0;
-  background-color: ${(props) => props.backColor};
+  background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.color};
 `;
 
-const SquircleShortButton: React.FC<Props> = ({ backColor, color, children, onClick }: Props) => {
+const SquircleShortButton: React.FC<Props> = ({
+  backgroundColor,
+  color,
+  children,
+  onClick,
+}: Props) => {
   return (
-    <Button onClick={onClick} backColor={backColor} color={color}>
+    <Button onClick={onClick} backgroundColor={backgroundColor} color={color}>
       {children}
     </Button>
   );

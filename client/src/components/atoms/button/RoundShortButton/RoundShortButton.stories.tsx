@@ -3,10 +3,10 @@ import RoundShortButton from './RoundShortButton';
 
 export default {
   title: 'Atoms/Button/RoundShortButton',
-  component: RoundShortButton,
+  component: [RoundShortButton],
 };
 
-export const roundShortButton = () => {
+export const roundShortButton = (): JSX.Element => {
   return <RoundShortButton>검색</RoundShortButton>;
 };
 

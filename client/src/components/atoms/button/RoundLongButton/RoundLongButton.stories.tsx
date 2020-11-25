@@ -3,10 +3,10 @@ import RoundLongButton from './RoundLongButton';
 
 export default {
   title: 'Atoms/Button/RoundLongButton',
-  component: RoundLongButton,
+  component: [RoundLongButton],
 };
 
-export const roundLongButton = () => {
+export const roundLongButton = (): JSX.Element => {
   return <RoundLongButton>저장</RoundLongButton>;
 };
 

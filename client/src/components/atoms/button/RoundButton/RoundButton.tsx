@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import myColor from '@theme/color';
 
 interface Props {
-  backColor?: string;
+  backgroundColor?: string;
   color?: string;
   children: React.ReactChild;
   onClick?: () => void;
 }
 
 const defaultProps = {
-  backColor: myColor.primary.accent,
+  backgroundColor: myColor.primary.accent,
   color: 'white',
   onClick: undefined,
 };
@@ -22,13 +22,13 @@ const Button = styled.button<Props>`
   border-radius: 25px;
   cursor: pointer;
   padding: 0.25rem 0;
-  background-color: ${(props) => props.backColor};
+  background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.color};
 `;
 
-const RoundButton: React.FC<Props> = ({ backColor, color, children, onClick }: Props) => {
+const RoundButton: React.FC<Props> = ({ backgroundColor, color, children, onClick }: Props) => {
   return (
-    <Button onClick={onClick} backColor={backColor} color={color}>
+    <Button onClick={onClick} backgroundColor={backgroundColor} color={color}>
       {children}
     </Button>
   );
