@@ -3,7 +3,7 @@ import OAuthButton from './OAuthButton';
 
 export default {
   title: 'Atoms/Button/OAuthButton',
-  component: [OAuthButton],
+  component: OAuthButton,
 };
 
 const onClick = (): boolean => {

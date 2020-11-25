@@ -3,7 +3,7 @@ import HomeButton from './HomeButton';
 
 export default {
   title: 'Atoms/Button/HomeButton',
-  component: [HomeButton],
+  component: HomeButton,
 };
 
 const onClick = (): boolean => {
