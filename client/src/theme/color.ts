@@ -17,7 +17,6 @@ const myColor: Colors = {
     lightGray: '#EEEEEE',
     kakaoBlack: '#2F2E2D',
     brown: '#7A5A00',
-    blue: '#647FFD',
     white: '#FFFFFF',
   },
   money: {

@@ -12,7 +12,7 @@ interface ChipsProps {
 }
 
 const defaultProps = {
-  color: myColor.primary.blue,
+  color: myColor.primary.accent,
   backgroundColor: myColor.primary.lightGray,
 };
 
