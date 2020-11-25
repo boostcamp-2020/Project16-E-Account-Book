@@ -31,7 +31,7 @@ module.exports = {
     };
 
     config.module.rules.push({
-      test: /\.svg$/,
+      test: /\.(svg|png|jpg)$/,
       loader: 'file-loader',
     });
 
