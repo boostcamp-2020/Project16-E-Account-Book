@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import Bell from '@svg/bell.svg';
-import myColor from '@theme/color';
+import BellIcon from '@svg/bell.svg.tsx';
+import SettingIcon from '@svg/setting.svg.tsx';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 interface Props extends backgroundColorProps {
+  name: string;
   moveUrl: string;
+  iconColor?: string;
 }
 
 interface backgroundColorProps {
@@ -13,13 +15,9 @@ interface backgroundColorProps {
 }
 
 const defaultProps = {
-  backgroundColor: myColor.primary.main,
+  backgroundColor: 'transparent',
+  iconColor: 'none',
 };
-
-const BellIcon = styled.img`
-  width: 2em;
-  height: 2em;
-`;
 
 const Button = styled.button<backgroundColorProps>`
   width: 50px;
@@ -28,13 +26,24 @@ const Button = styled.button<backgroundColorProps>`
   background-color: ${(props) => props.backgroundColor};
 `;
 
-const NavButton: React.FC<Props> = ({ backgroundColor, moveUrl }: Props) => {
+const NavButton: React.FC<Props> = ({ iconColor, name, backgroundColor, moveUrl }: Props) => {
+  const selectIcon = (icon: string) => {
+    const width = 50;
+    const height = 50;
+    switch (icon) {
+      case 'bell':
+        return <BellIcon height={height} width={width} stroke={iconColor} />;
+      case 'setting':
+        return <SettingIcon height={height} width={width} fill={iconColor} />;
+      default:
+        return <BellIcon height={height} width={width} fill={iconColor} />;
+    }
+  };
+
   return (
     <Button backgroundColor={backgroundColor}>
       <Router>
-        <Link to={moveUrl}>
-          <BellIcon src={Bell} alt="bell icon" />
-        </Link>
+        <Link to={moveUrl}>{selectIcon(name)}</Link>
       </Router>
     </Button>
   );

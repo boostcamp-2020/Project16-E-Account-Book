@@ -6,12 +6,25 @@ export default {
   component: NavButton,
 };
 
-export const navButton = (): JSX.Element => {
-  const backgroundColor = '#F4C239';
+export const bellButton = (): JSX.Element => {
   const moveUrl = '/';
-  return <NavButton background-color={backgroundColor} moveUrl={moveUrl} />;
+  const name = 'bell';
+  const iconColor = '#7392FF';
+
+  return <NavButton moveUrl={moveUrl} name={name} iconColor={iconColor} />;
 };
 
-navButton.story = {
-  name: 'NavButton',
+export const settingButton = (): JSX.Element => {
+  const moveUrl = '/';
+  const name = 'setting';
+  const iconColor = '#7392FF';
+  return <NavButton moveUrl={moveUrl} name={name} iconColor={iconColor} />;
+};
+
+bellButton.story = {
+  name: 'bellButton',
+};
+
+settingButton.story = {
+  name: 'settingButton',
 };
