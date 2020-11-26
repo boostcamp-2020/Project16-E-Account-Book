@@ -16,8 +16,8 @@ interface sizeProps {
 }
 
 const defaultProps = {
-  width: '100px',
-  height: '60px',
+  width: '200px',
+  height: '50px',
 };
 
 const ToggleButtonContainer = styled.div<sizeProps>`

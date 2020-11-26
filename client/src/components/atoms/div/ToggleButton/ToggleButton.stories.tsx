@@ -28,10 +28,10 @@ toggleButton.story = {
 };
 
 toggleButton.args = {
-  leftButtonName: 'A',
-  rightButtonName: 'B',
+  leftButtonName: '수입',
+  rightButtonName: '지출',
   onClickLeft: undefined,
   onClickRight: undefined,
-  width: '100px',
+  width: '200px',
   height: '50px',
 };
