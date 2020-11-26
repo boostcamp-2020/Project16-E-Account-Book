@@ -5,7 +5,7 @@ interface Props {
   justifyContent?: string;
   alignContent?: string;
   alignItems?: string;
-  children: React.ReactChild[];
+  children: React.ReactChild | React.ReactChild[];
 }
 
 const defaultProps = {
