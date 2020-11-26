@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-function App(): JSX.Element {
+const App: React.FC = () => {
   // TODO : 로그인 라우터 구현하기
   // const loginRouter = (
   //   <>
@@ -46,6 +46,6 @@ function App(): JSX.Element {
       <GlobalStyle />
     </BrowserRouter>
   );
-}
+};
 
 export default App;

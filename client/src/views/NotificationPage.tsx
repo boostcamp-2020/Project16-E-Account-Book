@@ -1,11 +1,11 @@
 import React from 'react';
 
-function NotificationPage(): JSX.Element {
+const NotificationPage: React.FC = () => {
   return (
     <>
       <p>notification page</p>
     </>
   );
-}
+};
 
 export default NotificationPage;

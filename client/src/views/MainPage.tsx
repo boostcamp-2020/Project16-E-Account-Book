@@ -1,11 +1,11 @@
 import React from 'react';
 
-function MainPage(): JSX.Element {
+const MainPage: React.FC = () => {
   return (
     <>
       <p>main page</p>
     </>
   );
-}
+};
 
 export default MainPage;

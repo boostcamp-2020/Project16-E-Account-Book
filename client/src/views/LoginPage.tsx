@@ -5,7 +5,7 @@ import CenterContent from '@molecules/CenterContent';
 import BeeBackground from '@organisms/BeeBackground';
 import EasyLogin from '@organisms/EasyLogin';
 
-function LoginPage(): JSX.Element {
+const LoginPage: React.FC = () => {
   const slogan = '지갑 속 꿀 같은 돈을 지키는 첫번째 방법';
   return (
     <>
@@ -18,6 +18,6 @@ function LoginPage(): JSX.Element {
       </CenterContent>
     </>
   );
-}
+};
 
 export default LoginPage;
