@@ -5,12 +5,12 @@
   "dependencies": {
     "@babel/core": "7.12.3",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.2",
-    "@storybook/addon-actions": "^6.1.2",
-    "@storybook/addon-essentials": "^6.1.2",
-    "@storybook/addon-links": "^6.1.2",
-    "@storybook/node-logger": "^6.1.2",
+    "@storybook/addon-actions": "^6.1.6",
+    "@storybook/addon-essentials": "^6.1.6",
+    "@storybook/addon-links": "^6.1.6",
+    "@storybook/node-logger": "^6.1.6",
     "@storybook/preset-create-react-app": "^3.1.5",
-    "@storybook/react": "^6.1.2",
+    "@storybook/react": "^6.1.6",
     "@svgr/webpack": "5.4.0",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
@@ -134,7 +134,8 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^2.2.0"
+    "prettier": "^2.2.0",
+    "react-scripts": "^4.0.1"
   },
   "jest": {
     "roots": [
