@@ -3,7 +3,7 @@ import Color from '@theme/color';
 import CircleiconButton from './CircleiconButton';
 
 export default {
-  title: 'Atoms/Button/CircleiconButton',
+  title: 'Atoms/button/CircleiconButton',
   component: CircleiconButton,
 };
 

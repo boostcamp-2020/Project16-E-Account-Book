@@ -2,7 +2,7 @@ import React from 'react';
 import OAuthButton from './OAuthButton';
 
 export default {
-  title: 'Atoms/Button/OAuthButton',
+  title: 'Atoms/button/OAuthButton',
   component: OAuthButton,
 };
 

@@ -21,19 +21,19 @@ const Test = styled.div<ColorProps>`
   background-color: ${(props) => props.backgroundColor};
 `;
 
-const CircleiconButton = styled.button`
+const CircleIconButton = styled.button`
   background-color: white;
   border: 0;
 `;
 
-const circleiconButton: React.FC<Props> = ({ onClick, backgroundColor }: Props) => {
+const circleIconButton: React.FC<Props> = ({ onClick, backgroundColor }: Props) => {
   return (
-    <CircleiconButton onClick={onClick}>
+    <CircleIconButton onClick={onClick}>
       <Test backgroundColor={backgroundColor}>
         <PencilIcon src={Pencil} />
       </Test>
-    </CircleiconButton>
+    </CircleIconButton>
   );
 };
 
-export default circleiconButton;
+export default circleIconButton;

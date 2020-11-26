@@ -3,7 +3,7 @@ import Color from '@theme/color';
 import CheckBox from './CheckBox';
 
 export default {
-  title: 'Atoms/Checkbox',
+  title: 'Atoms/checkbox',
   component: CheckBox,
 };
 
