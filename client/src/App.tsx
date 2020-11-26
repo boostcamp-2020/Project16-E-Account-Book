@@ -14,6 +14,9 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     *:focus { outline:none; }
   }
+  p{
+    margin: 0px;
+  }
 `;
 
 function App(): JSX.Element {
