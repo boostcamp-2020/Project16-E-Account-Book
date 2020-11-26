@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Minus from '@svg/minus.svg';
 
 interface Props {
+  children: React.ReactChild;
   onClick?: () => void;
 }
 
@@ -22,10 +22,11 @@ const Button = styled.button`
   border: none;
 `;
 
-const IconButton: React.FC<Props> = ({ onClick }: Props) => {
+const IconButton: React.FC<Props> = ({ onClick, children }: Props) => {
+  const src: string = children.toString();
   return (
     <Button>
-      <Icon src={Minus} alt="bell icon" onClick={onClick} />
+      <Icon src={src} alt="icon" onClick={onClick} />
     </Button>
   );
 };

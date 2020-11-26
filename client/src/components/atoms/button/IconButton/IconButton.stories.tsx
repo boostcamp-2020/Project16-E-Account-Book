@@ -1,4 +1,5 @@
 import React from 'react';
+import Minus from '@svg/minus.svg';
 import IconButton from './IconButton';
 
 export default {
@@ -11,7 +12,7 @@ const onClick = (): boolean => {
 };
 
 export const iconButton = (): JSX.Element => {
-  return <IconButton onClick={onClick} />;
+  return <IconButton onClick={onClick}>{Minus}</IconButton>;
 };
 
 iconButton.story = {
