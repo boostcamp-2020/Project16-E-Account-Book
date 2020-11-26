@@ -1,21 +1,26 @@
 import React from 'react';
 import Color from '@theme/color';
-import CircleiconButton from './CircleiconButton';
+import Pencil from '@svg/pencil.svg';
+import CircleIconButton from './CircleIconButton';
 
 export default {
   title: 'Atoms/button/CircleiconButton',
-  component: CircleiconButton,
+  component: CircleIconButton,
 };
 
 const onClick = (): boolean => {
   return true;
 };
 
-export const circleiconButton = (): JSX.Element => {
+export const circleIconButton = (): JSX.Element => {
   const backgroundColor = Color.primary.lightGray;
-  return <CircleiconButton backgroundColor={backgroundColor} onClick={onClick} />;
+  return (
+    <CircleIconButton backgroundColor={backgroundColor} onClick={onClick}>
+      {Pencil}
+    </CircleIconButton>
+  );
 };
 
-circleiconButton.story = {
-  name: 'CircleiconButton',
+circleIconButton.story = {
+  name: 'CircleIconButton',
 };
