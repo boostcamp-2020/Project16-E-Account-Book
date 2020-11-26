@@ -2,6 +2,40 @@
 
 # Sprint 2
 
+## 💻 Day 4
+
+### 📌 [FE] YellowOverlpaBackground 개발
+![](https://i.imgur.com/y3tIsEr.png)
+* **YellowBox**와 **LightYellowBox** atom를 이용하여 개발하였다.
+* **position**을 `relative`로 설정하고 **overflow**를 `hidden`으로 지정해주어 두 요소를 겹치면서 화면을 벗어나는 삼각형의 부분들을 안보이도록 처리하였다.
+
+### 📌 [FE] CircleGraph 개발
+![](https://i.imgur.com/OG7miGW.png)
+- `chart.js`, `react-chartjs-2` 사용
+- `size`의 경우 `rem`으로 변환되어 적용
+
+### 📌 [FE] TopNavBar 개발
+![](https://i.imgur.com/NSucDBI.png)
+
+- `atoms/HomeButton` 사용
+- `atoms/NavIconButton` 사용
+
+
+### 📌 [FE] Toggle button 개발
+
+![](https://i.imgur.com/fN3Ntzd.png)
+
+- `상위 컴포넌트에서의 onClick 이벤트를 하나만 넘겨주기`**vs** `각 버튼에 대한 각각의 onClick 이벤트를 넘겨주기`
+    - `onClick` 이벤트는 버튼의 종류에 따라 결과가 달라질것임. 이에 대한 처리를 하나의 onClick 이벤트를 전달하여 상위 component에서 분기로 처리하는 방법이 있고, 각각의 이벤트를 전달하는 방법이 있을 것으로 생각함. 일단은 후자를 골랐지만 어떤게 더 나은 방법인지는 좀 더 학습이 필요! 
+
+### 📌 [FE] Social Image Molecules 개발
+![](https://i.imgur.com/mM9wbjd.png)
+
+- map function 이용하여 동적 컴포넌트 생성
+    - styled component 를 사용하다보니 동적으로 생성되는 하나의 div에 z-index를 각각 적용하지 못해서 아쉬웠다. 방법을 찾아봐야 할 것 같다.
+- width 를 고정으로 주어 겹치게 구현
+
+
 ## 💻 Day 3
 
 ### 📌 [FE] SVG에 color를 props로 넘겨주기
