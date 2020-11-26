@@ -11,7 +11,7 @@ interface ChipsProps {
   color?: string;
   width?: string;
   height?: string;
-  fontSize?: stirng;
+  fontSize?: string;
 }
 
 const defaultProps = {
