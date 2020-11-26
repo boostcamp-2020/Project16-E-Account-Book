@@ -3,11 +3,14 @@ import styled from 'styled-components';
 import Naver from '@svg/naver-logo.svg';
 import GitHub from '@svg/github-logo.svg';
 
-interface Props {
+interface Props extends ColorProps {
   onClick: () => void;
   site: string;
-  backgroundColor: string;
   children: React.ReactChild;
+}
+
+interface ColorProps {
+  backgroundColor: string;
 }
 
 const OAuthButton = styled.button`
@@ -24,7 +27,7 @@ const OAuthIcon = styled.img`
   height: 100%;
 `;
 
-const OAuthName = styled.div<Props>`
+const OAuthName = styled.div<ColorProps>`
   display: flex;
   flex: 1;
   justify-content: center;

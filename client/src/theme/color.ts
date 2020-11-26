@@ -16,8 +16,8 @@ const myColor: Colors = {
     cancel: '#C4C4C4',
     lightGray: '#EEEEEE',
     black: '#2F2E2D',
+    darkGray: '#757575',
     brown: '#7A5A00',
-    blue: '#647FFD',
     white: '#FFFFFF',
   },
   money: {

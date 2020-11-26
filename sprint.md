@@ -1,5 +1,267 @@
 # ✨ sprint ✨
 
+# Sprint 2
+
+## 💻 Day 3
+
+### 📌 [FE] SVG에 color를 props로 넘겨주기
+[SVG 위키](https://github.com/boostcamp-2020/Project16-E-Account-Book/wiki/%F0%9F%92%A1-SVG#-typescript-component%EC%97%90%EC%84%9C-svg-color-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0)에 예시를 하나 정리해두었다.
+* 위키에서의 예시와 같이 tsx 파일을 생성하고 `props: React.SVGProps<SVGSVGElement>` 를 선언하여 props를 넘겨줄 수 있다. fill 외에도 필요한 속성이 있다면 위의 코드를 응용하여 넘겨주면 된다.
+
+### 📌 [FE] 이미지 파일 불러와서 사용하기
+storybook에서 png 파일이 불러와지지 않는 문제가 있었고 `main.js`에 png와 jpg 확장자를 추가해주어 해결하였다.
+```js
+config.module.rules.push({
+  test: /\.(svg|png|jpg)$/,
+  loader: 'file-loader',
+});
+```
+
+### 📌 [BE] koa와 DB 연동하기 
+`npm install mysql2`
+>mysql2 모듈을 설치해 server/model 디렉토리에 db.ts 파일을 만들고 
+ 커넥션 인스턴스를 불러와 사용한다.
+
+`npm install dotenv`
+>dotenv 모듈을 설치하고, 프로젝트 최상단에 .env 파일을 생성하여 관리한다.
+
+```typescript
+// server/model/db.ts
+import mysql from 'mysql2';
+import 'dotenv/config';
+
+const db = mysql.createPool({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
+  connectionLimit: 10,
+});
+
+export default db;
+```
+```bash
+# server/.env
+    # DB config
+    DB_USER = ?
+    DB_PASSWORD = ?
+    DB_DATABASE = ?
+    DB_HOST = ?
+    DB_PORT = 3306
+    DB_DIALECT = mysql
+```
+
+### ⚛ 리액트 빌드 테스트 적용
+- GitAction 스크립트 생성
+    - `develop` 브랜치에 commit 생성시 (즉, push시) npm run build 오류 여부 확인
+
+- 함수의 반환형 타입을 작성하지 않으면 다음과 같은 오류가 발생합니다
+```bash
+Failed to compile.
+
+src/App.tsx
+  Line 5:1:  Missing return type on function  
+  @typescript-eslint/explicit-module-boundary-types
+
+src/reportWebVitals.ts
+  Line 3:25:  Missing return type on function  
+  @typescript-eslint/explicit-module-boundary-types
+```
+
+### 👨‍👨‍👧‍👦 각자 맡은 atomic 요소 개발
+
+## 💻 Day 2
+
+### 📌 Mac, Window 설정 충돌
+- `CRLF 문제` -> eslint 설정으로 해결 
+
+### 📌 VS Code Typescirpt 버전 오류 해결
+- node_module의 typescript 버전과 vscode에서 지원하는 typescript 버전이 맞지 않아 계속해서 오류가 발생하는 문제가 있었음
+- .vscode/setting.json 파일에서 TS상위버전 작업영역 추가 가능하도록 변경
+- [참고1](https://stackoverflow.com/questions/50432556/cannot-use-jsx-unless-the-jsx-flag-is-provided), [참고2](https://stackoverflow.com/questions/39668731/what-typescript-version-is-visual-studio-code-using-how-to-update-it), [참고3](https://code.visualstudio.com/docs/typescript/typescript-compiling)
+
+### 📌 색상 관리 규칙 정의
+- Theme 디렉토리 안에 color.ts 파일에서 관리
+- object 안 object 구조로 작성하기로 결정함
+- 색상의 유지보수의 용이성을 고려하여 작업 단위로 선언하여 관리
+```typescript
+const myColor: Colors = {
+  primary: {
+    dark: '#FFB421',
+    main: '#F4C239',
+    light: '#FFE6A0',
+    accent: '#7392FF',
+    reject: '#FF7373',
+    cancel: '#C4C4C4',
+  },
+  money: {
+    expenditure: '#7392FF',
+    income: '#F4C239',
+  },
+  header: {
+    dark: '#7A5A00',
+    light: '#FFFFFF',
+  },
+  background: {
+    lightGray: '#EEEEEE',
+  },
+};
+
+```
+
+### 📌 파일 경로 수정
+- [CRA eject](https://create-react-app.dev/docs/alternatives-to-ejecting/)
+    - eject를 통해 CRA에서 Webpack과 Babel을 분리
+- [Webpack Alias](https://webpack.js.org/configuration/resolve/#resolvealias)
+    - 추출된 webpack.config.js에 alias를 통해 @alias 경로 추가
+- [~~Craco~~](https://7stocks.tistory.com/127)
+    - eject로 해결
+    - 
+### 📌 Client Alias 설정
+- eject 를 사용해서 webpack config 추출후 customize 
+```
+alias: {
+        '@atoms': path.resolve(__dirname, '../src/components/atoms/'),
+        '@molecules': path.resolve(__dirname, '../src/components/molecules/'),
+        '@organisms': path.resolve(__dirname, '../src/components/organisms/'),
+        '@templates': path.resolve(__dirname, '../src/components/templates/'),
+
+        '@theme': path.resolve(__dirname, '../src/theme/'),
+        '@utils': path.resolve(__dirname, '../src/utils/'),
+        '@views': path.resolve(__dirname, '../src/views/'),
+        '@reducers': path.resolve(__dirname, '../src/reducers/'),
+        '@store': path.resolve(__dirname, '../src/store/'),
+        '@hooks': path.resolve(__dirname, '../src/hooks/'),
+        ...
+```
+
+### 📌 Storybook 샘플 데이터 생성 및 설정
+- .storybook/main.js(preset 파일) 에서 alias 적용 (웹팩 config 설정)
+- components/atoms/button/SampleButton 에서 적용할 수 있는 샘플 Atom 컴포넌트 생성
+- SampleButton 컴포넌트 생성 
+```typescript
+//SampleButton.tsx
+
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import myColor from '@theme/color';
+
+const Button = styled.button`
+  width: 100px;
+  height: 100px;
+  background-color: ${myColor.primary.accent}};
+`;
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <Button onClick={() => setCount(count + 1)}>Click me</Button>
+    </div>
+  );
+}
+
+export default Example;
+```
+- 스토리북에 등록하기 
+```typescript
+//SampleButton.stories.tsx
+
+import React from 'react';
+import SampleButton from './SampleButton';
+
+export default {
+  title: 'Atoms',
+  component: [SampleButton],
+};
+
+export const samplebtn = () => {
+  return <SampleButton />;
+};
+
+samplebtn.story = {
+  name: 'MySampleButton',
+};
+```
+
+
+## 💻 Day 1
+
+### 📌 BE 프로젝트 생성
+* `ts-node` : Typescript 파일을 실행시킬 수 있음
+* `@types/node`, `@types/koa` : `TypeScript`에서 인식하도록 `node`와 `koa`의 Type을 가져온다
+* prettier 설정
+    * `'` 을 사용하기로 결정
+    * 최대 width는 `100`으로 결정
+    * 탭은 스페이스바 `2`개를 사용하기로 결정
+* eslint 설정
+    * `eslint:recommended`
+    * var 사용금지
+    * sourceType : `module`
+* 테스트 코드 작성을 위한 `jest` 설치
+
+참고: [TypeScript로 Koa 서버 돌리기](https://code-masterjung.tistory.com/46)
+
+### 📌 BE 폴더 구조 설계
+```bash
+.
+├── app.ts
+├── config
+├── package-lock.json
+├── package.json
+├── src # 각 기능별로 폴더를 만들어 controller, router, service를 생성하기로 결정함
+│   └── user
+│       ├── controller.ts
+│       ├── router.ts
+│       └── service.ts
+└── tsconfig.json
+```
+
+### 📌 FE 프로젝트 생성
+참고: [CRA with TypeScript](https://create-react-app.dev/docs/adding-typescript/)
+
+### 📌 FE 폴더 구조 설계
+```bash
+.
+├── README.md
+├── package-lock.json
+├── package.json
+├── public
+├── src
+│   ├── App.css
+│   ├── App.test.tsx
+│   ├── App.tsx
+│   ├── components # atomic design에 근거하여 폴더를 구성함
+│   │   ├── atoms
+│   │   │   └── button
+│   │   │       └── OAuthButton
+│   │   │           ├── index.tsx
+│   │   │           └── stories.tsx
+│   │   ├── molecules
+│   │   ├── organisms
+│   │   └── templates
+│   ├── index.css
+│   ├── index.tsx
+│   ├── logo.svg
+│   ├── reducers    # Reducer들을 작성하여 관리
+│   ├── store       # Store들을 모아서 관리
+│   ├── theme       # 색상 및 테마 관련된 값을 관리
+│   ├── utils       # 자주 사용되는 유틸들을 관리
+│   ├── views       # Pages 폴더
+|   └── hooks       # custom hook들을 관리
+└── tsconfig.json
+
+```
+### 📌 WEB 아키텍쳐 설계
+![](https://i.imgur.com/3izZ7Mf.png)
+
+### 📌 FE NCP 서버 생성 
+- 도메인 설정
+- 공인 IP 적용
+- 인증서기반 SSH 적용
+
 # Sprint 1
 
 ## 💻 Day 5

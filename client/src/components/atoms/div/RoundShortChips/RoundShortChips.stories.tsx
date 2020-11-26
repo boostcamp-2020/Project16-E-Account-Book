@@ -2,7 +2,7 @@ import React from 'react';
 import RoundShortChips from './RoundShortChips';
 
 export default {
-  title: 'Atoms/Div/RoundShortChips',
+  title: 'Atoms/div/RoundShortChips',
   component: RoundShortChips,
 };
 
