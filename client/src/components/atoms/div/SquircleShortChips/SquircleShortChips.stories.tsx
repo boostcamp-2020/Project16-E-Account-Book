@@ -2,7 +2,7 @@ import React from 'react';
 import SquircleShortChips from './SquircleShortChips';
 
 export default {
-  title: 'Atoms/Div/SquircleShortChips',
+  title: 'Atoms/div/SquircleShortChips',
   component: SquircleShortChips,
 };
 
