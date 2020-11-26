@@ -2,7 +2,7 @@ import React from 'react';
 import CenterNormalText from './CenterNormalText';
 
 export default {
-  title: 'Atoms/P/CenterNormalText',
+  title: 'Atoms/p/CenterNormalText',
   component: CenterNormalText,
 };
 

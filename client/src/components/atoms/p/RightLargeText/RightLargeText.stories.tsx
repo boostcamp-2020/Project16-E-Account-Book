@@ -2,7 +2,7 @@ import React from 'react';
 import RightLargeText from './RightLargeText';
 
 export default {
-  title: 'Atoms/P/RightLargeText',
+  title: 'Atoms/p/RightLargeText',
   component: RightLargeText,
 };
 

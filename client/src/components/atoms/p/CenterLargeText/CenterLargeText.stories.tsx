@@ -2,7 +2,7 @@ import React from 'react';
 import CenterLargeText from './CenterLargeText';
 
 export default {
-  title: 'Atoms/P/CenterLargeText',
+  title: 'Atoms/p/CenterLargeText',
   component: CenterLargeText,
 };
 

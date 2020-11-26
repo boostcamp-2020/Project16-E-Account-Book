@@ -2,7 +2,7 @@ import React from 'react';
 import LeftSmallText from './LeftSmallText';
 
 export default {
-  title: 'Atoms/P/LeftSmallText',
+  title: 'Atoms/p/LeftSmallText',
   component: LeftSmallText,
 };
 

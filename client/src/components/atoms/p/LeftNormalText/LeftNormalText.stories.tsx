@@ -2,7 +2,7 @@ import React from 'react';
 import LeftNormalText from './LeftNormalText';
 
 export default {
-  title: 'Atoms/P/LeftNormalText',
+  title: 'Atoms/p/LeftNormalText',
   component: LeftNormalText,
 };
 
