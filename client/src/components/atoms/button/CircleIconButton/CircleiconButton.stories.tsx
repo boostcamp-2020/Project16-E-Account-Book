@@ -4,7 +4,7 @@ import Pencil from '@svg/pencil.svg';
 import CircleIconButton from './CircleIconButton';
 
 export default {
-  title: 'Atoms/button/CircleiconButton',
+  title: 'Atoms/button/CircleIconButton',
   component: CircleIconButton,
 };
 
