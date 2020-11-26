@@ -27,7 +27,7 @@ const Input = styled.input<Props>`
   border-left: none;
   border-right: none;
   text-align: right;
-  pointer: cursor;
+  cursor: pointer;
   :hover {
     border-color: ${myColor.primary.accent};
     transition: all ease 0.3s;
