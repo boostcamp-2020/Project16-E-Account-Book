@@ -2,8 +2,8 @@ import React from 'react';
 import OAuthButton from './OAuthButton';
 
 export default {
-  title: 'Atoms/Button/OAuthButton',
-  component: [OAuthButton],
+  title: 'Atoms/button/OAuthButton',
+  component: OAuthButton,
 };
 
 const onClick = (): boolean => {

@@ -15,8 +15,10 @@ const myColor: Colors = {
     reject: '#FF7373',
     cancel: '#C4C4C4',
     lightGray: '#EEEEEE',
-    kakaoBlack: '#2F2E2D',
+    black: '#2F2E2D',
+    darkGray: '#757575',
     brown: '#7A5A00',
+    white: '#FFFFFF',
   },
   money: {
     expenditure: '#7392FF',

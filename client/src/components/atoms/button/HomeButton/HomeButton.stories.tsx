@@ -2,8 +2,8 @@ import React from 'react';
 import HomeButton from './HomeButton';
 
 export default {
-  title: 'Atoms/Button/HomeButton',
-  component: [HomeButton],
+  title: 'Atoms/button/HomeButton',
+  component: HomeButton,
 };
 
 const onClick = (): boolean => {

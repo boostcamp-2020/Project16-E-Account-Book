@@ -2,6 +2,74 @@
 
 # Sprint 2
 
+## 💻 Day 3
+
+### 📌 [FE] SVG에 color를 props로 넘겨주기
+[SVG 위키](https://github.com/boostcamp-2020/Project16-E-Account-Book/wiki/%F0%9F%92%A1-SVG#-typescript-component%EC%97%90%EC%84%9C-svg-color-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0)에 예시를 하나 정리해두었다.
+* 위키에서의 예시와 같이 tsx 파일을 생성하고 `props: React.SVGProps<SVGSVGElement>` 를 선언하여 props를 넘겨줄 수 있다. fill 외에도 필요한 속성이 있다면 위의 코드를 응용하여 넘겨주면 된다.
+
+### 📌 [FE] 이미지 파일 불러와서 사용하기
+storybook에서 png 파일이 불러와지지 않는 문제가 있었고 `main.js`에 png와 jpg 확장자를 추가해주어 해결하였다.
+```js
+config.module.rules.push({
+  test: /\.(svg|png|jpg)$/,
+  loader: 'file-loader',
+});
+```
+
+### 📌 [BE] koa와 DB 연동하기 
+`npm install mysql2`
+>mysql2 모듈을 설치해 server/model 디렉토리에 db.ts 파일을 만들고 
+ 커넥션 인스턴스를 불러와 사용한다.
+
+`npm install dotenv`
+>dotenv 모듈을 설치하고, 프로젝트 최상단에 .env 파일을 생성하여 관리한다.
+
+```typescript
+// server/model/db.ts
+import mysql from 'mysql2';
+import 'dotenv/config';
+
+const db = mysql.createPool({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
+  connectionLimit: 10,
+});
+
+export default db;
+```
+```bash
+# server/.env
+    # DB config
+    DB_USER = ?
+    DB_PASSWORD = ?
+    DB_DATABASE = ?
+    DB_HOST = ?
+    DB_PORT = 3306
+    DB_DIALECT = mysql
+```
+
+### ⚛ 리액트 빌드 테스트 적용
+- GitAction 스크립트 생성
+    - `develop` 브랜치에 commit 생성시 (즉, push시) npm run build 오류 여부 확인
+
+- 함수의 반환형 타입을 작성하지 않으면 다음과 같은 오류가 발생합니다
+```bash
+Failed to compile.
+
+src/App.tsx
+  Line 5:1:  Missing return type on function  
+  @typescript-eslint/explicit-module-boundary-types
+
+src/reportWebVitals.ts
+  Line 3:25:  Missing return type on function  
+  @typescript-eslint/explicit-module-boundary-types
+```
+
+### 👨‍👨‍👧‍👦 각자 맡은 atomic 요소 개발
+
 ## 💻 Day 2
 
 ### 📌 Mac, Window 설정 충돌
