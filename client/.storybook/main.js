@@ -6,6 +6,7 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/preset-create-react-app',
+    '@storybook/addon-controls',
   ],
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
@@ -30,9 +31,8 @@ module.exports = {
     };
 
     config.module.rules.push({
-      test: /\.svg$/,
-      loader: 'file-loader'
-
+      test: /\.(svg|png|jpg)$/,
+      loader: 'file-loader',
     });
 
     // Return the altered config
