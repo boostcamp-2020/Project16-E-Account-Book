@@ -5,8 +5,8 @@ import BeeLogo from '@img/bee-logo.png';
 const Image = styled.img`
   height: 30%;
   position: absolute;
-  right: 10px;
-  bottom: 10px;
+  right: 6vmin;
+  bottom: 6vmin;
 `;
 
 const BeeLogoImage: React.FC = () => {
