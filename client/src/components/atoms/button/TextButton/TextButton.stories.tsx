@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default {
-  title: 'Atoms/Button/TextButton',
+  title: 'Atoms/button/TextButton',
   component: TextButton,
   argTypes: {
     label: { control: 'text' },

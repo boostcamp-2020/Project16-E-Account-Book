@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default {
-  title: 'Atoms/Span/BoldSpan',
+  title: 'Atoms/span/BoldSpan',
   component: BoldSpan,
   argTypes: {
     label: { control: 'text' },

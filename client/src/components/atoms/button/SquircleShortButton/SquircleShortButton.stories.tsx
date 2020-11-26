@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default {
-  title: 'Atoms/Button/SquircleShortButton',
+  title: 'Atoms/button/SquircleShortButton',
   component: SquircleShortButton,
   argTypes: {
     label: { control: 'text' },

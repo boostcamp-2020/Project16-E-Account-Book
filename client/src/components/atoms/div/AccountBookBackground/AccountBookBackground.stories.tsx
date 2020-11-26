@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default {
-  title: 'Atoms/Button/AccountBookBackground',
+  title: 'Atoms/div/AccountBookBackground',
   component: AccountBookBackground,
   argTypes: {
     backgroundColor: { control: 'color' },

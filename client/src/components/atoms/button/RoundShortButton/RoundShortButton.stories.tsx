@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default {
-  title: 'Atoms/Button/RoundShortButton',
+  title: 'Atoms/button/RoundShortButton',
   component: RoundShortButton,
   argTypes: {
     label: { control: 'text' },

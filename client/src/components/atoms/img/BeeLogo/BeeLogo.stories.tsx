@@ -2,7 +2,7 @@ import React from 'react';
 import BeeLogo from './BeeLogo';
 
 export default {
-  title: 'Atoms/Img/BeeLogo',
+  title: 'Atoms/img/BeeLogo',
   component: BeeLogo,
 };
 

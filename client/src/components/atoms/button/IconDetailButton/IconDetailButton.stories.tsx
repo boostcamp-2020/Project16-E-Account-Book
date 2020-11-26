@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default {
-  title: 'Atoms/Button/IconDetailButton',
+  title: 'Atoms/button/IconDetailButton',
   component: IconDetailButton,
   argTypes: {
     name: { control: 'text' },

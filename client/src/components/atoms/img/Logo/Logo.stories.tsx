@@ -2,7 +2,7 @@ import React from 'react';
 import Logo from './Logo';
 
 export default {
-  title: 'Atoms/Img/Logo',
+  title: 'Atoms/img/Logo',
   component: Logo,
 };
 

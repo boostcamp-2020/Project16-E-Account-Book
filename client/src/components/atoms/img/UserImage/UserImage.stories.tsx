@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default {
-  title: 'Atoms/Img/UserImage',
+  title: 'Atoms/img/UserImage',
   component: UserImage,
   argTypes: {
     link: { control: 'text' },
