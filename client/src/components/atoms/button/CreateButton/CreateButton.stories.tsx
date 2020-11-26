@@ -7,7 +7,7 @@ export default {
 };
 
 export const createButton = (): JSX.Element => {
-  return <CreateButton onClick={() => {}} />;
+  return <CreateButton onClick={undefined} />;
 };
 
 createButton.story = {

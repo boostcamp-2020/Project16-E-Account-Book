@@ -18,6 +18,7 @@ const myColor: Colors = {
     darkGray: '#757575',
     kakaoBlack: '#2F2E2D',
     brown: '#7A5A00',
+    white: '#FFFFFF',
   },
   money: {
     expenditure: '#7392FF',
