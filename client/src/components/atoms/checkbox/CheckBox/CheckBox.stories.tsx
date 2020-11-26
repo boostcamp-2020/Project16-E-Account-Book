@@ -7,7 +7,7 @@ export default {
   component: CheckBox,
 };
 
-export const expenditureCheckBox = () => {
+export const expenditureCheckBox = (): JSX.Element => {
   const [check, setCheck] = useState(false);
   const color = Color.money.expenditure;
   const description = '지출';
@@ -21,7 +21,7 @@ export const expenditureCheckBox = () => {
   );
 };
 
-export const incomeCheckBox = () => {
+export const incomeCheckBox = (): JSX.Element => {
   const [check, setCheck] = useState(false);
   const color = Color.money.income;
   const description = '수입';
