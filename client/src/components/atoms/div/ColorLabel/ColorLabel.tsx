@@ -7,20 +7,18 @@ interface Props extends SizeProps {
 }
 
 interface SizeProps {
-  width?: string;
-  height?: string;
+  size?: string;
 }
 
 const defaultProps = {
-  width: '1.5rem',
-  height: '1.5rem',
+  size: '1.5rem',
   onClick: undefined,
 };
 
 const Div = styled.div<Props>`
   background-color: ${(props) => props.backgroundColor};
-  width: ${(props) => props.width};
-  height: ${(props) => props.width};
+  width: ${(props) => props.size};
+  height: ${(props) => props.size};
   border-radius: 50px;
 `;
 

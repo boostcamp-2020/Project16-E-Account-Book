@@ -14,8 +14,8 @@ export default {
   title: 'Atoms/div/ToggleButton',
   component: ToggleButton,
   argTypes: {
-    leftButtonName: { control: 'leftButtonName' },
-    rightButtonName: { control: 'rightButtonName' },
+    leftButtonName: { control: 'text' },
+    rightButtonName: { control: 'text' },
   },
 };
 

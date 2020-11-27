@@ -3,8 +3,7 @@ import ColorLabel from './ColorLabel';
 
 interface Props {
   backgroundColor: string;
-  width: string;
-  height: string;
+  size: string;
   onClick?: () => void;
 }
 
@@ -12,8 +11,7 @@ export default {
   title: 'Atoms/div/ColorLabel',
   component: ColorLabel,
   argTypes: {
-    width: { control: 'width' },
-    height: { control: 'height' },
+    backgroundColor: { control: 'color' },
   },
 };
 
@@ -27,6 +25,5 @@ colorLabel.story = {
 
 colorLabel.args = {
   backgroundColor: 'blue',
-  width: '1.5rem',
-  height: '1.5rem',
+  size: '1.5rem',
 };
