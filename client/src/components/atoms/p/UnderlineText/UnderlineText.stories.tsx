@@ -11,5 +11,5 @@ export const underlineText = (): JSX.Element => {
 };
 
 underlineText.story = {
-  name: 'RightSmallText',
+  name: 'UnderlineText',
 };

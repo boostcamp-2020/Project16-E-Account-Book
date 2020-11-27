@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import BellIcon from '@svg/bell.svg.tsx';
-import SettingIcon from '@svg/setting.svg.tsx';
+import BellIcon from '@svg/bell.svg';
+import SettingIcon from '@svg/setting.svg';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 interface Props extends backgroundColorProps {

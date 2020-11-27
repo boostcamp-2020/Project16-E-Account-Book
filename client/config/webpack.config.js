@@ -317,8 +317,8 @@ module.exports = function (webpackEnv) {
         '@reducers': path.resolve(__dirname, '../src/reducers/'),
         '@store': path.resolve(__dirname, '../src/store/'),
         '@hooks': path.resolve(__dirname, '../src/hooks/'),
-        '@svg': path.resolve(__dirname, '../src/asserts/svg/'),
-        '@img': path.resolve(__dirname, '../src/asserts/img/'),
+        '@svg': path.resolve(__dirname, '../src/assets/svg/'),
+        '@img': path.resolve(__dirname, '../src/assets/img/'),
 
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/

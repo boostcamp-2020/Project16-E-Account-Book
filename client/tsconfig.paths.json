@@ -13,8 +13,8 @@
       "@reducers/*": ["src/reducers/*"],
       "@store/*": ["src/store/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@svg/*": ["src/asserts/svg/*"],
-      "@img/*": ["src/asserts/img/*"]
+      "@svg/*": ["src/assets/svg/*"],
+      "@img/*": ["src/assets/img/*"]
     }
   }
 }
