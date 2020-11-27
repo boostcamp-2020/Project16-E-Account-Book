@@ -19,8 +19,9 @@ jobs:
           port: ${{ secrets.port }}
           key: ${{ secrets.privateKey }}
           script: |
-            cd Project16-E-Account-Book/client
-            git checkout master
-            git pull origin master
+            cd Project16-E-Account-Book
+            git checkout develop
+            git pull origin develop
+            cd client
             npm install
             npm run build-storybook
