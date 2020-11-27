@@ -15,7 +15,7 @@ const defaultProps = {
   height: '120px',
 };
 
-const SocialContainer = styled.div<Props>`
+const SquircleCard = styled.div<Props>`
   display: flex;
   flex-flow: row;
   background-color: ${(props) => props.backgroundColor};
@@ -25,14 +25,14 @@ const SocialContainer = styled.div<Props>`
   box-shadow: 2px 2px 2px 2px gray;
 `;
 
-const socialContainer: React.FC<Props> = ({ backgroundColor, width, height, children }: Props) => {
+const squircleCard: React.FC<Props> = ({ backgroundColor, width, height, children }: Props) => {
   return (
-    <SocialContainer backgroundColor={backgroundColor} width={width} height={height}>
+    <SquircleCard backgroundColor={backgroundColor} width={width} height={height}>
       {children}
-    </SocialContainer>
+    </SquircleCard>
   );
 };
 
-SocialContainer.defaultProps = defaultProps;
+SquircleCard.defaultProps = defaultProps;
 
-export default socialContainer;
+export default squircleCard;

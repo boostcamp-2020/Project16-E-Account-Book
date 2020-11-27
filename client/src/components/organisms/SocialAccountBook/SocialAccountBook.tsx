@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import SocialContainer from '@atoms/div/SocialContainer';
-import SocialImages from '@molecules/SocialImages';
-import SocialInfo from '@molecules/SocialInfo';
-import SocialMoney from '@molecules/SocialMoney';
+import SquircleCard from '@atoms/div/SquircleCard';
+import UserImages from '@molecules/UserImages';
+import CardInfo from '@molecules/CardInfo';
+import CardNumberText from '@molecules/CardNumberText';
 
 interface Props {
   links: string[];
@@ -42,17 +42,17 @@ const socialAccountBook: React.FC<Props> = ({
   exMoney,
 }: Props) => {
   return (
-    <SocialContainer>
+    <SquircleCard>
       <LeftBox>
-        <SocialImages links={links} />
+        <UserImages links={links} />
       </LeftBox>
       <CenterBox>
-        <SocialInfo title={title} description={description} />
+        <CardInfo title={title} description={description} />
       </CenterBox>
       <RightBox>
-        <SocialMoney fontSize={fontSize} inMoney={inMoney} exMoney={exMoney} />
+        <CardNumberText fontSize={fontSize} inMoney={inMoney} exMoney={exMoney} />
       </RightBox>
-    </SocialContainer>
+    </SquircleCard>
   );
 };
 

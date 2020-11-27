@@ -1,1 +1,1 @@
-export { default } from './SocialImages';
+export { default } from './UserImages';

@@ -8,18 +8,18 @@ interface Props {
   description: string;
 }
 
-const SocialInfo = styled.div`
+const CardInfo = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-const socialInfo: React.FC<Props> = ({ title, description }: Props) => {
+const cardInfo: React.FC<Props> = ({ title, description }: Props) => {
   return (
-    <SocialInfo>
+    <CardInfo>
       <UpSentence>{title}</UpSentence>
       <DownSentence>{description}</DownSentence>
-    </SocialInfo>
+    </CardInfo>
   );
 };
 
-export default socialInfo;
+export default cardInfo;

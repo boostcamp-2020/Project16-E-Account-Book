@@ -10,7 +10,7 @@ interface Props {
   exMoney: number;
 }
 
-const SocialMoney = styled.div`
+const CardNumberText = styled.div`
   width: 100%;
 `;
 
@@ -20,9 +20,9 @@ const Income = styled.div`
 const Expenditure = styled.div`
   display: flex;
 `;
-const socialMoney: React.FC<Props> = ({ fontSize, inMoney, exMoney }: Props) => {
+const cardNumberText: React.FC<Props> = ({ fontSize, inMoney, exMoney }: Props) => {
   return (
-    <SocialMoney>
+    <CardNumberText>
       <Income>
         <SmallText fontSize={fontSize}>수입</SmallText>
         <IncomeText fontWeight="bold" fontSize={fontSize} color="red" money={inMoney} />
@@ -31,8 +31,8 @@ const socialMoney: React.FC<Props> = ({ fontSize, inMoney, exMoney }: Props) => 
         <SmallText fontSize={fontSize}>지출</SmallText>
         <ExpenditureText fontWeight="bold" fontSize={fontSize} color="blue" money={exMoney} />
       </Expenditure>
-    </SocialMoney>
+    </CardNumberText>
   );
 };
 
-export default socialMoney;
+export default cardNumberText;
