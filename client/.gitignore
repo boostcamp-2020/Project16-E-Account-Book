@@ -187,3 +187,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/vscode,macos,windows,node,react
+
+### storybook
+storybook-static
