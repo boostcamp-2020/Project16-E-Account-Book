@@ -32,6 +32,7 @@ const Select = styled.select<selectProps>`
   border-top: none;
   border-left: none;
   border-right: none;
+  border-color: ${myColor.primary.darkGray};
   cursor: pointer;
   :hover {
     border-color: ${myColor.primary.accent};

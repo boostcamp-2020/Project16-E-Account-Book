@@ -23,6 +23,7 @@ const Input = styled.input<Props>`
   background-color: transparent;
   color: ${(props) => props.color};
   border: 0.15rem solid;
+  border-color: ${myColor.primary.darkGray};
   border-top: none;
   border-left: none;
   border-right: none;
