@@ -8,28 +8,39 @@ interface Props extends backgroundColorProps {
   name: string;
   moveUrl: string;
   iconColor?: string;
+  width?: string;
+  height?: string;
 }
 
 interface backgroundColorProps {
   backgroundColor?: string;
+  width?: string;
+  height?: string;
 }
 
 const defaultProps = {
   backgroundColor: 'transparent',
   iconColor: 'none',
+  width: '2rem',
+  height: '2rem',
 };
 
 const Button = styled.button<backgroundColorProps>`
-  width: 50px;
-  height: 50px;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   border: 0;
   background-color: ${(props) => props.backgroundColor};
 `;
 
-const NavButton: React.FC<Props> = ({ iconColor, name, backgroundColor, moveUrl }: Props) => {
+const NavButton: React.FC<Props> = ({
+  iconColor,
+  name,
+  backgroundColor,
+  moveUrl,
+  width,
+  height,
+}: Props) => {
   const selectIcon = (icon: string) => {
-    const width = 50;
-    const height = 50;
     switch (icon) {
       case 'bell':
         return <BellIcon height={height} width={width} stroke={iconColor} />;
@@ -41,7 +52,7 @@ const NavButton: React.FC<Props> = ({ iconColor, name, backgroundColor, moveUrl 
   };
 
   return (
-    <Button backgroundColor={backgroundColor}>
+    <Button width={width} height={height} backgroundColor={backgroundColor}>
       <Router>
         <Link to={moveUrl}>{selectIcon(name)}</Link>
       </Router>

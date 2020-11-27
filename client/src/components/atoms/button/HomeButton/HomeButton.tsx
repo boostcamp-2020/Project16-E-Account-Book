@@ -12,6 +12,8 @@ const defaultProps = {
 const HomeButton = styled.button`
   height: 100%;
   border: 0;
+  background-color: transparent;
+  cursor: pointer;
 `;
 
 const homeButton: React.FC<Props> = ({ onClick }: Props) => {
