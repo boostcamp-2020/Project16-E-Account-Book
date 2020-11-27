@@ -20,7 +20,8 @@ const Button = styled.button<Props>`
   min-width: 60px;
   max-width: 80px;
   font-size: 1rem;
-  border: 0px;
+  border: solid 1px;
+  border-color: ${(props) => props.color};
   border-radius: 25px;
   cursor: pointer;
   padding: 0.25rem 0;
