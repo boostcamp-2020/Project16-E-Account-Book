@@ -14,12 +14,14 @@ interface ColorProps {
 }
 
 const OAuthButton = styled.button`
-  width: 50%;
-  max-width: 300px;
-  height: 75px;
+  width: 100%;
+  max-width: 320px;
+  height: 60px;
   border: 0;
   display: flex;
   font-size: 20px;
+  margin: 5px 0px;
+  background: transparent;
 `;
 
 const OAuthIcon = styled.img`
@@ -36,6 +38,7 @@ const OAuthName = styled.div<ColorProps>`
   background-color: ${(props) => props.backgroundColor};
   color: white;
   border-radius: 5px;
+  font-size: 18px;
 `;
 
 const oauthButton: React.FC<Props> = ({ onClick, backgroundColor, site, children }: Props) => {
