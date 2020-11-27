@@ -20,14 +20,6 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App: React.FC = () => {
-  // TODO : 로그인 라우터 구현하기
-  // const loginRouter = (
-  //   <>
-  //     <Route path="/login" component={LoginPage} />
-  //     <Redirect from="*" to="/login" />
-  //   </>
-  // );
-
   const mainRouter = (
     <>
       <Route exact path="/" component={MainPage} />
