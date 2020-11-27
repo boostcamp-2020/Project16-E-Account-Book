@@ -1,14 +1,14 @@
 import React from 'react';
-import SocialImages from './SocialImages';
+import UserImages from './UserImages';
 
 export default {
-  title: 'Molecules/SocialImages',
-  component: SocialImages,
+  title: 'Molecules/UserImages',
+  component: UserImages,
 };
 
-export const socialImages = (): JSX.Element => {
+export const userImages = (): JSX.Element => {
   return (
-    <SocialImages
+    <UserImages
       links={[
         'https://avatars2.githubusercontent.com/u/46099115?s=460&u=1e04610d430875d8189d2b212b8c2d9fc268b9db&v=4',
         'https://avatars3.githubusercontent.com/u/55074799?s=460&u=2f70319c2f55ba5e26db060ba21d66a9cab35732&v=4',
@@ -18,6 +18,6 @@ export const socialImages = (): JSX.Element => {
   );
 };
 
-socialImages.story = {
-  name: 'SocialImages',
+userImages.story = {
+  name: 'UserImages',
 };

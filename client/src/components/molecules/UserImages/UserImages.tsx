@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import UserImage from '@atoms/img/UserImage';
-import NoOne from '../../../asserts/img/no-one.png';
+import NoOne from '@img/no-one.png';
 
 interface Props {
   links: string[];
 }
 
-const SocialImages = styled.div`
+const UserImages = styled.div`
   display: flex;
   flex-direction: row-reverse;
   width: 80px;
@@ -17,7 +17,7 @@ const Images = styled.div`
   width: 20px;
 `;
 
-const socialImages: React.FC<Props> = ({ links }: Props) => {
+const userImages: React.FC<Props> = ({ links }: Props) => {
   let userLink: string[] = links;
   if (links.length >= 3) {
     userLink = links.slice(0, 3);
@@ -28,7 +28,7 @@ const socialImages: React.FC<Props> = ({ links }: Props) => {
       <UserImage link={user} />
     </Images>
   ));
-  return <SocialImages>{allImage}</SocialImages>;
+  return <UserImages>{allImage}</UserImages>;
 };
 
-export default socialImages;
+export default userImages;
