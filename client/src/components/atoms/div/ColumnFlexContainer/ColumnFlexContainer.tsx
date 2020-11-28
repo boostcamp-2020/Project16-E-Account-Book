@@ -7,6 +7,8 @@ interface Props {
   alignItems?: string;
   margin?: string;
   children: React.ReactChild | React.ReactChild[];
+  width?: string;
+  height?: string;
 }
 
 const defaultProps = {
@@ -14,6 +16,8 @@ const defaultProps = {
   alignContent: 'stretch',
   alignItems: 'center',
   margin: '0px',
+  width: '',
+  height: '',
 };
 
 const Div = styled.div<Props>`
@@ -23,6 +27,8 @@ const Div = styled.div<Props>`
   align-content: ${(props) => props.alignContent};
   align-items: ${(props) => props.alignItems};
   margin: ${(props) => props.margin};
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
 `;
 
 const ColumnFlexContainer: React.FC<Props> = ({ children, ...props }: Props) => {
