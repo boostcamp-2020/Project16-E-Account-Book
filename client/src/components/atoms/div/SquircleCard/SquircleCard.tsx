@@ -23,7 +23,7 @@ const SquircleCard = styled.div<Props>`
   max-width: 1200px;
   height: ${(props) => props.height};
   border-radius: 10px;
-  box-shadow: 2px 2px 2px 2px gray;
+  box-shadow: 0px 5px 7px 1px ${myColor.primary.gray};
 `;
 
 const squircleCard: React.FC<Props> = ({ backgroundColor, width, height, children }: Props) => {
