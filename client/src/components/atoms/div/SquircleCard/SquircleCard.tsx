@@ -19,6 +19,8 @@ const defaultProps = {
 
 const SquircleCard = styled.div<Props>`
   display: flex;
+  padding: 10px;
+  box-sizing: border-box;
   flex-flow: ${(props) => props.flexFlow};
   background-color: ${(props) => props.backgroundColor};
   width: ${(props) => props.width};
