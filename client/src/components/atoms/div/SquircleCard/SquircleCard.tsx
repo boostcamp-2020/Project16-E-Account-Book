@@ -20,6 +20,7 @@ const SquircleCard = styled.div<Props>`
   flex-flow: row;
   background-color: ${(props) => props.backgroundColor};
   width: ${(props) => props.width};
+  max-width: 1200px;
   height: ${(props) => props.height};
   border-radius: 10px;
   box-shadow: 2px 2px 2px 2px gray;
