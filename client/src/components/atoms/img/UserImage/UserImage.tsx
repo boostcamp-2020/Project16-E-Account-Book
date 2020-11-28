@@ -1,19 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
 
-interface Props {
+interface Props extends ImageProps {
   link: string;
 }
+interface ImageProps {
+  size?: string;
+}
 
-const Image = styled.img`
+const defaultProps = {
+  size: '48px',
+};
+
+const Image = styled.img<ImageProps>`
   border-radius: 50px;
-  width: 48px;
-  height: 48px;
+  width: ${(props) => props.size};
+  height: ${(props) => props.size};
   object-fit: cover;
 `;
 
-const UserImage: React.FC<Props> = ({ link }: Props) => {
-  return <Image src={link} />;
+const UserImage: React.FC<Props> = ({ link, size }: Props) => {
+  return <Image src={link} size={size} />;
 };
+
+UserImage.defaultProps = defaultProps;
 
 export default UserImage;
