@@ -9,6 +9,7 @@ interface Props {
   children: React.ReactChild | React.ReactChild[];
   width?: string;
   height?: string;
+  flexWrap?: string;
 }
 
 const defaultProps = {
@@ -18,6 +19,7 @@ const defaultProps = {
   margin: '0px',
   width: '',
   height: '',
+  flexWrap: 'nowrap',
 };
 
 const Div = styled.div<Props>`
@@ -29,6 +31,7 @@ const Div = styled.div<Props>`
   margin: ${(props) => props.margin};
   width: ${(props) => props.width};
   height: ${(props) => props.height};
+  flex-wrap: ${(props) => props.flexWrap};
 `;
 
 const ColumnFlexContainer: React.FC<Props> = ({ children, ...props }: Props) => {

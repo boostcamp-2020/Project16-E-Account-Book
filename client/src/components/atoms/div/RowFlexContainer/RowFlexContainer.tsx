@@ -8,6 +8,7 @@ interface Props {
   children: React.ReactChild | React.ReactChild[];
   width?: string;
   height?: string;
+  flexWrap?: string;
 }
 
 const defaultProps = {
@@ -16,6 +17,7 @@ const defaultProps = {
   alignItems: 'center',
   width: '',
   height: '',
+  flexWrap: 'nowrap',
 };
 
 const Div = styled.div<Props>`
@@ -26,6 +28,7 @@ const Div = styled.div<Props>`
   align-items: ${(props) => props.alignItems};
   width: ${(props) => props.width};
   height: ${(props) => props.height};
+  flex-wrap: ${(props) => props.flexWrap};
 `;
 
 const RowFlexContainer: React.FC<Props> = ({ children, ...props }: Props) => {
