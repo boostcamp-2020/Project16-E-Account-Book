@@ -1,7 +1,8 @@
-import Koa, { Context } from 'koa';
+// import Koa, { Context } from 'koa';
 import 'dotenv/config';
 import oauthRouter from './src/oauth/router';
 
+const Koa = require('koa');
 const Router = require('@koa/router');
 const bodyParser = require('koa-bodyparser');
 
