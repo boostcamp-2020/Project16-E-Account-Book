@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import * as Interface from '../interface';
 
 const jwt = require('jsonwebtoken');
@@ -23,7 +24,7 @@ const getOauthUserData = async (url: string, token: string) => {
 };
 
 const createJWTtoken = (data: Interface.oauthUserData) => {
-  const jwtToken = jwt.sign({ login: data.login, id: data.id }, 'SECRET_KEY', {
+  const jwtToken = jwt.sign({ login: data.login, id: data.id }, process.env.JWT_SECRET, {
     expiresIn: '1d',
   });
   return jwtToken;
