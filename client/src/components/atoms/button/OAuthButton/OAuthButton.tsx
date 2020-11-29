@@ -4,7 +4,7 @@ import Naver from '@svg/naver-logo.svg';
 import GitHub from '@svg/github-logo.svg';
 
 interface Props extends ColorProps {
-  onClick: () => void;
+  link: string;
   site: string;
   children: React.ReactChild;
 }
@@ -13,7 +13,7 @@ interface ColorProps {
   backgroundColor: string;
 }
 
-const OAuthButton = styled.button`
+const OAuthButton = styled.a`
   width: 100%;
   max-width: 320px;
   height: 60px;
@@ -22,6 +22,7 @@ const OAuthButton = styled.button`
   font-size: 20px;
   margin: 5px 0px;
   background: transparent;
+  text-decoration: none;
 `;
 
 const OAuthIcon = styled.img`
@@ -41,7 +42,7 @@ const OAuthName = styled.div<ColorProps>`
   font-size: 18px;
 `;
 
-const oauthButton: React.FC<Props> = ({ onClick, backgroundColor, site, children }: Props) => {
+const oauthButton: React.FC<Props> = ({ link, backgroundColor, site, children }: Props) => {
   const selectSite = (oauth: string) => {
     switch (oauth) {
       case 'Naver':
@@ -53,7 +54,7 @@ const oauthButton: React.FC<Props> = ({ onClick, backgroundColor, site, children
     }
   };
   return (
-    <OAuthButton onClick={onClick}>
+    <OAuthButton href={link}>
       <OAuthIcon src={selectSite(site)} alt="logo" />
       <OAuthName backgroundColor={backgroundColor}>{children}</OAuthName>
     </OAuthButton>
