@@ -31,7 +31,7 @@ const createJWTtoken = (data: Interface.oauthUserData) => {
 };
 
 const getAccessTokenNaver = async (url: string, option: any) => {
-  const response = await axios.get('https://nid.naver.com/oauth2.0/token', option, {
+  const response = await axios.get(url, option, {
     headers: {
       accept: 'application/json',
     },
@@ -39,8 +39,8 @@ const getAccessTokenNaver = async (url: string, option: any) => {
   return response.data.access_token;
 };
 
-const getUserData = async (token: string) => {
-  const { data } = await axios.get(`https://openapi.naver.com/v1/nid/me`, {
+const getOAuthUserDataNaver = async (url: string, token: string) => {
+  const { data } = await axios.get(url, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -48,4 +48,10 @@ const getUserData = async (token: string) => {
   return data.response;
 };
 
-export { getAccessToken, getOAuthUserData, createJWTtoken, getAccessTokenNaver, getUserData };
+export {
+  getAccessToken,
+  getOAuthUserData,
+  createJWTtoken,
+  getAccessTokenNaver,
+  getOAuthUserDataNaver,
+};

@@ -34,7 +34,9 @@ const naver = async (ctx: Context) => {
     },
   };
   const token = await Service.getAccessTokenNaver(process.env.NAVER_TOKEN_URL as string, option);
-  const data = await Service.getUserData(token);
+
+  const data = await Service.getOAuthUserDataNaver(process.env.NAVER_USER_URL as string, token);
+
   console.log(data);
 };
 
