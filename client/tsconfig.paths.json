@@ -12,6 +12,7 @@
       "@views/*": ["src/views/*"],
       "@reducers/*": ["src/reducers/*"],
       "@store/*": ["src/store/*"],
+      "@shared/*": ["src/shared/*"],
       "@hooks/*": ["src/hooks/*"],
       "@svg/*": ["src/assets/svg/*"],
       "@img/*": ["src/assets/img/*"]
