@@ -6,8 +6,7 @@ interface Props {
   rightButtonName: string;
   width: string;
   height: string;
-  onClickLeft: () => void;
-  onClickRight: () => void;
+  onClick: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 }
 
 export default {
@@ -30,8 +29,7 @@ toggleButton.story = {
 toggleButton.args = {
   leftButtonName: '수입',
   rightButtonName: '지출',
-  onClickLeft: undefined,
-  onClickRight: undefined,
+  onClick: undefined,
   width: '200px',
   height: '50px',
 };
