@@ -14,7 +14,7 @@ jobs:
       - name: executing remote ssh commands using private key
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.host }}
+          host: ${{ secrets.server }}
           username: ${{ secrets.username }}
           port: ${{ secrets.port }}
           key: ${{ secrets.privateKey }}
