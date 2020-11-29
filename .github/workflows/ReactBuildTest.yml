@@ -1,4 +1,4 @@
-name: Build test
+name: ReactBuildTest
 
 on:
   push:
