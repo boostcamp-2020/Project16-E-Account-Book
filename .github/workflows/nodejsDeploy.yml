@@ -1,0 +1,29 @@
+name: nodejsDeploy
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on:
+  push:
+    branches: [develop]
+
+jobs:
+  build:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: executing remote ssh commands using private key
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.host }}
+          username: ${{ secrets.username }}
+          port: ${{ secrets.port }}
+          key: ${{ secrets.privateKey }}
+          script: |
+            cd Project16-E-Account-Book
+            git checkout develop
+            git pull origin develop
+            cd server
+            npm install
+            npm run build
+            pm2 delete all
+            pm2 start ecosystem.config.js
