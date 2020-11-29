@@ -16,7 +16,7 @@ jobs:
         with:
           host: ${{ secrets.server }}
           username: ${{ secrets.username }}
-          port: ${{ secrets.port }}
+          port: ${{ secrets.server_port }}
           key: ${{ secrets.privateKey }}
           script: |
             cd Project16-E-Account-Book
