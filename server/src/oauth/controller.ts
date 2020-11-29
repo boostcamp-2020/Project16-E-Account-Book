@@ -27,17 +27,20 @@ const naver = async (ctx: Context) => {
   const option = {
     params: {
       code,
-      grant_type: 'authorization_code' as string,
+      grant_type: 'authorization_code',
       client_id: process.env.NAVER_CLIENT_ID as string,
       client_secret: process.env.NAVER_CLIENT_SECRET as string,
-      state: 'abc' as string,
+      state: 'abc',
     },
   };
   const token = await Service.getAccessTokenNaver(process.env.NAVER_TOKEN_URL as string, option);
 
   const data = await Service.getOAuthUserDataNaver(process.env.NAVER_USER_URL as string, token);
 
-  console.log(data);
+  const jwtToken = Service.createJWTtoken(data);
+
+  ctx.cookies.set('jwt', jwtToken);
+  ctx.redirect(process.env.LOGIN_SUCCESS_URL as string);
 };
 
 export { github, naver };

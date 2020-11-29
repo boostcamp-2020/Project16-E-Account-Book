@@ -24,7 +24,7 @@ const getOAuthUserData = async (url: string, token: string) => {
 };
 
 const createJWTtoken = (data: Interface.oauthUserData) => {
-  const jwtToken = jwt.sign({ login: data.login, id: data.id }, process.env.JWT_SECRET, {
+  const jwtToken = jwt.sign({ login: data.name, id: data.id }, process.env.JWT_SECRET, {
     expiresIn: '1d',
   });
   return jwtToken;
