@@ -6,12 +6,18 @@ interface Props {
   alignContent?: string;
   alignItems?: string;
   children: React.ReactChild | React.ReactChild[];
+  width?: string;
+  height?: string;
+  flexWrap?: string;
 }
 
 const defaultProps = {
   justifyContent: 'flex-start',
   alignContent: 'stretch',
   alignItems: 'center',
+  width: '',
+  height: '',
+  flexWrap: 'nowrap',
 };
 
 const Div = styled.div<Props>`
@@ -20,6 +26,9 @@ const Div = styled.div<Props>`
   justify-content: ${(props) => props.justifyContent};
   align-content: ${(props) => props.alignContent};
   align-items: ${(props) => props.alignItems};
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  flex-wrap: ${(props) => props.flexWrap};
 `;
 
 const RowFlexContainer: React.FC<Props> = ({ children, ...props }: Props) => {
