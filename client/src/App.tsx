@@ -4,7 +4,7 @@ import MainPage from '@views/MainPage';
 import NotificationPage from '@views/NotificationPage';
 import MyPage from '@views/MyPage';
 import GlobalStyle from '@shared/global';
-import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 const App: React.FC = () => {
   const mainRouter = (
@@ -14,7 +14,6 @@ const App: React.FC = () => {
         <Route path="/login" component={LoginPage} />
         <Route path="/notification" component={NotificationPage} />
         <Route path="/mypage" component={MyPage} />
-        <Redirect from="*" to="/" />
       </Switch>
     </>
   );

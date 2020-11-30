@@ -19,7 +19,7 @@ const github = async (ctx: Context) => {
   const jwtToken = Service.createJWTtoken(data);
 
   ctx.cookies.set('jwt', jwtToken);
-  ctx.redirect(process.env.LOGIN_SUCCESS_URL as string);
+  ctx.redirect(`${process.env.LOGIN_SUCCESS_URL as string}/?jwt=${jwtToken}`);
 };
 
 const naver = async (ctx: Context) => {
