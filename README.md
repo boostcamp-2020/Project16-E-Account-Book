@@ -4,7 +4,14 @@
 
 > 소셜 가계부 서비스 Honey In Money! 지갑 속 꿀 같은 돈을 지켜드립니다.
 
-https://img.shields.io/badge/react-^17.0.1-blue
+![react](https://img.shields.io/badge/react-^17.0.1-blue?logo=react)
+![storybook](https://img.shields.io/badge/storybook-^6.1.2-blue?logo=storybook)
+![styled-components](https://img.shields.io/badge/styled-components-^5.2.1-blue?logo=styled-components)
+![typescript](https://img.shields.io/badge/typescript-^4.1.2-yellow?logo=typescript)
+![prettier](https://img.shields.io/badge/prettier-^2.2.0-yellow?logo=prettier)
+![eslint](https://img.shields.io/badge/eslint-^7.11.0-yellow?logo=eslint)
+![koa](https://img.shields.io/badge/koa-^2.13.0-green)
+![node.js](https://img.shields.io/badge/node.js-^12.10.0-green?logo=node.js)
 
 ## Burn Down Chart
 * [Burn Down Chart](https://docs.google.com/spreadsheets/d/1BaVONJLvv911YMaRwExzqmGMBK1Jhyy16UbAbJw7feM/edit#gid=211076120)
