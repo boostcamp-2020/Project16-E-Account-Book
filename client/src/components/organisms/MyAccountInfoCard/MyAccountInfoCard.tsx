@@ -55,7 +55,7 @@ const MyAccountInfoCard: React.FC<Props> = ({
             <TwoByTwoChips categoryList={categoryList} amountList={amountList} />
           </ColumnFlexContainer>
           <ColumnFlexContainer width="30%" height="100%">
-            <CircleGraph size="6" income={income} expend={expend} />
+            <CircleGraph size={6} income={income} expend={expend} />
           </ColumnFlexContainer>
         </RowFlexContainer>
       </ColumnFlexContainer>
