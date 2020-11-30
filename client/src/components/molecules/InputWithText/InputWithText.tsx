@@ -25,7 +25,7 @@ const inputWithText: React.FC<Props> = ({ width, title }: Props) => {
   return (
     <InputWithText width={width}>
       <CenterSmallText>{title}</CenterSmallText>
-      <Input />
+      <Input placeholder="0" />
       <CenterSmallText>원</CenterSmallText>
     </InputWithText>
   );
