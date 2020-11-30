@@ -18,7 +18,7 @@ const defaultProps = {
 
 const MenuWithText = styled.div<sizeProps>`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   width: ${(props) => props.width};
 `;
 
