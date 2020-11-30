@@ -6,8 +6,7 @@ import myColor from '@theme/color';
 interface Props extends sizeProps {
   leftButtonName: string;
   rightButtonName: string;
-  onClickLeft: () => void;
-  onClickRight: () => void;
+  onClick: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 }
 
 interface sizeProps {
@@ -34,36 +33,36 @@ const TextToggleButtonContainer = styled.div<sizeProps>`
 let leftColor = myColor.primary.accent;
 let rightColor = myColor.primary.darkGray;
 
-const TextToggleButton: React.FC<Props> = ({
-  leftButtonName,
-  rightButtonName,
-  onClickLeft,
-  onClickRight,
-  ...args
-}: Props) => {
-  const [isleftSelected, setIsleftSelected] = useState(true);
+const TextToggleButton: React.FC<Props> = ({ leftButtonName, rightButtonName, ...args }: Props) => {
+  const [isCheck, setIsCheck] = useState(true);
 
   useEffect(() => {
-    if (isleftSelected === false) {
+    if (isCheck === false) {
       leftColor = myColor.primary.darkGray;
       rightColor = myColor.primary.accent;
     } else {
       leftColor = myColor.primary.accent;
       rightColor = myColor.primary.darkGray;
     }
-  }, [isleftSelected]);
+  }, [isCheck]);
 
-  const changeColor = () => {
-    setIsleftSelected(!isleftSelected);
+  const changeLeft = () => {
+    if (isCheck === true) {
+      setIsCheck(!isCheck);
+    }
   };
 
+  const changeRight = () => {
+    if (isCheck === false) {
+      setIsCheck(!isCheck);
+    }
+  };
   return (
     <TextToggleButtonContainer {...args}>
       <Button
         color={leftColor}
         onClick={() => {
-          changeColor();
-          onClickLeft();
+          changeLeft();
         }}
       >
         {leftButtonName}
@@ -71,8 +70,7 @@ const TextToggleButton: React.FC<Props> = ({
       <Button
         color={rightColor}
         onClick={() => {
-          changeColor();
-          onClickRight();
+          changeRight();
         }}
       >
         {rightButtonName}
