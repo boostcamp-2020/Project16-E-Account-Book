@@ -21,5 +21,6 @@ interface insertUser {
 
 interface selectUser {
   pid: number;
+  oAuthOrigin: string;
 }
 export { oauthOption, oauthUserData, insertUser, selectUser };
