@@ -4,6 +4,9 @@
 
 > 소셜 가계부 서비스 Honey In Money! 지갑 속 꿀 같은 돈을 지켜드립니다.
 
+https://img.shields.io/badge/react-^17.0.1-blue
+
+## Burn Down Chart
 * [Burn Down Chart](https://docs.google.com/spreadsheets/d/1BaVONJLvv911YMaRwExzqmGMBK1Jhyy16UbAbJw7feM/edit#gid=211076120)
 
 ## 🔗 배포 URL
