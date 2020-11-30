@@ -14,6 +14,10 @@ module.exports = {
     // 'PRODUCTION' is used when building the static version of storybook.
 
     // Make whatever fine-grained changes you need
+    config.node = {
+      fs: 'empty',
+      net: 'empty',
+    }
     config.resolve.alias = {
       ...config.resolve.alias,
       '@atoms': path.resolve(__dirname, '../src/components/atoms/'),
