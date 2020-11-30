@@ -9,10 +9,10 @@ const OAuthButtonList: React.FC = () => {
   const naverLink = `https://nid.naver.com/oauth2.0/authorize?client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&response_type=code&redirect_uri=${process.env.REACT_APP_NAVER_CALLBACK_URL}&state=abc`;
   return (
     <ColumnFlexContainer margin="20px 0px">
-      <OAuthButton site="GitHub" backgroundColor={myColor.primary.lightBlack} link={githubLink}>
+      <OAuthButton site="GitHub" backgroundColor={myColor.oauth.lightBlack} link={githubLink}>
         깃허브 계정으로 로그인
       </OAuthButton>
-      <OAuthButton site="Naver" backgroundColor={myColor.primary.green} link={naverLink}>
+      <OAuthButton site="Naver" backgroundColor={myColor.oauth.green} link={naverLink}>
         네이버 계정으로 로그인
       </OAuthButton>
     </ColumnFlexContainer>

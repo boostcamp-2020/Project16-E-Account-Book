@@ -7,6 +7,7 @@ import InputWithText from '@molecules/InputWithText';
 import DateWithText from '@molecules/DateWithText';
 import MenuWithText from '@molecules/MenuWithText';
 import RoundLongButton from '@atoms/button/RoundLongButton';
+import myColor from '@theme/color';
 
 interface Props extends sizeProps {
   categorys: string[];
@@ -81,7 +82,7 @@ const transactionAddBox: React.FC<Props> = ({
       </MiddleDiv>
       <BottomDiv>
         <RoundLongButton>등록</RoundLongButton>
-        <RoundLongButton>취소</RoundLongButton>
+        <RoundLongButton backgroundColor={myColor.primary.cancel}>취소</RoundLongButton>
       </BottomDiv>
     </TransactionAddBox>
   );
