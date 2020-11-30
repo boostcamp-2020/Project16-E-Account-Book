@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InformationSVG = (props: React.SVGProps<SVGSVGElement>): JSX.Element => (
+const BellSVG = (props: React.SVGProps<SVGSVGElement>): JSX.Element => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -15,4 +15,4 @@ const InformationSVG = (props: React.SVGProps<SVGSVGElement>): JSX.Element => (
   </svg>
 );
 
-export default InformationSVG;
+export default BellSVG;
