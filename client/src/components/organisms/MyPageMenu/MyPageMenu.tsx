@@ -16,7 +16,7 @@ const TopMenuBox = styled.div`
 `;
 
 const BottomMenuBox = styled.div`
-  margin-top: -42px;
+  margin-top: -32px;
 `;
 
 const onClick = (): boolean => {
@@ -54,7 +54,7 @@ const OAuthButtonList: React.FC = () => {
     />
   );
   return (
-    <ColumnFlexContainer>
+    <ColumnFlexContainer margin="0 0 0 8px">
       <TopMenuBox>
         {accountBookMenu}
         {creditCardMenu}

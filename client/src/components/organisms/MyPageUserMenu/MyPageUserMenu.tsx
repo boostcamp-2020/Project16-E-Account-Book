@@ -19,7 +19,7 @@ const ButtonContainer = styled.div`
 
 const OAuthButtonList: React.FC<Props> = ({ name, profile }: Props) => {
   return (
-    <RowFlexContainer>
+    <RowFlexContainer margin="10px 20px">
       <UserImage link={profile} />
       <ColumnFlexContainer alignItems="flex-start" margin="0 20px">
         <P>
