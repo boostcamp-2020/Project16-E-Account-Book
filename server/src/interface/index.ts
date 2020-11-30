@@ -5,7 +5,7 @@ interface oauthOption {
 }
 
 interface oauthUserData {
-  login: string;
+  name: string;
   id: string;
 }
 
