@@ -6,7 +6,7 @@
 
 ![react](https://img.shields.io/badge/react-^17.0.1-blue?logo=react)
 ![storybook](https://img.shields.io/badge/storybook-^6.1.2-blue?logo=storybook)
-![styled-components](https://img.shields.io/badge/styled-components-^5.2.1-blue?logo=styled-components)
+![styled-components](https://img.shields.io/badge/styledComponents-^5.2.1-blue?logo=styled-components)
 ![typescript](https://img.shields.io/badge/typescript-^4.1.2-yellow?logo=typescript)
 ![prettier](https://img.shields.io/badge/prettier-^2.2.0-yellow?logo=prettier)
 ![eslint](https://img.shields.io/badge/eslint-^7.11.0-yellow?logo=eslint)
