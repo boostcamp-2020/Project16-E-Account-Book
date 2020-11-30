@@ -8,6 +8,7 @@ import DateWithText from '@molecules/DateWithText';
 import MenuWithText from '@molecules/MenuWithText';
 import RoundLongButton from '@atoms/button/RoundLongButton';
 import myColor from '@theme/color';
+import FlexContainer from '@atoms/div/ColumnFlexContainer';
 
 interface Props extends sizeProps {
   categorys: string[];
@@ -21,17 +22,9 @@ interface sizeProps {
 }
 
 const defaultProps = {
-  width: '300px',
+  width: '290px',
   height: '500px',
 };
-
-const TransactionAddBox = styled.div<sizeProps>`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: ${(props) => props.height};
-  width: ${(props) => props.width};
-`;
 
 const TopDiv = styled.div`
   display: flex;
@@ -65,7 +58,7 @@ const transactionAddBox: React.FC<Props> = ({
   onClick,
 }: Props) => {
   return (
-    <TransactionAddBox width={width} height={height}>
+    <FlexContainer width={width} height={height} justifyContent="space-around">
       <TopDiv>
         <ToggleButton leftButtonName="수입" rightButtonName="지출" onClick={onClick} />
         <TextButton>모두 지우기</TextButton>
@@ -84,10 +77,10 @@ const transactionAddBox: React.FC<Props> = ({
         <RoundLongButton>등록</RoundLongButton>
         <RoundLongButton backgroundColor={myColor.primary.cancel}>취소</RoundLongButton>
       </BottomDiv>
-    </TransactionAddBox>
+    </FlexContainer>
   );
 };
 
-TransactionAddBox.defaultProps = defaultProps;
+FlexContainer.defaultProps = defaultProps;
 
 export default transactionAddBox;

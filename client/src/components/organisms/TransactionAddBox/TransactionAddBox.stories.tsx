@@ -15,7 +15,7 @@ export const transactionAddBox = (): JSX.Element => {
       categorys={['군것질', '교통비', '회식비']}
       payments={['카카오페이', '현금']}
       onClick={onClick}
-      width="300px"
+      width="290px"
       height="500px"
     />
   );
