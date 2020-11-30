@@ -18,6 +18,7 @@ const defaultProps = {
 };
 
 const SquircleCard = styled.div<Props>`
+  margin-top: 1rem;
   display: flex;
   padding: 10px;
   box-sizing: border-box;
