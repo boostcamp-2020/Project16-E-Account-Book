@@ -2,6 +2,7 @@ import { Context } from 'koa';
 import 'dotenv/config';
 import * as Service from './service';
 import * as Interface from '../interface';
+import * as userModel from '../model/user';
 
 const github = async (ctx: Context) => {
   const { code } = ctx.query;
@@ -17,6 +18,19 @@ const github = async (ctx: Context) => {
   const data = await Service.getOAuthUserData(process.env.GITHUB_USER_URL as string, token);
 
   const jwtToken = Service.createJWTtoken(data);
+
+  const userData: Interface.insertUser = {
+    pid: data.id,
+    email: data.email,
+    name: data.name,
+    region: 'korea',
+    picture: data.avatar_url,
+    color: '#123123',
+    isSunday: true,
+    oAuthOrigin: 'github',
+  };
+  userModel.selectUser(userData);
+  // userModel.insertUser(userData);
 
   ctx.cookies.set('jwt', jwtToken);
   ctx.redirect(`${process.env.LOGIN_SUCCESS_URL as string}/?jwt=${jwtToken}`);

@@ -8,5 +8,18 @@ interface oauthUserData {
   name: string;
   id: string;
 }
+interface insertUser {
+  pid: number;
+  email: string;
+  name: string;
+  region: string;
+  picture: string;
+  color: string;
+  isSunday: boolean;
+  oAuthOrigin: string;
+}
 
-export { oauthOption, oauthUserData };
+interface selectUser {
+  pid: number;
+}
+export { oauthOption, oauthUserData, insertUser, selectUser };
