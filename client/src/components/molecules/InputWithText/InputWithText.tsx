@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import DropdownMenu from '@atoms/input/DropdownMenu';
+import Input from '@atoms/input/Input';
 import CenterSmallText from '@atoms/p/CenterSmallText';
 
 interface Props extends sizeProps {
-  options: string[];
   title: string;
 }
 
@@ -16,21 +15,22 @@ const defaultProps = {
   width: '15%',
 };
 
-const MenuWithText = styled.div<sizeProps>`
+const InputWithText = styled.div<sizeProps>`
   display: flex;
   justify-content: space-between;
   width: ${(props) => props.width};
 `;
 
-const menuWithText: React.FC<Props> = ({ width, title, options }: Props) => {
+const inputWithText: React.FC<Props> = ({ width, title }: Props) => {
   return (
-    <MenuWithText width={width}>
+    <InputWithText width={width}>
       <CenterSmallText>{title}</CenterSmallText>
-      <DropdownMenu options={options} />
-    </MenuWithText>
+      <Input />
+      <CenterSmallText>원</CenterSmallText>
+    </InputWithText>
   );
 };
 
-MenuWithText.defaultProps = defaultProps;
+InputWithText.defaultProps = defaultProps;
 
-export default menuWithText;
+export default inputWithText;
