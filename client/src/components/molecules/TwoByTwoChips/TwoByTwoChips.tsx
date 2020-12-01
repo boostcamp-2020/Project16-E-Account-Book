@@ -2,7 +2,6 @@ import React from 'react';
 import myColor from '@theme/color';
 import styled from 'styled-components';
 import ntm from '@utils/numberToMoney';
-import ColumnFlexContainer from '@atoms/div/ColumnFlexContainer';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import SquircleShortChips from '@atoms/div/SquircleShortChips';
 
