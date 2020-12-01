@@ -4,6 +4,7 @@ import ColumnFlexContainer from '@atoms/div/ColumnFlexContainer';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import Title from '@atoms/p/LeftLargeText';
 import Closed from '@atoms/button/TextButton';
+import myColor from '@theme/color';
 
 interface Props extends modalProps {
   title?: string;
@@ -30,7 +31,7 @@ const ModalBackground = styled.div`
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background-color: #00000050;
+  background-color: ${myColor.background.translucentBlack};
   z-index: 3;
 `;
 

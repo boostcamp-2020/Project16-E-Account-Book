@@ -17,7 +17,7 @@ const ButtonContainer = styled.div`
   margin-left: auto;
 `;
 
-const OAuthButtonList: React.FC<Props> = ({ name, profile }: Props) => {
+const MyPageUserMenu: React.FC<Props> = ({ name, profile }: Props) => {
   return (
     <RowFlexContainer margin="10px 20px">
       <UserImage link={profile} />
@@ -36,4 +36,4 @@ const OAuthButtonList: React.FC<Props> = ({ name, profile }: Props) => {
   );
 };
 
-export default OAuthButtonList;
+export default MyPageUserMenu;
