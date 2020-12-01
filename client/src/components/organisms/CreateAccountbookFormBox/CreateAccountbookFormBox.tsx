@@ -1,7 +1,6 @@
 import React from 'react';
 import ColumnFlexContainer from '@atoms/div/ColumnFlexContainer';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
-import LeftNormalText from '@atoms/p/LeftNormalText';
 import LeftLargeText from '@atoms/p/LeftLargeText';
 import TextArea from '@atoms/textarea/TextArea';
 import myColor from '@theme/color';
@@ -31,11 +30,11 @@ const CreateAccountbookFormBox: React.FC<Props> = ({ backgroundColor }: Props) =
             가계부 생성
           </LeftLargeText>
           <RoundShortButton backgroundColor="black" color="white">
-            검색
+            생성
           </RoundShortButton>
         </RowFlexContainer>
         <RowFlexContainer width="100%" justifyContent="baseline">
-          <LeftNormalText color="white">이름을 입력해주세요.</LeftNormalText>
+          <LeftLargeText color="white">이름을 입력해주세요.</LeftLargeText>
         </RowFlexContainer>
         <TextArea width="100%" height="30%" />
       </ColumnFlexContainer>
