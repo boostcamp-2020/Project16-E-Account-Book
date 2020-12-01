@@ -55,6 +55,7 @@
         "explicitSpread": "ignore",
         "exceptions": []
       }
-    ]
+    ],
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }
