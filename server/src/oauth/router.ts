@@ -4,8 +4,9 @@ import { verifyToken } from '../middleware/verifyToken';
 const Router = require('@koa/router');
 
 const router = new Router();
-router.get('/test/:jwt', verifyToken, () => {
+router.get('/test/:token', verifyToken, (ctx: any) => {
   console.log('here');
+  ctx.body = { link: '' };
 });
 router.get('/callback/github', Controller.github);
 

@@ -31,8 +31,7 @@ const github = async (ctx: Context) => {
 
   if ((await Service.findtUserCount(userData)) === 0) await Service.insertUser(userData);
 
-  ctx.cookies.set('jwt', jwtToken);
-  ctx.redirect(`${process.env.LOGIN_SUCCESS_URL as string}/?jwt=${jwtToken}`);
+  ctx.redirect(`${process.env.LOGIN_SUCCESS_URL as string}/?token=${jwtToken}`);
 };
 
 const naver = async (ctx: Context) => {

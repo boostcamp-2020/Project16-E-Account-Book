@@ -3,11 +3,10 @@ import { Context } from 'koa';
 const jwt = require('jsonwebtoken');
 
 const verifyToken = async (ctx: Context, next: any) => {
-  const token = ctx.params.jwt;
+  const { token } = ctx.params;
 
   ctx.type = 'application/json';
   if (token === 'undefined') {
-    console.log(undefined);
     ctx.body = { link: `${process.env.LOGIN_URL as string}` };
     return;
   }
@@ -16,9 +15,8 @@ const verifyToken = async (ctx: Context, next: any) => {
     const decoded = await jwt.verify(token, process.env.JWT_SECRET, {
       expiresIn: '1d',
     });
-    return next();
+    next();
   } catch (err) {
-    console.log(err);
     ctx.body = { link: `${process.env.LOGIN_URL as string}` };
   }
 };
