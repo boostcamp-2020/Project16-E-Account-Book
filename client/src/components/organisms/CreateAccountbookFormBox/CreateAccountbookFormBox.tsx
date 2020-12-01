@@ -18,7 +18,7 @@ const FormBoxContainer = styled.div<Props>`
   background-color: ${(props) => props.backgroundColor};
 `;
 
-const CreateAccountbokoFormBox: React.FC<Props> = ({ backgroundColor }: Props) => {
+const CreateAccountbookFormBox: React.FC<Props> = ({ backgroundColor }: Props) => {
   return (
     <FormBoxContainer backgroundColor={backgroundColor}>
       <ColumnFlexContainer margin="2rem 0 0 0">
@@ -30,6 +30,6 @@ const CreateAccountbokoFormBox: React.FC<Props> = ({ backgroundColor }: Props) =
   );
 };
 
-CreateAccountbokoFormBox.defaultProps = defaultProps;
+CreateAccountbookFormBox.defaultProps = defaultProps;
 
-export default CreateAccountbokoFormBox;
+export default CreateAccountbookFormBox;
