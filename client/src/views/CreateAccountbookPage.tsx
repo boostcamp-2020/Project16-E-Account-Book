@@ -12,7 +12,7 @@ const CreateAccountbookPage: React.FC = () => {
       <ColoredBackground backgroundColor={myColor.primary.lightGray} />
       <CenterContent>
         <TopNavBar />
-        <CreateAccountbookFormBox backgroundColor={myColor.primary.main} />
+        <CreateAccountbookFormBox backgroundColor={myColor.primary.purple} />
         <CreateAccountbookSetting
           labelColor="blue"
           links={[
