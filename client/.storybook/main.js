@@ -17,7 +17,7 @@ module.exports = {
     config.node = {
       fs: 'empty',
       net: 'empty',
-    }
+    };
     config.resolve.alias = {
       ...config.resolve.alias,
       '@atoms': path.resolve(__dirname, '../src/components/atoms/'),
@@ -28,6 +28,7 @@ module.exports = {
       '@utils': path.resolve(__dirname, '../src/utils/'),
       '@views': path.resolve(__dirname, '../src/views/'),
       '@reducers': path.resolve(__dirname, '../src/reducers/'),
+      '@actions': path.resolve(__dirname, '../src/actions/'),
       '@store': path.resolve(__dirname, '../src/store/'),
       '@hooks': path.resolve(__dirname, '../src/hooks/'),
       '@svg': path.resolve(__dirname, '../src/assets/svg/'),
