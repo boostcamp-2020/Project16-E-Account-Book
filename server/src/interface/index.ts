@@ -7,6 +7,7 @@ interface oauthOption {
 interface oauthUserData {
   name: string;
   id: string;
+  oAuthOrigin?: string;
 }
 interface insertUser {
   pid: number;

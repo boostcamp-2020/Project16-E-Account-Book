@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import * as Interface from '../interface';
-import { db, query } from '../model/db';
+import { query } from '../model/db';
 import syntax from '../model/syntax';
 
 const jwt = require('jsonwebtoken');
@@ -22,13 +22,18 @@ const getOAuthUserData = async (url: string, token: string) => {
       Authorization: `token ${token}`,
     },
   });
+  data.oAuthOrigin = 'github';
   return data;
 };
 
 const createJWTtoken = (data: Interface.oauthUserData) => {
-  const jwtToken = jwt.sign({ login: data.name, id: data.id }, process.env.JWT_SECRET, {
-    expiresIn: '1d',
-  });
+  const jwtToken = jwt.sign(
+    { login: data.name, id: data.id, oAuthOrigin: data.oAuthOrigin },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: '1d',
+    },
+  );
   return jwtToken;
 };
 
@@ -52,14 +57,30 @@ const getOAuthUserDataNaver = async (url: string, token: string) => {
 
 const insertUser = async (props: Interface.insertUser) => {
   const { pid, email, name, region, picture, color, isSunday, oAuthOrigin } = props;
-  await query(syntax.insertUser, [pid, email, name, region, picture, color, isSunday, oAuthOrigin]);
+  const result = await query(syntax.insertUser, [
+    pid,
+    email,
+    name,
+    region,
+    picture,
+    color,
+    isSunday,
+    oAuthOrigin,
+  ]);
+
+  return result.insertId;
 };
 
 const findtUserCount = async (props: Interface.selectUser) => {
   const { pid, oAuthOrigin } = props;
 
   const result = await query(syntax.countUserByPidOrigin, [pid, oAuthOrigin]);
+  if (result.length === 0) return 0;
   return result[0]['count(*)'];
+};
+
+const createPrivateAccountbook = async (userId: number) => {
+  await query(syntax.createPrivateAccountbook, [userId, '내 가계부', '', '#F4C239']);
 };
 
 export {
@@ -70,4 +91,5 @@ export {
   getOAuthUserDataNaver,
   insertUser,
   findtUserCount,
+  createPrivateAccountbook,
 };

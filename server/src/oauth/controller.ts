@@ -5,6 +5,7 @@ import * as Interface from '../interface';
 
 const github = async (ctx: Context) => {
   const { code } = ctx.query;
+  const NEW_ACCOUNT = 0;
 
   const option: Interface.oauthOption = {
     code,
@@ -29,7 +30,10 @@ const github = async (ctx: Context) => {
     oAuthOrigin: 'github',
   };
 
-  if ((await Service.findtUserCount(userData)) === 0) await Service.insertUser(userData);
+  if ((await Service.findtUserCount(userData)) === NEW_ACCOUNT) {
+    const userId = await Service.insertUser(userData);
+    await Service.createPrivateAccountbook(userId);
+  }
 
   ctx.redirect(`${process.env.LOGIN_SUCCESS_URL as string}/?token=${jwtToken}`);
 };
@@ -48,6 +52,7 @@ const naver = async (ctx: Context) => {
   const token = await Service.getAccessTokenNaver(process.env.NAVER_TOKEN_URL as string, option);
 
   const data = await Service.getOAuthUserDataNaver(process.env.NAVER_USER_URL as string, token);
+  data.oAuthOrigin = 'naver';
 
   const jwtToken = Service.createJWTtoken(data);
 
