@@ -12,6 +12,8 @@ const FlexRowBox = styled.div`
   width: 100%;
   height: 2rem;
   background-color: ${myColor.primary.main};
+  z-index: 1;
+  position: fixed;
 `;
 
 const FlexRowContainer = styled.div`

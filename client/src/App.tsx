@@ -5,7 +5,7 @@ import NotificationPage from '@views/NotificationPage';
 import MyPage from '@views/MyPage';
 import CreateAccountbookPage from '@views/CreateAccountbookPage';
 import GlobalStyle from '@shared/global';
-import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 const App: React.FC = () => {
   const mainRouter = (
