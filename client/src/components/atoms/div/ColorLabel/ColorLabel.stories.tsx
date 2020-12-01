@@ -12,6 +12,7 @@ export default {
   component: ColorLabel,
   argTypes: {
     backgroundColor: { control: 'color' },
+    size: { control: 'text' },
   },
 };
 

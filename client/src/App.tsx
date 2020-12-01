@@ -3,6 +3,7 @@ import LoginPage from '@views/LoginPage';
 import MainPage from '@views/MainPage';
 import NotificationPage from '@views/NotificationPage';
 import MyPage from '@views/MyPage';
+import CreateAccountbookPage from '@views/CreateAccountbookPage';
 import GlobalStyle from '@shared/global';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
@@ -14,6 +15,7 @@ const App: React.FC = () => {
         <Route path="/login" component={LoginPage} />
         <Route path="/notification" component={NotificationPage} />
         <Route path="/mypage" component={MyPage} />
+        <Route path="/createAccountbook" component={CreateAccountbookPage} />
         <Redirect from="*" to="/" />
       </Switch>
     </>
