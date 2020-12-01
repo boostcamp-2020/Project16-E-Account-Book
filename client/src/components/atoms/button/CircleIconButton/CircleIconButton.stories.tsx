@@ -3,19 +3,25 @@ import Color from '@theme/color';
 import Pencil from '@svg/pencil.svg';
 import CircleIconButton from './CircleIconButton';
 
+interface Props {
+  backgroundColor: string;
+}
+
 export default {
   title: 'Atoms/button/CircleIconButton',
   component: CircleIconButton,
+  argTypes: {
+    backgroundColor: { control: 'color' },
+  },
 };
 
 const onClick = (): boolean => {
   return true;
 };
 
-export const circleIconButton = (): JSX.Element => {
-  const backgroundColor = Color.primary.lightGray;
+export const circleIconButton = ({ ...args }: Props): JSX.Element => {
   return (
-    <CircleIconButton backgroundColor={backgroundColor} onClick={onClick}>
+    <CircleIconButton {...args} onClick={onClick}>
       {Pencil}
     </CircleIconButton>
   );
@@ -23,4 +29,8 @@ export const circleIconButton = (): JSX.Element => {
 
 circleIconButton.story = {
   name: 'CircleIconButton',
+};
+
+circleIconButton.args = {
+  backgroundColor: Color.primary.lightGray,
 };

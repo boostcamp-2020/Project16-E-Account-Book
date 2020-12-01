@@ -20,8 +20,6 @@ const myColor: Colors = {
     black: '#2F2E2D',
     brown: '#7A5A00',
     white: '#FFFFFF',
-    lightBlack: '#444444',
-    green: '#4FA42B',
   },
   money: {
     expenditure: '#7392FF',
@@ -32,7 +30,12 @@ const myColor: Colors = {
     light: '#FFFFFF',
   },
   background: {
+    translucentBlack: '#00000050',
     lightGray: '#EEEEEE',
+  },
+  oauth: {
+    lightBlack: '#444444',
+    green: '#4FA42B',
   },
 };
 

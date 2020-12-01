@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import myColor from '@theme/color';
 
 interface Props extends TextProps {
-  children: React.ReactChild;
+  children: React.ReactChild | React.ReactChild[];
 }
 
 interface TextProps {
@@ -22,7 +22,7 @@ const Text = styled.p<TextProps>`
   font-size: ${(props) => props.fontSize};
   background-color: transparent;
   color: ${(props) => props.color};
-  fontweight: ${(props) => props.fontWeight};
+  font-weight: ${(props) => props.fontWeight};
   text-align: left;
 `;
 

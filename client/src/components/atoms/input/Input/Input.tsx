@@ -7,6 +7,7 @@ interface Props {
   width?: string;
   height?: string;
   fontSize?: string;
+  placeholder?: string;
 }
 
 const defaultProps = {
@@ -14,6 +15,7 @@ const defaultProps = {
   width: '8rem',
   height: '1rem',
   fontSize: '0.8rem',
+  placeholder: '',
 };
 
 const Input = styled.input<Props>`
@@ -39,8 +41,22 @@ const Input = styled.input<Props>`
   }
 `;
 
-const RoundShortChips: React.FC<Props> = ({ width, height, fontSize, color }: Props) => {
-  return <Input width={width} height={height} fontSize={fontSize} color={color} />;
+const RoundShortChips: React.FC<Props> = ({
+  placeholder,
+  width,
+  height,
+  fontSize,
+  color,
+}: Props) => {
+  return (
+    <Input
+      placeholder={placeholder}
+      width={width}
+      height={height}
+      fontSize={fontSize}
+      color={color}
+    />
+  );
 };
 
 RoundShortChips.defaultProps = defaultProps;

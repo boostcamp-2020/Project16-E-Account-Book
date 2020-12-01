@@ -20,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
   p{
     margin: 0px;
     font-family: 'S-CoreDream-4Regular';
+    word-break: keep-all;
   }
 
   button{
