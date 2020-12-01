@@ -3,7 +3,7 @@ import React from 'react';
 import ChangeAccountbookColorCard from './ChangeAccountbookColorCard';
 
 export default {
-  title: 'Organisms/ChangeAccountbookColorCard',
+  title: 'molecules/ChangeAccountbookColorCard',
   component: ChangeAccountbookColorCard,
 };
 
