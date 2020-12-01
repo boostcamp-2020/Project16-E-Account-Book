@@ -1,10 +1,11 @@
-export const ACCOUNTBOOK_OPEN = 'modal/ACCOUNTBOOK_OPEN' as const;
-export const ACCOUNTBOOK_CLOSE = 'modal/ACCOUNTBOOK_CLOSE' as const;
+export const SHOW_MODAL = 'modal/MODAL_OPEN' as const;
+export const HIDE_MODAL = 'modal/MODAL_CLOSE' as const;
 
-export const accountbookOpen = () => ({
-  type: ACCOUNTBOOK_OPEN,
+export const showModal = (view: string) => ({
+  type: SHOW_MODAL,
+  payload: view,
 });
 
-export const accountbookClose = () => ({
-  type: ACCOUNTBOOK_CLOSE,
+export const hideModal = () => ({
+  type: HIDE_MODAL,
 });

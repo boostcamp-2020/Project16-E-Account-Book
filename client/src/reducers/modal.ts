@@ -1,26 +1,21 @@
-import {
-  ACCOUNTBOOK_OPEN,
-  ACCOUNTBOOK_CLOSE,
-  accountbookOpen,
-  accountbookClose,
-} from '@actions/modal/type';
+import { SHOW_MODAL, HIDE_MODAL, showModal, hideModal } from '@actions/modal/type';
 
-type ModalAction = ReturnType<typeof accountbookOpen> | ReturnType<typeof accountbookClose>;
+type ModalAction = ReturnType<typeof showModal> | ReturnType<typeof hideModal>;
 
 type ModalState = {
-  isOpen: boolean;
+  view: string;
 };
 
 const initialState: ModalState = {
-  isOpen: true,
+  view: 'AccountBook',
 };
 
 const modal = (state: ModalState = initialState, action: ModalAction): ModalState => {
   switch (action.type) {
-    case ACCOUNTBOOK_OPEN:
-      return { isOpen: true };
-    case ACCOUNTBOOK_CLOSE:
-      return { isOpen: false };
+    case SHOW_MODAL:
+      return { view: action.payload };
+    case HIDE_MODAL:
+      return { view: 'none' };
     default:
       return state;
   }

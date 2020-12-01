@@ -5,11 +5,12 @@ import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import Title from '@atoms/p/LeftLargeText';
 import Closed from '@atoms/button/TextButton';
 import myColor from '@theme/color';
+import { hideModal } from '@actions/modal/type';
+import { useDispatch } from 'react-redux';
 
 interface Props extends modalProps {
   title?: string;
   children: React.ReactChild[] | React.ReactChild;
-  onClick?: () => void;
 }
 
 interface modalProps {
@@ -21,7 +22,6 @@ const defaultProps = {
   title: '',
   width: '80%',
   height: '60%',
-  onClick: undefined,
 };
 
 const ModalBackground = styled.div`
@@ -50,9 +50,15 @@ const ButtonContainer = styled.div`
   margin-left: auto;
 `;
 
-const Modal: React.FC<Props> = ({ title, onClick, children, ...props }: Props) => {
+const Modal: React.FC<Props> = ({ title, children, ...props }: Props) => {
+  const dispatch = useDispatch();
+
+  const closeModal = () => {
+    dispatch(hideModal());
+  };
+
   return (
-    <ModalBackground>
+    <ModalBackground onClick={closeModal}>
       <ModalContainer {...props}>
         <ColumnFlexContainer>
           <RowFlexContainer width="100%" margin="10px 0">
@@ -60,7 +66,7 @@ const Modal: React.FC<Props> = ({ title, onClick, children, ...props }: Props) =
               <>{title}</>
             </Title>
             <ButtonContainer>
-              <Closed onClick={onClick} color="black">
+              <Closed onClick={closeModal} color="black">
                 X
               </Closed>
             </ButtonContainer>
