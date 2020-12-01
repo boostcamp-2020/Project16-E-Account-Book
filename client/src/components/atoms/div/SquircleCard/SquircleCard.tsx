@@ -12,7 +12,7 @@ interface Props {
 
 const defaultProps = {
   backgroundColor: myColor.primary.main,
-  width: '500px',
+  width: '100%',
   height: '120px',
   flexFlow: 'row',
 };
