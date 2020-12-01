@@ -1,5 +1,7 @@
 import 'dotenv/config';
 import * as Interface from '../interface';
+import { db, query } from '../model/db';
+import syntax from '../model/syntax';
 
 const jwt = require('jsonwebtoken');
 const axios = require('axios').default;
@@ -48,10 +50,24 @@ const getOAuthUserDataNaver = async (url: string, token: string) => {
   return data.response;
 };
 
+const insertUser = async (props: Interface.insertUser) => {
+  const { pid, email, name, region, picture, color, isSunday, oAuthOrigin } = props;
+  await query(syntax.insertUser, [pid, email, name, region, picture, color, isSunday, oAuthOrigin]);
+};
+
+const findtUserCount = async (props: Interface.selectUser) => {
+  const { pid, oAuthOrigin } = props;
+
+  const result = await query(syntax.countUserByPidOrigin, [pid, oAuthOrigin]);
+  return result[0]['count(*)'];
+};
+
 export {
   getAccessToken,
   getOAuthUserData,
   createJWTtoken,
   getAccessTokenNaver,
   getOAuthUserDataNaver,
+  insertUser,
+  findtUserCount,
 };

@@ -11,4 +11,9 @@ const db = mysql
   })
   .promise();
 
-export default db;
+const query = async (syntax: string, param: Array<any>) => {
+  const [rows]: any = await db.query(syntax, param);
+
+  return rows;
+};
+export { db, query };

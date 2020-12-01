@@ -2,7 +2,6 @@ import { Context } from 'koa';
 import 'dotenv/config';
 import * as Service from './service';
 import * as Interface from '../interface';
-import * as userModel from '../model/user';
 
 const github = async (ctx: Context) => {
   const { code } = ctx.query;
@@ -29,8 +28,8 @@ const github = async (ctx: Context) => {
     isSunday: true,
     oAuthOrigin: 'github',
   };
-  userModel.selectUser(userData);
-  // userModel.insertUser(userData);
+
+  if ((await Service.findtUserCount(userData)) === 0) await Service.insertUser(userData);
 
   ctx.cookies.set('jwt', jwtToken);
   ctx.redirect(`${process.env.LOGIN_SUCCESS_URL as string}/?jwt=${jwtToken}`);
