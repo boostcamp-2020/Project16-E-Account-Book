@@ -1,5 +1,6 @@
 import React from 'react';
 import queryParser from '@utils/queryParser';
+import cookieParser from '@utils/cookieParser';
 import TopNavBar from '@organisms/TopNavBar';
 
 import ColumFlexContainer from '@atoms/div/ColumnFlexContainer';
@@ -20,6 +21,7 @@ const MainPage: React.FC<props> = ({ location }: props) => {
   if (location.search.length > 0) {
     const queryString = queryParser(location.search as string);
     document.cookie = `jwt=${queryString.get('jwt')}`;
+    console.log(document.cookie);
   }
   interface chipsProps {
     categoryList: Array<string>;
@@ -53,7 +55,19 @@ const MainPage: React.FC<props> = ({ location }: props) => {
     margin-top: 6rem;
   `;
   const createAccountbook = () => {
-    return true;
+    const cookieList = cookieParser(document.cookie);
+    console.log(document.cookie);
+    console.log(cookieList);
+    fetch(`http://127.0.0.1:3000/test/${cookieList.jwt}`, {
+      method: 'GET',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+      },
+    }).then(async function (response) {
+      const result = await response.json();
+      if (result.link) window.location = result.link;
+    });
   };
 
   return (
