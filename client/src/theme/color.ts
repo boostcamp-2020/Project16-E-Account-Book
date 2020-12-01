@@ -32,6 +32,7 @@ const myColor: Colors = {
     light: '#FFFFFF',
   },
   background: {
+    translucentBlack: '#00000050',
     lightGray: '#EEEEEE',
   },
 };

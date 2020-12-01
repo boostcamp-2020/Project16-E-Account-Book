@@ -16,14 +16,14 @@ const TopMenuBox = styled.div`
 `;
 
 const BottomMenuBox = styled.div`
-  margin-top: -42px;
+  margin-top: -32px;
 `;
 
 const onClick = (): boolean => {
   return true;
 };
 
-const OAuthButtonList: React.FC = () => {
+const MyPageMenu: React.FC = () => {
   const accountBookSVG = <AccountBookSVG width={40} height={40} fill={myColor.primary.brown} />;
   const accountBookMenu = (
     <HexagonButton
@@ -54,7 +54,7 @@ const OAuthButtonList: React.FC = () => {
     />
   );
   return (
-    <ColumnFlexContainer>
+    <ColumnFlexContainer margin="0 0 0 8px">
       <TopMenuBox>
         {accountBookMenu}
         {creditCardMenu}
@@ -64,4 +64,4 @@ const OAuthButtonList: React.FC = () => {
   );
 };
 
-export default OAuthButtonList;
+export default MyPageMenu;

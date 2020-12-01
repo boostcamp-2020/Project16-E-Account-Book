@@ -15,7 +15,7 @@ interface SizeProps {
 }
 
 const defaultProps = {
-  size: '200px',
+  size: '150px',
   color: myColor.primary.main,
 };
 
@@ -65,7 +65,7 @@ const ButtonName = styled.p`
   padding: 2% 22%;
   color: ${myColor.primary.brown};
   text-align: center;
-  font-size: 1.6em;
+  font-size: 1em;
 `;
 
 const CreateButton: React.FC<Props> = ({ size, name, color, svgIcon, onClick }: Props) => {

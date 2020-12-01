@@ -6,6 +6,7 @@ interface Props {
   alignContent?: string;
   alignItems?: string;
   children: React.ReactChild | React.ReactChild[];
+  margin?: string;
   width?: string;
   height?: string;
   flexWrap?: string;
@@ -15,6 +16,7 @@ const defaultProps = {
   justifyContent: 'flex-start',
   alignContent: 'stretch',
   alignItems: 'center',
+  margin: '0',
   width: '',
   height: '',
   flexWrap: 'nowrap',
@@ -26,6 +28,7 @@ const Div = styled.div<Props>`
   justify-content: ${(props) => props.justifyContent};
   align-content: ${(props) => props.alignContent};
   align-items: ${(props) => props.alignItems};
+  margin: ${(props) => props.margin};
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   flex-wrap: ${(props) => props.flexWrap};
