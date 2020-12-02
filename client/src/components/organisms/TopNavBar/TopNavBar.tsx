@@ -4,14 +4,22 @@ import myColor from '@theme/color';
 import HomeButton from '@atoms/button/HomeButton';
 import NavButton from '@atoms/button/NavButton';
 
-const FlexRowBox = styled.div`
+interface Props {
+  backgroundColor?: string;
+}
+
+const defaultProps = {
+  backgroundColor: myColor.primary.main,
+};
+
+const FlexRowBox = styled.div<Props>`
   display: flex;
   flex-flow: row;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 2rem;
-  background-color: ${myColor.primary.main};
+  background-color: ${(props) => props.backgroundColor};
   z-index: 1;
   position: fixed;
 `;
@@ -26,9 +34,9 @@ const FlexRowContainer = styled.div`
   background-color: transparent;
 `;
 
-const TopNavBar: React.FC = () => {
+const TopNavBar: React.FC<Props> = ({ backgroundColor }: Props) => {
   return (
-    <FlexRowBox>
+    <FlexRowBox backgroundColor={backgroundColor}>
       <HomeButton />
       <FlexRowContainer>
         <NavButton
@@ -49,5 +57,7 @@ const TopNavBar: React.FC = () => {
     </FlexRowBox>
   );
 };
+
+TopNavBar.defaultProps = defaultProps;
 
 export default TopNavBar;
