@@ -1,6 +1,30 @@
 # ✨ sprint ✨
 
 # Sprint 3
+
+## 💻 Day 2
+### 📌 [FE] Redux 적용하기
+폴더 구조 설계
+```bash
+/src
+  ㄴ/actions               # 
+    ㄴ/modal               # 사용할 action 폴더 생성
+      ㄴtype.ts            # 액션 타입을 지정
+      ㄴaction.ts          # 액션 지정
+  ㄴ/reducers              # 
+    ㄴmodal.ts             # 액션을 통해 스토어의 상태를 변경
+    ㄴrootReducer.ts       # reducer를 모아서 하나의 reducer로 combine 후 export
+  ㄴindex.tsx              # store 생성
+```
+
+### 📌 [BE] 미들웨어, DB 예시 코드 작성
+- 토큰 검증하는 미들웨어 생성
+- 토큰이 없거나, 만료된 상태일시 리액트로 redirect 할 link 전송
+
+### 📌 [FE] React-Cookie 적용
+- App.tsx 최상위에 React-cookie 모듈 적용
+
+
 ## 💻 Day 1
 
 ### 📌 [FE] 육각모형 버튼 클릭 영역
