@@ -1,8 +1,7 @@
 import 'dotenv/config';
 import { OauthOption, OauthUserData, InsertUser, SelectUser } from '../interface/user';
-import { sql } from '../model/db';
-import userQuery from '../model/userQuery';
-import privateBookQuery from '../model/privateBookQuery';
+import sql from '../model/db';
+import query from '../model/query';
 
 const jwt = require('jsonwebtoken');
 const axios = require('axios').default;
@@ -58,7 +57,7 @@ const getOAuthUserDataNaver = async (url: string, token: string) => {
 
 const insertUser = async (props: InsertUser) => {
   const { pid, email, name, region, picture, color, isSunday, oAuthOrigin } = props;
-  const result = await sql(userQuery.CREATE_USER, [
+  const result = await sql(query.CREATE_USER, [
     pid,
     email,
     name,
@@ -72,17 +71,15 @@ const insertUser = async (props: InsertUser) => {
   return result.insertId;
 };
 
-const findtUserCount = async (props: SelectUser) => {
+const findUser = async (props: SelectUser) => {
   const { pid, oAuthOrigin } = props;
 
-  const result = await sql(userQuery.READ_USER_COUNT, [pid, oAuthOrigin]);
-  console.log(result);
-  if (result.length === 0) return 0;
-  return result[0]['COUNT(*)'];
+  const [result] = await sql(query.READ_USER, [pid, oAuthOrigin]);
+  return result !== undefined;
 };
 
 const createPrivateAccountbook = async (userId: number) => {
-  await sql(privateBookQuery.CREATE_PRIVATE_BOOK, [userId, '내 가계부', '', '#F4C239']);
+  await sql(query.CREATE_PRIVATE_BOOK, [userId, '내 가계부', '', '#F4C239']);
 };
 
 export {
@@ -92,6 +89,6 @@ export {
   getAccessTokenNaver,
   getOAuthUserDataNaver,
   insertUser,
-  findtUserCount,
+  findUser,
   createPrivateAccountbook,
 };

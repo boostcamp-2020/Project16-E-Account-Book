@@ -17,4 +17,5 @@ const sql = async (syntax: string, param: Array<any>) => {
 
   return rows;
 };
-export { db, sql };
+
+export default sql;

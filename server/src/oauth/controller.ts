@@ -5,7 +5,6 @@ import { OauthOption, InsertUser } from '../interface/user';
 
 const github = async (ctx: Context) => {
   const { code } = ctx.query;
-  const NEW_ACCOUNT = 0;
 
   const option: OauthOption = {
     code,
@@ -30,7 +29,7 @@ const github = async (ctx: Context) => {
     oAuthOrigin: 'github',
   };
 
-  if ((await Service.findtUserCount(userData)) === NEW_ACCOUNT) {
+  if (!(await Service.findUser(userData))) {
     const userId = await Service.insertUser(userData);
     await Service.createPrivateAccountbook(userId);
   }
