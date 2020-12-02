@@ -91,9 +91,6 @@ const MainPage: React.FC<props> = ({ location }: props) => {
     width: 100%;
     margin-top: 6rem;
   `;
-  const createAccountbook = () => {
-    return true;
-  };
 
   return (
     <>
@@ -105,7 +102,7 @@ const MainPage: React.FC<props> = ({ location }: props) => {
             <ColumFlexContainer width="100%" height="100%" alignItems="center">
               <RowFlexContainer width="90%" alignItems="center" justifyContent="space-between">
                 <LeftNormalText>안녕하세요 제구님!</LeftNormalText>
-                <CreateButton onClick={createAccountbook} />
+                <CreateButton link="/social-accountbook/new" />
               </RowFlexContainer>
               <RowFlexContainer width="90%">
                 <LeftLargeText>

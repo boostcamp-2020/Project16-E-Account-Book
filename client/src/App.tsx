@@ -19,9 +19,9 @@ const App: React.FC = () => {
         <Route path="/login" component={LoginPage} />
         <Route path="/notification" component={NotificationPage} />
         <Route path="/mypage" component={MyPage} />
-        <Route path="/createAccountbook" component={CreateAccountbookPage} />
+        <Route path="/social-accountbook/new" component={CreateAccountbookPage} />
         <Route path="/calendar" component={CalendarPage} />
-        <Route path="/transaction/post" component={TransactionPostPage} />
+        <Route path="/transaction/new" component={TransactionPostPage} />
         <Route path="/transaction" component={TransactionPage} />
         <Route path="/statistic" component={StatisticsPage} />
         <Redirect from="*" to="/" />

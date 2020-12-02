@@ -2,6 +2,7 @@ import React from 'react';
 import GlobalStyle from '../src/shared/global';
 import initStore from '@store/index';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const store = initStore();
 
@@ -10,7 +11,9 @@ export const decorators = [
     <>
       <Provider store={store}>
         <GlobalStyle />
-        <Story />
+        <Router>
+          <Story />
+        </Router>
       </Provider>
     </>
   ),

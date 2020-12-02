@@ -6,12 +6,8 @@ export default {
   component: [CreateButton],
 };
 
-const onClick = (): boolean => {
-  return true;
-};
-
 export const createButton = (): JSX.Element => {
-  return <CreateButton onClick={onClick} />;
+  return <CreateButton link="/" />;
 };
 
 createButton.story = {
