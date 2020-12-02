@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { OauthOption, OauthUserData, InsertUser, SelectUser } from '../interface/user';
-import { sql } from '../model/db';
+import sql from '../model/db';
 import query from '../model/query';
 
 const jwt = require('jsonwebtoken');
