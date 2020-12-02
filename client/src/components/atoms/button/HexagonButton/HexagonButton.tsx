@@ -68,7 +68,7 @@ const ButtonName = styled.p`
   font-size: 1em;
 `;
 
-const CreateButton: React.FC<Props> = ({ size, name, color, svgIcon, onClick }: Props) => {
+const hexagonButton: React.FC<Props> = ({ size, name, color, svgIcon, onClick }: Props) => {
   return (
     <Container size={size}>
       <ButtonBackground>
@@ -83,6 +83,6 @@ const CreateButton: React.FC<Props> = ({ size, name, color, svgIcon, onClick }: 
   );
 };
 
-CreateButton.defaultProps = defaultProps;
+hexagonButton.defaultProps = defaultProps;
 
-export default CreateButton;
+export default hexagonButton;
