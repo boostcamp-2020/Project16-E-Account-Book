@@ -74,7 +74,7 @@ const insertUser = async (props: InsertUser) => {
 const findUser = async (props: SelectUser) => {
   const { pid, oAuthOrigin } = props;
 
-  const [result] = await sql(query.READ_USER_COUNT, [pid, oAuthOrigin]);
+  const [result] = await sql(query.READ_USER, [pid, oAuthOrigin]);
   return result !== undefined;
 };
 
