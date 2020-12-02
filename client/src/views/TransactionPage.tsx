@@ -1,10 +1,12 @@
 import React from 'react';
+import CenterContent from '@molecules/CenterContent';
+import NewTransactionButton from '@organisms/NewTransactionButton';
 
 const TransactionPage: React.FC = () => {
   return (
-    <>
-      <p>transaction page</p>
-    </>
+    <CenterContent>
+      <NewTransactionButton />
+    </CenterContent>
   );
 };
 
