@@ -1,13 +1,13 @@
 import { Context } from 'koa';
 import 'dotenv/config';
 import * as Service from './service';
-import * as Interface from '../interface';
+import { OauthOption, InsertUser } from '../interface/user';
 
 const github = async (ctx: Context) => {
   const { code } = ctx.query;
   const NEW_ACCOUNT = 0;
 
-  const option: Interface.oauthOption = {
+  const option: OauthOption = {
     code,
     client_id: process.env.GITHUB_CLIENT_ID as string,
     client_secret: process.env.GITHUB_CLIENT_SECRET as string,
@@ -19,7 +19,7 @@ const github = async (ctx: Context) => {
 
   const jwtToken = Service.createJWTtoken(data);
 
-  const userData: Interface.insertUser = {
+  const userData: InsertUser = {
     pid: data.id,
     email: data.email,
     name: data.name,

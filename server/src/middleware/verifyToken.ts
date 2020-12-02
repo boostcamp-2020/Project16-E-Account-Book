@@ -1,5 +1,5 @@
 import { Context } from 'koa';
-import * as Interface from '../interface';
+import { OauthUserData } from '../interface/user';
 
 const jwt = require('jsonwebtoken');
 
@@ -13,7 +13,7 @@ const verifyToken = async (ctx: Context, next: any) => {
   }
 
   try {
-    const decoded: Interface.oauthUserData = await jwt.verify(token, process.env.JWT_SECRET, {
+    const decoded: OauthUserData = await jwt.verify(token, process.env.JWT_SECRET, {
       expiresIn: '1d',
     });
     ctx.userData = decoded;

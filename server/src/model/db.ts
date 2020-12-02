@@ -12,9 +12,9 @@ const db = mysql
   })
   .promise();
 
-const query = async (syntax: string, param: Array<any>) => {
+const sql = async (syntax: string, param: Array<any>) => {
   const [rows]: any = await db.query(syntax, param);
 
   return rows;
 };
-export { db, query };
+export { db, sql };

@@ -1,15 +1,16 @@
-interface oauthOption {
+interface OauthOption {
   code: string;
   client_id: string;
   client_secret: string;
 }
 
-interface oauthUserData {
+interface OauthUserData {
   name: string;
   id: string;
   oAuthOrigin?: string;
 }
-interface insertUser {
+
+interface InsertUser {
   pid: number;
   email: string;
   name: string;
@@ -20,8 +21,9 @@ interface insertUser {
   oAuthOrigin: string;
 }
 
-interface selectUser {
+interface SelectUser {
   pid: number;
   oAuthOrigin: string;
 }
-export { oauthOption, oauthUserData, insertUser, selectUser };
+
+export { OauthOption, OauthUserData, InsertUser, SelectUser };
