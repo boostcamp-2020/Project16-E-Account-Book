@@ -6,6 +6,7 @@ import MyPage from '@views/MyPage';
 import CreateAccountbookPage from '@views/CreateAccountbookPage';
 import GlobalStyle from '@shared/global';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 
 const App: React.FC = () => {
   const mainRouter = (
@@ -22,10 +23,12 @@ const App: React.FC = () => {
   );
 
   return (
-    <BrowserRouter>
-      {mainRouter}
-      <GlobalStyle />
-    </BrowserRouter>
+    <CookiesProvider>
+      <BrowserRouter>
+        {mainRouter}
+        <GlobalStyle />
+      </BrowserRouter>
+    </CookiesProvider>
   );
 };
 
