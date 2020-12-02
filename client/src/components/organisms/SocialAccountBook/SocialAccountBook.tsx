@@ -12,6 +12,7 @@ interface Props {
   fontSize: string;
   inMoney: number;
   exMoney: number;
+  backgroundColor?: string;
 }
 
 const LeftBox = styled.div`
@@ -40,9 +41,10 @@ const socialAccountBook: React.FC<Props> = ({
   fontSize,
   inMoney,
   exMoney,
+  backgroundColor,
 }: Props) => {
   return (
-    <SquircleCard>
+    <SquircleCard backgroundColor={backgroundColor}>
       <LeftBox>
         <UserImages links={links} />
       </LeftBox>

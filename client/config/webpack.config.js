@@ -315,9 +315,11 @@ module.exports = function (webpackEnv) {
         '@utils': path.resolve(__dirname, '../src/utils/'),
         '@views': path.resolve(__dirname, '../src/views/'),
         '@reducers': path.resolve(__dirname, '../src/reducers/'),
+        '@actions': path.resolve(__dirname, '../src/actions/'),
         '@store': path.resolve(__dirname, '../src/store/'),
         '@shared': path.resolve(__dirname, '../src/shared/'),
         '@hooks': path.resolve(__dirname, '../src/hooks/'),
+        '@interfaces': path.resolve(__dirname, '../src/interfaces/'),
         '@svg': path.resolve(__dirname, '../src/assets/svg/'),
         '@img': path.resolve(__dirname, '../src/assets/img/'),
 

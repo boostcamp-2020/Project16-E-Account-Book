@@ -11,9 +11,11 @@
       "@templates/*": ["src/components/templates/*"],
       "@views/*": ["src/views/*"],
       "@reducers/*": ["src/reducers/*"],
+      "@actions/*": ["src/actions/*"],
       "@store/*": ["src/store/*"],
       "@shared/*": ["src/shared/*"],
       "@hooks/*": ["src/hooks/*"],
+      "@interfaces/*": ["src/interfaces/*"],
       "@svg/*": ["src/assets/svg/*"],
       "@img/*": ["src/assets/img/*"]
     }
