@@ -7,7 +7,7 @@ type ModalState = {
 };
 
 const initialState: ModalState = {
-  view: 'AccountBook',
+  view: 'none',
 };
 
 const modal = (state: ModalState = initialState, action: ModalAction): ModalState => {

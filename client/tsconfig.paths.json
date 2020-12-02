@@ -15,6 +15,7 @@
       "@store/*": ["src/store/*"],
       "@shared/*": ["src/shared/*"],
       "@hooks/*": ["src/hooks/*"],
+      "@interfaces/*": ["src/interfaces/*"],
       "@svg/*": ["src/assets/svg/*"],
       "@img/*": ["src/assets/img/*"]
     }
