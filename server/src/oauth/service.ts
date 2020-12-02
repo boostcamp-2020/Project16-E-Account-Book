@@ -26,9 +26,9 @@ const getOAuthUserData = async (url: string, token: string) => {
   return data;
 };
 
-const createJWTtoken = (data: OauthUserData) => {
+const createJWTtoken = (data: OauthUserData, site: string) => {
   const jwtToken = jwt.sign(
-    { login: data.name, id: data.id, oAuthOrigin: data.oAuthOrigin },
+    { login: data.name, id: data.id, oAuthOrigin: site },
     process.env.JWT_SECRET,
     {
       expiresIn: '1d',
