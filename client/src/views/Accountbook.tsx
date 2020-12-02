@@ -6,7 +6,7 @@ import Tab from '@material-ui/core/Tab';
 import myColor from '@theme/color';
 import TopNavBar from '@organisms/TopNavBar';
 import CenterContent from '@molecules/CenterContent';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
 import List from '@views/List';
@@ -63,6 +63,7 @@ const Accountbook: React.FC = () => {
           <Route path="/accountbook/list" component={List} />
           <Route path="/accountbook/calendar" component={Calendar} />
           <Route path="/accountbook/statistics" component={Statistics} />
+          <Redirect from="*" to="/accountbook/list" />
         </Switch>
       </Router>
     </CenterContent>
