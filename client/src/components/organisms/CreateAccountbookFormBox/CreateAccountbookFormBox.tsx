@@ -3,19 +3,17 @@ import ColumnFlexContainer from '@atoms/div/ColumnFlexContainer';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import LeftLargeText from '@atoms/p/LeftLargeText';
 import TextArea from '@atoms/textarea/TextArea';
-import myColor from '@theme/color';
 import SquircleCard from '@atoms/div/SquircleCard';
 import RoundShortButton from '@atoms/button/RoundShortButton';
+import colorUtils from '@utils/color';
 
 interface Props {
-  backgroundColor?: string;
+  backgroundColor: string;
 }
 
-const defaultProps = {
-  backgroundColor: myColor.primary.main,
-};
-
 const CreateAccountbookFormBox: React.FC<Props> = ({ backgroundColor }: Props) => {
+  const fontColor = colorUtils.getFontColor(backgroundColor);
+  const buttonColor = fontColor === 'white' ? 'black' : 'white';
   return (
     <SquircleCard width="100%" backgroundColor={backgroundColor} height="15rem">
       <ColumnFlexContainer
@@ -26,22 +24,20 @@ const CreateAccountbookFormBox: React.FC<Props> = ({ backgroundColor }: Props) =
         alignItems="center"
       >
         <RowFlexContainer width="100%" justifyContent="space-between">
-          <LeftLargeText color="white" fontWeight="bold">
+          <LeftLargeText color={fontColor} fontWeight="bold">
             가계부 생성
           </LeftLargeText>
-          <RoundShortButton backgroundColor="black" color="white">
+          <RoundShortButton backgroundColor={buttonColor} color={fontColor}>
             생성
           </RoundShortButton>
         </RowFlexContainer>
         <RowFlexContainer width="100%" justifyContent="baseline">
-          <LeftLargeText color="white">이름을 입력해주세요.</LeftLargeText>
+          <LeftLargeText color={fontColor}>이름을 입력해주세요.</LeftLargeText>
         </RowFlexContainer>
         <TextArea width="100%" height="30%" />
       </ColumnFlexContainer>
     </SquircleCard>
   );
 };
-
-CreateAccountbookFormBox.defaultProps = defaultProps;
 
 export default CreateAccountbookFormBox;

@@ -5,14 +5,16 @@ import CenterContent from '@molecules/CenterContent';
 import CreateAccountbookFormBox from '@organisms/CreateAccountbookFormBox';
 import TopNavBar from '@organisms/TopNavBar';
 import CreateAccountbookSetting from '@organisms/CreateAccountbookSetting';
+import colorUtils from '@utils/color';
 
 const CreateAccountbookPage: React.FC = () => {
+  const backgroundColor = colorUtils.getRandomColor();
   return (
     <>
       <ColoredBackground backgroundColor={myColor.primary.lightGray} />
       <CenterContent>
-        <TopNavBar backgroundColor={myColor.primary.purple} />
-        <CreateAccountbookFormBox backgroundColor={myColor.primary.purple} />
+        <TopNavBar backgroundColor={backgroundColor} />
+        <CreateAccountbookFormBox backgroundColor={backgroundColor} />
         <CreateAccountbookSetting
           labelColor="blue"
           links={[
@@ -25,16 +27,5 @@ const CreateAccountbookPage: React.FC = () => {
     </>
   );
 };
-
-/*
-<ColoredBackground backgroundColor={myColor.primary.lightGray} />
-      <CenterContent>
-        <ColumnFlexContainer>
-          <TopNavBar />
-          <CreateAccountbookForm />
-          <AccountbookSetting />
-        </ColumnFlexContainer>
-      </CenterContent>
-*/
 
 export default CreateAccountbookPage;
