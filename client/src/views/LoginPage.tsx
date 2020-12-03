@@ -6,6 +6,7 @@ import BeeBackground from '@organisms/BeeBackground';
 import EasyLogin from '@organisms/EasyLogin';
 import qs from 'qs';
 import axios from 'axios';
+import * as API from '@utils/api';
 
 interface props {
   location: any;
@@ -17,9 +18,8 @@ const LoginPage: React.FC<props> = ({ location }: props) => {
     const { code, site, state }: any = qs.parse(location.search, {
       ignoreQueryPrefix: true,
     });
-    console.log(code, site, state);
     const getJWT = async () => {
-      const { data } = await axios.post('http://127.0.0.1:3000/login', {
+      const { data } = await axios.post(API.GET_JWT, {
         code,
         site,
         state,
