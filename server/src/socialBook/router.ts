@@ -4,8 +4,8 @@ const Router = require('@koa/router');
 
 const router = new Router();
 
-router.get('/social', Controller.getSocialBooks);
+router.get('/list', Controller.getSocialBooks);
 
-router.get('/master', Controller.getSocialBooksMaster);
+router.get('/list/master', Controller.getSocialBooksMaster);
 
 export default router;

@@ -4,13 +4,15 @@ import 'dotenv/config';
 import * as Service from './service';
 
 export const getSocialBooks = async (ctx: Context) => {
-  const userId = ctx.userData.uid; // TODO : jwtToken 수정 후 고치기
-  const result = await Service.getSocialBooks(userId);
+  const userId = ctx.userData.uid;
+  const socialBookResult = await Service.getSocialBooks(userId);
+  const result = await Service.getUserImages(socialBookResult);
   response.success(ctx, result);
 };
 
 export const getSocialBooksMaster = async (ctx: Context) => {
-  const userId = ctx.userData.uid; // TODO : jwtToken 수정 후 고치기
-  const result = await Service.getSocialBooksMaster(userId);
+  const userId = ctx.userData.uid;
+  const socialBookResult = await Service.getSocialBooksMaster(userId);
+  const result = await Service.getUserImages(socialBookResult);
   response.success(ctx, result);
 };
