@@ -38,7 +38,7 @@ const Accountbook: React.FC = () => {
 
   const tabStyle = {
     textDecoration: 'none',
-    color: myColor.primary.black,
+    color: 'black',
   };
 
   return (
@@ -47,7 +47,13 @@ const Accountbook: React.FC = () => {
       <MarginBox />
       <Router>
         <Paper className={classes.root}>
-          <Tabs value={value} onChange={handleChange} style={tabsStyle} centered>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            indicatorColor="primary"
+            style={tabsStyle}
+            centered
+          >
             <Link style={tabStyle} to="/accountbook/list" onClick={() => setValue(0)}>
               <Tab label="내역" />
             </Link>
