@@ -5,8 +5,9 @@ interface Props {
   justifyContent?: string;
   alignContent?: string;
   alignItems?: string;
-  children: React.ReactChild | React.ReactChild[];
+  children?: React.ReactChild | React.ReactChild[];
   margin?: string;
+  padding?: string;
   width?: string;
   height?: string;
   flexWrap?: string;
@@ -24,6 +25,8 @@ const defaultProps = {
   flexWrap: 'nowrap',
   borderWidth: '',
   borderStyle: '',
+  children: '',
+  padding: '0',
 };
 
 const Div = styled.div<Props>`
@@ -33,6 +36,7 @@ const Div = styled.div<Props>`
   align-content: ${(props) => props.alignContent};
   align-items: ${(props) => props.alignItems};
   margin: ${(props) => props.margin};
+  padding: ${(props) => props.padding};
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   flex-wrap: ${(props) => props.flexWrap};
