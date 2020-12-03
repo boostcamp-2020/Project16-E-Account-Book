@@ -1,17 +1,17 @@
 import React from 'react';
-import TransactionAddBox from './TransactionAddBox';
+import TransactionForm from './TransactionForm';
 
 export default {
-  title: 'Organisms/TransactionAddBox',
-  component: TransactionAddBox,
+  title: 'Organisms/TransactionForm',
+  component: TransactionForm,
 };
 
-export const transactionAddBox = (): JSX.Element => {
+export const transactionForm = (): JSX.Element => {
   const onClick = () => {
     return true;
   };
   return (
-    <TransactionAddBox
+    <TransactionForm
       categorys={['군것질', '교통비', '회식비']}
       payments={['카카오페이', '현금']}
       onClick={onClick}
@@ -21,6 +21,6 @@ export const transactionAddBox = (): JSX.Element => {
   );
 };
 
-transactionAddBox.story = {
-  name: 'TransactionAddBox',
+transactionForm.story = {
+  name: 'TransactionForm',
 };

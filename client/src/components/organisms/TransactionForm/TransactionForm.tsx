@@ -6,8 +6,6 @@ import Input from '@atoms/input/Input';
 import InputWithText from '@molecules/InputWithText';
 import DateWithText from '@molecules/DateWithText';
 import MenuWithText from '@molecules/MenuWithText';
-import RoundLongButton from '@atoms/button/RoundLongButton';
-import myColor from '@theme/color';
 import FlexContainer from '@atoms/div/ColumnFlexContainer';
 
 interface Props extends sizeProps {
@@ -40,14 +38,6 @@ const MiddleDiv = styled.div`
   height: 60%;
 `;
 
-const BottomDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  height: 13%;
-`;
-
 const InputDiv = styled.div``;
 
 const transactionAddBox: React.FC<Props> = ({
@@ -73,10 +63,6 @@ const transactionAddBox: React.FC<Props> = ({
         <MenuWithText options={categorys} title="카테고리" width="100%" />
         <MenuWithText options={payments} title="결제수단" width="100%" />
       </MiddleDiv>
-      <BottomDiv>
-        <RoundLongButton>등록</RoundLongButton>
-        <RoundLongButton backgroundColor={myColor.primary.cancel}>취소</RoundLongButton>
-      </BottomDiv>
     </FlexContainer>
   );
 };
