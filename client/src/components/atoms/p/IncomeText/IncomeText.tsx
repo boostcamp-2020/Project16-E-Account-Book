@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import nTm from '@utils/numberToMoney';
+import MyColor from '@theme/color';
 
 interface Props extends FontProps {
   money: number;
@@ -11,6 +12,10 @@ interface FontProps {
   fontSize: string;
   color: string;
 }
+
+const defaultProps = {
+  color: MyColor.money.income,
+};
 
 const IncomeText = styled.p<FontProps>`
   font-weight: ${(props) => props.fontWeight};
@@ -26,5 +31,7 @@ const incomeText: React.FC<Props> = ({ fontWeight, fontSize, color, money }: Pro
     </IncomeText>
   );
 };
+
+IncomeText.defaultProps = defaultProps;
 
 export default incomeText;
