@@ -66,7 +66,7 @@ const oauth = async (ctx: any) => {
 
   let userId = await Service.findUser(userData);
 
-  if (userId === undefined) {
+  if (!userId) {
     userId = await Service.insertUser(userData);
     await Service.createPrivateAccountbook(userId);
   }
