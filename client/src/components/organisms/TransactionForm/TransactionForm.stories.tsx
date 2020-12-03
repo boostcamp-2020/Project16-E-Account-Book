@@ -12,11 +12,9 @@ export const transactionForm = (): JSX.Element => {
   };
   return (
     <TransactionForm
-      categorys={['군것질', '교통비', '회식비']}
+      categories={['군것질', '교통비', '회식비']}
       payments={['카카오페이', '현금']}
       onClick={onClick}
-      width="290px"
-      height="500px"
     />
   );
 };

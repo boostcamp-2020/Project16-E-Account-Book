@@ -6,67 +6,51 @@ import Input from '@atoms/input/Input';
 import InputWithText from '@molecules/InputWithText';
 import DateWithText from '@molecules/DateWithText';
 import MenuWithText from '@molecules/MenuWithText';
-import FlexContainer from '@atoms/div/ColumnFlexContainer';
+import ColumnFlexContainer from '@atoms/div/ColumnFlexContainer';
+import RowFlexContainer from '@atoms/div/RowFlexContainer';
 
-interface Props extends sizeProps {
-  categorys: string[];
+interface Props {
+  categories: string[];
   payments: string[];
   onClick: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 }
 
-interface sizeProps {
-  width?: string;
-  height?: string;
-}
-
-const defaultProps = {
-  width: '290px',
-  height: '500px',
-};
-
-const TopDiv = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  height: 10%;
-`;
-
-const MiddleDiv = styled.div`
+const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 60%;
+  width: 100%;
+  height: 240px;
+  margin-bottom: 24px;
+`;
+
+const DeleteButtonContainer = styled.div`
+  margin-left: auto;
 `;
 
 const InputDiv = styled.div``;
 
-const transactionAddBox: React.FC<Props> = ({
-  width,
-  height,
-  categorys,
-  payments,
-  onClick,
-}: Props) => {
+const transactionAddBox: React.FC<Props> = ({ categories, payments, onClick }: Props) => {
   return (
-    <FlexContainer width={width} height={height} justifyContent="space-around">
-      <TopDiv>
+    <ColumnFlexContainer width="100%" justifyContent="space-around">
+      <RowFlexContainer width="100%">
         <ToggleButton leftButtonName="수입" rightButtonName="지출" onClick={onClick} />
-        <TextButton>모두 지우기</TextButton>
-      </TopDiv>
-      <MiddleDiv>
+        <DeleteButtonContainer>
+          <TextButton>모두 지우기</TextButton>
+        </DeleteButtonContainer>
+      </RowFlexContainer>
+      <InputContainer>
         <InputDiv>
           <Input placeholder="내용은 최대 15자까지 입력가능합니다" width="100%" />
         </InputDiv>
         <InputWithText title="금액" width="100%" />
         <DateWithText title="날짜" width="100%" />
         <DateWithText title="시간" width="100%" />
-        <MenuWithText options={categorys} title="카테고리" width="100%" />
+        <MenuWithText options={categories} title="카테고리" width="100%" />
         <MenuWithText options={payments} title="결제수단" width="100%" />
-      </MiddleDiv>
-    </FlexContainer>
+      </InputContainer>
+    </ColumnFlexContainer>
   );
 };
-
-FlexContainer.defaultProps = defaultProps;
 
 export default transactionAddBox;

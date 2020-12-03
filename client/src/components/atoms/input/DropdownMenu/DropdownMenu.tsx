@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import myColor from '@theme/color';
 
-interface Props extends selectProps, optionProps {
+interface Props extends selectProps {
   options: Array<string>;
 }
 
@@ -12,8 +12,6 @@ interface selectProps {
   height?: string;
   fontSize?: string;
 }
-
-interface optionProps {}
 
 const defaultProps = {
   color: myColor.primary.black,
@@ -44,7 +42,7 @@ const Select = styled.select<selectProps>`
   }
 `;
 
-const Option = styled.option<optionProps>``;
+const Option = styled.option``;
 
 const getOptionList = (options: Array<string>) =>
   options.map((value) => <Option value={value}>{value}</Option>);
