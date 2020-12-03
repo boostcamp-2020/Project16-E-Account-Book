@@ -1,7 +1,17 @@
 import React from 'react';
+import CreditCard from '@molecules/CreditCard';
+import ColumnFlexContainer from '@atoms/div/ColumnFlexContainer';
 
 const CreditCardEditCardList: React.FC = () => {
-  return <></>;
+  return (
+    <ColumnFlexContainer width="100%">
+      <CreditCard name="신한카드" />
+      <CreditCard name="하나카드" />
+      <CreditCard name="농협카드" />
+      <CreditCard name="농협카드2" />
+      <CreditCard name="농협카드3" />
+    </ColumnFlexContainer>
+  );
 };
 
 export default CreditCardEditCardList;

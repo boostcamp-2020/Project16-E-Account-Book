@@ -20,6 +20,7 @@ const Button = styled.button`
   width: 50px;
   height: 50px;
   border: none;
+  background-color: white;
 `;
 
 const IconButton: React.FC<Props> = ({ onClick, children }: Props) => {

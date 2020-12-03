@@ -13,7 +13,7 @@ const CreditCardEditModal: React.FC = () => {
     <Modal title={title}>
       <ColumnFlexContainer
         width="100%"
-        height="12rem"
+        height="25rem"
         justifyContent="space-between"
         margin="2rem 0 0 0"
       >

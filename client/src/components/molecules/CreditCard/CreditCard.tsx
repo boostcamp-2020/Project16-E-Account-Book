@@ -4,6 +4,7 @@ import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import CenterNormalText from '@atoms/p/CenterNormalText';
 import IconButton from '@atoms/button/IconButton';
 import Line from '@atoms/hr/Line';
+import MinusIcon from '@svg/minus.svg';
 
 interface Props {
   name: string;
@@ -12,11 +13,11 @@ interface Props {
 const CreditCard: React.FC<Props> = ({ name }: Props) => {
   return (
     <ColumnFlexContainer width="100%">
-      <RowFlexContainer width="100%" margin="2rem 0 0 0 " justifyContent="space-around">
+      <RowFlexContainer width="100%" justifyContent="space-around">
         <CenterNormalText>{name}</CenterNormalText>
-        <IconButton>test</IconButton>
+        <IconButton>{MinusIcon}</IconButton>
       </RowFlexContainer>
-      <Line widthPercent="100" margin="2rem 3rem 0 0" />
+      <Line widthPercent="110" margin="0 0.5rem 0 0" />
     </ColumnFlexContainer>
   );
 };
