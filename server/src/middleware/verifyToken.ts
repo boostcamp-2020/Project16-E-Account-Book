@@ -16,7 +16,7 @@ const verifyToken = async (ctx: Context, next: any) => {
   try {
     const decoded: OauthUserData = await jwt.verify(token, process.env.JWT_SECRET);
     ctx.userData = decoded;
-    next();
+    await next();
   } catch (err) {
     ctx.body = { link: `${process.env.LOGIN_URL as string}` };
     ctx.status = 401;
