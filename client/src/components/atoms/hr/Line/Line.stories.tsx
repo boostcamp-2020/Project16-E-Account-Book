@@ -6,6 +6,7 @@ interface Props {
   lineColor?: string;
   widthPercent?: string;
   margin?: string;
+  height?: string;
 }
 
 export default {
@@ -15,6 +16,7 @@ export default {
     lineColor: { control: 'color' },
     widthPercent: { control: 'number' },
     margin: { control: 'text' },
+    height: { control: 'text' },
   },
 };
 
@@ -30,4 +32,5 @@ iconButton.args = {
   lineColor: myColor.primary.lightGray,
   widthPercent: 80,
   margin: '0 0 0 0',
+  height: '1rem',
 };
