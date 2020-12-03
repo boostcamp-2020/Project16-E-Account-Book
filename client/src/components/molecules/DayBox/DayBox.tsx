@@ -29,7 +29,9 @@ const defaultProps = {
 
 const DayBox = styled.div<SizeProps>`
   display: flex;
-  border: 1px solid red;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid pink;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
 `;
