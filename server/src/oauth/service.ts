@@ -1,37 +1,32 @@
 import 'dotenv/config';
-import * as Interface from '../interface';
+import { OauthUserData, InsertUser, SelectUser } from '../interface/user';
+import sql from '../model/db';
+import query from '../model/query';
 
 const jwt = require('jsonwebtoken');
 const axios = require('axios').default;
 
-const getAccessToken = async (url: string, option: Interface.oauthOption) => {
-  const response = await axios.post(url, option, {
-    headers: {
-      accept: 'application/json',
+const createJWTtoken = (data: OauthUserData, site: string) => {
+  const jwtToken = jwt.sign(
+    { login: data.name, id: data.id, oAuthOrigin: site },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: '1d',
     },
-  });
-  const token = response.data.access_token;
-  return token;
-};
-
-const getOAuthUserData = async (url: string, token: string) => {
-  const { data } = await axios.get(url, {
-    headers: {
-      Authorization: `token ${token}`,
-    },
-  });
-  return data;
-};
-
-const createJWTtoken = (data: Interface.oauthUserData) => {
-  const jwtToken = jwt.sign({ login: data.name, id: data.id }, process.env.JWT_SECRET, {
-    expiresIn: '1d',
-  });
+  );
   return jwtToken;
 };
 
-const getAccessTokenNaver = async (url: string, option: any) => {
-  const response = await axios.get(url, option, {
+const getAccessToken = async (url: string, option: any, method: string) => {
+  if (method === 'get') {
+    const response = await axios.get(url, option, {
+      headers: {
+        accept: 'application/json',
+      },
+    });
+    return response.data.access_token;
+  }
+  const response = await axios.post(url, option, {
     headers: {
       accept: 'application/json',
     },
@@ -39,19 +34,47 @@ const getAccessTokenNaver = async (url: string, option: any) => {
   return response.data.access_token;
 };
 
-const getOAuthUserDataNaver = async (url: string, token: string) => {
+const getOAuthUserData = async (url: string, token: string, tokenType: string) => {
   const { data } = await axios.get(url, {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `${tokenType} ${token}`,
     },
   });
-  return data.response;
+  return tokenType === 'token' ? data : data.response;
+};
+
+const insertUser = async (props: InsertUser) => {
+  const { pid, email, name, region, picture, color, isSunday, oAuthOrigin } = props;
+  const result = await sql(query.CREATE_USER, [
+    pid,
+    email,
+    name,
+    region,
+    picture,
+    color,
+    isSunday,
+    oAuthOrigin,
+  ]);
+
+  return result.insertId;
+};
+
+const findUser = async (props: SelectUser) => {
+  const { pid, oAuthOrigin } = props;
+
+  const [result] = await sql(query.READ_USER, [pid, oAuthOrigin]);
+  return result !== undefined;
+};
+
+const createPrivateAccountbook = async (userId: number) => {
+  await sql(query.CREATE_PRIVATE_BOOK, [userId, '내 가계부', '', '#F4C239']);
 };
 
 export {
+  createJWTtoken,
   getAccessToken,
   getOAuthUserData,
-  createJWTtoken,
-  getAccessTokenNaver,
-  getOAuthUserDataNaver,
+  insertUser,
+  findUser,
+  createPrivateAccountbook,
 };

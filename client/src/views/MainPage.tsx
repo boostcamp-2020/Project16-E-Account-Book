@@ -1,7 +1,6 @@
 import React from 'react';
 import queryParser from '@utils/queryParser';
 import TopNavBar from '@organisms/TopNavBar';
-
 import ColumFlexContainer from '@atoms/div/ColumnFlexContainer';
 import CenterContent from '@molecules/CenterContent';
 import MyAccountInfoCard from '@organisms/MyAccountInfoCard';
@@ -11,6 +10,7 @@ import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import CreateButton from '@atoms/button/CreateButton';
 import LeftNormalText from '@atoms/p/LeftNormalText';
 import LeftLargeText from '@atoms/p/LeftLargeText';
+import { useCookies } from 'react-cookie';
 import SocialAccountBook from '@organisms/SocialAccountBook';
 
 interface props {
@@ -18,9 +18,11 @@ interface props {
 }
 
 const MainPage: React.FC<props> = ({ location }: props) => {
+  const [cookies, setCookie] = useCookies(['cookie']);
+
   if (location.search.length > 0) {
     const queryString = queryParser(location.search as string);
-    document.cookie = `jwt=${queryString.get('jwt')}`;
+    setCookie('token', queryString.get('token'));
   }
   interface chipsProps {
     categoryList: Array<string>;
@@ -91,6 +93,16 @@ const MainPage: React.FC<props> = ({ location }: props) => {
     width: 100%;
     margin-top: 6rem;
   `;
+
+  const createAccountbook = () => {
+    fetch(`http://127.0.0.1:3000/test/${cookies.token}`, {
+      method: 'GET',
+    }).then(async (response) => {
+      const result = await response.json();
+      if (result.link) window.location = result.link;
+    });
+  };
+
 
   return (
     <>

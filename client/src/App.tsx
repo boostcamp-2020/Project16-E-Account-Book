@@ -8,8 +8,10 @@ import CalendarPage from '@views/CalendarPage';
 import TransactionPage from '@views/TransactionPage';
 import TransactionPostPage from '@views/TransactionPostPage';
 import StatisticsPage from '@views/StatisticsPage';
+import Accountbook from '@views/Accountbook';
 import GlobalStyle from '@shared/global';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 
 const App: React.FC = () => {
   const mainRouter = (
@@ -24,16 +26,19 @@ const App: React.FC = () => {
         <Route path="/transaction/new" component={TransactionPostPage} />
         <Route path="/transaction" component={TransactionPage} />
         <Route path="/statistic" component={StatisticsPage} />
+        <Route path="/accountbook" component={Accountbook} />
         <Redirect from="*" to="/" />
       </Switch>
     </>
   );
 
   return (
-    <BrowserRouter>
-      {mainRouter}
-      <GlobalStyle />
-    </BrowserRouter>
+    <CookiesProvider>
+      <BrowserRouter>
+        {mainRouter}
+        <GlobalStyle />
+      </BrowserRouter>
+    </CookiesProvider>
   );
 };
 

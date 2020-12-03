@@ -2,6 +2,21 @@
 
 # Sprint 3
 
+## 💻 Day 3
+### 📌 [BE] koa 삽질
+- await을 걸어줘도 sql이 동기적으로 작동하지 않았다
+
+### 📌 [FULL] OAuth 리팩토링 
+- GitHub OAuth & Naver OAuth 를 하나의 라우터로 받아 공통으로 처리하도록 리팩토링
+- Callback 을 Frontend 에서 받아 처리하도록 변경 
+- Cookie 저장 방식 -> LocalStorage 저장 방식으로 로직 변경
+
+### 📌 [FE] 로그인 화면 렌더링
+- 로그인시 자동 회원가입 연결
+- 첫 페이지를 Login 페이지로 ? 결정 필요
+- 로컬 스토리지 JWT 값을 꺼내서 인증하는 미들웨어 구현 필요 
+
+
 ## 💻 Day 2
 ### 📌 [FE] Redux 적용하기
 폴더 구조 설계
@@ -24,6 +39,9 @@
 ### 📌 [FE] React-Cookie 적용
 - App.tsx 최상위에 React-cookie 모듈 적용
 
+### 📌 [FE] 가계부 생성 페이지 UI 구현
+
+![](https://i.imgur.com/BH2PQSs.png)
 
 ## 💻 Day 1
 
