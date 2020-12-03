@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import firstDayOfWeek from '@utils/fristDayOfWeek';
+import firstDayOfWeek from '@utils/firstDayOfWeek';
 import isLeafYear from '@utils/isLeapYear';
 
 const Calendar = styled.div`
