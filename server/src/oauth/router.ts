@@ -8,8 +8,7 @@ const router = new Router();
 //   console.log(ctx.userData);
 //   ctx.body = {};
 // });
-router.get('/callback/github', Controller.github);
 
-router.get('/callback/login', Controller.naver);
+router.post('/login', Controller.oauth);
 
 export default router;

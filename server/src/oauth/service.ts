@@ -1,34 +1,14 @@
 import 'dotenv/config';
-import { OauthOption, OauthUserData, InsertUser, SelectUser } from '../interface/user';
+import { OauthUserData, InsertUser, SelectUser } from '../interface/user';
 import sql from '../model/db';
 import query from '../model/query';
 
 const jwt = require('jsonwebtoken');
 const axios = require('axios').default;
 
-const getAccessToken = async (url: string, option: OauthOption) => {
-  const response = await axios.post(url, option, {
-    headers: {
-      accept: 'application/json',
-    },
-  });
-  const token = response.data.access_token;
-  return token;
-};
-
-const getOAuthUserData = async (url: string, token: string) => {
-  const { data } = await axios.get(url, {
-    headers: {
-      Authorization: `token ${token}`,
-    },
-  });
-  data.oAuthOrigin = 'github';
-  return data;
-};
-
-const createJWTtoken = (data: OauthUserData) => {
+const createJWTtoken = (data: OauthUserData, site: string) => {
   const jwtToken = jwt.sign(
-    { login: data.name, id: data.id, oAuthOrigin: data.oAuthOrigin },
+    { login: data.name, id: data.id, oAuthOrigin: site },
     process.env.JWT_SECRET,
     {
       expiresIn: '1d',
@@ -37,8 +17,16 @@ const createJWTtoken = (data: OauthUserData) => {
   return jwtToken;
 };
 
-const getAccessTokenNaver = async (url: string, option: any) => {
-  const response = await axios.get(url, option, {
+const getAccessToken = async (url: string, option: any, method: string) => {
+  if (method === 'get') {
+    const response = await axios.get(url, option, {
+      headers: {
+        accept: 'application/json',
+      },
+    });
+    return response.data.access_token;
+  }
+  const response = await axios.post(url, option, {
     headers: {
       accept: 'application/json',
     },
@@ -46,13 +34,13 @@ const getAccessTokenNaver = async (url: string, option: any) => {
   return response.data.access_token;
 };
 
-const getOAuthUserDataNaver = async (url: string, token: string) => {
+const getOAuthUserData = async (url: string, token: string, tokenType: string) => {
   const { data } = await axios.get(url, {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `${tokenType} ${token}`,
     },
   });
-  return data.response;
+  return tokenType === 'token' ? data : data.response;
 };
 
 const insertUser = async (props: InsertUser) => {
@@ -83,11 +71,9 @@ const createPrivateAccountbook = async (userId: number) => {
 };
 
 export {
+  createJWTtoken,
   getAccessToken,
   getOAuthUserData,
-  createJWTtoken,
-  getAccessTokenNaver,
-  getOAuthUserDataNaver,
   insertUser,
   findUser,
   createPrivateAccountbook,
