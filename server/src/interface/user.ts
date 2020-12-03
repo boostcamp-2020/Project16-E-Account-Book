@@ -8,6 +8,7 @@ interface OauthUserData {
   name: string;
   id: string;
   oAuthOrigin?: string;
+  uid?: string;
 }
 
 interface InsertUser {
