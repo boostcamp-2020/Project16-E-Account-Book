@@ -4,6 +4,8 @@ import MainPage from '@views/MainPage';
 import NotificationPage from '@views/NotificationPage';
 import MyPage from '@views/MyPage';
 import CreateAccountbookPage from '@views/CreateAccountbookPage';
+import Accountbook from '@views/Accountbook';
+
 import GlobalStyle from '@shared/global';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
@@ -17,6 +19,7 @@ const App: React.FC = () => {
         <Route path="/notification" component={NotificationPage} />
         <Route path="/mypage" component={MyPage} />
         <Route path="/createAccountbook" component={CreateAccountbookPage} />
+        <Route path="/accountbook" component={Accountbook} />
         <Redirect from="*" to="/" />
       </Switch>
     </>
