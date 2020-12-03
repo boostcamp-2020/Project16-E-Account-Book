@@ -4,7 +4,7 @@ import { OauthUserData } from '../interface/user';
 const jwt = require('jsonwebtoken');
 
 const verifyToken = async (ctx: Context, next: any) => {
-  const token = ctx.header.token;
+  const { token } = ctx.header;
 
   ctx.type = 'application/json';
   if (token === 'undefined') {

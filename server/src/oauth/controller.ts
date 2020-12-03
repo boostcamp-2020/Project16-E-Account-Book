@@ -53,8 +53,6 @@ const oauth = async (ctx: any) => {
 
   const data = await Service.getOAuthUserData(user_url, token, token_type);
 
-  const jwtToken = Service.createJWTtoken(data, site);
-
   const userData: InsertUser = {
     pid: data.id,
     email: data.email,
@@ -66,10 +64,16 @@ const oauth = async (ctx: any) => {
     oAuthOrigin: site,
   };
 
-  if (!(await Service.findUser(userData))) {
-    const userId = await Service.insertUser(userData);
+  let userId = await Service.findUser(userData);
+
+  if (userId === undefined) {
+    userId = await Service.insertUser(userData);
     await Service.createPrivateAccountbook(userId);
   }
+
+  data.uid = userId;
+
+  const jwtToken = Service.createJWTtoken(data, site);
 
   ctx.body = jwtToken;
 };
