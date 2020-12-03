@@ -10,7 +10,7 @@ const CreditCardEditFormBox: React.FC = () => {
     <ColumnFlexContainer width="100%" alignItems="baseline">
       <LeftSmallText>결재 수단 이름</LeftSmallText>
       <RowFlexContainer width="100%" margin="2rem 0 0 0 " justifyContent="space-between">
-        <Line widthPercent="100" />
+        <Line widthPercent="100" margin="2rem 3rem 0 0" />
         <RoundShortButton>등록</RoundShortButton>
       </RowFlexContainer>
     </ColumnFlexContainer>

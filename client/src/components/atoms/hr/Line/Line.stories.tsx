@@ -5,6 +5,7 @@ import Line from './Line';
 interface Props {
   lineColor?: string;
   widthPercent?: string;
+  margin?: string;
 }
 
 export default {
@@ -13,6 +14,7 @@ export default {
   argTypes: {
     lineColor: { control: 'color' },
     widthPercent: { control: 'number' },
+    margin: { control: 'text' },
   },
 };
 
@@ -27,4 +29,5 @@ iconButton.story = {
 iconButton.args = {
   lineColor: myColor.primary.lightGray,
   widthPercent: 80,
+  margin: '0 0 0 0',
 };
