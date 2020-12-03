@@ -2,14 +2,16 @@ import React from 'react';
 import CreditCard from '@molecules/CreditCard';
 import ColumnFlexContainer from '@atoms/div/ColumnFlexContainer';
 
-const CreditCardEditCardList: React.FC = () => {
+interface Props {
+  cardNameList: string[];
+}
+
+const CreditCardEditCardList: React.FC<Props> = ({ cardNameList }: Props) => {
   return (
     <ColumnFlexContainer width="100%" margin="2rem 0 0 0" justifyContent="space-between">
-      <CreditCard name="신한카드" />
-      <CreditCard name="하나카드" />
-      <CreditCard name="농협카드" />
-      <CreditCard name="농협카드2" />
-      <CreditCard name="농협카드3" />
+      {cardNameList.map((cardName) => (
+        <CreditCard name={cardName} />
+      ))}
     </ColumnFlexContainer>
   );
 };
