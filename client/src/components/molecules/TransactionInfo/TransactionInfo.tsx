@@ -27,6 +27,7 @@ const TransactionInfo: React.FC<props> = ({ data }: props) => {
       alignItems="center"
       borderWidth="0px 0px 0.5px 0px"
       borderStyle="solid"
+      padding="5px 0px 5px 0px"
     >
       <RowFlexContainer>
         <RoundShortChips
@@ -39,14 +40,14 @@ const TransactionInfo: React.FC<props> = ({ data }: props) => {
         <LeftNormalText>{data.title}</LeftNormalText>
       </RowFlexContainer>
       {data.payment === null ? (
-        <ExpenditureText
+        <IncomeText
           money={data.amount}
           fontSize="1rem"
           fontWeight="normal"
           color={myColor.primary.main}
         />
       ) : (
-        <IncomeText
+        <ExpenditureText
           money={data.amount}
           fontSize="1rem"
           fontWeight="normal"
