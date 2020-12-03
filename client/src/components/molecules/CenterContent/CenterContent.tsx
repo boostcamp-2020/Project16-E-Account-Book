@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 const CenterContent: React.FC<Props> = ({ children }: Props) => {
   return (
     <Wrapper>
-      <ColumnFlexContainer>
+      <ColumnFlexContainer height="100%">
         <Content>{children}</Content>
       </ColumnFlexContainer>
     </Wrapper>

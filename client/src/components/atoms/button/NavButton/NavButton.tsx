@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import BellIcon from '@svg/bell.svg';
 import SettingIcon from '@svg/setting.svg';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 interface Props extends backgroundColorProps {
   name: string;
@@ -53,9 +53,7 @@ const NavButton: React.FC<Props> = ({
 
   return (
     <Button width={width} height={height} backgroundColor={backgroundColor}>
-      <Router>
-        <Link to={moveUrl}>{selectIcon(name)}</Link>
-      </Router>
+      <Link to={moveUrl}>{selectIcon(name)}</Link>
     </Button>
   );
 };

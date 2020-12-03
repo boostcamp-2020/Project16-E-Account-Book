@@ -93,6 +93,7 @@ const MainPage: React.FC<props> = ({ location }: props) => {
     width: 100%;
     margin-top: 6rem;
   `;
+
   const createAccountbook = () => {
     fetch(`http://127.0.0.1:3000/test/${cookies.token}`, {
       method: 'GET',
@@ -101,6 +102,7 @@ const MainPage: React.FC<props> = ({ location }: props) => {
       if (result.link) window.location = result.link;
     });
   };
+
 
   return (
     <>
@@ -112,7 +114,7 @@ const MainPage: React.FC<props> = ({ location }: props) => {
             <ColumFlexContainer width="100%" height="100%" alignItems="center">
               <RowFlexContainer width="90%" alignItems="center" justifyContent="space-between">
                 <LeftNormalText>안녕하세요 제구님!</LeftNormalText>
-                <CreateButton onClick={createAccountbook} />
+                <CreateButton link="/social-accountbook/new" />
               </RowFlexContainer>
               <RowFlexContainer width="90%">
                 <LeftLargeText>
