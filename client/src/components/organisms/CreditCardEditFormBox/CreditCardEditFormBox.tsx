@@ -7,7 +7,7 @@ import Line from '@atoms/hr/Line';
 
 const CreditCardEditFormBox: React.FC = () => {
   return (
-    <ColumnFlexContainer width="100%" alignItems="baseline">
+    <ColumnFlexContainer width="100%" margin="0 0 2rem 0" alignItems="baseline">
       <LeftSmallText>결재 수단 이름</LeftSmallText>
       <RowFlexContainer width="100%" margin="2rem 0 0 0 " justifyContent="space-between">
         <Line widthPercent="100" margin="2rem 3rem 0 0" />

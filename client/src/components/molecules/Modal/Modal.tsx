@@ -51,6 +51,7 @@ const Modal = styled.div<modalProps>`
   border-radius: 8px;
   padding: 10px 40px;
   z-index: 4;
+  overflow: auto;
 `;
 
 const ButtonContainer = styled.div`

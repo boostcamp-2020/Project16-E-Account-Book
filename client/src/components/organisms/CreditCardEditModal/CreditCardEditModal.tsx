@@ -11,12 +11,7 @@ const CreditCardEditModal: React.FC = () => {
 
   return (
     <Modal title={title}>
-      <ColumnFlexContainer
-        width="100%"
-        height="25rem"
-        justifyContent="space-between"
-        margin="2rem 0 0 0"
-      >
+      <ColumnFlexContainer width="100%" justifyContent="space-between" margin="2rem 0 0 0">
         <CreditCardEditFormBox />
         <Line widthPercent="110" height="0.25rem" lineColor={myColor.primary.lightGray} />
         <CreditCardEditCardList />
