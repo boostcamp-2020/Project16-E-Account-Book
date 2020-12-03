@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import firstDayOfWeek from '@utils/firstDayOfWeek';
-// import numberOfMonth from '@utils/numberOfMonth';
+import numberOfMonth from '@utils/numberOfMonth';
+import makeMonth from '@utils/makeMonth';
 import MonthNav from '@molecules/MonthNav';
 import CheckBoxWithNumber from '@molecules/CheckBoxWithNumber';
 import MoneyOfWeek from '@molecules/MoneyOfWeek';
@@ -31,18 +32,34 @@ const Calendar = styled.div`
 `;
 
 const calendar: React.FC = () => {
-  const day = firstDayOfWeek('2020-2');
-  // const days = numberOfMonth('2020-2');
+  const firstDay = firstDayOfWeek('2020-2');
+  const isSunday = 0;
+  const endDays = numberOfMonth('2020-2');
   const [inCheck, setInCheck] = useState(false);
   const [exCheck, setExCheck] = useState(false);
   const onClick = () => {
     return true;
   };
   const daymap = [1, 2, 3, 4, 5, 6, 7];
-  const weekmap = [1, 2, 3, 4, 5, 6];
-  const emptyDay = { date: 0, inmoney: 0, exmoney: 0 };
-  const allDay = [{}];
-
+  const weekmap = [1, 2, 3, 4, 5];
+  const emptyDays = firstDay - isSunday < 0 ? 6 : firstDay - isSunday;
+  const allDay = makeMonth([], emptyDays, endDays);
+  const tempData = [
+    { date: 3, inmoney: 1200, exmoney: 0 },
+    { date: 11, inmoney: 13000, exmoney: 4300 },
+    { date: 14, inmoney: 0, exmoney: 12500 },
+    { date: 23, inmoney: 3200, exmoney: 1600 },
+    { date: 26, inmoney: 43900, exmoney: 0 },
+  ];
+  tempData.map((ele) => {
+    return Object.assign(allDay[ele.date + emptyDays - 1], ele);
+  });
+  const arr1 = allDay.slice(0, 7);
+  const arr2 = allDay.slice(7, 14);
+  const arr3 = allDay.slice(14, 21);
+  const arr4 = allDay.slice(21, 28);
+  const arr5 = allDay.slice(28, 35);
+  const allArr = [arr1, arr2, arr3, arr4, arr5];
   return (
     <Calendar>
       <MonthNav />
@@ -67,7 +84,7 @@ const calendar: React.FC = () => {
         />
       </Filter>
       <Week startDay="일" width="100%" height="100%" color="black" />
-      {weekmap.map(() => {
+      {allArr.map((ele) => {
         return (
           <WeeklyDiv>
             <MoneyOfWeek
@@ -81,15 +98,15 @@ const calendar: React.FC = () => {
               height="100%"
             />
             <WeekDiv>
-              {daymap.map((ele) => {
+              {ele.map((e) => {
                 return (
                   <DayBox
-                    date={ele}
+                    date={e.date}
                     width="100%"
                     height="100%"
                     onClick={onClick}
-                    InMoney={3200}
-                    ExMoney={12000}
+                    InMoney={e.inmoney}
+                    ExMoney={e.exmoney}
                     InColor={Color.money.income}
                     ExColor={Color.money.expenditure}
                     fontWeight="bold"
