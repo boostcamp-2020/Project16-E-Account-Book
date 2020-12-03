@@ -27,7 +27,7 @@ const TransactionInfo: React.FC<props> = ({ data }: props) => {
       alignItems="center"
       borderWidth="0px 0px 0.5px 0px"
       borderStyle="solid"
-      padding="5px 0px 5px 0px"
+      padding="8px 0px 8px 0px"
     >
       <RowFlexContainer>
         <RoundShortChips
