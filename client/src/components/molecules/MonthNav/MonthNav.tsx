@@ -32,7 +32,7 @@ const MonthNav: React.FC = () => {
           &lt;
         </Button>
         <MonthTextContainer>
-          <Text>{[year.toString(), '년 ', month.toString(), '월'].join('')}</Text>
+          <Text>{`${year}년 ${month}월`}</Text>
         </MonthTextContainer>
         <Button color={myColor.primary.black} onClick={nextMonth}>
           &gt;
