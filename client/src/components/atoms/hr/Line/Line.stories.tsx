@@ -4,7 +4,7 @@ import Line from './Line';
 
 interface Props {
   lineColor?: string;
-  widthPercent?: number;
+  widthPercent?: string;
 }
 
 export default {

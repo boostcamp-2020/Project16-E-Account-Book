@@ -4,12 +4,12 @@ import myColor from '@theme/color';
 
 interface Props {
   lineColor?: string;
-  widthPercent?: number;
+  widthPercent?: string;
 }
 
 const defaultProps = {
   lineColor: myColor.primary.lightGray,
-  widthPercent: 80,
+  widthPercent: '80',
 };
 
 const Line = styled.hr<Props>`
