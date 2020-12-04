@@ -2,6 +2,21 @@
 
 # Sprint 3
 
+## 💻 Day 4
+### 📌 [개발환경] Windows에서 User 폴더 이름이 한글일 경우 설치 경로를 못찾는 프로그램이 있다!
+### 📌 [BE] Koa는 await next()를 해야한다.
+* day3부터 페어프로그래밍으로 가계부 현황 API를 진행하였으나 koa에서 계속해서 API의 결과로 404 NOT FOUND 를 반환하는 문제가 있었다. async - await을 쓸 때만 결과값이 나오지 않았다. 추후 알고보니 API Token에서 verifyToken middleware에서 next()에 await을 걸어주지 않았기 때문임을 알게 되었다.
+
+- [Koa next 사용 예제](https://devsoyoung.github.io/posts/koa-api-tutorial/)
+### 📌 [FE] 컴포넌트.defaultProps 를 자세히 보자
+* 특정 component를 화면에 추가하자 전체 UI가 깨지는 문제가 있었다. 원인을 알고보니 `컴포넌트명.defaultProps` 에 atom으로 호출한 컴포넌트명을 연결해주었음을 깨달았다.
+
+### 📌 [FE] Calendar UI 구축
+- 달력내에서 날짜정보를 관리하기 위해 1일 마다 객체로 관리해야 하는 어려움이 있었다. 7일씩 고정으로 UI를 맞추기 위해 7의 배수의 월정보를 갖게 하였고, 1일의 요일과 월의 끝 날짜를 구해야 하는 이슈가 있었다.아직 리팩토링할 부분이 많아 보이고, 기능적으로 구현과 개선이 필요하다. 
+
+### 📌 [FE] 일별 가계부 내역 Modal 구현
+- 달력에서 특정 날짜를 클릭하면 그날의 내역들을 모두 보여주는 Modal Layout 구현
+
 ## 💻 Day 3
 ### 📌 [BE] koa 삽질
 - await을 걸어줘도 sql이 동기적으로 작동하지 않았다
