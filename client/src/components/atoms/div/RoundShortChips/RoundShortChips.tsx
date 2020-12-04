@@ -12,6 +12,7 @@ interface ChipsProps {
   width?: string;
   height?: string;
   fontSize?: string;
+  margin?: string;
 }
 
 const defaultProps = {
@@ -20,6 +21,7 @@ const defaultProps = {
   width: '4rem',
   height: '1.5rem',
   fontSize: '0.8rem',
+  margin: 'none',
 };
 
 const Chips = styled.div<ChipsProps>`
@@ -33,6 +35,7 @@ const Chips = styled.div<ChipsProps>`
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.color};
   border-radius: 10px;
+  margin: ${(props) => props.margin};
 `;
 
 const RoundShortChips: React.FC<Props> = ({
@@ -42,6 +45,7 @@ const RoundShortChips: React.FC<Props> = ({
   fontSize,
   color,
   children,
+  margin,
 }: Props) => {
   return (
     <Chips
@@ -50,6 +54,7 @@ const RoundShortChips: React.FC<Props> = ({
       height={height}
       fontSize={fontSize}
       color={color}
+      margin={margin}
     >
       {children}
     </Chips>
