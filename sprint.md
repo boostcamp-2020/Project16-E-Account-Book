@@ -17,6 +17,10 @@
 ### 📌 [FE] 일별 가계부 내역 Modal 구현
 - 달력에서 특정 날짜를 클릭하면 그날의 내역들을 모두 보여주는 Modal Layout 구현
 
+### 📌 [FE] CreditCardEditModal 구현
+- Modal components를 활용하여 결재 수단을 관리하는 Modal Layout 구현
+
+
 ## 💻 Day 3
 ### 📌 [BE] koa 삽질
 - await을 걸어줘도 sql이 동기적으로 작동하지 않았다
