@@ -30,7 +30,7 @@ const DeleteButtonContainer = styled.div`
 
 const InputDiv = styled.div``;
 
-const transactionAddBox: React.FC<Props> = ({ categories, payments, onClick }: Props) => {
+const transactionForm: React.FC<Props> = ({ categories, payments, onClick }: Props) => {
   return (
     <ColumnFlexContainer width="100%" justifyContent="space-around">
       <RowFlexContainer width="100%">
@@ -53,4 +53,4 @@ const transactionAddBox: React.FC<Props> = ({ categories, payments, onClick }: P
   );
 };
 
-export default transactionAddBox;
+export default transactionForm;
