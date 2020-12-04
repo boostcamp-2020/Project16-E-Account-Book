@@ -51,7 +51,6 @@ const Modal = styled.div<modalProps>`
   border-radius: 8px;
   padding: 10px 40px;
   z-index: 4;
-  overflow: auto;
 `;
 
 const ButtonContainer = styled.div`
@@ -70,7 +69,7 @@ const modal: React.FC<Props> = ({ title, children, ...props }: Props) => {
       <ModalBackground onClick={closeModal} />
       <ModalContainer>
         <Modal {...props}>
-          <ColumnFlexContainer>
+          <ColumnFlexContainer width="100%" height="100%">
             <RowFlexContainer width="100%" margin="10px 0">
               <Title>
                 <>{title}</>

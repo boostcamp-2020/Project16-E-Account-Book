@@ -10,14 +10,14 @@ interface props {
 }
 
 const ScrollDiv = styled.div`
-  display: flex;
-  flex-flow: column;
-  width: 100%;
-  height: 80%;
   overflow: scroll;
   ::-webkit-scrollbar {
     display: none;
   }
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  height: 80%;
 `;
 
 const DailyTransactionModal: React.FC<props> = ({ data, title }: props) => {
