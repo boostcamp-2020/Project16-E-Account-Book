@@ -14,7 +14,16 @@ const CreditCardEditModal: React.FC = () => {
       <ColumnFlexContainer width="100%" justifyContent="space-between" margin="2rem 0 0 0">
         <CreditCardEditFormBox />
         <Line widthPercent="110" height="0.25rem" lineColor={myColor.primary.lightGray} />
-        <CreditCardEditCardList cardNameList={['신한카드', '하나카드', '카카오페이']} />
+        <CreditCardEditCardList
+          cardNameList={[
+            '신한카드',
+            '하나카드',
+            '카카오페이',
+            '신한카드',
+            '하나카드',
+            '카카오페이',
+          ]}
+        />
       </ColumnFlexContainer>
     </Modal>
   );
