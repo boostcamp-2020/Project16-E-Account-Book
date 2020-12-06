@@ -34,6 +34,7 @@ const DayBox = styled.div<SizeProps>`
   border: 1px solid pink;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
+  box-sizing: border-box;
 `;
 
 const dayBox: React.FC<Props> = ({

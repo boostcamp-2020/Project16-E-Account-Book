@@ -84,7 +84,7 @@ const calendar: React.FC = () => {
         />
       </Filter>
       <Week startDay="일" width="100%" height="100%" color="black" />
-      {allArr.map((ele) => {
+      {allArr.map((weeks) => {
         return (
           <WeeklyDiv>
             <MoneyOfWeek
@@ -98,15 +98,15 @@ const calendar: React.FC = () => {
               height="100%"
             />
             <WeekDiv>
-              {ele.map((e) => {
+              {weeks.map((day) => {
                 return (
                   <DayBox
-                    date={e.date}
+                    date={day.date}
                     width="100%"
                     height="100%"
                     onClick={onClick}
-                    InMoney={e.inmoney}
-                    ExMoney={e.exmoney}
+                    InMoney={day.inmoney}
+                    ExMoney={day.exmoney}
                     InColor={Color.money.income}
                     ExColor={Color.money.expenditure}
                     fontWeight="bold"
