@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import InText from '@atoms/p/IncomeText';
 import ExText from '@atoms/p/ExpenditureText';
 
@@ -27,6 +27,15 @@ const defaultProps = {
   height: '90px',
 };
 
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
 const DayBox = styled.div<SizeProps>`
   display: flex;
   flex-direction: column;
@@ -37,6 +46,8 @@ const DayBox = styled.div<SizeProps>`
   box-sizing: border-box;
   &:hover {
     background-color: pink;
+    animation: ${rotate} 0.5s;
+    transform: scale(1.6);
   }
 `;
 
