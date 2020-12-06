@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 interface Props {
   onClick?: () => void;
@@ -17,7 +18,11 @@ const HomeButton = styled.button`
 `;
 
 const homeButton: React.FC<Props> = ({ onClick }: Props) => {
-  return <HomeButton onClick={onClick}>Honey in Money</HomeButton>;
+  return (
+    <Link to="/">
+      <HomeButton onClick={onClick}>Honey in Money</HomeButton>
+    </Link>
+  );
 };
 
 homeButton.defaultProps = defaultProps;
