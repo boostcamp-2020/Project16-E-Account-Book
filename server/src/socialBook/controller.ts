@@ -16,3 +16,11 @@ export const getSocialBooksMaster = async (ctx: Context) => {
   const result = await Service.getUserImages(socialBookResult);
   response.success(ctx, result);
 };
+
+export const getSocialBooksDaily = async (ctx: Context) => {
+  const { bookId, date } = ctx.params;
+  const userId = ctx.userData.uid;
+  const transactionList = await Service.getDailyTransactions(bookId, date);
+
+  response.success(ctx, transactionList);
+};
