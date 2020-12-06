@@ -8,4 +8,6 @@ router.get('/list', Controller.getSocialBooks);
 
 router.get('/list/master', Controller.getSocialBooksMaster);
 
+router.post('/transaction/post', Controller.createTransaction);
+
 export default router;

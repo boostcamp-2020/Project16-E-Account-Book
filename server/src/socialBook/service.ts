@@ -31,3 +31,8 @@ export const getUserImages = async (socialBookList: SocialInfo[]) => {
   );
   return socialBookList;
 };
+
+export const createTransaction = async (transaction: (string | number)[]) => {
+  const result = await sql(query.CREATE_SOCIAL_TRANSACTION, transaction);
+  return result.insertId;
+};
