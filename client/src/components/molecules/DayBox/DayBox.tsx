@@ -51,9 +51,15 @@ const dayBox: React.FC<Props> = ({
 }: Props) => {
   return (
     <DayBox width={width} height={height} onClick={onClick}>
-      {date}
-      <InText money={InMoney} fontWeight={fontWeight} fontSize={fontSize} color={InColor} />
-      <ExText money={ExMoney} fontWeight={fontWeight} fontSize={fontSize} color={ExColor} />
+      {date !== 0 ? (
+        <>
+          {date}
+          <InText money={InMoney} fontWeight={fontWeight} fontSize={fontSize} color={InColor} />
+          <ExText money={ExMoney} fontWeight={fontWeight} fontSize={fontSize} color={ExColor} />
+        </>
+      ) : (
+        <></>
+      )}
     </DayBox>
   );
 };

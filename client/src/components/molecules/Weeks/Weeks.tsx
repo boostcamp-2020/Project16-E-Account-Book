@@ -53,6 +53,9 @@ const weeks: React.FC<Props> = ({ startDay, width, height, color }: Props) => {
         if (ele === '일') {
           return <Day color="red">{ele}</Day>;
         }
+        if (ele === '토') {
+          return <Day color="blue">{ele}</Day>;
+        }
         return <Day color={color}>{ele}</Day>;
       })}
     </Weeks>
