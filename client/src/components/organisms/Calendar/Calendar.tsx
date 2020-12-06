@@ -9,26 +9,25 @@ import MoneyOfWeek from '@molecules/MoneyOfWeek';
 import Week from '@molecules/Weeks';
 import DayBox from '@molecules/DayBox';
 import Color from '@theme/color';
+import sliceArray from '@utils/sliceArray';
 
 const Filter = styled.div`
   display: flex;
   justify-content: space-around;
-  border: 1px solid blue;
 `;
 
 const WeeklyDiv = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid yellow;
 `;
 
 const WeekDiv = styled.div`
   display: flex;
-  border: 1px solid orange;
 `;
 
 const Calendar = styled.div`
-  border: 1px solid red;
+  border: 2px solid pink;
+  border-radius: 5px;
 `;
 
 const calendar: React.FC = () => {
@@ -40,8 +39,6 @@ const calendar: React.FC = () => {
   const onClick = () => {
     return true;
   };
-  const daymap = [1, 2, 3, 4, 5, 6, 7];
-  const weekmap = [1, 2, 3, 4, 5];
   const emptyDays = firstDay - isSunday < 0 ? 6 : firstDay - isSunday;
   const allDay = makeMonth([], emptyDays, endDays);
   const tempData = [
@@ -54,12 +51,7 @@ const calendar: React.FC = () => {
   tempData.map((ele) => {
     return Object.assign(allDay[ele.date + emptyDays - 1], ele);
   });
-  const arr1 = allDay.slice(0, 7);
-  const arr2 = allDay.slice(7, 14);
-  const arr3 = allDay.slice(14, 21);
-  const arr4 = allDay.slice(21, 28);
-  const arr5 = allDay.slice(28, 35);
-  const allArr = [arr1, arr2, arr3, arr4, arr5];
+  const allArr = sliceArray(allDay, 7);
   return (
     <Calendar>
       <MonthNav />
@@ -71,7 +63,7 @@ const calendar: React.FC = () => {
           onClick={() => setInCheck(!inCheck)}
           fontWeight="bold"
           fontSize="15px"
-          money={93500}
+          money={allDay.reduce((acc, cur) => acc + cur.inmoney, 0)}
         />
         <CheckBoxWithNumber
           checked={exCheck}
@@ -80,7 +72,7 @@ const calendar: React.FC = () => {
           onClick={() => setExCheck(!exCheck)}
           fontWeight="bold"
           fontSize="15px"
-          money={120000}
+          money={allDay.reduce((acc, cur) => acc + cur.exmoney, 0)}
         />
       </Filter>
       <Week startDay="일" width="100%" height="100%" color="black" />
@@ -90,8 +82,8 @@ const calendar: React.FC = () => {
             <MoneyOfWeek
               fontWeight="bold"
               fontSize="15px"
-              InMoney={223100}
-              ExMoney={10300}
+              InMoney={weeks.reduce((acc, cur) => acc + cur.inmoney, 0)}
+              ExMoney={weeks.reduce((acc, cur) => acc + cur.exmoney, 0)}
               InColor={Color.money.income}
               ExColor={Color.money.expenditure}
               width="100%"

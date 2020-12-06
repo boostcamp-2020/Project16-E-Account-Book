@@ -26,8 +26,6 @@ const Weeks = styled.div<SizeProps>`
   justify-content: space-between;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
-  border: 2px solid yellow;
-  border-radius: 3px;
   box-sizing: border-box;
 `;
 
