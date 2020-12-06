@@ -32,7 +32,6 @@ const Accountbook: React.FC = () => {
 
   const MarginBox = styled.div`
     width: 100%;
-    height: 2rem; {/* <TopNavBar /> */
   `;
 
   const tabStyle = {
@@ -41,35 +40,37 @@ const Accountbook: React.FC = () => {
   };
 
   return (
-    <CenterContent>
+    <>
       <TopNavBar />
-      <MarginBox />
-      <Paper className={classes.root}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          style={tabsStyle}
-          centered
-        >
-          <Link style={tabStyle} to="/accountbook/list" onClick={() => setValue(0)}>
-            <Tab label="내역" />
-          </Link>
-          <Link style={tabStyle} to="/accountbook/calendar" onClick={() => setValue(1)}>
-            <Tab label="달력" />
-          </Link>
-          <Link style={tabStyle} to="/accountbook/statistics" onClick={() => setValue(2)}>
-            <Tab label="통계" />
-          </Link>
-        </Tabs>
-      </Paper>
-      <Switch>
-        <Route path="/accountbook/list" component={TransactionPage} />
-        <Route path="/accountbook/calendar" component={CalendarPage} />
-        <Route path="/accountbook/statistics" component={StatisticsPage} />
-        <Redirect from="*" to="/accountbook/list" />
-      </Switch>
-    </CenterContent>
+      <CenterContent>
+        <MarginBox />
+        <Paper className={classes.root}>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            indicatorColor="primary"
+            style={tabsStyle}
+            centered
+          >
+            <Link style={tabStyle} to="/accountbook/list" onClick={() => setValue(0)}>
+              <Tab label="내역" />
+            </Link>
+            <Link style={tabStyle} to="/accountbook/calendar" onClick={() => setValue(1)}>
+              <Tab label="달력" />
+            </Link>
+            <Link style={tabStyle} to="/accountbook/statistics" onClick={() => setValue(2)}>
+              <Tab label="통계" />
+            </Link>
+          </Tabs>
+        </Paper>
+        <Switch>
+          <Route path="/accountbook/list" component={TransactionPage} />
+          <Route path="/accountbook/calendar" component={CalendarPage} />
+          <Route path="/accountbook/statistics" component={StatisticsPage} />
+          <Redirect from="*" to="/accountbook/list" />
+        </Switch>
+      </CenterContent>
+    </>
   );
 };
 

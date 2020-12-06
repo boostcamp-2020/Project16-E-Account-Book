@@ -7,7 +7,7 @@ import TransactionForm from '@organisms/TransactionForm';
 import CreateTransactionMenu from '@organisms/CreateTransactionMenu';
 
 const Container = styled.div`
-  margin: 40px 20px 0px;
+  margin: 16px 20px 0px;
 `;
 
 const TransactionPostPage: React.FC = () => {
@@ -17,8 +17,8 @@ const TransactionPostPage: React.FC = () => {
 
   return (
     <>
+      <TopNavBar />
       <CenterContent>
-        <TopNavBar />
         <Container>
           <CreateTransactionHeader />
           <TransactionForm

@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import ColumnFlexContainer from '@atoms/div/ColumnFlexContainer';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import LeftLargeText from '@atoms/p/LeftLargeText';
@@ -11,32 +12,38 @@ interface Props {
   backgroundColor: string;
 }
 
+const Container = styled.div`
+  margin-top: -2rem;
+`;
+
 const CreateAccountbookFormBox: React.FC<Props> = ({ backgroundColor }: Props) => {
   const fontColor = colorUtils.getFontColor(backgroundColor);
   const buttonColor = fontColor === 'white' ? 'black' : 'white';
   return (
-    <SquircleCard width="100%" backgroundColor={backgroundColor} height="15rem">
-      <ColumnFlexContainer
-        width="100%"
-        height="12rem"
-        justifyContent="space-around"
-        margin="2rem 1rem 0"
-        alignItems="center"
-      >
-        <RowFlexContainer width="100%" justifyContent="space-between">
-          <LeftLargeText color={fontColor} fontWeight="bold">
-            가계부 생성
-          </LeftLargeText>
-          <RoundShortButton backgroundColor={buttonColor} color={fontColor}>
-            생성
-          </RoundShortButton>
-        </RowFlexContainer>
-        <RowFlexContainer width="100%" justifyContent="baseline">
-          <LeftLargeText color={fontColor}>이름을 입력해주세요.</LeftLargeText>
-        </RowFlexContainer>
-        <TextArea width="100%" height="30%" />
-      </ColumnFlexContainer>
-    </SquircleCard>
+    <Container>
+      <SquircleCard width="100%" backgroundColor={backgroundColor} height="15rem">
+        <ColumnFlexContainer
+          width="100%"
+          height="12rem"
+          justifyContent="space-around"
+          margin="2rem 1rem 0"
+          alignItems="center"
+        >
+          <RowFlexContainer width="100%" justifyContent="space-between">
+            <LeftLargeText color={fontColor} fontWeight="bold">
+              가계부 생성
+            </LeftLargeText>
+            <RoundShortButton backgroundColor={buttonColor} color={fontColor}>
+              생성
+            </RoundShortButton>
+          </RowFlexContainer>
+          <RowFlexContainer width="100%" justifyContent="baseline">
+            <LeftLargeText color={fontColor}>이름을 입력해주세요.</LeftLargeText>
+          </RowFlexContainer>
+          <TextArea width="100%" height="30%" />
+        </ColumnFlexContainer>
+      </SquircleCard>
+    </Container>
   );
 };
 

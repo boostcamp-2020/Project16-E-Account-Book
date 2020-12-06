@@ -5,8 +5,9 @@ import TopNavBar from '@organisms/TopNavBar';
 const NotificationPage: React.FC = () => {
   return (
     <>
+      <TopNavBar />
       <CenterContent>
-        <TopNavBar />
+        <p>notification page</p>
       </CenterContent>
     </>
   );

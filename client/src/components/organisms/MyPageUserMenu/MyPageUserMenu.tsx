@@ -19,7 +19,7 @@ const ButtonContainer = styled.div`
 
 const MyPageUserMenu: React.FC<Props> = ({ name, profile }: Props) => {
   return (
-    <RowFlexContainer margin="48px 20px 0px">
+    <RowFlexContainer margin="20px 20px 0px">
       <UserImage link={profile} />
       <ColumnFlexContainer alignItems="flex-start" margin="0 20px">
         <P>

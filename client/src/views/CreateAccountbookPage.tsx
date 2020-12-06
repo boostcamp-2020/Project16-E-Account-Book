@@ -11,9 +11,9 @@ const CreateAccountbookPage: React.FC = () => {
   const backgroundColor = colorUtils.getRandomColor();
   return (
     <>
+      <TopNavBar backgroundColor={backgroundColor} />
       <ColoredBackground backgroundColor={myColor.primary.lightGray} />
       <CenterContent>
-        <TopNavBar backgroundColor={backgroundColor} />
         <CreateAccountbookFormBox backgroundColor={backgroundColor} />
         <CreateAccountbookSetting
           labelColor="blue"

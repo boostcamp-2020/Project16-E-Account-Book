@@ -67,11 +67,6 @@ const MainPage: React.FC = () => {
     },
   ];
 
-  const MarginBox = styled.div`
-    width: 100%;
-    height: 2rem;
-  `;
-
   const PositionBox = styled.div`
     margin-top: 3rem;
     width: 90%;
@@ -84,10 +79,9 @@ const MainPage: React.FC = () => {
 
   return (
     <>
+      <TopNavBar />
       <CenterContent>
-        <TopNavBar />
         <ColumFlexContainer width="100%" alignItems="center">
-          <MarginBox />
           <AccountBookBackground height="250px">
             <ColumFlexContainer width="100%" height="100%" alignItems="center">
               <RowFlexContainer width="90%" alignItems="center" justifyContent="space-between">

@@ -19,9 +19,9 @@ const MyPage: React.FC = () => {
 
   return (
     <>
+      <TopNavBar />
       <BeeBackground />
       <CenterContent>
-        <TopNavBar />
         <MyPageUserMenu name={name} profile={profile} />
         <MyPageMenu />
       </CenterContent>

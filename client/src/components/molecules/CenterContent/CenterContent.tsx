@@ -10,8 +10,9 @@ interface Props {
 const Wrapper = styled.div`
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: calc(100%-2rem);
   z-index: 2;
+  margin-top: 2rem;
 `;
 
 const CenterContent: React.FC<Props> = ({ children }: Props) => {
