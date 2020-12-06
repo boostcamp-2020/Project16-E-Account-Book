@@ -40,14 +40,14 @@ const TopNavBar: React.FC<Props> = ({ backgroundColor }: Props) => {
       <HomeButton />
       <FlexRowContainer>
         <NavButton
-          moveUrl="/"
+          moveUrl="/notification"
           name="bell"
           width="60%"
           height="70%"
           iconColor={myColor.primary.black}
         />
         <NavButton
-          moveUrl="/"
+          moveUrl="/mypage"
           name="setting"
           width="60%"
           height="70%"

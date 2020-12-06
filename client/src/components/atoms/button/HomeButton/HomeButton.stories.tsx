@@ -6,12 +6,8 @@ export default {
   component: HomeButton,
 };
 
-const onClick = (): boolean => {
-  return true;
-};
-
 export const homeButton = (): JSX.Element => {
-  return <HomeButton onClick={onClick} />;
+  return <HomeButton />;
 };
 
 homeButton.story = {
