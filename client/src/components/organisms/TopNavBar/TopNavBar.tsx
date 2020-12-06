@@ -18,6 +18,7 @@ const FlexRowBox = styled.div<Props>`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  max-width: 1200px;
   height: 2rem;
   background-color: ${(props) => props.backgroundColor};
   z-index: 1;
