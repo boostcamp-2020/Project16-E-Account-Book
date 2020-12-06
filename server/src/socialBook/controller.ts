@@ -20,6 +20,23 @@ export const getSocialBooksMaster = async (ctx: Context) => {
 export const getSocialBooksDaily = async (ctx: Context) => {
   const { bookId, date } = ctx.params;
   const userId = ctx.userData.uid;
+  const socialBookResult = await Service.getSocialBooks(userId);
+  const socialBookMasterResult = await Service.getSocialBooksMaster(userId);
+
+  const bookIdList: number[] = [];
+  socialBookResult.forEach((row: any) => {
+    bookIdList.push(row.id);
+  });
+
+  socialBookMasterResult.forEach((row: any) => {
+    bookIdList.push(row.id);
+  });
+
+  if (!bookIdList.includes(Number(bookId))) {
+    response.fail(ctx, 403, 'You are not authorized to this account book');
+    return;
+  }
+
   const transactionList = await Service.getDailyTransactions(bookId, date);
 
   response.success(ctx, transactionList);
