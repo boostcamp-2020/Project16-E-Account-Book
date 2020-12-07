@@ -8,6 +8,8 @@ interface Props extends SizeProps, TextProps {
   onClick: () => void;
   InMoney: number;
   ExMoney: number;
+  inCheck?: boolean;
+  exCheck?: boolean;
 }
 
 interface SizeProps {
@@ -25,6 +27,8 @@ interface TextProps {
 const defaultProps = {
   width: '60px',
   height: '90px',
+  inCheck: true,
+  exCheck: true,
 };
 
 const rotate = keyframes`
@@ -62,14 +66,20 @@ const dayBox: React.FC<Props> = ({
   ExColor,
   fontWeight,
   fontSize,
+  inCheck,
+  exCheck,
 }: Props) => {
   return (
     <DayBox width={width} height={height} onClick={onClick}>
       {date !== 0 ? (
         <>
           {date}
-          <InText money={InMoney} fontWeight={fontWeight} fontSize={fontSize} color={InColor} />
-          <ExText money={ExMoney} fontWeight={fontWeight} fontSize={fontSize} color={ExColor} />
+          {inCheck ? (
+            <InText money={InMoney} fontWeight={fontWeight} fontSize={fontSize} color={InColor} />
+          ) : undefined}
+          {exCheck ? (
+            <ExText money={ExMoney} fontWeight={fontWeight} fontSize={fontSize} color={ExColor} />
+          ) : undefined}
         </>
       ) : (
         <></>

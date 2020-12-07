@@ -9,6 +9,8 @@ interface Props extends ColorProps, SizeProps {
   fontSize: string;
   InMoney: number;
   ExMoney: number;
+  inCheck?: boolean;
+  exCheck?: boolean;
 }
 
 interface ColorProps {
@@ -24,6 +26,8 @@ interface SizeProps {
 const defaultProps = {
   width: '400px',
   height: '30px',
+  inCheck: true,
+  exCheck: true,
 };
 
 const MoneyOfWeek = styled.div<SizeProps>`
@@ -48,12 +52,18 @@ const moneyOfWeek: React.FC<Props> = ({
   ExMoney,
   width,
   height,
+  inCheck,
+  exCheck,
 }: Props) => {
   return (
     <MoneyOfWeek width={width} height={height}>
       주간💰
-      <Income fontWeight={fontWeight} fontSize={fontSize} color={InColor} money={InMoney} />
-      <Expenditure fontWeight={fontWeight} fontSize={fontSize} color={ExColor} money={ExMoney} />
+      {inCheck ? (
+        <Income fontWeight={fontWeight} fontSize={fontSize} color={InColor} money={InMoney} />
+      ) : undefined}
+      {exCheck ? (
+        <Expenditure fontWeight={fontWeight} fontSize={fontSize} color={ExColor} money={ExMoney} />
+      ) : undefined}
     </MoneyOfWeek>
   );
 };

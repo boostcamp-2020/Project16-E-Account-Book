@@ -45,8 +45,8 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
   const firstDay = firstDayOfWeek(dateData);
   const isSunday = 0;
   const endDays = numberOfMonth(dateData);
-  const [inCheck, setInCheck] = useState(false);
-  const [exCheck, setExCheck] = useState(false);
+  const [inCheck, setInCheck] = useState(true);
+  const [exCheck, setExCheck] = useState(true);
   const onClick = () => {
     return true;
   };
@@ -98,7 +98,9 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
               InColor={Color.money.income}
               ExColor={Color.money.expenditure}
               width="100%"
-              height="100%"
+              height="1rem"
+              inCheck={inCheck}
+              exCheck={exCheck}
             />
             <WeekDiv>
               {weeks.map((day) => {
@@ -106,7 +108,7 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
                   <DayBox
                     date={day.date}
                     width="100%"
-                    height="100%"
+                    height="3.3rem"
                     onClick={onClick}
                     InMoney={day.inmoney}
                     ExMoney={day.exmoney}
@@ -114,6 +116,8 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
                     ExColor={Color.money.expenditure}
                     fontWeight="bold"
                     fontSize="8px"
+                    inCheck={inCheck}
+                    exCheck={exCheck}
                   />
                 );
               })}
