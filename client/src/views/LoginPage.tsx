@@ -4,6 +4,8 @@ import LogoWithSlogan from '@organisms/LogoWithSlogan';
 import CenterContent from '@molecules/CenterContent';
 import BeeBackground from '@organisms/BeeBackground';
 import EasyLogin from '@organisms/EasyLogin';
+import { login } from '@actions/user/type';
+import { useDispatch } from 'react-redux';
 import qs from 'qs';
 import axios from 'axios';
 import * as API from '@utils/api';
@@ -13,6 +15,8 @@ interface props {
 }
 
 const LoginPage: React.FC<props> = ({ location }: props) => {
+  const dispatch = useDispatch();
+
   const slogan = '지갑 속 꿀 같은 돈을 지키는 첫번째 방법';
   useEffect(() => {
     const { code, site, state }: any = qs.parse(location.search, {
@@ -30,6 +34,7 @@ const LoginPage: React.FC<props> = ({ location }: props) => {
       (async () => {
         const jwtToken = await getJWT();
         localStorage.setItem('jwt', jwtToken);
+        dispatch(login());
         document.location.href = '/';
       })();
     }
