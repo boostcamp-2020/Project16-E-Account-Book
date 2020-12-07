@@ -18,6 +18,7 @@ const FlexRowBox = styled.div<Props>`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  max-width: 1200px;
   height: 2rem;
   background-color: ${(props) => props.backgroundColor};
   z-index: 1;
@@ -40,14 +41,14 @@ const TopNavBar: React.FC<Props> = ({ backgroundColor }: Props) => {
       <HomeButton />
       <FlexRowContainer>
         <NavButton
-          moveUrl="/"
+          moveUrl="/notification"
           name="bell"
           width="60%"
           height="70%"
           iconColor={myColor.primary.black}
         />
         <NavButton
-          moveUrl="/"
+          moveUrl="/mypage"
           name="setting"
           width="60%"
           height="70%"

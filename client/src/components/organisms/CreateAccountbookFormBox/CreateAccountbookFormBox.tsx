@@ -27,7 +27,7 @@ const CreateAccountbookFormBox: React.FC<Props> = ({ backgroundColor }: Props) =
           <LeftLargeText color={fontColor} fontWeight="bold">
             가계부 생성
           </LeftLargeText>
-          <RoundShortButton backgroundColor={buttonColor} color={fontColor}>
+          <RoundShortButton border="none" backgroundColor={buttonColor} color={fontColor}>
             생성
           </RoundShortButton>
         </RowFlexContainer>
