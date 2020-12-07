@@ -15,26 +15,21 @@ import { RootState } from '@reducers/rootReducer';
 import { setCategory } from '@actions/category/type';
 import { setPayment } from '@actions/payment/type';
 import { setPrivate } from '@actions/accountbook/type';
-import { getAxios } from '@utils/axios';
+import { getAxiosData } from '@utils/axios';
 import * as API from '@utils/api';
-
-const getInitData = async (api: string) => {
-  const { data } = await getAxios(api);
-  return data;
-};
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
   const login = useSelector((state: RootState) => state.user.isLogin);
 
   const initCategory = async () => {
-    const income = await getInitData(API.GET_INCOME_CATEGORY);
-    const expenditure = await getInitData(API.GET_EXPENDITURE_CATEGORY);
+    const income = await getAxiosData(API.GET_INCOME_CATEGORY);
+    const expenditure = await getAxiosData(API.GET_EXPENDITURE_CATEGORY);
     dispatch(setCategory(income.data, expenditure.data));
   };
 
   const initPayment = async () => {
-    const payment = await getInitData(API.GET_PAYMENT);
+    const payment = await getAxiosData(API.GET_PAYMENT);
     dispatch(setPayment(payment.data));
   };
 

@@ -4,16 +4,7 @@ import SquircleCard from '@atoms/div/SquircleCard';
 import UserImages from '@molecules/UserImages';
 import CardInfo from '@molecules/CardInfo';
 import CardNumberText from '@molecules/CardNumberText';
-
-interface Props {
-  links: string[];
-  title: string;
-  description: string;
-  fontSize: string;
-  inMoney: number;
-  exMoney: number;
-  backgroundColor?: string;
-}
+import { SocialBook } from '@interfaces/accountbook';
 
 const LeftBox = styled.div`
   display: flex;
@@ -34,25 +25,28 @@ const RightBox = styled.div`
   align-items: center;
 `;
 
-const socialAccountBook: React.FC<Props> = ({
-  links,
-  title,
+const socialAccountBook: React.FC<SocialBook> = ({
+  name,
   description,
-  fontSize,
-  inMoney,
-  exMoney,
-  backgroundColor,
-}: Props) => {
+  color,
+  incomeSum,
+  expenditureSum,
+  images,
+}: SocialBook) => {
   return (
-    <SquircleCard backgroundColor={backgroundColor}>
+    <SquircleCard backgroundColor={color}>
       <LeftBox>
-        <UserImages links={links} />
+        <UserImages links={images} />
       </LeftBox>
       <CenterBox>
-        <CardInfo title={title} description={description} />
+        <CardInfo title={name} description={description} />
       </CenterBox>
       <RightBox>
-        <CardNumberText fontSize={fontSize} inMoney={inMoney} exMoney={exMoney} />
+        <CardNumberText
+          fontSize="1rem"
+          inMoney={Number(incomeSum)}
+          exMoney={Number(expenditureSum)}
+        />
       </RightBox>
     </SquircleCard>
   );
