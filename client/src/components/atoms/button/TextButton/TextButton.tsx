@@ -4,7 +4,7 @@ import myColor from '@theme/color';
 
 interface Props {
   color?: string;
-  children: React.ReactChild;
+  children: React.ReactChild | React.ReactChild[];
   onClick?: () => void;
 }
 
