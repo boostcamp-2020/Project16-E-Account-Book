@@ -11,6 +11,10 @@ import DayBox from '@molecules/DayBox';
 import Color from '@theme/color';
 import sliceArray from '@utils/sliceArray';
 
+interface Props {
+  dateData: string;
+}
+
 const Filter = styled.div`
   display: flex;
   justify-content: space-around;
@@ -30,10 +34,10 @@ const Calendar = styled.div`
   border-radius: 5px;
 `;
 
-const calendar: React.FC = () => {
-  const firstDay = firstDayOfWeek('2020-2');
+const calendar: React.FC<Props> = ({ dateData }: Props) => {
+  const firstDay = firstDayOfWeek(dateData);
   const isSunday = 0;
-  const endDays = numberOfMonth('2020-2');
+  const endDays = numberOfMonth(dateData);
   const [inCheck, setInCheck] = useState(false);
   const [exCheck, setExCheck] = useState(false);
   const onClick = () => {
