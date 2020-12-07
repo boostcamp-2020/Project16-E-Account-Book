@@ -10,6 +10,8 @@ import CreateButton from '@atoms/button/CreateButton';
 import LeftNormalText from '@atoms/p/LeftNormalText';
 import LeftLargeText from '@atoms/p/LeftLargeText';
 import SocialAccountBook from '@organisms/SocialAccountBook';
+import { useSelector } from 'react-redux';
+import { RootState } from '@reducers/rootReducer';
 import { SocialBook } from '@interfaces/accountbook';
 import { getAxiosData } from '@utils/axios';
 import * as API from '@utils/api';
@@ -37,21 +39,10 @@ const CardBox = styled.div`
   margin-top: 6rem;
 `;
 
-// {
-//   links: [
-//     'https://avatars3.githubusercontent.com/u/55074799?s=460&u=2f70319c2f55ba5e26db060ba21d66a9cab35732&v=4',
-//   ],
-//   title: '커플통장',
-//   description: '데이트 통장 가계부입니다',
-//   fontSize: '15px',
-//   inMoney: 1234,
-//   exMoney: 619012,
-//   backgroundColor: '#F2A8AF',
-// }
-
 const MainPage: React.FC = () => {
   const [masterBooks, setMasterBooks] = useState<SocialBook[]>([]);
   const [socialBooks, setSocialBooks] = useState<SocialBook[]>([]);
+  const user = useSelector((state: RootState) => state.user.name);
 
   const chipsArgs: chipsProps = {
     categoryList: ['여가', '외식', '쇼핑', '교통'],
@@ -86,7 +77,7 @@ const MainPage: React.FC = () => {
           <AccountBookBackground height="250px">
             <ColumFlexContainer width="100%" height="100%" alignItems="center">
               <RowFlexContainer width="90%" alignItems="center" justifyContent="space-between">
-                <LeftNormalText>안녕하세요 제구님!</LeftNormalText>
+                <LeftNormalText>안녕하세요 {user}님!</LeftNormalText>
                 <CreateButton link="/accountbook/social/new" />
               </RowFlexContainer>
               <RowFlexContainer width="90%">

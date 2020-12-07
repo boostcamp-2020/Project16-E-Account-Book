@@ -13,7 +13,7 @@ import { RootState } from '@reducers/rootReducer';
 const MyPage: React.FC = () => {
   const modalView = useSelector((state: RootState) => state.modal.view);
   // TODO : 실제 로그인 유저의 정보를 받아오기
-  const name = '임시 이름';
+  const user = useSelector((state: RootState) => state.user.name);
   const profile =
     'https://camo.githubusercontent.com/80afeacc15fc9527cacd6a8257613bcc97967d63947bbb8e2f6efe0a2ed8d59d/68747470733a2f2f692e696d6775722e636f6d2f536c7568554c712e6a7067';
 
@@ -22,7 +22,7 @@ const MyPage: React.FC = () => {
       <BeeBackground />
       <CenterContent>
         <TopNavBar />
-        <MyPageUserMenu name={name} profile={profile} />
+        <MyPageUserMenu name={user} profile={profile} />
         <MyPageMenu />
       </CenterContent>
       {modalView === 'AccountBookAccept' && <AccountBookAcceptModal />}
