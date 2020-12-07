@@ -1,4 +1,3 @@
-import { Context } from 'koa';
 import * as response from '../utils/response';
 import 'dotenv/config';
 import * as Service from './service';
@@ -10,4 +9,10 @@ export const createTransaction = async (ctx: any) => {
   response.success(ctx, result);
 };
 
-export default createTransaction;
+export const getTransactionList = async (ctx: any) => {
+  const { accountbookId, year, month } = ctx.params;
+
+  const searchInfo = [accountbookId, year, month];
+  const result = await Service.getTransactionList(searchInfo);
+  response.success(ctx, result);
+};
