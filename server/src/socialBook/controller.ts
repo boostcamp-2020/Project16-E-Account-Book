@@ -20,8 +20,6 @@ export const getSocialBooksMaster = async (ctx: Context) => {
 export const createTransaction = async (ctx: any) => {
   const { accountbookId, userId, categoryId, paymentId, date, title, amount } = ctx.request.body;
   const transaction = [accountbookId, userId, categoryId, paymentId, date, title, amount];
-  console.log(transaction);
   const result = await Service.createTransaction(transaction);
-  console.log(result);
   response.success(ctx, result);
 };
