@@ -36,12 +36,18 @@ const Calendar = styled.div`
 `;
 
 const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
+  const monthlyData = new Map();
+
   monthData.forEach((e) => {
-    // e.date = parseInt(String(e.date).substring(6), 10);
-    const date = new Date(e.date);
-    console.log(date.getDay() - 1);
+    const day = new Date(e.date).getDay() - 1;
+    if (monthlyData.has(day)) {
+      const value = monthlyData.get(day);
+      monthlyData.set(day, [(value[0] += e.inmoney), (value[1] += e.exmoney)]);
+    } else {
+      monthlyData.set(day, [e.inmoney, e.exmoney]);
+    }
   });
-  console.log(monthData);
+
   const firstDay = firstDayOfWeek(dateData);
   const isSunday = 0;
   const endDays = numberOfMonth(dateData);
@@ -52,14 +58,18 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
   };
   const emptyDays = firstDay - isSunday < 0 ? 6 : firstDay - isSunday;
   const allDay = makeMonth([], emptyDays, endDays);
-  const tempData = [
-    { date: 3, inmoney: 1200, exmoney: 0 },
-    { date: 11, inmoney: 13000, exmoney: 4300 },
-    { date: 14, inmoney: 0, exmoney: 12500 },
-    { date: 23, inmoney: 3200, exmoney: 1600 },
-    { date: 26, inmoney: 43900, exmoney: 0 },
-  ];
-  tempData.map((ele) => {
+
+  const preprocessData: Array<{ date: number; inmoney: number; exmoney: number }> = [];
+  monthlyData.forEach((value, key) => {
+    const buffer: { date: number; inmoney: number; exmoney: number } = {
+      date: key,
+      inmoney: value[0],
+      exmoney: value[1],
+    };
+    preprocessData.push(buffer);
+  });
+
+  preprocessData.map((ele) => {
     return Object.assign(allDay[ele.date + emptyDays - 1], ele);
   });
   const allArr = sliceArray(allDay, 7);

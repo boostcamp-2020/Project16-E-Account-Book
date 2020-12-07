@@ -35,7 +35,7 @@ const CalendarPage: React.FC = () => {
       {
         id: 1,
         date: '2020-12-02T13:10:44.000Z',
-        inmoney: 122,
+        inmoney: 1222,
         exmoney: 0,
         payment: '카카오페이',
         category: '용돈',
@@ -43,8 +43,17 @@ const CalendarPage: React.FC = () => {
       },
       {
         id: 2,
+        date: '2020-12-02T13:10:44.000Z',
+        inmoney: 110,
+        exmoney: 123,
+        payment: '신한카드',
+        category: '마트',
+        title: '소고기',
+      },
+      {
+        id: 3,
         date: '2020-12-03T13:10:44.000Z',
-        inmoney: 0,
+        inmoney: 1110,
         exmoney: 123,
         payment: '신한카드',
         category: '마트',
