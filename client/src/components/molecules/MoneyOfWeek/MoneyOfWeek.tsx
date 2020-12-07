@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Income from '@atoms/p/IncomeText';
 import Expenditure from '@atoms/p/ExpenditureText';
+import myColor from '@theme/color';
 
 interface Props extends ColorProps, SizeProps {
   fontWeight: string;
@@ -28,12 +29,14 @@ const defaultProps = {
 const MoneyOfWeek = styled.div<SizeProps>`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   border: 1px solid pink;
   border-radius: 3px;
+  font-size: 3px;
+  color: ${myColor.primary.cancel};
 `;
 
 const moneyOfWeek: React.FC<Props> = ({
@@ -48,7 +51,7 @@ const moneyOfWeek: React.FC<Props> = ({
 }: Props) => {
   return (
     <MoneyOfWeek width={width} height={height}>
-      주간
+      주간💰
       <Income fontWeight={fontWeight} fontSize={fontSize} color={InColor} money={InMoney} />
       <Expenditure fontWeight={fontWeight} fontSize={fontSize} color={ExColor} money={ExMoney} />
     </MoneyOfWeek>

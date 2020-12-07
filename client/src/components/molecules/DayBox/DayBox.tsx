@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import InText from '@atoms/p/IncomeText';
 import ExText from '@atoms/p/ExpenditureText';
 
@@ -27,6 +27,15 @@ const defaultProps = {
   height: '90px',
 };
 
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
 const DayBox = styled.div<SizeProps>`
   display: flex;
   flex-direction: column;
@@ -34,6 +43,12 @@ const DayBox = styled.div<SizeProps>`
   border: 1px solid pink;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
+  box-sizing: border-box;
+  &:hover {
+    background-color: pink;
+    animation: ${rotate} 0.5s;
+    transform: scale(1.6);
+  }
 `;
 
 const dayBox: React.FC<Props> = ({
@@ -50,9 +65,15 @@ const dayBox: React.FC<Props> = ({
 }: Props) => {
   return (
     <DayBox width={width} height={height} onClick={onClick}>
-      {date}
-      <InText money={InMoney} fontWeight={fontWeight} fontSize={fontSize} color={InColor} />
-      <ExText money={ExMoney} fontWeight={fontWeight} fontSize={fontSize} color={ExColor} />
+      {date !== 0 ? (
+        <>
+          {date}
+          <InText money={InMoney} fontWeight={fontWeight} fontSize={fontSize} color={InColor} />
+          <ExText money={ExMoney} fontWeight={fontWeight} fontSize={fontSize} color={ExColor} />
+        </>
+      ) : (
+        <></>
+      )}
     </DayBox>
   );
 };

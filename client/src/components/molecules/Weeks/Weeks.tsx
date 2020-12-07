@@ -26,8 +26,7 @@ const Weeks = styled.div<SizeProps>`
   justify-content: space-between;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
-  border: 2px solid yellow;
-  border-radius: 3px;
+  box-sizing: border-box;
 `;
 
 const Day = styled.div<textProps>`
@@ -51,6 +50,9 @@ const weeks: React.FC<Props> = ({ startDay, width, height, color }: Props) => {
       {dayArray.map((ele: string) => {
         if (ele === '일') {
           return <Day color="red">{ele}</Day>;
+        }
+        if (ele === '토') {
+          return <Day color="blue">{ele}</Day>;
         }
         return <Day color={color}>{ele}</Day>;
       })}
