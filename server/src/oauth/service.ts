@@ -66,13 +66,6 @@ const findUser = async (props: SelectUser) => {
   return result === undefined ? undefined : result.id;
 };
 
-// const findUserId = async (props: SelectUser) => {
-//   const { pid, oAuthOrigin } = props;
-
-//   const [result] = await sql(query.READ_USER, [pid, oAuthOrigin]);
-//   return result.id;
-// };
-
 const createPrivateAccountbook = async (userId: number) => {
   await sql(query.CREATE_PRIVATE_BOOK, [userId, '내 가계부', '', '#F4C239']);
 };
