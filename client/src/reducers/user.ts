@@ -7,10 +7,7 @@ type UserState = {
 };
 
 const initIsLogin = () => {
-  if (localStorage.getItem('jwt')) {
-    return true;
-  }
-  return false;
+  return !!localStorage.getItem('jwt');
 };
 
 const initialState: UserState = {
