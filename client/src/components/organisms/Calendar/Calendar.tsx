@@ -88,32 +88,8 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
   });
   const allArr = sliceArray(allDay, 7);
 
-  const title = '18일 (수)';
-
-  const data = [
-    {
-      category: '식비',
-      payment: '현대카드',
-      title: '맥도날드',
-      amount: 20000,
-    },
-    {
-      category: '월급',
-      payment: null,
-      title: '부스트캠프',
-      amount: 50000000,
-    },
-    {
-      category: '생활',
-      payment: '현대카드',
-      title: '버스비',
-      amount: 39800,
-    },
-  ];
   const onClick = (date) => {
     openModal(`${date}Result`);
-    console.log(date);
-    console.log('123');
   };
   return (
     <Calendar>
@@ -176,7 +152,7 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
                       exCheck={exCheck}
                     />
                     {modalView === `${day.date}Result` && (
-                      <DailyTransactionModal title={title} data={data} />
+                      <DailyTransactionModal month={dateData} date={day.date} />
                     )}
                   </>
                 );
