@@ -8,6 +8,9 @@ import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import LeftNormalText from '@atoms/p/LeftNormalText';
 import SquircleShortButton from '@atoms/button/SquircleShortButton';
 import CircleGraph from '@atoms/graph/CircleGraph';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setPrivate } from '@actions/accountbook/type';
 
 interface Props {
   categoryList: Array<string>;
@@ -38,13 +41,21 @@ const MyAccountInfoCard: React.FC<Props> = ({
   expend,
   link,
 }: Props) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const toMyAccountBook = () => {
+    dispatch(setPrivate());
+    history.push('/accountbook');
+  };
+
   return (
     <SquircleCard {...squircleCardArgs}>
       <ColumnFlexContainer width="100%" height="100%">
         <RowFlexContainer justifyContent="space-between" width="100%" height="30%">
           <UserImage size="36px" link={link} />
           <LeftNormalText color="white">내 가계부</LeftNormalText>
-          <SquircleShortButton>조회하기</SquircleShortButton>
+          <SquircleShortButton onClick={toMyAccountBook}>조회하기</SquircleShortButton>
         </RowFlexContainer>
         <RowFlexContainer justifyContent="space-between" width="100%" height="70%">
           <ColumnFlexContainer width="70%" height="100%">
