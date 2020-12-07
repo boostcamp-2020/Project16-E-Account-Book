@@ -23,7 +23,7 @@ const user = (state: UserState = initialState, action: UserAction): UserState =>
     case LOGOUT:
       return { isLogin: false, name: '' };
     case SET_NAME:
-      return { isLogin: false, name: action.payload };
+      return { isLogin: state.isLogin, name: action.payload };
     default:
       return state;
   }

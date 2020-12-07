@@ -16,11 +16,22 @@ import { setCategory } from '@actions/category/type';
 import { setPayment } from '@actions/payment/type';
 import { setPrivate } from '@actions/accountbook/type';
 import { getAxiosData } from '@utils/axios';
+import { logout, setName } from '@actions/user/type';
 import * as API from '@utils/api';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
   const login = useSelector((state: RootState) => state.user.isLogin);
+
+  const checkValidToken = async () => {
+    try {
+      const name = await getAxiosData(API.GET_USER_NAME);
+      dispatch(setName(name.data));
+    } catch {
+      localStorage.removeItem('jwt');
+      dispatch(logout());
+    }
+  };
 
   const initCategory = async () => {
     const income = await getAxiosData(API.GET_INCOME_CATEGORY);
@@ -39,6 +50,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     if (login) {
+      checkValidToken();
       initCategory();
       initPayment();
       initAccountBook();

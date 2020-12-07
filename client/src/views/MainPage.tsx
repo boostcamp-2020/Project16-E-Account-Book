@@ -9,6 +9,7 @@ import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import CreateButton from '@atoms/button/CreateButton';
 import LeftNormalText from '@atoms/p/LeftNormalText';
 import LeftLargeText from '@atoms/p/LeftLargeText';
+import Bold from '@atoms/span/BoldSpan';
 import SocialAccountBook from '@organisms/SocialAccountBook';
 import { useSelector } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
@@ -77,7 +78,9 @@ const MainPage: React.FC = () => {
           <AccountBookBackground height="250px">
             <ColumFlexContainer width="100%" height="100%" alignItems="center">
               <RowFlexContainer width="90%" alignItems="center" justifyContent="space-between">
-                <LeftNormalText>안녕하세요 {user}님!</LeftNormalText>
+                <LeftNormalText>
+                  안녕하세요 <Bold>{user}</Bold>님!
+                </LeftNormalText>
                 <CreateButton link="/accountbook/social/new" />
               </RowFlexContainer>
               <RowFlexContainer width="90%">
