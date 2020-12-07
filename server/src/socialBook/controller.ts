@@ -17,6 +17,23 @@ export const getSocialBooksMaster = async (ctx: Context) => {
   response.success(ctx, result);
 };
 
+
+export const getSocialBooksDaily = async (ctx: Context) => {
+  const { bookId, date } = ctx.params;
+  const userId = ctx.userData.uid;
+
+  const bookIdList = await Service.getBelongSocialBookList(userId);
+
+  if (!bookIdList.includes(Number(bookId))) {
+    response.fail(ctx, 403, 'You are not authorized to this account book');
+    return;
+  }
+
+  const transactionList = await Service.getDailyTransactions(bookId, date);
+
+  response.success(ctx, transactionList);
+};
+
 export const createTransaction = async (ctx: any) => {
   const { accountbookId, userId, categoryId, paymentId, date, title, amount } = ctx.request.body;
   const transaction = [accountbookId, userId, categoryId, paymentId, date, title, amount];

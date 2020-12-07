@@ -32,6 +32,12 @@ const socialBookQuery = {
     SELECT picture FROM users WHERE id IN
     (SELECT user_id FROM social_accountbook_users WHERE (state = 0 OR state = 2) AND accountbook_id = ?)
     LIMIT 3;`,
+
+  READ_DAILY_SOCIAL_BOOK: `SELECT st.id, ct.name as category, py.name as payment , st.title, st.amount,  st.date from social_transaction as st
+  JOIN category as ct on st.category_id = ct.id
+  LEFT OUTER JOIN  payment as py on py.id = st.payment_id
+  where st.accountbook_id = ? AND date(st.date) = date(?)`,
+  READ_BELONG_SOCIAL_BOOK_LIST: `SELECT accountbook_id FROM social_accountbook_users WHERE user_id = ? AND state = 2 OR state = 0;`,
   CREATE_SOCIAL_TRANSACTION:
     'INSERT INTO social_transaction (accountbook_id, user_id, category_id, payment_id, date, title, amount) VALUES(?,?,?,?,?,?,?)',
 };

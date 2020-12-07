@@ -8,8 +8,8 @@ const verifyToken = async (ctx: Context, next: any) => {
 
   ctx.type = 'application/json';
   if (token === 'undefined') {
-    ctx.body = { link: `${process.env.LOGIN_URL as string}` };
     ctx.status = 401;
+    ctx.redirect(process.env.LOGIN_URL as string);
     return;
   }
 
@@ -18,8 +18,8 @@ const verifyToken = async (ctx: Context, next: any) => {
     ctx.userData = decoded;
     await next();
   } catch (err) {
-    ctx.body = { link: `${process.env.LOGIN_URL as string}` };
     ctx.status = 401;
+    ctx.redirect(process.env.LOGIN_URL as string);
   }
 };
 
