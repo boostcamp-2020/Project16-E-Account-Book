@@ -6,6 +6,7 @@ import MyPage from '@views/MyPage';
 import CreateAccountbookPage from '@views/CreateAccountbookPage';
 import TransactionPostPage from '@views/TransactionPostPage';
 import AccountbookPage from '@views/AccountbookPage';
+import NotFoundPage from '@views/NotFoundPage';
 import GlobalStyle from '@shared/global';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
@@ -24,14 +25,14 @@ const App: React.FC = () => {
 
   const mainRouter = (
     <>
-      <Route exact path="/" component={MainPage} />
       <Switch>
         <Route path="/notification" component={NotificationPage} />
         <Route path="/mypage" component={MyPage} />
-        <Route path="/social-accountbook/new" component={CreateAccountbookPage} />
-        <Route path="/transaction/new" component={TransactionPostPage} />
+        <Route path="/accountbook/social/new" component={CreateAccountbookPage} />
+        <Route path="/accountbook/transaction/new" component={TransactionPostPage} />
         <Route path="/accountbook" component={AccountbookPage} />
-        <Redirect from="*" to="/" />
+        <Route exact path="/" component={MainPage} />
+        <Route path="/*" component={NotFoundPage} />
       </Switch>
     </>
   );

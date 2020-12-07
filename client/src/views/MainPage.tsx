@@ -92,7 +92,7 @@ const MainPage: React.FC = () => {
             <ColumFlexContainer width="100%" height="100%" alignItems="center">
               <RowFlexContainer width="90%" alignItems="center" justifyContent="space-between">
                 <LeftNormalText>안녕하세요 제구님!</LeftNormalText>
-                <CreateButton link="/social-accountbook/new" />
+                <CreateButton link="/accountbook/social/new" />
               </RowFlexContainer>
               <RowFlexContainer width="90%">
                 <LeftLargeText>
