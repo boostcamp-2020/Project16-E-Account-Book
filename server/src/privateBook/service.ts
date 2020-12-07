@@ -9,5 +9,5 @@ export const createTransaction = async (transaction: (string | number)[]) => {
 
 export const getTransactionList = async (searchInfo: (string | number)[]) => {
   const result = await sql(query.GET_PRIVATE_TRANSACTIONLIST, searchInfo);
-  return result.insertId;
+  return result;
 };
