@@ -17,6 +17,7 @@ export const getSocialBooksMaster = async (ctx: Context) => {
   response.success(ctx, result);
 };
 
+
 export const getSocialBooksDaily = async (ctx: Context) => {
   const { bookId, date } = ctx.params;
   const userId = ctx.userData.uid;
@@ -31,4 +32,11 @@ export const getSocialBooksDaily = async (ctx: Context) => {
   const transactionList = await Service.getDailyTransactions(bookId, date);
 
   response.success(ctx, transactionList);
+};
+
+export const createTransaction = async (ctx: any) => {
+  const { accountbookId, userId, categoryId, paymentId, date, title, amount } = ctx.request.body;
+  const transaction = [accountbookId, userId, categoryId, paymentId, date, title, amount];
+  const result = await Service.createTransaction(transaction);
+  response.success(ctx, result);
 };

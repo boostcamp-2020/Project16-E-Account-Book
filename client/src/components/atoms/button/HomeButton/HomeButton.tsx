@@ -1,13 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
-interface Props {
-  onClick?: () => void;
-}
-
-const defaultProps = {
-  onClick: undefined,
-};
+import { Link } from 'react-router-dom';
 
 const HomeButton = styled.button`
   height: 100%;
@@ -16,10 +9,12 @@ const HomeButton = styled.button`
   cursor: pointer;
 `;
 
-const homeButton: React.FC<Props> = ({ onClick }: Props) => {
-  return <HomeButton onClick={onClick}>Honey in Money</HomeButton>;
+const homeButton: React.FC = () => {
+  return (
+    <Link to="/">
+      <HomeButton>Honey in Money</HomeButton>
+    </Link>
+  );
 };
-
-homeButton.defaultProps = defaultProps;
 
 export default homeButton;

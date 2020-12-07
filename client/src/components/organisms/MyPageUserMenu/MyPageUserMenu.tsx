@@ -7,6 +7,7 @@ import Logout from '@atoms/button/TextButton';
 import Span from '@atoms/span/BoldSpan';
 import P from '@atoms/p/LeftNormalText';
 import myColor from '@theme/color';
+import { Link } from 'react-router-dom';
 
 interface Props {
   name: string;
@@ -18,6 +19,9 @@ const ButtonContainer = styled.div`
 `;
 
 const MyPageUserMenu: React.FC<Props> = ({ name, profile }: Props) => {
+  const deleteJWT = () => {
+    localStorage.removeItem('jwt');
+  };
   return (
     <RowFlexContainer margin="48px 20px 0px">
       <UserImage link={profile} />
@@ -28,8 +32,10 @@ const MyPageUserMenu: React.FC<Props> = ({ name, profile }: Props) => {
         <P>안녕하세요</P>
       </ColumnFlexContainer>
       <ButtonContainer>
-        <Logout color={myColor.primary.black}>
-          <Span>로그아웃</Span>
+        <Logout onClick={deleteJWT} color={myColor.primary.black}>
+          <Link to="login">
+            <Span>로그아웃</Span>
+          </Link>
         </Logout>
       </ButtonContainer>
     </RowFlexContainer>

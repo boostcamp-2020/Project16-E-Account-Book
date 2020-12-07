@@ -6,12 +6,14 @@ interface Props {
   backgroundColor?: string;
   color?: string;
   children: React.ReactChild;
+  border?: string;
   onClick?: () => void;
 }
 
 const defaultProps = {
   backgroundColor: myColor.primary.accent,
   color: 'white',
+  border: 'solid 1px',
   onClick: undefined,
 };
 
@@ -20,7 +22,7 @@ const Button = styled.button<Props>`
   min-width: 60px;
   max-width: 80px;
   font-size: 1rem;
-  border: solid 1px;
+  border: ${(props) => props.border};
   border-color: ${(props) => props.color};
   border-radius: 25px;
   cursor: pointer;
@@ -33,10 +35,11 @@ const RoundShortButton: React.FC<Props> = ({
   backgroundColor,
   color,
   children,
+  border,
   onClick,
 }: Props) => {
   return (
-    <Button onClick={onClick} backgroundColor={backgroundColor} color={color}>
+    <Button onClick={onClick} backgroundColor={backgroundColor} color={color} border={border}>
       {children}
     </Button>
   );

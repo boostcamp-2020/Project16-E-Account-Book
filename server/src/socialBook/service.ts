@@ -32,6 +32,7 @@ export const getUserImages = async (socialBookList: SocialInfo[]) => {
   return socialBookList;
 };
 
+
 export const getDailyTransactions = async (accountBookId: number, date: string) => {
   const transactionList = await sql(query.READ_DAILY_SOCIAL_BOOK, [accountBookId, date]);
   return transactionList;
@@ -44,4 +45,9 @@ export const getBelongSocialBookList = async (userId: number) => {
     bookIdList.push(row.accountbook_id);
   });
   return bookIdList;
+}
+
+export const createTransaction = async (transaction: (string | number)[]) => {
+  const result = await sql(query.CREATE_SOCIAL_TRANSACTION, transaction);
+  return result.insertId;
 };
