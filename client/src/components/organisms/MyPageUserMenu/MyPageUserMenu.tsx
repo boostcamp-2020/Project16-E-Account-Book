@@ -20,7 +20,7 @@ const ButtonContainer = styled.div`
 
 const MyPageUserMenu: React.FC<Props> = ({ name, profile }: Props) => {
   const deleteJWT = () => {
-    localStorage.clear();
+    localStorage.removeItem('jwt');
   };
   return (
     <RowFlexContainer margin="48px 20px 0px">
