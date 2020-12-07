@@ -13,6 +13,19 @@ export const getTransactionList = async (ctx: any) => {
   const { accountbookId, year, month } = ctx.params;
 
   const searchInfo = [accountbookId, year, month];
-  const result = await Service.getTransactionList(searchInfo);
+  let result = await Service.getTransactionList(searchInfo);
+  result = result.map((eachData: any) => {
+    const inmoney = eachData.assortment === '수입' ? eachData.amount : 0;
+    const exmoney = eachData.assortment === '지출' ? eachData.amount : 0;
+    return {
+      id: eachData.id,
+      date: eachData.date,
+      inmoney,
+      exmoney,
+      payment: eachData.name,
+      category: eachData.category,
+      title: eachData.title,
+    };
+  });
   response.success(ctx, result);
 };
