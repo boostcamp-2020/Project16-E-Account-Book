@@ -13,16 +13,12 @@ import { CookiesProvider } from 'react-cookie';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
 import { setCategory } from '@actions/category/type';
+import { setPayment } from '@actions/payment/type';
 import { getAxios } from '@utils/axios';
 import * as API from '@utils/api';
 
-const getIncomeCategory = async () => {
-  const { data } = await getAxios(API.GET_INCOME_CATEGORY);
-  return data;
-};
-
-const getExpenditureCategory = async () => {
-  const { data } = await getAxios(API.GET_EXPENDITURE_CATEGORY);
+const getInitData = async (api: string) => {
+  const { data } = await getAxios(api);
   return data;
 };
 
@@ -31,14 +27,20 @@ const App: React.FC = () => {
   const login = useSelector((state: RootState) => state.user.isLogin);
 
   const initCategory = async () => {
-    const income = await getIncomeCategory();
-    const expenditure = await getExpenditureCategory();
+    const income = await getInitData(API.GET_INCOME_CATEGORY);
+    const expenditure = await getInitData(API.GET_EXPENDITURE_CATEGORY);
     dispatch(setCategory(income.data, expenditure.data));
+  };
+
+  const initPayment = async () => {
+    const payment = await getInitData(API.GET_PAYMENT);
+    dispatch(setPayment(payment.data));
   };
 
   useEffect(() => {
     if (login) {
       initCategory();
+      initPayment();
     }
   }, [login]);
 
