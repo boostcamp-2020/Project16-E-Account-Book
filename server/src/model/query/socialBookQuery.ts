@@ -32,6 +32,8 @@ const socialBookQuery = {
     SELECT picture FROM users WHERE id IN
     (SELECT user_id FROM social_accountbook_users WHERE (state = 0 OR state = 2) AND accountbook_id = ?)
     LIMIT 3;`,
+  CREATE_SOCIAL_TRANSACTION:
+    'INSERT INTO social_transaction (accountbook_id, user_id, category_id, payment_id, date, title, amount) VALUES(?,?,?,?,?,?,?)',
 };
 
 export default socialBookQuery;
