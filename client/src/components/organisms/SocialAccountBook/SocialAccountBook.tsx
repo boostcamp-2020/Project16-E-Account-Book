@@ -4,7 +4,17 @@ import SquircleCard from '@atoms/div/SquircleCard';
 import UserImages from '@molecules/UserImages';
 import CardInfo from '@molecules/CardInfo';
 import CardNumberText from '@molecules/CardNumberText';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setSocial } from '@actions/accountbook/type';
 import { SocialBook } from '@interfaces/accountbook';
+
+const Container = styled.button`
+  background-color: transparent;
+  border: 0px;
+  width: 100%;
+  cursor: pointer;
+`;
 
 const LeftBox = styled.div`
   display: flex;
@@ -26,6 +36,7 @@ const RightBox = styled.div`
 `;
 
 const socialAccountBook: React.FC<SocialBook> = ({
+  id,
   name,
   description,
   color,
@@ -33,22 +44,32 @@ const socialAccountBook: React.FC<SocialBook> = ({
   expenditureSum,
   images,
 }: SocialBook) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const toSocialAccountBook = () => {
+    dispatch(setSocial(id));
+    history.push('/accountbook');
+  };
+
   return (
-    <SquircleCard backgroundColor={color}>
-      <LeftBox>
-        <UserImages links={images} />
-      </LeftBox>
-      <CenterBox>
-        <CardInfo title={name} description={description} />
-      </CenterBox>
-      <RightBox>
-        <CardNumberText
-          fontSize="1rem"
-          inMoney={Number(incomeSum)}
-          exMoney={Number(expenditureSum)}
-        />
-      </RightBox>
-    </SquircleCard>
+    <Container onClick={toSocialAccountBook}>
+      <SquircleCard backgroundColor={color}>
+        <LeftBox>
+          <UserImages links={images} />
+        </LeftBox>
+        <CenterBox>
+          <CardInfo title={name} description={description} />
+        </CenterBox>
+        <RightBox>
+          <CardNumberText
+            fontSize="1rem"
+            inMoney={Number(incomeSum)}
+            exMoney={Number(expenditureSum)}
+          />
+        </RightBox>
+      </SquircleCard>
+    </Container>
   );
 };
 
