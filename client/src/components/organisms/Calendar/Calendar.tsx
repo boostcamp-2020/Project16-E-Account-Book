@@ -35,6 +35,14 @@ const Calendar = styled.div`
   border-radius: 5px;
 `;
 
+const EmptyBox = styled.div`
+  width: 100%;
+  height: 3.3rem;
+  background: pink;
+  border: 1px solid pink;
+  box-sizing: border-box;
+`;
+
 const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
   const monthlyData = new Map();
 
@@ -114,6 +122,9 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
             />
             <WeekDiv>
               {weeks.map((day) => {
+                if (day.date === 0) {
+                  return <EmptyBox />;
+                }
                 return (
                   <DayBox
                     date={day.date}
