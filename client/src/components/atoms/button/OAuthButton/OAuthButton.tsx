@@ -40,6 +40,9 @@ const OAuthName = styled.div<ColorProps>`
   color: white;
   border-radius: 5px;
   font-size: 18px;
+  @media (max-width: 530px) {
+    font-size: 7px;
+  }
 `;
 
 const oauthButton: React.FC<Props> = ({ link, backgroundColor, site, children }: Props) => {

@@ -3,10 +3,12 @@ import ColumnFlexContainer from '@atoms/div/ColumnFlexContainer';
 import OAuthButton from '@atoms/button/OAuthButton';
 import myColor from '@theme/color';
 import 'dotenv/config';
+import { uuid } from 'uuidv4';
 
 const OAuthButtonList: React.FC = () => {
-  const githubLink = `https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&state=def`;
-  const naverLink = `https://nid.naver.com/oauth2.0/authorize?client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&response_type=code&redirect_uri=${process.env.REACT_APP_NAVER_CALLBACK_URL}&state=abc`;
+  const authState = uuid();
+  const githubLink = `https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&state=${authState}`;
+  const naverLink = `https://nid.naver.com/oauth2.0/authorize?client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&response_type=code&redirect_uri=${process.env.REACT_APP_NAVER_CALLBACK_URL}&state=${authState}`;
   return (
     <ColumnFlexContainer margin="20px 0px">
       <OAuthButton site="GitHub" backgroundColor={myColor.oauth.lightBlack} link={githubLink}>
