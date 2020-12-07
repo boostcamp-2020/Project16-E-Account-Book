@@ -4,8 +4,8 @@ import Calendar from '@organisms/Calendar';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
 import { getTransaction } from '@actions/transaction/type';
-import axios from 'axios';
-import * as API from '@utils/api';
+// import axios from 'axios';
+// import * as API from '@utils/api';
 
 const CalendarPage: React.FC = () => {
   const year = useSelector((state: RootState) => state.date.year);
@@ -31,11 +31,30 @@ const CalendarPage: React.FC = () => {
     //   const { data } = await getTransactionList();
     //   changeTransaction(data);
     // })();
-    // changeTransaction([])
+    changeTransaction([
+      {
+        id: 1,
+        date: '2020-12-02T13:10:44.000Z',
+        inmoney: 122,
+        exmoney: 0,
+        payment: '카카오페이',
+        category: '용돈',
+        title: '아빠',
+      },
+      {
+        id: 2,
+        date: '2020-12-03T13:10:44.000Z',
+        inmoney: 0,
+        exmoney: 123,
+        payment: '신한카드',
+        category: '마트',
+        title: '소고기',
+      },
+    ]);
   }, [dateData]);
   return (
     <>
-      <Calendar dateData={dateData} />
+      <Calendar dateData={dateData} monthData={transactionList} />
       <NewTransactionButton />
     </>
   );

@@ -13,6 +13,7 @@ import sliceArray from '@utils/sliceArray';
 
 interface Props {
   dateData: string;
+  monthData: any;
 }
 
 const Filter = styled.div`
@@ -34,7 +35,13 @@ const Calendar = styled.div`
   border-radius: 5px;
 `;
 
-const calendar: React.FC<Props> = ({ dateData }: Props) => {
+const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
+  monthData.forEach((e) => {
+    // e.date = parseInt(String(e.date).substring(6), 10);
+    const date = new Date(e.date);
+    console.log(date.getDay() - 1);
+  });
+  console.log(monthData);
   const firstDay = firstDayOfWeek(dateData);
   const isSunday = 0;
   const endDays = numberOfMonth(dateData);

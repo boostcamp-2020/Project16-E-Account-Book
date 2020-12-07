@@ -3,6 +3,7 @@ import Calendar from './Calendar';
 
 interface Props {
   dateData: string;
+  monthData: any;
 }
 
 export default {
@@ -10,8 +11,8 @@ export default {
   component: Calendar,
 };
 
-export const calendar = ({ dateData }: Props): JSX.Element => {
-  return <Calendar dateData={dateData} />;
+export const calendar = ({ dateData, monthData }: Props): JSX.Element => {
+  return <Calendar dateData={dateData} monthData={monthData} />;
 };
 
 calendar.story = {
