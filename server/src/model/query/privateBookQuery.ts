@@ -4,7 +4,7 @@ const privateBookQuery = {
   CREATE_PRIVATE_TRANSACTION:
     'INSERT INTO private_transaction (accountbook_id, category_id, payment_id, date, title, amount) VALUES(?,?,?,?,?,?)',
   GET_PRIVATE_TRANSACTIONLIST:
-    'SELECT (pt.id, pt.date, py.name, ct.name , pt.title, pt.amount) FROM private_transaction as st JOIN category as ct ON st.category_id = ct.category_id LEFT OUTER JOIN payment as py on py.id = st.payment_id where st.accountbook_id = ? AND dateofyear(st.date) = ? AND dateofmonth(st.date) = ?',
+    'SELECT pt.id, pt.date, py.name, ct.name , pt.title, pt.amount FROM private_transaction as pt JOIN category as ct ON pt.category_id = ct.id LEFT OUTER JOIN payment as py ON py.id = pt.payment_id WHERE pt.accountbook_id = ? AND year(pt.date) = ? AND month(pt.date) = ?',
 };
 
 export default privateBookQuery;
