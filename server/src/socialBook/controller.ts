@@ -39,3 +39,7 @@ export const createTransaction = async (ctx: any) => {
   const result = await Service.createTransaction(transaction);
   response.success(ctx, result);
 };
+
+export const getMonthlyStatistics = async (ctx: any) => {
+  response.success(ctx, 1234);
+};
