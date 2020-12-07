@@ -30,7 +30,7 @@ const LoginPage: React.FC<props> = ({ location }: props) => {
       (async () => {
         const jwtToken = await getJWT();
         localStorage.setItem('jwt', jwtToken);
-        document.location.href = '/main';
+        document.location.href = '/';
       })();
     }
   }, []);

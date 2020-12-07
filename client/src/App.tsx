@@ -9,13 +9,23 @@ import AccountbookPage from '@views/AccountbookPage';
 import GlobalStyle from '@shared/global';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
+import { useSelector } from 'react-redux';
+import { RootState } from '@reducers/rootReducer';
 
 const App: React.FC = () => {
+  const login = useSelector((state: RootState) => state.user.isLogin);
+
+  const loginRouter = (
+    <>
+      <Route path="/login" component={LoginPage} />
+      <Redirect from="*" to="/login" />
+    </>
+  );
+
   const mainRouter = (
     <>
       <Route exact path="/" component={MainPage} />
       <Switch>
-        <Route path="/login" component={LoginPage} />
         <Route path="/notification" component={NotificationPage} />
         <Route path="/mypage" component={MyPage} />
         <Route path="/social-accountbook/new" component={CreateAccountbookPage} />
@@ -29,7 +39,7 @@ const App: React.FC = () => {
   return (
     <CookiesProvider>
       <BrowserRouter>
-        {mainRouter}
+        {login ? mainRouter : loginRouter}
         <GlobalStyle />
       </BrowserRouter>
     </CookiesProvider>
