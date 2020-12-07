@@ -36,3 +36,12 @@ export const getDailyTransactions = async (accountBookId: number, date: string) 
   const transactionList = await sql(query.READ_DAILY_SOCIAL_BOOK, [accountBookId, date]);
   return transactionList;
 };
+
+export const getBelongSocialBookList = async (userId: number) => {
+  const belongSocialBookList = await sql(query.READ_BELONG_SOCIAL_BOOK_LIST, [userId]);
+  const bookIdList: number[] = [];
+  belongSocialBookList.forEach((row: any) => {
+    bookIdList.push(row.accountbook_id);
+  });
+  return bookIdList;
+};

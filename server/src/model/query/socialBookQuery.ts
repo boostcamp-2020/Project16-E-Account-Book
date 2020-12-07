@@ -36,6 +36,7 @@ const socialBookQuery = {
   JOIN category as ct on st.category_id = ct.id
   LEFT OUTER JOIN  payment as py on py.id = st.payment_id
   where st.accountbook_id = ? AND date(st.date) = date(?)`,
+  READ_BELONG_SOCIAL_BOOK_LIST: `SELECT accountbook_id FROM social_accountbook_users WHERE user_id = ? AND state = 2 OR state = 0;`,
 };
 
 export default socialBookQuery;
