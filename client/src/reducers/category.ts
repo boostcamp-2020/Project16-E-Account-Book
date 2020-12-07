@@ -1,32 +1,12 @@
-import { GET_CATEGORY, getCategory } from '@actions/category/type';
+import { SET_CATEGORY, GET_CATEGORY, setCategory, getCategory } from '@actions/category/type';
 import { Category } from '@interfaces/category';
-import { getAxios } from '@utils/axios';
-import * as API from '@utils/api';
 
-type CategoryAction = ReturnType<typeof getCategory>;
+type CategoryAction = ReturnType<typeof setCategory> | ReturnType<typeof getCategory>;
 
 type CategoryState = {
   income: Category[];
   expenditure: Category[];
 };
-
-const getIncomeCategory = async () => {
-  const { data } = await getAxios(API.GET_INCOME_CATEGORY);
-  return data;
-};
-
-const getExpenditureCategory = async () => {
-  const { data } = await getAxios(API.GET_EXPENDITURE_CATEGORY);
-  return data;
-};
-
-const initCategory = async () => {
-  const income = await getIncomeCategory();
-  const expenditure = await getExpenditureCategory();
-  return { income, expenditure };
-};
-
-initCategory();
 
 const initialState = {
   income: [],
@@ -35,6 +15,8 @@ const initialState = {
 
 const category = (state: CategoryState = initialState, action: CategoryAction): CategoryState => {
   switch (action.type) {
+    case SET_CATEGORY:
+      return { income: action.payload.income, expenditure: action.payload.expenditure };
     case GET_CATEGORY:
       return { income: state.income, expenditure: state.expenditure };
     default:

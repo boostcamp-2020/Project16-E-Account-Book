@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import LoginPage from '@views/LoginPage';
 import MainPage from '@views/MainPage';
 import NotificationPage from '@views/NotificationPage';
@@ -10,11 +10,37 @@ import NotFoundPage from '@views/NotFoundPage';
 import GlobalStyle from '@shared/global';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
+import { setCategory } from '@actions/category/type';
+import { getAxios } from '@utils/axios';
+import * as API from '@utils/api';
+
+const getIncomeCategory = async () => {
+  const { data } = await getAxios(API.GET_INCOME_CATEGORY);
+  return data;
+};
+
+const getExpenditureCategory = async () => {
+  const { data } = await getAxios(API.GET_EXPENDITURE_CATEGORY);
+  return data;
+};
 
 const App: React.FC = () => {
+  const dispatch = useDispatch();
   const login = useSelector((state: RootState) => state.user.isLogin);
+
+  const initCategory = async () => {
+    const income = await getIncomeCategory();
+    const expenditure = await getExpenditureCategory();
+    dispatch(setCategory(income.data, expenditure.data));
+  };
+
+  useEffect(() => {
+    if (login) {
+      initCategory();
+    }
+  }, [login]);
 
   const loginRouter = (
     <>
