@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
 import { setCategory } from '@actions/category/type';
 import { setPayment } from '@actions/payment/type';
+import { setPrivate } from '@actions/accountbook/type';
 import { getAxios } from '@utils/axios';
 import * as API from '@utils/api';
 
@@ -37,10 +38,15 @@ const App: React.FC = () => {
     dispatch(setPayment(payment.data));
   };
 
+  const initAccountBook = () => {
+    dispatch(setPrivate());
+  };
+
   useEffect(() => {
     if (login) {
       initCategory();
       initPayment();
+      initAccountBook();
     }
   }, [login]);
 
