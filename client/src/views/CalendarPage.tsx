@@ -4,7 +4,7 @@ import Calendar from '@organisms/Calendar';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
 import { getTransaction } from '@actions/transaction/type';
-// import axios from 'axios';
+// import { getAxiosData } from '@utils/axios';
 // import * as API from '@utils/api';
 
 const CalendarPage: React.FC = () => {
@@ -19,12 +19,8 @@ const CalendarPage: React.FC = () => {
   useEffect(() => {
     // const getTransactionList = async () => {
     //   if (account === 'social') {
-    //     const { data } = await axios.post(API.GET_TRANSACTION_SOCIAL_LIST, {
-    //       accountbook_id: 1,
-    //       year,
-    //       month,
-    //     });
-    //     return data;
+    //     const result = await getAxiosData(`${API.GET_TRANSACTION_SOCIAL_LIST}/${accountbook_id}/${year}/${month}`)
+    //     return result;
     //   }
     // };
     // (async () => {

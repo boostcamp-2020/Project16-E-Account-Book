@@ -2,7 +2,6 @@ import React from 'react';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import RoundShortChips from '@atoms/div/RoundShortChips';
 import LeftNormalText from '@atoms/p/LeftNormalText';
-import ntm from '@utils/numberToMoney';
 import myColor from '@theme/color';
 import ExpenditureText from '@atoms/p/ExpenditureText';
 import IncomeText from '@atoms/p/IncomeText';

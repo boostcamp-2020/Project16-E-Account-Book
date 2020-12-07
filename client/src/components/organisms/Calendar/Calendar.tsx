@@ -10,6 +10,10 @@ import Week from '@molecules/Weeks';
 import DayBox from '@molecules/DayBox';
 import Color from '@theme/color';
 import sliceArray from '@utils/sliceArray';
+import { showModal } from '@actions/modal/type';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '@reducers/rootReducer';
+import DailyTransactionModal from '@organisms/DailyTransactionModal';
 
 interface Props {
   dateData: string;
@@ -44,6 +48,11 @@ const EmptyBox = styled.div`
 `;
 
 const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
+  const dispatch = useDispatch();
+  const modalView = useSelector((state: RootState) => state.modal.view);
+  const openModal = (view: string) => {
+    dispatch(showModal(view));
+  };
   const monthlyData = new Map();
 
   monthData.forEach((e) => {
@@ -61,9 +70,6 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
   const endDays = numberOfMonth(dateData);
   const [inCheck, setInCheck] = useState(true);
   const [exCheck, setExCheck] = useState(true);
-  const onClick = () => {
-    return true;
-  };
   const emptyDays = firstDay - isSunday < 0 ? 6 : firstDay - isSunday;
   const allDay = makeMonth([], emptyDays, endDays);
 
@@ -81,6 +87,34 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
     return Object.assign(allDay[ele.date + emptyDays - 1], ele);
   });
   const allArr = sliceArray(allDay, 7);
+
+  const title = '18일 (수)';
+
+  const data = [
+    {
+      category: '식비',
+      payment: '현대카드',
+      title: '맥도날드',
+      amount: 20000,
+    },
+    {
+      category: '월급',
+      payment: null,
+      title: '부스트캠프',
+      amount: 50000000,
+    },
+    {
+      category: '생활',
+      payment: '현대카드',
+      title: '버스비',
+      amount: 39800,
+    },
+  ];
+  const onClick = (date) => {
+    openModal(`${date}Result`);
+    console.log(date);
+    console.log('123');
+  };
   return (
     <Calendar>
       <MonthNav />
@@ -126,20 +160,25 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
                   return <EmptyBox />;
                 }
                 return (
-                  <DayBox
-                    date={day.date}
-                    width="100%"
-                    height="3.3rem"
-                    onClick={onClick}
-                    InMoney={day.inmoney}
-                    ExMoney={day.exmoney}
-                    InColor={Color.money.income}
-                    ExColor={Color.money.expenditure}
-                    fontWeight="bold"
-                    fontSize="8px"
-                    inCheck={inCheck}
-                    exCheck={exCheck}
-                  />
+                  <>
+                    <DayBox
+                      date={day.date}
+                      width="100%"
+                      height="3.3rem"
+                      onClick={() => onClick(day.date)}
+                      InMoney={day.inmoney}
+                      ExMoney={day.exmoney}
+                      InColor={Color.money.income}
+                      ExColor={Color.money.expenditure}
+                      fontWeight="bold"
+                      fontSize="8px"
+                      inCheck={inCheck}
+                      exCheck={exCheck}
+                    />
+                    {modalView === `${day.date}Result` && (
+                      <DailyTransactionModal title={title} data={data} />
+                    )}
+                  </>
                 );
               })}
             </WeekDiv>
