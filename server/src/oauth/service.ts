@@ -8,7 +8,7 @@ const axios = require('axios').default;
 
 const createJWTtoken = (data: OauthUserData, site: string) => {
   const jwtToken = jwt.sign(
-    { login: data.name, id: data.id, oAuthOrigin: site, uid: data.uid },
+    { id: data.id, oAuthOrigin: site, uid: data.uid },
     process.env.JWT_SECRET,
     {
       expiresIn: '1d',
