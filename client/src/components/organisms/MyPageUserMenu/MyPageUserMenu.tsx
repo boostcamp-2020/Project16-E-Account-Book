@@ -8,6 +8,8 @@ import Span from '@atoms/span/BoldSpan';
 import P from '@atoms/p/LeftNormalText';
 import myColor from '@theme/color';
 import { Link } from 'react-router-dom';
+import { logout } from '@actions/user/type';
+import { useDispatch } from 'react-redux';
 
 interface Props {
   name: string;
@@ -19,8 +21,11 @@ const ButtonContainer = styled.div`
 `;
 
 const MyPageUserMenu: React.FC<Props> = ({ name, profile }: Props) => {
+  const dispatch = useDispatch();
+
   const deleteJWT = () => {
     localStorage.removeItem('jwt');
+    dispatch(logout());
   };
   return (
     <RowFlexContainer margin="48px 20px 0px">
