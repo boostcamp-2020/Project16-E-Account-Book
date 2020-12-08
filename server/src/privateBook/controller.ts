@@ -1,4 +1,3 @@
-import { Context } from 'koa';
 import * as response from '../utils/response';
 import 'dotenv/config';
 import * as Service from './service';
@@ -10,4 +9,23 @@ export const createTransaction = async (ctx: any) => {
   response.success(ctx, result);
 };
 
-export default createTransaction;
+export const getTransactionList = async (ctx: any) => {
+  const { accountbookId, year, month } = ctx.params;
+
+  const searchInfo = [accountbookId, year, month];
+  let result = await Service.getTransactionList(searchInfo);
+  result = result.map((eachData: any) => {
+    const inmoney = eachData.assortment === '수입' ? eachData.amount : 0;
+    const exmoney = eachData.assortment === '지출' ? eachData.amount : 0;
+    return {
+      id: eachData.id,
+      date: eachData.date,
+      inmoney,
+      exmoney,
+      payment: eachData.name,
+      category: eachData.category,
+      title: eachData.title,
+    };
+  });
+  response.success(ctx, result);
+};

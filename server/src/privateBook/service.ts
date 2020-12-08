@@ -7,4 +7,7 @@ export const createTransaction = async (transaction: (string | number)[]) => {
   return result.insertId;
 };
 
-export default createTransaction;
+export const getTransactionList = async (searchInfo: (string | number)[]) => {
+  const result = await sql(query.GET_PRIVATE_TRANSACTIONLIST, searchInfo);
+  return result;
+};
