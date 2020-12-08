@@ -58,12 +58,12 @@ const moneyOfWeek: React.FC<Props> = ({
   return (
     <MoneyOfWeek width={width} height={height}>
       주간💰
-      {inCheck ? (
+      {inCheck && (
         <Income fontWeight={fontWeight} fontSize={fontSize} color={InColor} money={InMoney} />
-      ) : undefined}
-      {exCheck ? (
+      )}
+      {exCheck && (
         <Expenditure fontWeight={fontWeight} fontSize={fontSize} color={ExColor} money={ExMoney} />
-      ) : undefined}
+      )}
     </MoneyOfWeek>
   );
 };
