@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Input from '@atoms/input/Input';
-import CenterSmallText from '@atoms/p/CenterSmallText';
+import Text from '@atoms/p/LeftLargeText';
 
 interface Props extends sizeProps {
   title: string;
@@ -12,21 +12,21 @@ interface sizeProps {
 }
 
 const defaultProps = {
-  width: '15%',
+  width: '100%',
 };
 
 const InputWithText = styled.div<sizeProps>`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: ${(props) => props.width};
 `;
 
 const inputWithText: React.FC<Props> = ({ width, title }: Props) => {
   return (
     <InputWithText width={width}>
-      <CenterSmallText>{title}</CenterSmallText>
-      <Input placeholder="0" />
-      <CenterSmallText>원</CenterSmallText>
+      <Text>{title}</Text>
+      <Input width="85%" fontSize="1.4rem" textAlign="right" placeholder="0" />
+      <Text>원</Text>
     </InputWithText>
   );
 };

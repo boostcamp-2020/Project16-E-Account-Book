@@ -14,6 +14,7 @@ const BottomDiv = styled.div`
   justify-content: space-around;
   align-items: center;
   height: 80px;
+  margin: 0px -20px;
 `;
 
 const createTransactionMenu: React.FC<Props> = ({ submit, cancel }: Props) => {

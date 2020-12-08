@@ -1,10 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import DropdownMenu from '@atoms/input/DropdownMenu';
-import CenterSmallText from '@atoms/p/CenterSmallText';
+import Text from '@atoms/p/LeftNormalText';
+
+interface OptionData {
+  id: any;
+  name: any;
+}
 
 interface Props extends sizeProps {
-  options: string[];
+  options: OptionData[];
   title: string;
 }
 
@@ -18,15 +23,15 @@ const defaultProps = {
 
 const MenuWithText = styled.div<sizeProps>`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: ${(props) => props.width};
 `;
 
 const menuWithText: React.FC<Props> = ({ width, title, options }: Props) => {
   return (
     <MenuWithText width={width}>
-      <CenterSmallText>{title}</CenterSmallText>
-      <DropdownMenu options={options} />
+      <Text>{title}</Text>
+      <DropdownMenu width="70%" options={options} />
     </MenuWithText>
   );
 };

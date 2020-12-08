@@ -21,7 +21,15 @@ export default {
 };
 
 export const dropdownMenu = ({ ...args }: Props): JSX.Element => {
-  return <DropdownMenu {...args} options={['직장인', '학생']} />;
+  return (
+    <DropdownMenu
+      {...args}
+      options={[
+        { id: 1, name: '직장인' },
+        { id: 2, name: '학생' },
+      ]}
+    />
+  );
 };
 
 dropdownMenu.story = {
