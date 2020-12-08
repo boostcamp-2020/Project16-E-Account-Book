@@ -17,7 +17,12 @@ interface dataProps {
 }
 
 const DailyTransaction = styled.div`
-  border: 0;
+  border: 1px solid pink;
+  border-radius: 5px;
+  &:hover {
+    background-color: pink;
+    transform: scale(1.2);
+  }
 `;
 const dailyTransaction: React.FC<Props> = ({ data }: Props) => {
   let money = 0;

@@ -1,49 +1,48 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import NewTransactionButton from '@organisms/NewTransactionButton';
 import MonthTransaction from '@organisms/MonthTransaction';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '@reducers/rootReducer';
+import { getTransaction } from '@actions/transaction/type';
+import { getAxiosData } from '@utils/axios';
+import * as API from '@utils/api';
 
 const TransactionPage: React.FC = () => {
-  const tempdata = [
-    {
-      id: 1,
-      date: '2020-10-07T15:06:28.000Z',
-      inmoney: 15000,
-      exmoney: 0,
-      payment: null,
-      category: '기타수입',
-      title: 'test3',
-    },
-    {
-      id: 2,
-      date: '2020-10-07T17:06:28.000Z',
-      inmoney: 40000,
-      exmoney: 0,
-      payment: null,
-      category: '알바',
-      title: '알바비',
-    },
-    {
-      id: 3,
-      date: '2020-10-07T11:06:28.000Z',
-      inmoney: 0,
-      exmoney: 1220,
-      payment: '현금',
-      category: '떡볶이',
-      title: '간식구매',
-    },
-    {
-      id: 4,
-      date: '2020-10-07T19:06:28.000Z',
-      inmoney: 0,
-      exmoney: 12000,
-      payment: '신한',
-      category: '서적',
-      title: '책구매',
-    },
-  ];
+  const year = useSelector((state: RootState) => state.date.year);
+  const month = useSelector((state: RootState) => state.date.month);
+  const transactionList = useSelector((state: RootState) => state.transaction.transactionList);
+  const accountbookType = useSelector((state: RootState) => state.accountbook.type);
+  const accountbookId = useSelector((state: RootState) => state.accountbook.socialId);
+  const dateData = `${year}-${month}`;
+  const dispatch = useDispatch();
+  const changeTransaction = (newList: any) => {
+    dispatch(getTransaction(newList));
+  };
+  useEffect(() => {
+    // eslint-disable-next-line consistent-return
+    const getTransactionList = async (type: string): Promise<any> => {
+      let result;
+      switch (type) {
+        case 'PRIVATE':
+          result = await getAxiosData(`${API.GET_TRANSACTION_PRIVATE_LIST}/${year}/${month}`);
+          return result;
+        case 'SOCIAL':
+          result = await getAxiosData(
+            `${API.GET_TRANSACTION_SOCIAL_LIST}/${accountbookId}/${year}/${month}`,
+          );
+          return result;
+        default:
+          break;
+      }
+    };
+    (async () => {
+      const { data } = await getTransactionList(accountbookType);
+      changeTransaction(data);
+    })();
+  }, [dateData]);
   return (
     <>
-      <MonthTransaction dateData="2020-10" monthData={tempdata} />
+      <MonthTransaction dateData={dateData} monthData={transactionList} />
       <NewTransactionButton />
     </>
   );

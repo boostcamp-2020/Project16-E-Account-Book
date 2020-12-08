@@ -8,7 +8,7 @@ import DailyTransaction from '@molecules/DailyTransaction';
 
 interface Props {
   dateData: string;
-  monthData: any;
+  monthData: any[];
 }
 
 const Filter = styled.div`
@@ -17,13 +17,13 @@ const Filter = styled.div`
 `;
 
 const MonthTransaction = styled.div`
-  border: 2px solid pink;
+  border: 1px solid pink;
   border-radius: 5px;
 `;
 
 const monthTransaction: React.FC<Props> = ({ dateData, monthData }: Props) => {
   monthData.sort((a, b): any => Number(new Date(b.date)) - Number(new Date(a.date)));
-  let nowData = monthData;
+  let nowData: any[] = monthData;
   const incomeData: any[] = [];
   const excomeData: any[] = [];
   monthData.forEach((ele) => {
@@ -35,8 +35,6 @@ const monthTransaction: React.FC<Props> = ({ dateData, monthData }: Props) => {
   });
   const [inCheck, setInCheck] = useState(true);
   const [exCheck, setExCheck] = useState(true);
-  console.log(inCheck, exCheck);
-  nowData = [];
   if (inCheck && exCheck) {
     nowData = monthData;
   }

@@ -25,7 +25,7 @@ const TransactionInfo: React.FC<props> = ({ data }: props) => {
       justifyContent="space-between"
       alignItems="center"
       borderWidth="0px 0px 0.5px 0px"
-      borderStyle="solid"
+      borderStyle="0"
       padding="8px 0px 8px 0px"
     >
       <RowFlexContainer>
