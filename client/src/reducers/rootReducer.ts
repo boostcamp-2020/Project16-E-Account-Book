@@ -6,7 +6,6 @@ import transaction from './transaction';
 import accountbook from './accountbook';
 import category from './category';
 
-
 const rootReducer = combineReducers({
   user,
   modal,
