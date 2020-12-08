@@ -50,3 +50,30 @@ export const createTransaction = async (transaction: (string | number)[]) => {
   const result = await sql(query.CREATE_SOCIAL_TRANSACTION, transaction);
   return result.insertId;
 };
+
+export const getMonthlyStatisticsExpend = async (
+  accountBookId: number,
+  startDate: string,
+  endDate: string,
+) => {
+  const result = await sql(query.READ_MONTHLY_STATISTICS_EXPEND, [
+    accountBookId,
+    startDate,
+    endDate,
+  ]);
+
+  return result[0]['SUM(amount)'];
+};
+
+export const getMonthlyStatisticsIncome = async (
+  accountBookId: number,
+  startDate: string,
+  endDate: string,
+) => {
+  const result = await sql(query.READ_MONTHLY_STATISTICS_INCOME, [
+    accountBookId,
+    startDate,
+    endDate,
+  ]);
+  return result[0]['SUM(amount)'];
+};
