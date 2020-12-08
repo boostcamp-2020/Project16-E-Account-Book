@@ -1,15 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import firstDayOfWeek from '@utils/firstDayOfWeek';
-import numberOfMonth from '@utils/numberOfMonth';
-import makeMonth from '@utils/makeMonth';
 import MonthNav from '@molecules/MonthNav';
 import CheckBoxWithNumber from '@molecules/CheckBoxWithNumber';
 import Color from '@theme/color';
-// import sliceArray from '@utils/sliceArray';
-// import { showModal } from '@actions/modal/type';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { RootState } from '@reducers/rootReducer';
 import DailyTotal from '@molecules/DailyTotal';
 import DailyTransaction from '@molecules/DailyTransaction';
 
@@ -29,48 +22,20 @@ const MonthTransaction = styled.div`
 `;
 
 const monthTransaction: React.FC<Props> = ({ dateData, monthData }: Props) => {
-  // const dispatch = useDispatch();
-  // const modalView = useSelector((state: RootState) => state.modal.view);
-  // const openModal = (view: string) => {
-  //   dispatch(showModal(view));
-  // };
-  const monthlyData = new Map();
+  monthData.sort((a, b): any => Number(new Date(b.date)) - Number(new Date(a.date)));
 
-  monthData.forEach((e) => {
-    const day = new Date(e.date).getDate();
-    if (monthlyData.has(day)) {
-      const value = monthlyData.get(day);
-      monthlyData.set(day, [(value[0] += e.inmoney), (value[1] += e.exmoney)]);
-    } else {
-      monthlyData.set(day, [e.inmoney, e.exmoney]);
-    }
-  });
-
-  const firstDay = firstDayOfWeek(dateData);
-  const isSunday = 0;
-  const endDays = numberOfMonth(dateData);
   const [inCheck, setInCheck] = useState(true);
   const [exCheck, setExCheck] = useState(true);
-  const emptyDays = firstDay - isSunday < 0 ? 6 : firstDay - isSunday;
-  const allDay = makeMonth([], emptyDays, endDays);
-
-  const preprocessData: Array<{ date: number; inmoney: number; exmoney: number }> = [];
-  monthlyData.forEach((value, key) => {
-    const buffer: { date: number; inmoney: number; exmoney: number } = {
-      date: key,
-      inmoney: value[0],
-      exmoney: value[1],
-    };
-    preprocessData.push(buffer);
-  });
-  preprocessData.map((ele) => {
-    return Object.assign(allDay[ele.date + emptyDays - 1], ele);
-  });
-  // const allArr = sliceArray(allDay, 7);
-  // const onClick = (thisDay) => {
-  //   openModal(`${thisDay}Result`);
+  console.log(dateData);
+  // const getDailyMoney = (date, inmoney) => {
+  //   monthData.forEach((e) => {
+  //     if (date === new Date(e.date).getDate()) {
+  //       dailymoney += e.inmoney;
+  //     }
+  //   });
   // };
-  const temptemp = { category: '용돈', title: '심부름', amount: 30000, payment: null };
+
+  let first = 0;
   return (
     <MonthTransaction>
       <MonthNav />
@@ -82,7 +47,7 @@ const monthTransaction: React.FC<Props> = ({ dateData, monthData }: Props) => {
           onClick={() => setInCheck(!inCheck)}
           fontWeight="bold"
           fontSize="15px"
-          money={allDay.reduce((acc, cur) => acc + cur.inmoney, 0)}
+          money={2}
         />
         <CheckBoxWithNumber
           checked={exCheck}
@@ -91,22 +56,32 @@ const monthTransaction: React.FC<Props> = ({ dateData, monthData }: Props) => {
           onClick={() => setExCheck(!exCheck)}
           fontWeight="bold"
           fontSize="15px"
-          money={allDay.reduce((acc, cur) => acc + cur.exmoney, 0)}
+          money={1}
         />
       </Filter>
-      <DailyTotal
-        fontWeight="bold"
-        fontSize="15px"
-        InMoney={12345}
-        ExMoney={33321}
-        InColor={Color.money.income}
-        ExColor={Color.money.expenditure}
-        width="100%"
-        height="2rem"
-        month="2020-12"
-        date={3}
-      />
-      <DailyTransaction data={temptemp} />
+      {monthData.map((info) => {
+        if (new Date(info.date).getDate() !== first) {
+          first = new Date(info.date).getDate();
+          return (
+            <>
+              <DailyTotal
+                fontWeight="bold"
+                fontSize="15px"
+                InMoney={12345}
+                ExMoney={33321}
+                InColor={Color.money.income}
+                ExColor={Color.money.expenditure}
+                width="100%"
+                height="2rem"
+                month="2020-10"
+                date={first}
+              />
+              <DailyTransaction data={info} />
+            </>
+          );
+        }
+        return <DailyTransaction data={info} />;
+      })}
     </MonthTransaction>
   );
 };

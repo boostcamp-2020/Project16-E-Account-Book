@@ -7,20 +7,34 @@ interface Props {
 }
 
 interface dataProps {
+  id: number;
+  date: string;
+  inmoney: number;
+  exmoney: number;
   category: string;
   title: string;
-  amount: number;
   payment: any;
 }
 
 const DailyTransaction = styled.div`
   border: 0;
 `;
-
 const dailyTransaction: React.FC<Props> = ({ data }: Props) => {
+  let money = 0;
+  if (data.payment) {
+    money = data.exmoney;
+  } else {
+    money = data.inmoney;
+  }
+  const reformData = {
+    category: data.category,
+    title: data.title,
+    amount: money,
+    payment: data.payment,
+  };
   return (
     <DailyTransaction>
-      <TransactionInfo data={data} />
+      <TransactionInfo data={reformData} />
     </DailyTransaction>
   );
 };
