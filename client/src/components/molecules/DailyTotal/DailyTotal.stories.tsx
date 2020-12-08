@@ -29,6 +29,8 @@ export const dailyTotal = ({ width, height }: Props): JSX.Element => {
       ExMoney={ExMoney}
       width={width}
       height={height}
+      month="2020-12"
+      date={3}
     />
   );
 };

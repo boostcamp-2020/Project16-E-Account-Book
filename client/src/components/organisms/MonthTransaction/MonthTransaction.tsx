@@ -10,6 +10,7 @@ import Color from '@theme/color';
 // import { showModal } from '@actions/modal/type';
 // import { useSelector, useDispatch } from 'react-redux';
 // import { RootState } from '@reducers/rootReducer';
+import DailyTotal from '@molecules/DailyTotal';
 
 interface Props {
   dateData: string;
@@ -91,6 +92,18 @@ const monthTransaction: React.FC<Props> = ({ dateData, monthData }: Props) => {
           money={allDay.reduce((acc, cur) => acc + cur.exmoney, 0)}
         />
       </Filter>
+      <DailyTotal
+        fontWeight="bold"
+        fontSize="15px"
+        InMoney={12345}
+        ExMoney={33321}
+        InColor={Color.money.income}
+        ExColor={Color.money.expenditure}
+        width="100%"
+        height="2rem"
+        month="2020-12"
+        date={3}
+      />
     </MonthTransaction>
   );
 };
