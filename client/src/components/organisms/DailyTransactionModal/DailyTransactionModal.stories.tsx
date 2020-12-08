@@ -131,7 +131,7 @@ const data = [
 ];
 
 export const dailyTransactionModal = (): JSX.Element => {
-  return <DailyTransactionModal title={title} data={data} />;
+  return <DailyTransactionModal month="2020-12" date={3} />;
 };
 
 dailyTransactionModal.story = {

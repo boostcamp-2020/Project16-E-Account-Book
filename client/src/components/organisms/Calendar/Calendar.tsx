@@ -10,6 +10,15 @@ import Week from '@molecules/Weeks';
 import DayBox from '@molecules/DayBox';
 import Color from '@theme/color';
 import sliceArray from '@utils/sliceArray';
+import { showModal } from '@actions/modal/type';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '@reducers/rootReducer';
+import DailyTransactionModal from '@organisms/DailyTransactionModal';
+
+interface Props {
+  dateData: string;
+  monthData: any;
+}
 
 const Filter = styled.div`
   display: flex;
@@ -30,28 +39,58 @@ const Calendar = styled.div`
   border-radius: 5px;
 `;
 
-const calendar: React.FC = () => {
-  const firstDay = firstDayOfWeek('2020-2');
-  const isSunday = 0;
-  const endDays = numberOfMonth('2020-2');
-  const [inCheck, setInCheck] = useState(false);
-  const [exCheck, setExCheck] = useState(false);
-  const onClick = () => {
-    return true;
+const EmptyBox = styled.div`
+  width: 100%;
+  height: 3.3rem;
+  background: pink;
+  border: 1px solid pink;
+  box-sizing: border-box;
+`;
+
+const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
+  const dispatch = useDispatch();
+  const modalView = useSelector((state: RootState) => state.modal.view);
+  const openModal = (view: string) => {
+    dispatch(showModal(view));
   };
+  const monthlyData = new Map();
+
+  monthData.forEach((e) => {
+    const day = new Date(e.date).getDay() - 1;
+    if (monthlyData.has(day)) {
+      const value = monthlyData.get(day);
+      monthlyData.set(day, [(value[0] += e.inmoney), (value[1] += e.exmoney)]);
+    } else {
+      monthlyData.set(day, [e.inmoney, e.exmoney]);
+    }
+  });
+
+  const firstDay = firstDayOfWeek(dateData);
+  const isSunday = 0;
+  const endDays = numberOfMonth(dateData);
+  const [inCheck, setInCheck] = useState(true);
+  const [exCheck, setExCheck] = useState(true);
   const emptyDays = firstDay - isSunday < 0 ? 6 : firstDay - isSunday;
   const allDay = makeMonth([], emptyDays, endDays);
-  const tempData = [
-    { date: 3, inmoney: 1200, exmoney: 0 },
-    { date: 11, inmoney: 13000, exmoney: 4300 },
-    { date: 14, inmoney: 0, exmoney: 12500 },
-    { date: 23, inmoney: 3200, exmoney: 1600 },
-    { date: 26, inmoney: 43900, exmoney: 0 },
-  ];
-  tempData.map((ele) => {
+
+  const preprocessData: Array<{ date: number; inmoney: number; exmoney: number }> = [];
+  monthlyData.forEach((value, key) => {
+    const buffer: { date: number; inmoney: number; exmoney: number } = {
+      date: key,
+      inmoney: value[0],
+      exmoney: value[1],
+    };
+    preprocessData.push(buffer);
+  });
+
+  preprocessData.map((ele) => {
     return Object.assign(allDay[ele.date + emptyDays - 1], ele);
   });
   const allArr = sliceArray(allDay, 7);
+
+  const onClick = (date) => {
+    openModal(`${date}Result`);
+  };
   return (
     <Calendar>
       <MonthNav />
@@ -87,23 +126,35 @@ const calendar: React.FC = () => {
               InColor={Color.money.income}
               ExColor={Color.money.expenditure}
               width="100%"
-              height="100%"
+              height="1rem"
+              inCheck={inCheck}
+              exCheck={exCheck}
             />
             <WeekDiv>
               {weeks.map((day) => {
+                if (day.date === 0) {
+                  return <EmptyBox />;
+                }
                 return (
-                  <DayBox
-                    date={day.date}
-                    width="100%"
-                    height="100%"
-                    onClick={onClick}
-                    InMoney={day.inmoney}
-                    ExMoney={day.exmoney}
-                    InColor={Color.money.income}
-                    ExColor={Color.money.expenditure}
-                    fontWeight="bold"
-                    fontSize="8px"
-                  />
+                  <>
+                    <DayBox
+                      date={day.date}
+                      width="100%"
+                      height="3.3rem"
+                      onClick={() => onClick(day.date)}
+                      InMoney={day.inmoney}
+                      ExMoney={day.exmoney}
+                      InColor={Color.money.income}
+                      ExColor={Color.money.expenditure}
+                      fontWeight="bold"
+                      fontSize="8px"
+                      inCheck={inCheck}
+                      exCheck={exCheck}
+                    />
+                    {modalView === `${day.date}Result` && (
+                      <DailyTransactionModal month={dateData} date={day.date} />
+                    )}
+                  </>
                 );
               })}
             </WeekDiv>
