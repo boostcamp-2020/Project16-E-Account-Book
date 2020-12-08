@@ -4,16 +4,17 @@ import SquircleCard from '@atoms/div/SquircleCard';
 import UserImages from '@molecules/UserImages';
 import CardInfo from '@molecules/CardInfo';
 import CardNumberText from '@molecules/CardNumberText';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setSocial } from '@actions/accountbook/type';
+import { SocialBook } from '@interfaces/accountbook';
 
-interface Props {
-  links: string[];
-  title: string;
-  description: string;
-  fontSize: string;
-  inMoney: number;
-  exMoney: number;
-  backgroundColor?: string;
-}
+const Container = styled.button`
+  background-color: transparent;
+  border: 0px;
+  width: 100%;
+  cursor: pointer;
+`;
 
 const LeftBox = styled.div`
   display: flex;
@@ -34,27 +35,41 @@ const RightBox = styled.div`
   align-items: center;
 `;
 
-const socialAccountBook: React.FC<Props> = ({
-  links,
-  title,
+const socialAccountBook: React.FC<SocialBook> = ({
+  id,
+  name,
   description,
-  fontSize,
-  inMoney,
-  exMoney,
-  backgroundColor,
-}: Props) => {
+  color,
+  incomeSum,
+  expenditureSum,
+  images,
+}: SocialBook) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const toSocialAccountBook = () => {
+    dispatch(setSocial(id));
+    history.push('/accountbook');
+  };
+
   return (
-    <SquircleCard backgroundColor={backgroundColor}>
-      <LeftBox>
-        <UserImages links={links} />
-      </LeftBox>
-      <CenterBox>
-        <CardInfo title={title} description={description} />
-      </CenterBox>
-      <RightBox>
-        <CardNumberText fontSize={fontSize} inMoney={inMoney} exMoney={exMoney} />
-      </RightBox>
-    </SquircleCard>
+    <Container onClick={toSocialAccountBook}>
+      <SquircleCard backgroundColor={color}>
+        <LeftBox>
+          <UserImages links={images} />
+        </LeftBox>
+        <CenterBox>
+          <CardInfo title={name} description={description} />
+        </CenterBox>
+        <RightBox>
+          <CardNumberText
+            fontSize="1rem"
+            inMoney={Number(incomeSum)}
+            exMoney={Number(expenditureSum)}
+          />
+        </RightBox>
+      </SquircleCard>
+    </Container>
   );
 };
 

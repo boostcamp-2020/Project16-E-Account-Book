@@ -1,5 +1,53 @@
 # ✨ sprint ✨
 
+# Sprint 4
+## 💻 Day 1
+### 📌 [FE] 로그인 여부에 따른 화면 랜더링
+- 처음에는 token 값을 받아와서 랜더링할 라우터를 결정해주고, 만약 token이 있었다면 유효성 검사를 통해 한 번 더 검증하도록 구현함
+- 유효하지 않음 토큰이었다면 즉시 로그아웃 상태로 변경시킴
+### 📌 [FE] 404 페이지 제작
+- 아래와 같이 모든 경로와 일치하지 않을 경우 NotFoundPage를 랜더링 하도록 처리함
+```tsx
+<Switch>
+    <Route path="/notification" component={NotificationPage} />
+    <Route path="/mypage" component={MyPage} />
+    <Route path="/accountbook" component={AccountbookPage} />
+    <Route exact path="/" component={MainPage} />
+    <Route path="/*" component={NotFoundPage} />
+</Switch>
+```
+### 📌 [FE] reducer 값 초기화
+- reducer 값을 직접 초기화 할 때 (await) axios 요청을 사용할 수 없는 문제가 있음
+- 새롭게 로그인을 하거나 페이지에 처음 접속하였을 때 App.tsx에서 각 reducer 값을 초기화하는 함수를 호출하도록 구현함
+
+### 📌 [FE] 달력 State
+- 연-월을 이동할때 API 를 호출하는 방식을 사용
+- redux 에서 payload 를 사용할때 템플릿 리터럴로 사용할 수 있음 '`${data}data`'
+- react-router-dom 의 LINK 에도 style 적용 가능 
+    ```typescript
+    const StyledLink = styled(Link)`
+      text-decoration: none;
+      &:focus,
+      &:hover {
+        background-color: pink;
+      }
+      ,
+      &:visited,
+      &:link,
+      &:active {
+        text-decoration: none;
+      }
+    `;
+    
+    <StyledLink to='/'> </StyledLink>
+    ```
+
+### 📌 [BE] forEach의 비동기적 작동
+- forEach 내부에서는 코드가 비동기적으로 동작
+- await 를 입력하여도 코드가 동기적으로 작동한다는 보장 X
+- for(const item of list) 등의 ES5 대체 문법을 사용 권장
+- 만약 forEach를 그대로 사용해야 한다면, Promise.all()을 사용 권장
+
 # Sprint 3
 
 ## 💻 Day 4

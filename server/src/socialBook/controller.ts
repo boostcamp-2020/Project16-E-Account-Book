@@ -17,8 +17,7 @@ export const getSocialBooksMaster = async (ctx: Context) => {
   response.success(ctx, result);
 };
 
-
-export const getSocialBooksDaily = async (ctx: Context) => {
+export const getDailyTransaction = async (ctx: Context) => {
   const { bookId, date } = ctx.params;
   const userId = ctx.userData.uid;
 

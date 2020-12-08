@@ -8,7 +8,7 @@ const axios = require('axios').default;
 
 const createJWTtoken = (data: OauthUserData, site: string) => {
   const jwtToken = jwt.sign(
-    { login: data.name, id: data.id, oAuthOrigin: site, uid: data.uid },
+    { id: data.id, oAuthOrigin: site, uid: data.uid },
     process.env.JWT_SECRET,
     {
       expiresIn: '1d',
@@ -65,13 +65,6 @@ const findUser = async (props: SelectUser) => {
   const [result] = await sql(query.READ_USER, [pid, oAuthOrigin]);
   return result === undefined ? undefined : result.id;
 };
-
-// const findUserId = async (props: SelectUser) => {
-//   const { pid, oAuthOrigin } = props;
-
-//   const [result] = await sql(query.READ_USER, [pid, oAuthOrigin]);
-//   return result.id;
-// };
 
 const createPrivateAccountbook = async (userId: number) => {
   await sql(query.CREATE_PRIVATE_BOOK, [userId, '내 가계부', '', '#F4C239']);
