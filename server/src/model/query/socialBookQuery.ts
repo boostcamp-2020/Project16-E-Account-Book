@@ -32,12 +32,23 @@ const socialBookQuery = {
     SELECT picture FROM users WHERE id IN
     (SELECT user_id FROM social_accountbook_users WHERE (state = 0 OR state = 2) AND accountbook_id = ?)
     LIMIT 3;`,
-
   READ_DAILY_SOCIAL_BOOK: `SELECT st.id, ct.name as category, py.name as payment , st.title, st.amount,  st.date from social_transaction as st
-  JOIN category as ct on st.category_id = ct.id
-  LEFT OUTER JOIN  payment as py on py.id = st.payment_id
-  where st.accountbook_id = ? AND date(st.date) = date(?)`,
+    JOIN category as ct on st.category_id = ct.id
+    LEFT OUTER JOIN  payment as py on py.id = st.payment_id
+    WHERE st.accountbook_id = ? AND date(st.date) = date(?)`,
   READ_BELONG_SOCIAL_BOOK_LIST: `SELECT accountbook_id FROM social_accountbook_users WHERE user_id = ? AND state = 2 OR state = 0;`,
+  READ_SOCIAL_INCOME_CATEGORY: `
+    SELECT SUM(amount) as money,
+    (SELECT name FROM category WHERE category.id = social_transaction.category_id) as name
+    FROM social_transaction
+    WHERE accountbook_id = ? AND year(date) = ? AND month(date) = ? AND payment_id IS NULL
+    GROUP BY category_id ORDER BY SUM(amount) DESC;`,
+  READ_SOCIAL_EXPENDITURE_CATEGORY: `
+    SELECT SUM(amount) as money,
+    (SELECT name FROM category WHERE category.id = social_transaction.category_id) as name
+    FROM social_transaction
+    WHERE accountbook_id = ? AND year(date) = ? AND month(date) = ? AND payment_id IS NOT NULL
+    GROUP BY category_id ORDER BY SUM(amount) DESC;`,
   CREATE_SOCIAL_TRANSACTION:
     'INSERT INTO social_transaction (accountbook_id, user_id, category_id, payment_id, date, title, amount) VALUES(?,?,?,?,?,?,?)',
 };

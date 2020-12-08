@@ -2,6 +2,7 @@ import 'dotenv/config';
 import sql from '../model/db';
 import query from '../model/query';
 import { UserImage, SocialInfo, SocialBookId } from '../interface/social';
+import { getCategoryPercentData } from '../utils/accountbook';
 
 export const getSocialBooks = async (userId: number) => {
   const socialBookList = await sql(query.READ_SOCIAL_BOOK_LIST, [userId]);
@@ -49,4 +50,16 @@ export const getBelongSocialBookList = async (userId: number) => {
 export const createTransaction = async (transaction: (string | number)[]) => {
   const result = await sql(query.CREATE_SOCIAL_TRANSACTION, transaction);
   return result.insertId;
+};
+
+export const getIncomeCategory = async (bookId: number, year: number, month: number) => {
+  const result = await sql(query.READ_SOCIAL_INCOME_CATEGORY, [bookId, year, month]);
+  const percentResult = getCategoryPercentData(result);
+  return percentResult;
+};
+
+export const getExpenditureCategory = async (bookId: number, year: number, month: number) => {
+  const result = await sql(query.READ_SOCIAL_EXPENDITURE_CATEGORY, [bookId, year, month]);
+  const percentResult = getCategoryPercentData(result);
+  return percentResult;
 };

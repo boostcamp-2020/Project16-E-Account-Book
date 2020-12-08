@@ -12,4 +12,6 @@ router.get('/transaction/:bookId/:date', Controller.getDailyTransaction);
 
 router.post('/transaction', Controller.createTransaction);
 
+router.get('/statistic/category/:bookId/:year/:month', Controller.getCategoryStatistic);
+
 export default router;
