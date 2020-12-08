@@ -2,8 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import myColor from '@theme/color';
 
+interface OptionData {
+  id: any;
+  name: any;
+}
+
 interface Props extends selectProps {
-  options: Array<string>;
+  options: OptionData[];
 }
 
 interface selectProps {
@@ -17,7 +22,7 @@ const defaultProps = {
   color: myColor.primary.black,
   width: '8rem',
   height: '1.2rem',
-  fontSize: '0.8rem',
+  fontSize: '1rem',
 };
 
 const Select = styled.select<selectProps>`
@@ -42,12 +47,14 @@ const Select = styled.select<selectProps>`
   }
 `;
 
-const Option = styled.option``;
+const Option = styled.option`
+  font-size: 1rem;
+`;
 
-const getOptionList = (options: Array<string>) =>
-  options.map((value) => <Option value={value}>{value}</Option>);
+const getOptionList = (options: Array<OptionData>) =>
+  options.map((value) => <Option value={value.id}>{value.name}</Option>);
 
-const RoundShortChips: React.FC<Props> = ({ width, height, fontSize, color, options }: Props) => {
+const DropdownMenu: React.FC<Props> = ({ width, height, fontSize, color, options }: Props) => {
   const optionList = getOptionList(options);
 
   return (
@@ -58,6 +65,6 @@ const RoundShortChips: React.FC<Props> = ({ width, height, fontSize, color, opti
   );
 };
 
-RoundShortChips.defaultProps = defaultProps;
+DropdownMenu.defaultProps = defaultProps;
 
-export default RoundShortChips;
+export default DropdownMenu;

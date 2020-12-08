@@ -3,8 +3,13 @@ import styled from 'styled-components';
 import DropdownMenu from '@atoms/input/DropdownMenu';
 import Text from '@atoms/p/LeftNormalText';
 
+interface OptionData {
+  id: any;
+  name: any;
+}
+
 interface Props extends sizeProps {
-  options: string[];
+  options: OptionData[];
   title: string;
 }
 
@@ -26,7 +31,7 @@ const menuWithText: React.FC<Props> = ({ width, title, options }: Props) => {
   return (
     <MenuWithText width={width}>
       <Text>{title}</Text>
-      <DropdownMenu options={options} />
+      <DropdownMenu width="70%" options={options} />
     </MenuWithText>
   );
 };

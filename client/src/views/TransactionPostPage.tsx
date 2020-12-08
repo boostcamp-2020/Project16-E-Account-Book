@@ -21,11 +21,7 @@ const TransactionPostPage: React.FC = () => {
         <TopNavBar />
         <Container>
           <CreateTransactionHeader />
-          <TransactionForm
-            categories={['군것질', '교통비', '회식비']}
-            payments={['카카오페이', '현금']}
-            onClick={onClick}
-          />
+          <TransactionForm onClick={onClick} />
           <CreateTransactionMenu submit={onClick} cancel={onClick} />
         </Container>
       </CenterContent>
