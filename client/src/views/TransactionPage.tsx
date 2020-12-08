@@ -1,10 +1,11 @@
 import React from 'react';
 import NewTransactionButton from '@organisms/NewTransactionButton';
+import MonthTransaction from '@organisms/MonthTransaction';
 
 const TransactionPage: React.FC = () => {
   return (
     <>
-      <p>this is TransactionPage</p>
+      <MonthTransaction dateData="2020-12" monthData={[]} />
       <NewTransactionButton />
     </>
   );

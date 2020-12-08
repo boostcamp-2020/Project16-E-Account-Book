@@ -74,12 +74,12 @@ const dayBox: React.FC<Props> = ({
       {date !== 0 ? (
         <>
           {date}
-          {inCheck ? (
+          {inCheck && (
             <InText money={InMoney} fontWeight={fontWeight} fontSize={fontSize} color={InColor} />
-          ) : undefined}
-          {exCheck ? (
+          )}
+          {exCheck && (
             <ExText money={ExMoney} fontWeight={fontWeight} fontSize={fontSize} color={ExColor} />
-          ) : undefined}
+          )}
         </>
       ) : (
         <></>
