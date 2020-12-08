@@ -7,8 +7,12 @@ export default {
   component: CreateAccountbookFormBox,
 };
 
+const testFunc = () => {
+  console.log('test');
+};
+
 export const createAccountbookFormBox = (): JSX.Element => {
-  return <CreateAccountbookFormBox backgroundColor={myColor.primary.main} />;
+  return <CreateAccountbookFormBox buttonEvent={testFunc} backgroundColor={myColor.primary.main} />;
 };
 
 createAccountbookFormBox.story = {
