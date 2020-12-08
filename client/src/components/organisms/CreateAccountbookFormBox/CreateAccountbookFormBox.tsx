@@ -6,14 +6,13 @@ import TextArea from '@atoms/textarea/TextArea';
 import SquircleCard from '@atoms/div/SquircleCard';
 import RoundShortButton from '@atoms/button/RoundShortButton';
 import colorUtils from '@utils/color';
-/* import * as Axios from '@utils/axios';
-import * as API from '@utils/api'; */
 
 interface Props {
   backgroundColor: string;
+  buttonEvent(data): any;
 }
 
-const CreateAccountbookFormBox: React.FC<Props> = ({ backgroundColor }: Props) => {
+const CreateAccountbookFormBox: React.FC<Props> = ({ buttonEvent, backgroundColor }: Props) => {
   const fontColor = colorUtils.getFontColor(backgroundColor);
   const buttonColor = fontColor === 'white' ? 'black' : 'white';
 
@@ -26,10 +25,6 @@ const CreateAccountbookFormBox: React.FC<Props> = ({ backgroundColor }: Props) =
 
   const descriptionChangeHandler = (event: any) => {
     setDescription(event.target.value);
-  };
-
-  const createButtonClick = () => {
-    console.log(name);
   };
 
   return (
@@ -49,7 +44,7 @@ const CreateAccountbookFormBox: React.FC<Props> = ({ backgroundColor }: Props) =
             border="none"
             backgroundColor={buttonColor}
             color={fontColor}
-            onClick={createButtonClick}
+            onClick={buttonEvent(name)}
           >
             생성
           </RoundShortButton>
