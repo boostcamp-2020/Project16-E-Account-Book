@@ -54,7 +54,7 @@ export const getPastFourMonthStatistics = async (ctx: any) => {
     const expend = await Service.getMonthlyStatisticsExpend(bookId, startDate, endDate);
     const income = await Service.getMonthlyStatisticsIncome(bookId, startDate, endDate);
 
-    result.push([income, expend]);
+    result.push([Number(income), Number(expend)]);
   }
   response.success(ctx, result);
 };
