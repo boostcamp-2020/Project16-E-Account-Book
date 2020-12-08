@@ -40,10 +40,12 @@ const socialBookQuery = {
   READ_BELONG_SOCIAL_BOOK_LIST: `SELECT accountbook_id FROM social_accountbook_users WHERE user_id = ? AND state = 2 OR state = 0;`,
   CREATE_SOCIAL_TRANSACTION:
     'INSERT INTO social_transaction (accountbook_id, user_id, category_id, payment_id, date, title, amount) VALUES(?,?,?,?,?,?,?)',
-  READ_MONTHLY_STATISTICS_EXPEND: `SELECT SUM(amount) from social_transaction 
-  where accountbook_id = ? AND date >= ? AND date < ? AND payment_id IS NOT NULL`,
-  READ_MONTHLY_STATISTICS_INCOME: `SELECT SUM(amount) from social_transaction 
-  where accountbook_id = ? AND date >= ? AND date < ? AND payment_id IS NULL`,
+  READ_MONTHLY_STATISTICS_EXPEND: `
+  SELECT SUM(amount) FROM social_transaction 
+  WHERE accountbook_id = ? AND date >= ? AND date < ? AND payment_id IS NOT NULL`,
+  READ_MONTHLY_STATISTICS_INCOME: `
+  SELECT SUM(amount) FROM social_transaction 
+  WHERE accountbook_id = ? AND date >= ? AND date < ? AND payment_id IS NULL`,
 };
 
 export default socialBookQuery;
