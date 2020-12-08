@@ -1,4 +1,8 @@
-const makeMonth = (allDay: any, emptyDays: number, endDays: number): Array<any> => {
+const makeMonth = (
+  allDay: Array<{ date: number; inmoney: number; exmoney: number }>,
+  emptyDays: number,
+  endDays: number,
+): Array<any> => {
   const emptyDay = { date: 0, inmoney: 0, exmoney: 0 };
   for (let i = 1; i <= emptyDays; i += 1) {
     allDay.push(emptyDay);
