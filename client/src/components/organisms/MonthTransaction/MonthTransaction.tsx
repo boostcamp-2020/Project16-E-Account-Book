@@ -27,13 +27,37 @@ const monthTransaction: React.FC<Props> = ({ dateData, monthData }: Props) => {
   const [inCheck, setInCheck] = useState(true);
   const [exCheck, setExCheck] = useState(true);
   console.log(dateData);
-  // const getDailyMoney = (date, inmoney) => {
-  //   monthData.forEach((e) => {
-  //     if (date === new Date(e.date).getDate()) {
-  //       dailymoney += e.inmoney;
-  //     }
-  //   });
-  // };
+  const getDailyMoney = (date, flag) => {
+    let dailymoney = 0;
+    if (flag === true) {
+      monthData.forEach((e) => {
+        if (date === new Date(e.date).getDate()) {
+          dailymoney += e.inmoney;
+        }
+      });
+    } else {
+      monthData.forEach((e) => {
+        if (date === new Date(e.date).getDate()) {
+          dailymoney += e.exmoney;
+        }
+      });
+    }
+    return dailymoney;
+  };
+
+  const getMonthMoney = (flag) => {
+    let monthMoney = 0;
+    if (flag === true) {
+      monthData.forEach((e) => {
+        monthMoney += e.inmoney;
+      });
+    } else {
+      monthData.forEach((e) => {
+        monthMoney += e.exmoney;
+      });
+    }
+    return monthMoney;
+  };
 
   let first = 0;
   return (
@@ -47,7 +71,7 @@ const monthTransaction: React.FC<Props> = ({ dateData, monthData }: Props) => {
           onClick={() => setInCheck(!inCheck)}
           fontWeight="bold"
           fontSize="15px"
-          money={2}
+          money={getMonthMoney(true)}
         />
         <CheckBoxWithNumber
           checked={exCheck}
@@ -56,7 +80,7 @@ const monthTransaction: React.FC<Props> = ({ dateData, monthData }: Props) => {
           onClick={() => setExCheck(!exCheck)}
           fontWeight="bold"
           fontSize="15px"
-          money={1}
+          money={getMonthMoney(false)}
         />
       </Filter>
       {monthData.map((info) => {
@@ -67,8 +91,8 @@ const monthTransaction: React.FC<Props> = ({ dateData, monthData }: Props) => {
               <DailyTotal
                 fontWeight="bold"
                 fontSize="15px"
-                InMoney={12345}
-                ExMoney={33321}
+                InMoney={getDailyMoney(first, true)}
+                ExMoney={getDailyMoney(first, false)}
                 InColor={Color.money.income}
                 ExColor={Color.money.expenditure}
                 width="100%"

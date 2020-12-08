@@ -7,7 +7,7 @@ const TransactionPage: React.FC = () => {
     {
       id: 1,
       date: '2020-10-07T15:06:28.000Z',
-      inmoney: 40000,
+      inmoney: 15000,
       exmoney: 0,
       payment: null,
       category: '기타수입',
