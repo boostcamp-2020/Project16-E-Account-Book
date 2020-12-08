@@ -19,6 +19,11 @@ export const getAxios = async (api: string): Promise<AxiosResponse<any>> => {
   return result;
 };
 
+export const getAxiosData = async (api: string) => {
+  const { data } = await getAxios(api);
+  return data;
+};
+
 export const postAxios = async (api: string, data: any): Promise<AxiosResponse<any>> => {
   const config = getConfig();
   const result = await axios.post(api, data, config);
