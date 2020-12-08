@@ -15,7 +15,7 @@ const FloatRightBottomContainer = styled.div`
 `;
 
 const NewTransactionButton: React.FC = () => {
-  const link = '/transaction/new';
+  const link = '/accountbook/transaction/new';
   return (
     <Container>
       <FloatRightBottomContainer>

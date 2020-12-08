@@ -15,7 +15,7 @@ const Container = styled.div<Props>`
 
 const createTransactionHeader: React.FC = () => {
   return (
-    <FlexContainer width="100%">
+    <FlexContainer width="100%" margin="4rem 0 0">
       <Text>새로운 내역을 추가해보세요!</Text>
       <Container margin="auto">
         <Button name="csv" color={myColor.primary.green} />

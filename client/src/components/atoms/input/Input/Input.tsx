@@ -3,18 +3,22 @@ import styled from 'styled-components';
 import myColor from '@theme/color';
 
 interface Props {
+  type?: string;
   color?: string;
   width?: string;
   height?: string;
   fontSize?: string;
+  textAlign?: string;
   placeholder?: string;
 }
 
 const defaultProps = {
+  type: 'text',
   color: myColor.primary.black,
-  width: '8rem',
-  height: '1rem',
-  fontSize: '0.8rem',
+  width: '',
+  height: '',
+  fontSize: '1rem',
+  textAlign: '',
   placeholder: '',
 };
 
@@ -29,7 +33,7 @@ const Input = styled.input<Props>`
   border-top: none;
   border-left: none;
   border-right: none;
-  text-align: right;
+  text-align: ${(props) => props.textAlign};
   cursor: pointer;
   :hover {
     border-color: ${myColor.primary.accent};
@@ -42,18 +46,22 @@ const Input = styled.input<Props>`
 `;
 
 const RoundShortChips: React.FC<Props> = ({
+  type,
   placeholder,
   width,
   height,
   fontSize,
   color,
+  textAlign,
 }: Props) => {
   return (
     <Input
+      type={type}
       placeholder={placeholder}
       width={width}
       height={height}
       fontSize={fontSize}
+      textAlign={textAlign}
       color={color}
     />
   );
