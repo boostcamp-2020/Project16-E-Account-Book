@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ColumnFlexContainer from '@atoms/div/ColumnFlexContainer';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import LeftLargeText from '@atoms/p/LeftLargeText';
@@ -6,6 +6,8 @@ import TextArea from '@atoms/textarea/TextArea';
 import SquircleCard from '@atoms/div/SquircleCard';
 import RoundShortButton from '@atoms/button/RoundShortButton';
 import colorUtils from '@utils/color';
+/* import * as Axios from '@utils/axios';
+import * as API from '@utils/api'; */
 
 interface Props {
   backgroundColor: string;
@@ -14,6 +16,22 @@ interface Props {
 const CreateAccountbookFormBox: React.FC<Props> = ({ backgroundColor }: Props) => {
   const fontColor = colorUtils.getFontColor(backgroundColor);
   const buttonColor = fontColor === 'white' ? 'black' : 'white';
+
+  const [name, setName] = useState('이름을 입력해주세요');
+  const [description, setDescription] = useState();
+
+  const nameChangeHandler = (event: any) => {
+    setName(event.target.value);
+  };
+
+  const descriptionChangeHandler = (event: any) => {
+    setDescription(event.target.value);
+  };
+
+  const createButtonClick = () => {
+    console.log(name);
+  };
+
   return (
     <SquircleCard width="100%" backgroundColor={backgroundColor} height="15rem">
       <ColumnFlexContainer
@@ -27,14 +45,32 @@ const CreateAccountbookFormBox: React.FC<Props> = ({ backgroundColor }: Props) =
           <LeftLargeText color={fontColor} fontWeight="bold">
             가계부 생성
           </LeftLargeText>
-          <RoundShortButton border="none" backgroundColor={buttonColor} color={fontColor}>
+          <RoundShortButton
+            border="none"
+            backgroundColor={buttonColor}
+            color={fontColor}
+            onClick={createButtonClick}
+          >
             생성
           </RoundShortButton>
         </RowFlexContainer>
         <RowFlexContainer width="100%" justifyContent="baseline">
-          <LeftLargeText color={fontColor}>이름을 입력해주세요.</LeftLargeText>
+          <TextArea
+            value={name}
+            width="50%"
+            height="100%"
+            onChange={nameChangeHandler}
+            fontColor={fontColor}
+            fontSize="17pt"
+            backgroundColor={backgroundColor}
+          />
         </RowFlexContainer>
-        <TextArea width="100%" height="30%" />
+        <TextArea
+          value={description}
+          width="100%"
+          height="30%"
+          onChange={descriptionChangeHandler}
+        />
       </ColumnFlexContainer>
     </SquircleCard>
   );
