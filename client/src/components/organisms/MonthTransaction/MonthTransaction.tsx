@@ -11,6 +11,7 @@ import Color from '@theme/color';
 // import { useSelector, useDispatch } from 'react-redux';
 // import { RootState } from '@reducers/rootReducer';
 import DailyTotal from '@molecules/DailyTotal';
+import DailyTransaction from '@molecules/DailyTransaction';
 
 interface Props {
   dateData: string;
@@ -69,6 +70,7 @@ const monthTransaction: React.FC<Props> = ({ dateData, monthData }: Props) => {
   // const onClick = (thisDay) => {
   //   openModal(`${thisDay}Result`);
   // };
+  const temptemp = { category: '용돈', title: '심부름', amount: 30000, payment: null };
   return (
     <MonthTransaction>
       <MonthNav />
@@ -104,6 +106,7 @@ const monthTransaction: React.FC<Props> = ({ dateData, monthData }: Props) => {
         month="2020-12"
         date={3}
       />
+      <DailyTransaction data={temptemp} />
     </MonthTransaction>
   );
 };
