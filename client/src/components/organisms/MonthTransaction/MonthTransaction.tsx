@@ -23,20 +23,43 @@ const MonthTransaction = styled.div`
 
 const monthTransaction: React.FC<Props> = ({ dateData, monthData }: Props) => {
   monthData.sort((a, b): any => Number(new Date(b.date)) - Number(new Date(a.date)));
-
+  let nowData = monthData;
+  const incomeData: any[] = [];
+  const excomeData: any[] = [];
+  monthData.forEach((ele) => {
+    if (ele.payment) {
+      excomeData.push(ele);
+    } else {
+      incomeData.push(ele);
+    }
+  });
   const [inCheck, setInCheck] = useState(true);
   const [exCheck, setExCheck] = useState(true);
-  console.log(dateData);
+  console.log(inCheck, exCheck);
+  nowData = [];
+  if (inCheck && exCheck) {
+    nowData = monthData;
+  }
+  if (inCheck && !exCheck) {
+    nowData = incomeData;
+  }
+  if (!inCheck && exCheck) {
+    nowData = excomeData;
+  }
+  if (!inCheck && !exCheck) {
+    nowData = [];
+  }
+
   const getDailyMoney = (date, flag) => {
     let dailymoney = 0;
     if (flag === true) {
-      monthData.forEach((e) => {
+      nowData.forEach((e) => {
         if (date === new Date(e.date).getDate()) {
           dailymoney += e.inmoney;
         }
       });
     } else {
-      monthData.forEach((e) => {
+      nowData.forEach((e) => {
         if (date === new Date(e.date).getDate()) {
           dailymoney += e.exmoney;
         }
@@ -48,18 +71,18 @@ const monthTransaction: React.FC<Props> = ({ dateData, monthData }: Props) => {
   const getMonthMoney = (flag) => {
     let monthMoney = 0;
     if (flag === true) {
-      monthData.forEach((e) => {
+      nowData.forEach((e) => {
         monthMoney += e.inmoney;
       });
     } else {
-      monthData.forEach((e) => {
+      nowData.forEach((e) => {
         monthMoney += e.exmoney;
       });
     }
     return monthMoney;
   };
 
-  let first = 0;
+  let now = 0;
   return (
     <MonthTransaction>
       <MonthNav />
@@ -83,22 +106,22 @@ const monthTransaction: React.FC<Props> = ({ dateData, monthData }: Props) => {
           money={getMonthMoney(false)}
         />
       </Filter>
-      {monthData.map((info) => {
-        if (new Date(info.date).getDate() !== first) {
-          first = new Date(info.date).getDate();
+      {nowData.map((info) => {
+        if (new Date(info.date).getDate() !== now) {
+          now = new Date(info.date).getDate();
           return (
             <>
               <DailyTotal
                 fontWeight="bold"
                 fontSize="15px"
-                InMoney={getDailyMoney(first, true)}
-                ExMoney={getDailyMoney(first, false)}
+                InMoney={getDailyMoney(now, true)}
+                ExMoney={getDailyMoney(now, false)}
                 InColor={Color.money.income}
                 ExColor={Color.money.expenditure}
                 width="100%"
                 height="2rem"
-                month="2020-10"
-                date={first}
+                month={dateData}
+                date={now}
               />
               <DailyTransaction data={info} />
             </>
