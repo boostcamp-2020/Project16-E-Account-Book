@@ -43,6 +43,8 @@ const transactionForm: React.FC<Props> = ({ onClick }: Props) => {
   const [amount, setAmount] = useState<string>();
   const [date, setDate] = useState<string>();
   const [time, setTime] = useState<string>();
+  const [categoryId, setCategoryId] = useState<number>();
+  const [paymentId, setPaymentId] = useState<number>();
 
   const titleInputChange = (e) => {
     const input = e.target.value;
@@ -59,14 +61,9 @@ const transactionForm: React.FC<Props> = ({ onClick }: Props) => {
     setAmount(money);
   };
 
-  const dateInputChange = (e) => {
+  const inputChange = (e, callback) => {
     const input = e.target.value;
-    setDate(input);
-  };
-
-  const timeInputChange = (e) => {
-    const input = e.target.value;
-    setTime(input);
+    callback(input);
   };
 
   return (
@@ -100,7 +97,7 @@ const transactionForm: React.FC<Props> = ({ onClick }: Props) => {
             title="날짜"
             width="55%"
             value={date}
-            onChange={dateInputChange}
+            onChange={(e) => inputChange(e, setDate)}
           />
           <DateWithText
             type="time"
@@ -108,12 +105,34 @@ const transactionForm: React.FC<Props> = ({ onClick }: Props) => {
             width="45%"
             justifyContent="flex-end"
             value={time}
-            onChange={timeInputChange}
+            onChange={(e) => inputChange(e, setTime)}
           />
         </RowFlexContainer>
-        {isIncome && <MenuWithText options={income} title="카테고리" width="100%" />}
-        {isExpenditure && <MenuWithText options={expenditure} title="카테고리" width="100%" />}
-        <MenuWithText options={payment} title="결제수단" width="100%" />
+        {isIncome && (
+          <MenuWithText
+            options={income}
+            title="카테고리"
+            width="100%"
+            value={categoryId}
+            onChange={(e) => inputChange(e, setCategoryId)}
+          />
+        )}
+        {isExpenditure && (
+          <MenuWithText
+            options={expenditure}
+            title="카테고리"
+            width="100%"
+            value={categoryId}
+            onChange={(e) => inputChange(e, setCategoryId)}
+          />
+        )}
+        <MenuWithText
+          options={payment}
+          title="결제수단"
+          width="100%"
+          value={paymentId}
+          onChange={(e) => inputChange(e, setPaymentId)}
+        />
       </InputContainer>
     </ColumnFlexContainer>
   );
