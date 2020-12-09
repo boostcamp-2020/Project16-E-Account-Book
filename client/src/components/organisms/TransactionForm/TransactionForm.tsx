@@ -16,7 +16,6 @@ import { postData } from '@interfaces/transaction';
 
 interface Props {
   initData?: postData | undefined;
-  onClick: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 }
 
 const defaultProps = {
@@ -38,7 +37,7 @@ const DeleteButtonContainer = styled.div`
 
 const InputDiv = styled.div``;
 
-const transactionForm: React.FC<Props> = ({ initData, onClick }: Props) => {
+const transactionForm: React.FC<Props> = ({ initData }: Props) => {
   const income = useSelector((state: RootState) => state.category.income);
   const expenditure = useSelector((state: RootState) => state.category.expenditure);
   const payment = useSelector((state: RootState) => state.payment.payment);
@@ -109,7 +108,6 @@ const transactionForm: React.FC<Props> = ({ initData, onClick }: Props) => {
           rightButtonName="지출"
           leftCallback={setIsIncome}
           rightCallback={setIsExpenditure}
-          onClick={onClick}
         />
         <DeleteButtonContainer>
           <TextButton onClick={clearInput}>모두 지우기</TextButton>

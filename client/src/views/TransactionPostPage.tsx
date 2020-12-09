@@ -25,9 +25,11 @@ const TransactionPostPage: React.FC = () => {
       <CenterContent>
         <TopNavBar />
         <Container>
-          <CreateTransactionHeader />
-          <TransactionForm onClick={onClick} />
-          <CreateTransactionMenu submit={onClick} cancel={cancel} />
+          <form onSubmit={submitHandler}>
+            <CreateTransactionHeader />
+            <TransactionForm />
+            <CreateTransactionMenu cancel={cancel} />
+          </form>
         </Container>
       </CenterContent>
     </>
