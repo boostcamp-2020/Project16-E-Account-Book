@@ -56,7 +56,7 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
   const monthlyData = new Map();
 
   monthData.forEach((e) => {
-    const day = new Date(e.date).getDay() - 1;
+    const day = new Date(e.date).getDate();
     if (monthlyData.has(day)) {
       const value = monthlyData.get(day);
       monthlyData.set(day, [(value[0] += e.inmoney), (value[1] += e.exmoney)]);
@@ -82,14 +82,12 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
     };
     preprocessData.push(buffer);
   });
-
   preprocessData.map((ele) => {
     return Object.assign(allDay[ele.date + emptyDays - 1], ele);
   });
   const allArr = sliceArray(allDay, 7);
-
-  const onClick = (date) => {
-    openModal(`${date}Result`);
+  const onClick = (thisDay) => {
+    openModal(`${thisDay}Result`);
   };
   return (
     <Calendar>

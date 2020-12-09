@@ -1,6 +1,7 @@
 /* eslint-disable no-await-in-loop */
 import { Context } from 'koa';
 import * as response from '../utils/response';
+import message from '../utils/message';
 import 'dotenv/config';
 import * as Service from './service';
 import { getPastMonthList } from '../utils/date';
@@ -26,7 +27,7 @@ export const getDailyTransaction = async (ctx: Context) => {
   const bookIdList = await Service.getBelongSocialBookList(userId);
 
   if (!bookIdList.includes(Number(bookId))) {
-    response.fail(ctx, 403, 'You are not authorized to this account book');
+    response.fail(ctx, 403, message.NO_SOCIAL_AUTHORIZED);
     return;
   }
 
@@ -42,6 +43,28 @@ export const createTransaction = async (ctx: any) => {
   response.success(ctx, result);
 };
 
+
+export const getCategoryStatistic = async (ctx: any) => {
+  const { bookId, year, month } = ctx.params;
+  const userId = ctx.userData.uid;
+
+  const bookIdList = await Service.getBelongSocialBookList(userId);
+
+  if (!bookIdList.includes(Number(bookId))) {
+    response.fail(ctx, 403, message.NO_SOCIAL_AUTHORIZED);
+    return;
+  }
+
+  const income = await Service.getIncomeCategory(bookId, year, month);
+  const expenditure = await Service.getExpenditureCategory(bookId, year, month);
+
+  const result = {
+    income,
+    expenditure,
+  };
+  response.success(ctx, result);
+};
+
 export const getPastFourMonthStatistics = async (ctx: any) => {
   const { bookId } = ctx.params;
   const dateList = getPastMonthList(4);
@@ -54,7 +77,8 @@ export const getPastFourMonthStatistics = async (ctx: any) => {
     const expend = await Service.getMonthlyStatisticsExpend(bookId, startDate, endDate);
     const income = await Service.getMonthlyStatisticsIncome(bookId, startDate, endDate);
 
-    result.push([income, expend]);
+    result.push([Number(income), Number(expend)]);
   }
+
   response.success(ctx, result);
 };
