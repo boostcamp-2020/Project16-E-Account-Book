@@ -11,6 +11,7 @@
   },
   "plugins": ["@typescript-eslint", "prettier"],
   "rules": {
+    "no-constant-condition":"off",
     "no-restricted-syntax":"off",
     "semi": "error",
     "prettier/prettier": [
