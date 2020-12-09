@@ -7,7 +7,15 @@ export default {
 };
 
 export const menuWithText = (): JSX.Element => {
-  return <MenuWithText options={['직장인', '학생']} title="카테고리" />;
+  return (
+    <MenuWithText
+      options={[
+        { id: 1, name: '직장인' },
+        { id: 2, name: '학생' },
+      ]}
+      title="카테고리"
+    />
+  );
 };
 
 menuWithText.story = {

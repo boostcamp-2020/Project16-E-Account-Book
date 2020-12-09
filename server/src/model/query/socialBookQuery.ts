@@ -51,6 +51,12 @@ const socialBookQuery = {
     GROUP BY category_id ORDER BY SUM(amount) DESC;`,
   CREATE_SOCIAL_TRANSACTION:
     'INSERT INTO social_transaction (accountbook_id, user_id, category_id, payment_id, date, title, amount) VALUES(?,?,?,?,?,?,?)',
+  READ_MONTHLY_STATISTICS_EXPEND: `
+  SELECT SUM(amount) FROM social_transaction 
+  WHERE accountbook_id = ? AND date >= ? AND date < ? AND payment_id IS NOT NULL`,
+  READ_MONTHLY_STATISTICS_INCOME: `
+  SELECT SUM(amount) FROM social_transaction 
+  WHERE accountbook_id = ? AND date >= ? AND date < ? AND payment_id IS NULL`,
 };
 
 export default socialBookQuery;

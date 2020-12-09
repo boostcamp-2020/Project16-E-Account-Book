@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ToggleButton from './ToggleButton';
 
 interface Props {
@@ -19,7 +19,14 @@ export default {
 };
 
 export const toggleButton = ({ ...args }: Props): JSX.Element => {
-  return <ToggleButton {...args} />;
+  const [testState, setTestState] = useState(true);
+
+  return (
+    <>
+      <p>{testState}</p>
+      <ToggleButton leftCallback={setTestState} rightCallback={setTestState} {...args} />
+    </>
+  );
 };
 
 toggleButton.story = {

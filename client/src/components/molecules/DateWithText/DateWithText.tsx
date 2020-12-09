@@ -1,31 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
 import Input from '@atoms/input/Input';
-import CenterSmallText from '@atoms/p/CenterSmallText';
+import Text from '@atoms/p/LeftNormalText';
+import DateWithText from '@atoms/div/RowFlexContainer';
 
-interface Props extends sizeProps {
+interface Props {
   title: string;
-}
-
-interface sizeProps {
+  type: string;
   width?: string;
+  margin?: string;
+  justifyContent?: string;
 }
 
 const defaultProps = {
-  width: '10%',
+  width: '100%',
+  margin: '',
+  justifyContent: 'flex-start',
 };
 
-const DateWithText = styled.div<sizeProps>`
-  display: flex;
-  justify-content: space-around;
-  width: ${(props) => props.width};
+const Container = styled.div`
+  margin-right: 10px;
 `;
 
-const dateWithText: React.FC<Props> = ({ width, title }: Props) => {
+const dateWithText: React.FC<Props> = ({ width, title, margin, justifyContent, type }: Props) => {
   return (
-    <DateWithText width={width}>
-      <CenterSmallText>{title}</CenterSmallText>
-      <Input placeholder="08:23" />
+    <DateWithText width={width} margin={margin} justifyContent={justifyContent}>
+      <Container>
+        <Text>{title}</Text>
+      </Container>
+      <Input type={type} width="70%" textAlign="center" placeholder="00:00" />
     </DateWithText>
   );
 };
