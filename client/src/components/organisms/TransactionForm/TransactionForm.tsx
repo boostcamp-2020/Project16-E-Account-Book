@@ -166,6 +166,7 @@ const transactionForm: React.FC<Props> = ({ initData }: Props) => {
           value={paymentId}
           onChange={(e) => inputChange(e, setPaymentId)}
         />
+        <input value={Number(isIncome)} hidden />
       </InputContainer>
     </ColumnFlexContainer>
   );

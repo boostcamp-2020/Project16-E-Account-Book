@@ -10,6 +10,7 @@ interface Props {
   fontSize?: string;
   textAlign?: string;
   placeholder?: string;
+  isRequired?: boolean;
   value?: any;
   onChange?: any;
 }
@@ -22,6 +23,7 @@ const defaultProps = {
   fontSize: '1rem',
   textAlign: '',
   placeholder: '',
+  isRequired: true,
   value: undefined,
   onChange: undefined,
 };
@@ -57,6 +59,7 @@ const input: React.FC<Props> = ({
   fontSize,
   color,
   textAlign,
+  isRequired,
   value,
   onChange,
 }: Props) => {
@@ -71,6 +74,7 @@ const input: React.FC<Props> = ({
       color={color}
       value={value}
       onChange={onChange}
+      required={isRequired}
     />
   );
 };
