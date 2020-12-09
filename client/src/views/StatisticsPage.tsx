@@ -20,7 +20,10 @@ const StatisticsPage: React.FC = () => {
   const [fourMonthData, setFourMonthData] = useState([]);
 
   const initFourMonthData = async () => {
-    const master = await getAxiosData(`${API.GET_SOCIAL_FOUR_MONTH_STATISTICS}+${accountbookId}`);
+    const master =
+      accountbookType === 'SOCIAL'
+        ? await getAxiosData(`${API.GET_SOCIAL_FOUR_MONTH_STATISTICS}+${accountbookId}`)
+        : await getAxiosData(`${API.GET_PRIVATE_FOUR_MONTH_STATISTICS}`);
     setFourMonthData(master.data.reverse());
   };
 
