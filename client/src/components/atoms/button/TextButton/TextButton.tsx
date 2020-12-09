@@ -26,7 +26,7 @@ const Button = styled.button<Props>`
 
 const TextButton: React.FC<Props> = ({ color, children, onClick }: Props) => {
   return (
-    <Button onClick={onClick} color={color}>
+    <Button type="button" onClick={onClick} color={color}>
       {children}
     </Button>
   );

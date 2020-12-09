@@ -20,7 +20,9 @@ const BottomDiv = styled.div`
 const createTransactionMenu: React.FC<Props> = ({ submit, cancel }: Props) => {
   return (
     <BottomDiv>
-      <RoundLongButton onClick={submit}>등록</RoundLongButton>
+      <RoundLongButton isSubmit onClick={submit}>
+        등록
+      </RoundLongButton>
       <RoundLongButton onClick={cancel} backgroundColor={myColor.primary.cancel}>
         취소
       </RoundLongButton>
