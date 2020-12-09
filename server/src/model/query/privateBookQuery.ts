@@ -25,7 +25,7 @@ const privateBookQuery = {
     FROM private_transaction as pt
     JOIN category as ca
     ON pt.category_id = ca.id
-    WHERE pt.accountbook_id = ? AND year(pt.date) = ?
+    WHERE pt.accountbook_id = ? AND date >= ? AND date < ?
   `,
 };
 
