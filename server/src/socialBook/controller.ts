@@ -94,7 +94,7 @@ export const createAccountbook = async (ctx: any) => {
 };
 
 export const createAccountbookUser = async (ctx: any) => {
-  const { userId, accountbookId, state, invitedAt, acceptedAt } = ctx.request.body;
+  const { userId, accountbookId, state } = ctx.request.body;
 
   const result = await Service.createAccountbookUser(userId, accountbookId, state);
 
