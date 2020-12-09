@@ -57,6 +57,10 @@ const socialBookQuery = {
   READ_MONTHLY_STATISTICS_INCOME: `
   SELECT SUM(amount) FROM social_transaction 
   WHERE accountbook_id = ? AND date >= ? AND date < ? AND payment_id IS NULL`,
+  CREATE_SOCIAL_ACCOUNTBOOK:
+    'INSERT INTO social_accountbook (master_id, name, description, color) VALUES(?,?,?,?)',
+  CREATE_SOCIAL_ACCOUNTBOOK_USERS:
+    'INSERT INTO social_accountbook_users (user_id, accountbook_id, state) VALUES(?,?,?)',
 };
 
 export default socialBookQuery;

@@ -16,5 +16,6 @@ router.get('/statistic/category/:bookId/:year/:month', Controller.getCategorySta
 
 router.get('/statistics/monthly/:bookId', Controller.getPastFourMonthStatistics);
 
+router.post('/createAccountbook', Controller.createAccountbook);
 
 export default router;

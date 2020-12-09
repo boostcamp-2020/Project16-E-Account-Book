@@ -52,7 +52,6 @@ export const createTransaction = async (transaction: (string | number)[]) => {
   return result.insertId;
 };
 
-
 export const getIncomeCategory = async (bookId: number, year: number, month: number) => {
   const result = await sql(query.READ_SOCIAL_INCOME_CATEGORY, [bookId, year, month]);
   const percentResult = getCategoryPercentData(result);
@@ -90,4 +89,34 @@ export const getMonthlyStatisticsIncome = async (
     endDate,
   ]);
   return result[0]['SUM(amount)'];
+};
+
+export const createAccountbook = async (
+  name: string,
+  description: string,
+  color: string,
+  userId: Number,
+) => {
+  const accountbookResult = await sql(query.CREATE_SOCIAL_ACCOUNTBOOK, [
+    userId,
+    name,
+    description,
+    color,
+  ]);
+
+  return accountbookResult.insertId;
+};
+
+export const createAccountbookUser = async (
+  userId: Number,
+  accountbookId: Number,
+  state: Number,
+) => {
+  const accountbookUserResult = await sql(query.CREATE_SOCIAL_ACCOUNTBOOK_USERS, [
+    userId,
+    accountbookId,
+    state,
+  ]);
+
+  return accountbookUserResult.insertId;
 };
