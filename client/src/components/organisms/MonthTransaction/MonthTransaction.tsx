@@ -33,6 +33,7 @@ const monthTransaction: React.FC<Props> = ({ dateData, monthData }: Props) => {
       incomeData.push(ele);
     }
   });
+
   const [inCheck, setInCheck] = useState(true);
   const [exCheck, setExCheck] = useState(true);
   if (inCheck && exCheck) {
@@ -69,11 +70,11 @@ const monthTransaction: React.FC<Props> = ({ dateData, monthData }: Props) => {
   const getMonthMoney = (flag) => {
     let monthMoney = 0;
     if (flag === true) {
-      nowData.forEach((e) => {
+      monthData.forEach((e) => {
         monthMoney += e.inmoney;
       });
     } else {
-      nowData.forEach((e) => {
+      monthData.forEach((e) => {
         monthMoney += e.exmoney;
       });
     }
