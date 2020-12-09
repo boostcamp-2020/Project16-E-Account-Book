@@ -120,3 +120,7 @@ export const createAccountbookUser = async (
 
   return accountbookUserResult.insertId;
 };
+export const getTransactionList = async (searchInfo: (string | number)[]) => {
+  const result = await sql(query.GET_SOCIAL_TRANSACTIONLIST, searchInfo);
+  return result;
+};
