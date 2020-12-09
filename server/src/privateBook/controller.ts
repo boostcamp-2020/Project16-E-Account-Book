@@ -32,3 +32,18 @@ export const getTransactionList = async (ctx: any) => {
   });
   response.success(ctx, result);
 };
+
+export const getCategoryStatistic = async (ctx: any) => {
+  const { year, month } = ctx.params;
+  const userId = ctx.userData.uid;
+  const bookId = await Service.getAccountBookId(userId);
+
+  const income = await Service.getIncomeCategory(bookId, year, month);
+  const expenditure = await Service.getExpenditureCategory(bookId, year, month);
+
+  const result = {
+    income,
+    expenditure,
+  };
+  response.success(ctx, result);
+};

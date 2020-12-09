@@ -21,3 +21,8 @@ export interface SocialInfo {
   expenditureSum: string;
   images?: userImages;
 }
+
+export interface CategorySumData {
+  money: string;
+  name: string;
+}
