@@ -18,11 +18,8 @@ import { getAxiosData } from '@utils/axios';
 import * as API from '@utils/api';
 
 interface chipsProps {
-  categoryList: Array<string>;
-  amountList: Array<number>;
-  income: number;
-  expend: number;
   link: string;
+  info: any;
 }
 
 const MarginBox = styled.div`
@@ -43,15 +40,13 @@ const CardBox = styled.div`
 const MainPage: React.FC = () => {
   const [masterBooks, setMasterBooks] = useState<SocialBook[]>([]);
   const [socialBooks, setSocialBooks] = useState<SocialBook[]>([]);
-  const user = useSelector((state: RootState) => state.user.name);
+  const userName = useSelector((state: RootState) => state.user.name);
+  const userImage = useSelector((state: RootState) => state.user.image);
+  const [infos, setInfo] = useState<any>('');
 
   const chipsArgs: chipsProps = {
-    categoryList: ['여가', '외식', '쇼핑', '교통'],
-    amountList: [80000, 50000, 17500, 12980],
-    income: 243943,
-    expend: 467443,
-    link:
-      'https://avatars2.githubusercontent.com/u/46099115?s=460&u=1e04610d430875d8189d2b212b8c2d9fc268b9db&v=4',
+    link: userImage,
+    info: infos,
   };
 
   const initMasterBooks = async () => {
@@ -64,11 +59,17 @@ const MainPage: React.FC = () => {
     setSocialBooks(social.data);
   };
 
+  const getAnalysis = async () => {
+    const { data } = await getAxiosData(`${API.GET_PRIVATE_ANALYSIS}`);
+    console.log(data);
+    setInfo(data);
+  };
+
   useEffect(() => {
     initMasterBooks();
     initSocialBooks();
+    getAnalysis();
   }, []);
-
   return (
     <>
       <CenterContent>
@@ -79,7 +80,7 @@ const MainPage: React.FC = () => {
             <ColumFlexContainer width="100%" height="100%" alignItems="center">
               <RowFlexContainer width="90%" alignItems="center" justifyContent="space-between">
                 <LeftNormalText>
-                  안녕하세요 <Bold>{user}</Bold>님!
+                  안녕하세요 <Bold>{userName}</Bold>님!
                 </LeftNormalText>
                 <CreateButton link="/accountbook/social/new" />
               </RowFlexContainer>
