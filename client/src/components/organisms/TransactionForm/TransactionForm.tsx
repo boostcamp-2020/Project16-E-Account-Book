@@ -8,6 +8,7 @@ import DateWithText from '@molecules/DateWithText';
 import MenuWithText from '@molecules/MenuWithText';
 import ColumnFlexContainer from '@atoms/div/ColumnFlexContainer';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
+import { inputToNumber, numberToMoney } from '@utils/number';
 import { useSelector } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
 
@@ -38,7 +39,8 @@ const transactionForm: React.FC<Props> = ({ onClick }: Props) => {
   const [isIncome, setIsIncome] = useState(true);
   const [isExpenditure, setIsExpenditure] = useState(false);
 
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState<string>();
+  const [amount, setAmount] = useState<string>();
 
   const titleInputChange = (e) => {
     const input = e.target.value;
@@ -47,6 +49,12 @@ const transactionForm: React.FC<Props> = ({ onClick }: Props) => {
       return;
     }
     setTitle(input);
+  };
+
+  const amountInputChange = (e) => {
+    const input = inputToNumber(e.target.value);
+    const money = numberToMoney(input);
+    setAmount(money);
   };
 
   return (
@@ -66,14 +74,14 @@ const transactionForm: React.FC<Props> = ({ onClick }: Props) => {
       <InputContainer>
         <InputDiv>
           <Input
-            value={title}
             fontSize="1.4rem"
             placeholder="최대 15자까지 입력가능합니다"
             width="100%"
+            value={title}
             onChange={titleInputChange}
           />
         </InputDiv>
-        <InputWithText title="금액" width="100%" />
+        <InputWithText title="금액" width="100%" value={amount} onChange={amountInputChange} />
         <RowFlexContainer justifyContent="space-between">
           <DateWithText type="date" title="날짜" width="55%" />
           <DateWithText type="time" title="시간" width="45%" justifyContent="flex-end" />
