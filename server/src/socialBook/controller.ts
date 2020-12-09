@@ -4,7 +4,7 @@ import * as response from '../utils/response';
 import message from '../utils/message';
 import 'dotenv/config';
 import * as Service from './service';
-import { getPastMonthList } from '../utils/date';
+import { getPastMonthList, getPastWeekList } from '../utils/date';
 
 export const getSocialBooks = async (ctx: Context) => {
   const userId = ctx.userData.uid;
@@ -43,7 +43,6 @@ export const createTransaction = async (ctx: any) => {
   response.success(ctx, result);
 };
 
-
 export const getCategoryStatistic = async (ctx: any) => {
   const { bookId, year, month } = ctx.params;
   const userId = ctx.userData.uid;
@@ -79,6 +78,36 @@ export const getPastFourMonthStatistics = async (ctx: any) => {
 
     result.push([Number(income), Number(expend)]);
   }
+
+  response.success(ctx, result);
+};
+
+export const getPastFiveWeekStatistic = async (ctx: any) => {
+  const { bookId } = ctx.params;
+  const dateList = getPastWeekList(5);
+  const startDate = 0;
+  const endDate = 1;
+  const income = [];
+  const expend = [];
+
+  for (let index = 0; index < dateList.length; index += 1) {
+    income.push(
+      Number(
+        await Service.getWeeksIncome(bookId, dateList[index][startDate], dateList[index][endDate]),
+      ),
+    );
+    expend.push(
+      Number(
+        await Service.getWeeksExpend(bookId, dateList[index][startDate], dateList[index][endDate]),
+      ),
+    );
+  }
+
+  const result = {
+    income,
+    expend,
+    dateList,
+  };
 
   response.success(ctx, result);
 };

@@ -52,7 +52,6 @@ export const createTransaction = async (transaction: (string | number)[]) => {
   return result.insertId;
 };
 
-
 export const getIncomeCategory = async (bookId: number, year: number, month: number) => {
   const result = await sql(query.READ_SOCIAL_INCOME_CATEGORY, [bookId, year, month]);
   const percentResult = getCategoryPercentData(result);
@@ -88,6 +87,24 @@ export const getMonthlyStatisticsIncome = async (
     accountBookId,
     startDate,
     endDate,
+  ]);
+  return result[0]['SUM(amount)'];
+};
+
+export const getWeeksIncome = async (bookId: number, startDate: string, endDate: string) => {
+  const result = await sql(query.READ_SOCIAL_WEEKLY_STATISTICS_INCOME, [
+    bookId,
+    startDate,
+    `${endDate} 23:59:59`,
+  ]);
+  return result[0]['SUM(amount)'];
+};
+
+export const getWeeksExpend = async (bookId: number, startDate: string, endDate: string) => {
+  const result = await sql(query.READ_SOCIAL_WEEKLY_STATISTICS_EXPEND, [
+    bookId,
+    startDate,
+    `${endDate} 23:59:59`,
   ]);
   return result[0]['SUM(amount)'];
 };
