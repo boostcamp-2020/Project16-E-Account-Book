@@ -41,6 +41,8 @@ const transactionForm: React.FC<Props> = ({ onClick }: Props) => {
 
   const [title, setTitle] = useState<string>();
   const [amount, setAmount] = useState<string>();
+  const [date, setDate] = useState<string>();
+  const [time, setTime] = useState<string>();
 
   const titleInputChange = (e) => {
     const input = e.target.value;
@@ -55,6 +57,16 @@ const transactionForm: React.FC<Props> = ({ onClick }: Props) => {
     const input = inputToNumber(e.target.value);
     const money = numberToMoney(input);
     setAmount(money);
+  };
+
+  const dateInputChange = (e) => {
+    const input = e.target.value;
+    setDate(input);
+  };
+
+  const timeInputChange = (e) => {
+    const input = e.target.value;
+    setTime(input);
   };
 
   return (
@@ -83,8 +95,21 @@ const transactionForm: React.FC<Props> = ({ onClick }: Props) => {
         </InputDiv>
         <InputWithText title="금액" width="100%" value={amount} onChange={amountInputChange} />
         <RowFlexContainer justifyContent="space-between">
-          <DateWithText type="date" title="날짜" width="55%" />
-          <DateWithText type="time" title="시간" width="45%" justifyContent="flex-end" />
+          <DateWithText
+            type="date"
+            title="날짜"
+            width="55%"
+            value={date}
+            onChange={dateInputChange}
+          />
+          <DateWithText
+            type="time"
+            title="시간"
+            width="45%"
+            justifyContent="flex-end"
+            value={time}
+            onChange={timeInputChange}
+          />
         </RowFlexContainer>
         {isIncome && <MenuWithText options={income} title="카테고리" width="100%" />}
         {isExpenditure && <MenuWithText options={expenditure} title="카테고리" width="100%" />}
