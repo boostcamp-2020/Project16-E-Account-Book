@@ -2,9 +2,7 @@
 import { CategorySumData } from '../interface/social';
 
 export const getCategoryPercentData = (categoryData: CategorySumData[]) => {
-  const total = categoryData.reduce(function (pre, curr): number {
-    return pre + parseInt(curr.money, 10);
-  }, 0);
+  const total = categoryData.reduce((pre, cur) => pre + parseInt(cur.money, 10), 0);
 
   const result = [];
 
