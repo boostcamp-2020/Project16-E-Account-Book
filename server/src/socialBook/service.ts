@@ -96,13 +96,11 @@ export const createAccountbook = async (
   description: string,
   color: string,
   userId: Number,
-  createdAt: Date,
 ) => {
   const accountbookResult = await sql(query.CREATE_SOCIAL_ACCOUNTBOOK, [
     userId,
     name,
     description,
-    createdAt,
     color,
   ]);
 
@@ -113,15 +111,11 @@ export const createAccountbookUser = async (
   userId: Number,
   accountbookId: Number,
   state: Number,
-  invitedAt: Date,
-  acceptedAt: Date,
 ) => {
   const accountbookUserResult = await sql(query.CREATE_SOCIAL_ACCOUNTBOOK_USERS, [
     userId,
     accountbookId,
     state,
-    invitedAt,
-    acceptedAt,
   ]);
 
   return accountbookUserResult.insertId;
