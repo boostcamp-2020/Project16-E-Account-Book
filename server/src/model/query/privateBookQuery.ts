@@ -21,11 +21,12 @@ const privateBookQuery = {
     WHERE accountbook_id = ? AND year(date) = ? AND month(date) = ? AND payment_id IS NOT NULL
     GROUP BY category_id ORDER BY SUM(amount) DESC;`,
   READ_PRIVATE_MONTH_TRANSACTION: `
-    SELECT pt.amount, ca.assortment_id, ca.name
-    FROM private_transaction as pt
-    JOIN category as ca
-    ON pt.category_id = ca.id
-    WHERE pt.accountbook_id = ? AND date >= ? AND date < ?
+    SELECT SUM(amount) as money, 
+    (SELECT name FROM category WHERE category.id = private_transaction.category_id) as name
+    FROM private_transaction
+    WHERE accountbook_id = ? AND payment_id IS NOT NULL
+    AND date > LAST_DAY(NOW() - interval 1 month) AND date <= LAST_DAY(NOW())
+    GROUP BY category_id ORDER BY SUM(amount) DESC LIMIT 4;
   `,
 };
 
