@@ -5,6 +5,8 @@ import Text from '@atoms/p/LeftLargeText';
 
 interface Props extends sizeProps {
   title: string;
+  value: any;
+  onChange: any;
 }
 
 interface sizeProps {
@@ -21,11 +23,18 @@ const InputWithText = styled.div<sizeProps>`
   width: ${(props) => props.width};
 `;
 
-const inputWithText: React.FC<Props> = ({ width, title }: Props) => {
+const inputWithText: React.FC<Props> = ({ width, title, value, onChange }: Props) => {
   return (
     <InputWithText width={width}>
       <Text>{title}</Text>
-      <Input width="85%" fontSize="1.4rem" textAlign="right" placeholder="0" />
+      <Input
+        width="85%"
+        fontSize="1.4rem"
+        textAlign="right"
+        placeholder="0"
+        value={value}
+        onChange={onChange}
+      />
       <Text>원</Text>
     </InputWithText>
   );

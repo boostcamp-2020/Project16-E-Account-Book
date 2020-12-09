@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { getPastMonthList } from '@utils/calcMonth';
-import ntm from '@utils/numberToMoney';
+import { numberToMoney } from '@utils/number';
 import getRandomKey from '@utils/random';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import TwoBarGraph from '@atoms/graph/TwoBarGraph';
@@ -86,8 +86,8 @@ const FourMonthStatistics: React.FC<props> = ({ data }: props) => {
       <RowFlexContainer width="100%" height="20%" alignItems="flex-start">
         <InfoBox>
           <p>{`${monthList[monthIndex]}월`}</p>
-          <p>{data.length !== 0 ? `수입 : ${ntm.number2Money(data[monthIndex][income])}` : ''}</p>
-          <p>{data.length !== 0 ? `지출 : ${ntm.number2Money(data[monthIndex][expend])}` : ''}</p>
+          <p>{data.length !== 0 ? `수입 : ${numberToMoney(data[monthIndex][income])}` : ''}</p>
+          <p>{data.length !== 0 ? `지출 : ${numberToMoney(data[monthIndex][expend])}` : ''}</p>
         </InfoBox>
       </RowFlexContainer>
       <RowFlexContainer width="100%" height="60%">
