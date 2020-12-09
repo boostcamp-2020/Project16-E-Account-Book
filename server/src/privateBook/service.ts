@@ -29,3 +29,30 @@ export const getExpenditureCategory = async (bookId: number, year: number, month
   const percentResult = getCategoryPercentData(result);
   return percentResult;
 };
+
+export const getMonthlyStatisticsExpend = async (
+  bookId: number,
+  startDate: string,
+  endDate: string,
+) => {
+  const result = await sql(query.READ_PRIVATE_MONTHLY_STATISTICS_EXPEND, [
+    bookId,
+    startDate,
+    endDate,
+  ]);
+
+  return result[0]['SUM(amount)'];
+};
+
+export const getMonthlyStatisticsIncome = async (
+  bookId: number,
+  startDate: string,
+  endDate: string,
+) => {
+  const result = await sql(query.READ_PRIVATE_MONTHLY_STATISTICS_INCOME, [
+    bookId,
+    startDate,
+    endDate,
+  ]);
+  return result[0]['SUM(amount)'];
+};

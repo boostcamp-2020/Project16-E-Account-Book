@@ -20,6 +20,12 @@ const privateBookQuery = {
     FROM private_transaction
     WHERE accountbook_id = ? AND year(date) = ? AND month(date) = ? AND payment_id IS NOT NULL
     GROUP BY category_id ORDER BY SUM(amount) DESC;`,
+  READ_PRIVATE_MONTHLY_STATISTICS_EXPEND: `
+    SELECT SUM(amount) FROM private_transaction 
+    WHERE accountbook_id = ? AND date >= ? AND date < ? AND payment_id IS NOT NULL`,
+  READ_PRIVATE_MONTHLY_STATISTICS_INCOME: `
+    SELECT SUM(amount) FROM private_transaction 
+    WHERE accountbook_id = ? AND date >= ? AND date < ? AND payment_id IS NULL`,
 };
 
 export default privateBookQuery;

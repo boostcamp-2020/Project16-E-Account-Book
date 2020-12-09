@@ -16,5 +16,4 @@ router.get('/statistic/category/:bookId/:year/:month', Controller.getCategorySta
 
 router.get('/statistics/monthly/:bookId', Controller.getPastFourMonthStatistics);
 
-
 export default router;

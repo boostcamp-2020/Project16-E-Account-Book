@@ -43,7 +43,6 @@ export const createTransaction = async (ctx: any) => {
   response.success(ctx, result);
 };
 
-
 export const getCategoryStatistic = async (ctx: any) => {
   const { bookId, year, month } = ctx.params;
   const userId = ctx.userData.uid;
