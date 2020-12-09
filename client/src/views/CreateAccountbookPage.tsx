@@ -6,15 +6,30 @@ import CreateAccountbookFormBox from '@organisms/CreateAccountbookFormBox';
 import TopNavBar from '@organisms/TopNavBar';
 import CreateAccountbookSetting from '@organisms/CreateAccountbookSetting';
 import colorUtils from '@utils/color';
+/* import * as Axios from '@utils/axios';
+import * as API from '@utils/api'; */
 
 const CreateAccountbookPage: React.FC = () => {
+  const createButtonClick = async (data: any) => {
+    /* const data = {
+      name,
+      description,
+      usersList,
+      color,
+    };
+    const result = await Axios.postAxios(API.POST_CREATE_SOCIAL, data); */
+    console.log(data);
+  };
   const backgroundColor = colorUtils.getRandomColor();
   return (
     <>
       <ColoredBackground backgroundColor={myColor.primary.lightGray} />
       <CenterContent>
         <TopNavBar backgroundColor={backgroundColor} />
-        <CreateAccountbookFormBox backgroundColor={backgroundColor} />
+        <CreateAccountbookFormBox
+          buttonEvent={createButtonClick}
+          backgroundColor={backgroundColor}
+        />
         <CreateAccountbookSetting
           labelColor="blue"
           links={[
