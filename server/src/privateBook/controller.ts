@@ -1,7 +1,9 @@
+/* eslint-disable no-await-in-loop */
 import * as response from '../utils/response';
 import 'dotenv/config';
 import * as Service from './service';
 import { TransactionList } from '../interface/transaction';
+import { getPastWeekList } from '../utils/date';
 
 export const createTransaction = async (ctx: any) => {
   const { accountbookId, categoryId, paymentId, date, title, amount } = ctx.request.body;
@@ -45,5 +47,36 @@ export const getCategoryStatistic = async (ctx: any) => {
     income,
     expenditure,
   };
+  response.success(ctx, result);
+};
+
+export const getPastFiveWeekStatistic = async (ctx: any) => {
+  const userId = ctx.userData.uid;
+  const bookId = await Service.getAccountBookId(userId);
+  const dateList = getPastWeekList(5);
+  const startDate = 0;
+  const endDate = 1;
+  const income = [];
+  const expend = [];
+
+  for (let index = 0; index < dateList.length; index += 1) {
+    income.push(
+      Number(
+        await Service.getWeeksIncome(bookId, dateList[index][startDate], dateList[index][endDate]),
+      ),
+    );
+    expend.push(
+      Number(
+        await Service.getWeeksExpend(bookId, dateList[index][startDate], dateList[index][endDate]),
+      ),
+    );
+  }
+
+  const result = {
+    income,
+    expend,
+    dateList,
+  };
+
   response.success(ctx, result);
 };

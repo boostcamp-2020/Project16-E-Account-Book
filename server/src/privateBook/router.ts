@@ -10,4 +10,6 @@ router.post('/transaction', Controller.createTransaction);
 
 router.get('/statistic/category/:year/:month', Controller.getCategoryStatistic);
 
+router.get('/statistic/weeks', Controller.getPastFiveWeekStatistic);
+
 export default router;
