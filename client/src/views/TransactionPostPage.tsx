@@ -7,6 +7,10 @@ import TransactionForm from '@organisms/TransactionForm';
 import CreateTransactionMenu from '@organisms/CreateTransactionMenu';
 import { inputToNumber } from '@utils/number';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '@reducers/rootReducer';
+import { postAxios } from '@utils/axios';
+import * as API from '@utils/api';
 
 // eslint-disable-next-line no-shadow
 enum Form {
@@ -24,8 +28,25 @@ const Container = styled.div`
 `;
 
 const TransactionPostPage: React.FC = () => {
+  const accountbookType = useSelector((state: RootState) => state.accountbook.type);
+  const accountbookId = useSelector((state: RootState) => state.accountbook.socialId);
+
   const history = useHistory();
   const cancel = () => {
+    history.go(-1);
+  };
+
+  const postTransaction = async (data) => {
+    switch (accountbookType) {
+      case 'PRIVATE':
+        await postAxios(API.POST_PRIVATE_TRANSACTION, data);
+        break;
+      case 'SOCIAL':
+        await postAxios(API.POST_SOCIAL_TRANSACTION, data);
+        break;
+      default:
+        break;
+    }
     history.go(-1);
   };
 
@@ -35,11 +56,19 @@ const TransactionPostPage: React.FC = () => {
     const amount = inputToNumber(event.target[Form.Amount].value);
     const day = event.target[Form.Day].value;
     const time = `${event.target[Form.Time].value}:00`;
-    const date = day + time;
+    const date = `${day} ${time}`;
     const categoryId = event.target[Form.CategoryId].value;
-    const paymentId = event.target[Form.PaymentId].value;
     const isIncome = Boolean(Number(event.target[Form.IsIncome].value));
-    console.log(title, amount, date, categoryId, paymentId, isIncome);
+    const paymentId = isIncome ? undefined : event.target[Form.PaymentId].value;
+    const data = {
+      accountbookId,
+      title,
+      amount,
+      date,
+      categoryId,
+      paymentId,
+    };
+    postTransaction(data);
   };
 
   return (
