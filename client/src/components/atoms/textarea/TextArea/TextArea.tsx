@@ -9,6 +9,7 @@ interface Props {
   fontColor?: string;
   backgroundColor?: string;
   fontSize?: string;
+  placeholder?: string;
   onChange?: (event: any) => void;
 }
 
@@ -18,6 +19,7 @@ const defaultProps = {
   fontSize: '10pt',
   fontColor: 'black',
   onChange: undefined,
+  placeholder: '',
 };
 
 const TextArea = styled.textarea<Props>`
@@ -30,6 +32,10 @@ const TextArea = styled.textarea<Props>`
   font-size: ${(props) => props.fontSize};
   color: ${(props) => props.fontColor};
   font-family: S-CoreDream-4Regular;
+  placeholder : {
+    color: ${(props) => props.fontColor};
+    font-size: ${(props) => props.fontSize};
+  }
 `;
 
 const textArea: React.FC<Props> = ({
@@ -39,6 +45,7 @@ const textArea: React.FC<Props> = ({
   value,
   width,
   height,
+  placeholder,
   onChange,
 }: Props) => {
   return (
@@ -50,6 +57,7 @@ const textArea: React.FC<Props> = ({
       value={value}
       width={width}
       height={height}
+      placeholder={placeholder}
     />
   );
 };
