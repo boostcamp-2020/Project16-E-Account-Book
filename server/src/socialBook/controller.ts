@@ -5,6 +5,7 @@ import message from '../utils/message';
 import 'dotenv/config';
 import * as Service from './service';
 import { getPastMonthList } from '../utils/date';
+import { TransactionList } from '../interface/transaction';
 
 export const getSocialBooks = async (ctx: Context) => {
   const userId = ctx.userData.uid;
@@ -98,5 +99,34 @@ export const createAccountbookUser = async (ctx: any) => {
 
   const result = await Service.createAccountbookUser(userId, accountbookId, state);
 
+  response.success(ctx, result);
+};
+
+export const getTransactionList = async (ctx: any) => {
+  const { accountbookId, year, month } = ctx.params;
+  const userId = ctx.userData.uid;
+
+  const bookIdList = await Service.getBelongSocialBookList(userId);
+
+  if (!bookIdList.includes(Number(accountbookId))) {
+    response.fail(ctx, 403, message.NO_SOCIAL_AUTHORIZED);
+    return;
+  }
+
+  const searchInfo = [accountbookId, year, month];
+  let result = await Service.getTransactionList(searchInfo);
+  result = result.map((eachData: TransactionList) => {
+    const inmoney = eachData.assortment === '수입' ? eachData.amount : 0;
+    const exmoney = eachData.assortment === '지출' ? eachData.amount : 0;
+    return {
+      id: eachData.id,
+      date: eachData.date,
+      inmoney,
+      exmoney,
+      payment: eachData.name,
+      category: eachData.category,
+      title: eachData.title,
+    };
+  });
   response.success(ctx, result);
 };
