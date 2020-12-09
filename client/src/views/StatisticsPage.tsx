@@ -3,6 +3,8 @@ import ToggleButton from '@atoms/div/ToggleButton';
 import MonthNav from '@molecules/MonthNav';
 import ColumFlexContainer from '@atoms/div/ColumnFlexContainer';
 import FourMonthStatistics from '@organisms/FourMonthStatistics';
+import FiveWeekStatistics from '@organisms/FiveWeekStatistics';
+
 import { useSelector } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
 import { getAxiosData } from '@utils/axios';
@@ -18,10 +20,19 @@ const StatisticsPage: React.FC = () => {
   const [isIncome, setIsIncome] = useState(true);
   const [isExpenditure, setIsExpenditure] = useState(false);
   const [fourMonthData, setFourMonthData] = useState([]);
+  const [fiveWeekData, setFiveWeekData] = useState([]);
 
   const initFourMonthData = async () => {
     const master = await getAxiosData(`${API.GET_SOCIAL_FOUR_MONTH_STATISTICS}+${accountbookId}`);
     setFourMonthData(master.data.reverse());
+  };
+
+  const initFiveWeekData = async () => {
+    const master =
+      accountbookType === 'SOCIAL'
+        ? await getAxiosData(`${API.GET_SOCIAL_FIVE_WEEK_STATISTICS}+${accountbookId}`)
+        : await getAxiosData(`${API.GET_PRIVATE_FIVE_WEEK_STATISTICS}`);
+    setFiveWeekData(master.data);
   };
 
   useEffect(() => {
@@ -29,10 +40,12 @@ const StatisticsPage: React.FC = () => {
     console.log(isExpenditure);
     console.log(accountbookType);
     console.log(accountbookId);
+    alert('hello');
   }, [dateData]);
 
   useEffect(() => {
     initFourMonthData();
+    initFiveWeekData();
   }, []);
 
   const onClick = () => {
@@ -50,6 +63,7 @@ const StatisticsPage: React.FC = () => {
         onClick={onClick}
       />
       <ColumFlexContainer width="100%" alignItems="center">
+        <FiveWeekStatistics data={fiveWeekData} isIncome={isIncome} />
         <FourMonthStatistics data={fourMonthData} />
       </ColumFlexContainer>
     </>
