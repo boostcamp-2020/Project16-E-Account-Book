@@ -38,6 +38,17 @@ const transactionForm: React.FC<Props> = ({ onClick }: Props) => {
   const [isIncome, setIsIncome] = useState(true);
   const [isExpenditure, setIsExpenditure] = useState(false);
 
+  const [title, setTitle] = useState('');
+
+  const titleInputChange = (e) => {
+    const input = e.target.value;
+    if (input.length > 15) {
+      alert('내용은 최대 15자까지만 입력 가능합니다!');
+      return;
+    }
+    setTitle(input);
+  };
+
   return (
     <ColumnFlexContainer width="100%" justifyContent="space-around">
       <RowFlexContainer width="100%" alignItems="center">
@@ -54,7 +65,13 @@ const transactionForm: React.FC<Props> = ({ onClick }: Props) => {
       </RowFlexContainer>
       <InputContainer>
         <InputDiv>
-          <Input fontSize="1.4rem" placeholder="최대 15자까지 입력가능합니다" width="100%" />
+          <Input
+            value={title}
+            fontSize="1.4rem"
+            placeholder="최대 15자까지 입력가능합니다"
+            width="100%"
+            onChange={titleInputChange}
+          />
         </InputDiv>
         <InputWithText title="금액" width="100%" />
         <RowFlexContainer justifyContent="space-between">
