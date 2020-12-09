@@ -17,3 +17,5 @@ export const GET_INCOME_CATEGORY = `${process.env.REACT_APP_BASE_URL}/api/catego
 export const GET_EXPENDITURE_CATEGORY = `${process.env.REACT_APP_BASE_URL}/api/category/expenditure`;
 
 export const GET_PAYMENT = `${process.env.REACT_APP_BASE_URL}/api/payment`;
+
+export const GET_SOCIAL_FOUR_MONTH_STATISTICS = `${process.env.REACT_APP_BASE_URL}/api/social/statistics/monthly/`;
