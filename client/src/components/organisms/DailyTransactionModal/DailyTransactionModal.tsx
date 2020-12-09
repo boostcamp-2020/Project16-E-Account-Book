@@ -39,9 +39,9 @@ const StyledLink = styled(Link)`
 
 const DailyTransactionModal: React.FC<props> = ({ month, date }: props) => {
   const allTransactionList = useSelector((state: RootState) => state.transaction.transactionList);
-  const dada = `${month}-${String(date)}`;
+  const dayString = `${month}-${String(date)}`;
   const dateArray = ['일', '월', '화', '수', '목', '금', '토'];
-  const title = `${String(date)} 일   (${dateArray[new Date(dada).getDay()]})`;
+  const title = `${String(date)} 일   (${dateArray[new Date(dayString).getDay()]})`;
   const dailyData: Array<{
     id: number;
     category: string;
@@ -50,7 +50,7 @@ const DailyTransactionModal: React.FC<props> = ({ month, date }: props) => {
     amount: number;
   }> = [];
   allTransactionList.forEach((e: any) => {
-    if (new Date(e.date).getDay() - 1 === date) {
+    if (new Date(e.date).getDate() === date) {
       dailyData.push({
         id: e.id,
         category: e.category,

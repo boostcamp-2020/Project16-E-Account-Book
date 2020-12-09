@@ -8,6 +8,18 @@ const privateBookQuery = {
     LEFT OUTER JOIN payment as py ON py.id = pt.payment_id 
     WHERE pt.accountbook_id = ? AND year(pt.date) = ? AND month(pt.date) = ? ORDER BY pt.date`,
   GET_PRIVATE_BOOK_ID: `SELECT id FROM private_accountbook WHERE user_id = ?`,
+  READ_PRIVATE_INCOME_CATEGORY: `
+    SELECT SUM(amount) as money,
+    (SELECT name FROM category WHERE category.id = private_transaction.category_id) as name
+    FROM private_transaction
+    WHERE accountbook_id = ? AND year(date) = ? AND month(date) = ? AND payment_id IS NULL
+    GROUP BY category_id ORDER BY SUM(amount) DESC;`,
+  READ_PRIVATE_EXPENDITURE_CATEGORY: `
+    SELECT SUM(amount) as money,
+    (SELECT name FROM category WHERE category.id = private_transaction.category_id) as name
+    FROM private_transaction
+    WHERE accountbook_id = ? AND year(date) = ? AND month(date) = ? AND payment_id IS NOT NULL
+    GROUP BY category_id ORDER BY SUM(amount) DESC;`,
 };
 
 export default privateBookQuery;
