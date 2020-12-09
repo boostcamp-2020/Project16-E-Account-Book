@@ -28,6 +28,16 @@ const privateBookQuery = {
     AND date > LAST_DAY(NOW() - interval 1 month) AND date <= LAST_DAY(NOW())
     GROUP BY category_id ORDER BY SUM(amount) DESC LIMIT 4;
   `,
+  READ_PRIVATE_MONTH_INCOME: `
+    SELECT SUM(amount) as income FROM private_transaction
+    WHERE accountbook_id = ? AND payment_id IS NULL
+    AND date > LAST_DAY(NOW() - interval 1 month) AND date <= LAST_DAY(NOW())
+  `,
+  READ_PRIVATE_MONTH_EXPENDITURE: `
+    SELECT SUM(amount) as expenditure FROM private_transaction
+    WHERE accountbook_id = ? AND payment_id IS NOT NULL
+    AND date > LAST_DAY(NOW() - interval 1 month) AND date <= LAST_DAY(NOW())
+  `,
 };
 
 export default privateBookQuery;
