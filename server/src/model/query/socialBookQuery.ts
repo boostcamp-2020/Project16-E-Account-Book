@@ -57,6 +57,12 @@ const socialBookQuery = {
   READ_MONTHLY_STATISTICS_INCOME: `
   SELECT SUM(amount) FROM social_transaction 
   WHERE accountbook_id = ? AND date >= ? AND date < ? AND payment_id IS NULL`,
+  READ_SOCIAL_WEEKLY_STATISTICS_EXPEND: `
+  SELECT SUM(amount) FROM social_transaction 
+  WHERE accountbook_id = ? AND date >= ? AND date <= ? AND payment_id IS NOT NULL`,
+  READ_SOCIAL_WEEKLY_STATISTICS_INCOME: `
+  SELECT SUM(amount) FROM social_transaction 
+  WHERE accountbook_id = ? AND date >= ? AND date <= ? AND payment_id IS NULL`,
 };
 
 export default socialBookQuery;
