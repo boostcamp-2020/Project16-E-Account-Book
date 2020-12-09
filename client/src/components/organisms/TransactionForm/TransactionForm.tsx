@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import ToggleButton from '@atoms/div/ToggleButton';
 import TextButton from '@atoms/button/TextButton';
@@ -9,12 +9,19 @@ import MenuWithText from '@molecules/MenuWithText';
 import ColumnFlexContainer from '@atoms/div/ColumnFlexContainer';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import { inputToNumber, numberToMoney } from '@utils/number';
+import { getDate, getTime } from '@utils/date';
 import { useSelector } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
+import { postData } from '@interfaces/transaction';
 
 interface Props {
+  initData?: postData | undefined;
   onClick: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 }
+
+const defaultProps = {
+  initData: undefined,
+};
 
 const InputContainer = styled.div`
   display: flex;
@@ -31,7 +38,7 @@ const DeleteButtonContainer = styled.div`
 
 const InputDiv = styled.div``;
 
-const transactionForm: React.FC<Props> = ({ onClick }: Props) => {
+const transactionForm: React.FC<Props> = ({ initData, onClick }: Props) => {
   const income = useSelector((state: RootState) => state.category.income);
   const expenditure = useSelector((state: RootState) => state.category.expenditure);
   const payment = useSelector((state: RootState) => state.payment.payment);
@@ -74,6 +81,25 @@ const transactionForm: React.FC<Props> = ({ onClick }: Props) => {
     setCategoryId('');
     setPaymentId('');
   };
+
+  useEffect(() => {
+    if (initData !== undefined) {
+      // TODO : 수입 지출에 따른 토글 버튼 변화
+      const initAmount = numberToMoney(initData.amount);
+      const initDate = getDate(initData.date);
+      const initTime = getTime(initData.date);
+      const initPayment = initData.paymentId;
+      console.log(initDate);
+      setTitle(initData.title);
+      setAmount(initAmount);
+      setDate(initDate);
+      setTime(initTime);
+      setCategoryId(initData.categoryId);
+      if (initPayment) {
+        setPaymentId(initPayment);
+      }
+    }
+  }, []);
 
   return (
     <ColumnFlexContainer width="100%" justifyContent="space-around">
@@ -146,5 +172,7 @@ const transactionForm: React.FC<Props> = ({ onClick }: Props) => {
     </ColumnFlexContainer>
   );
 };
+
+transactionForm.defaultProps = defaultProps;
 
 export default transactionForm;
