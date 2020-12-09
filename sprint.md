@@ -1,6 +1,21 @@
 # ✨ sprint ✨
 
 # Sprint 4
+
+## 💻 Day 2
+### 📌 [FE] 뉴모피즘 UI
+- [뉴모피즘은 새로운 UI 트렌드가 될 수 있을까](https://brunch.co.kr/@cliche-cliche/32)
+- [뉴모피즘 CSS 생성기](https://neumorphism.io/)
+
+### 📌 [FE] 스큐어모피즘 UI
+- [IOS 스큐어 모피즘 변천사](https://post.naver.com/viewer/postView.nhn?volumeNo=8264188&memberNo=36237397)
+
+### 📌 [FE] 가계부 생성 페이지
+- 배경색과 똑같은 background, 똑같은 글자 색깔을 가진 textarea를 만들기 위해서 textarea를 수정했음. 입력한 내용을 가져올 수 있도록 State를 가지고 있었어야 했는데, 이 부분을 store 없이 하위 컴포넌트에서 useState로 값을 유지하며 상위 컴포넌트에 함수 파라미터로써 전달하도록 구현함.
+
+### 📌 [FE] 내역 페이지
+- Calendar 페이지와 마찬가지로 transactionList 를 store에서 관리, 연-월별로 api 요청으로 구현
+
 ## 💻 Day 1
 ### 📌 [FE] 로그인 여부에 따른 화면 랜더링
 - 처음에는 token 값을 받아와서 랜더링할 라우터를 결정해주고, 만약 token이 있었다면 유효성 검사를 통해 한 번 더 검증하도록 구현함
