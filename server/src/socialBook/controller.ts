@@ -43,7 +43,6 @@ export const createTransaction = async (ctx: any) => {
   response.success(ctx, result);
 };
 
-
 export const getCategoryStatistic = async (ctx: any) => {
   const { bookId, year, month } = ctx.params;
   const userId = ctx.userData.uid;
@@ -79,6 +78,38 @@ export const getPastFourMonthStatistics = async (ctx: any) => {
 
     result.push([Number(income), Number(expend)]);
   }
+
+  response.success(ctx, result);
+};
+
+export const createAccountbook = async (ctx: any) => {
+  const { name, description, color } = ctx.request.body;
+  const userId = ctx.userData.uid;
+  const now = new Date();
+  const AccountbookResult = await Service.createAccountbook(name, description, color, userId, now);
+
+  const AccountbookUserResult = await Service.createAccountbookUser(
+    userId,
+    AccountbookResult,
+    0,
+    now,
+    now,
+  );
+
+  const result = { AccountbookResult, AccountbookUserResult };
+  response.success(ctx, result);
+};
+
+export const createAccountbookUser = async (ctx: any) => {
+  const { userId, accountbookId, state, invitedAt, acceptedAt } = ctx.request.body;
+
+  const result = await Service.createAccountbookUser(
+    userId,
+    accountbookId,
+    state,
+    invitedAt,
+    acceptedAt,
+  );
 
   response.success(ctx, result);
 };
