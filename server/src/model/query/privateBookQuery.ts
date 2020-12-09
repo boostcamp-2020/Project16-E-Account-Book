@@ -20,6 +20,13 @@ const privateBookQuery = {
     FROM private_transaction
     WHERE accountbook_id = ? AND year(date) = ? AND month(date) = ? AND payment_id IS NOT NULL
     GROUP BY category_id ORDER BY SUM(amount) DESC;`,
+  READ_PRIVATE_MONTH_TRANSACTION: `
+    SELECT pt.amount, ca.assortment_id, ca.name
+    FROM private_transaction as pt
+    JOIN category as ca
+    ON pt.category_id = ca.id
+    WHERE pt.accountbook_id = ? AND year(pt.date) = ?
+  `,
 };
 
 export default privateBookQuery;

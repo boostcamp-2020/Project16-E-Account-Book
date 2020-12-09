@@ -47,3 +47,15 @@ export const getCategoryStatistic = async (ctx: any) => {
   };
   response.success(ctx, result);
 };
+
+export const getMonthAnalysis = async (ctx: any) => {
+  const userId = ctx.userData.uid;
+  // const result = await sql();
+
+  // const amount =
+  // const category =
+  // const income =
+  // const expenditure =
+  // const result =
+  response.success(ctx, userId);
+};
