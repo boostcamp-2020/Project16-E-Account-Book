@@ -43,8 +43,8 @@ const transactionForm: React.FC<Props> = ({ onClick }: Props) => {
   const [amount, setAmount] = useState<string>();
   const [date, setDate] = useState<string>();
   const [time, setTime] = useState<string>();
-  const [categoryId, setCategoryId] = useState<number>();
-  const [paymentId, setPaymentId] = useState<number>();
+  const [categoryId, setCategoryId] = useState<number | string>();
+  const [paymentId, setPaymentId] = useState<number | string>();
 
   const titleInputChange = (e) => {
     const input = e.target.value;
@@ -66,6 +66,15 @@ const transactionForm: React.FC<Props> = ({ onClick }: Props) => {
     callback(input);
   };
 
+  const clearInput = () => {
+    setTitle('');
+    setAmount('');
+    setDate('');
+    setTime('');
+    setCategoryId('');
+    setPaymentId('');
+  };
+
   return (
     <ColumnFlexContainer width="100%" justifyContent="space-around">
       <RowFlexContainer width="100%" alignItems="center">
@@ -77,7 +86,7 @@ const transactionForm: React.FC<Props> = ({ onClick }: Props) => {
           onClick={onClick}
         />
         <DeleteButtonContainer>
-          <TextButton>모두 지우기</TextButton>
+          <TextButton onClick={clearInput}>모두 지우기</TextButton>
         </DeleteButtonContainer>
       </RowFlexContainer>
       <InputContainer>
