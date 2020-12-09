@@ -2,9 +2,9 @@ import 'dotenv/config';
 
 export const GET_JWT = `${process.env.REACT_APP_BASE_URL}/login/`;
 
-export const GET_TRANSACTION_SOCIAL_LIST = `${process.env.REACT_APP_BASE_URL}/social/transaction/list`;
+export const GET_TRANSACTION_SOCIAL_LIST = `${process.env.REACT_APP_BASE_URL}/api/social/transaction/list`;
 
-export const GET_TRANSACTION_PRIVATE_LIST = `${process.env.REACT_APP_BASE_URL}/private/transaction/list`;
+export const GET_TRANSACTION_PRIVATE_LIST = `${process.env.REACT_APP_BASE_URL}/api/private/transaction/list`;
 
 export const GET_USER_NAME = `${process.env.REACT_APP_BASE_URL}/api/user/name`;
 
