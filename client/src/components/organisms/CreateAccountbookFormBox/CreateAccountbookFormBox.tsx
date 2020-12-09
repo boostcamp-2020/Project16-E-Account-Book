@@ -9,14 +9,14 @@ import colorUtils from '@utils/color';
 
 interface Props {
   backgroundColor: string;
-  buttonEvent(data): any;
+  buttonEvent: (data) => any;
 }
 
 const CreateAccountbookFormBox: React.FC<Props> = ({ buttonEvent, backgroundColor }: Props) => {
   const fontColor = colorUtils.getFontColor(backgroundColor);
   const buttonColor = fontColor === 'white' ? 'black' : 'white';
 
-  const [name, setName] = useState('이름을 입력해주세요');
+  const [name, setName] = useState();
   const [description, setDescription] = useState();
 
   const nameChangeHandler = (event: any) => {
@@ -44,7 +44,7 @@ const CreateAccountbookFormBox: React.FC<Props> = ({ buttonEvent, backgroundColo
             border="none"
             backgroundColor={buttonColor}
             color={fontColor}
-            onClick={buttonEvent(name)}
+            onClick={() => buttonEvent(name)}
           >
             생성
           </RoundShortButton>
@@ -58,6 +58,7 @@ const CreateAccountbookFormBox: React.FC<Props> = ({ buttonEvent, backgroundColo
             fontColor={fontColor}
             fontSize="17pt"
             backgroundColor={backgroundColor}
+            placeholder="이름을 입력해주세요."
           />
         </RowFlexContainer>
         <TextArea
