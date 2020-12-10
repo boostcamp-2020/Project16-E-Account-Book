@@ -39,6 +39,10 @@ const myColor: Colors = {
     lightBlack: '#444444',
     green: '#4FA42B',
   },
+  calendar: {
+    border: '#dadada',
+    main: '#efefef',
+  },
 };
 
 export default myColor;

@@ -3,6 +3,7 @@ import Modal from '@molecules/Modal';
 import styled from 'styled-components';
 import TransactionTotal from '@molecules/TransactionTotal';
 import TransactionInfo from '@molecules/TransactionInfo';
+import myColor from '@theme/color';
 import { useSelector } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
 import { Link } from 'react-router-dom';
@@ -27,7 +28,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   &:focus,
   &:hover {
-    background-color: pink;
+    background-color: ${myColor.calendar.main};
   }
   ,
   &:visited,

@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import InText from '@atoms/p/IncomeText';
 import ExText from '@atoms/p/ExpenditureText';
+import myColor from '@theme/color';
 
 interface Props extends SizeProps, TextProps {
   date: number;
@@ -44,12 +45,12 @@ const DayBox = styled.div<SizeProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid pink;
+  border: 1px solid ${myColor.calendar.border};
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   box-sizing: border-box;
   &:hover {
-    background-color: pink;
+    background-color: ${myColor.calendar.main};
     animation: ${rotate} 0.5s;
     transform: scale(1.6);
   }
