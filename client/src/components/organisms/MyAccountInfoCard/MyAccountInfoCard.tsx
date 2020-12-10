@@ -47,17 +47,22 @@ const MyAccountInfoCard: React.FC<Props> = ({ link, info }: Props) => {
   return (
     <SquircleCard {...squircleCardArgs}>
       <ColumnFlexContainer width="100%" height="100%">
-        <RowFlexContainer justifyContent="space-between" width="100%" height="30%">
+        <RowFlexContainer
+          justifyContent="space-between"
+          width="100%"
+          height="30%"
+          alignContent="center"
+        >
           <UserImage size="36px" link={link} />
           <LeftNormalText color="white">내 가계부</LeftNormalText>
           <SquircleShortButton onClick={toMyAccountBook}>조회하기</SquircleShortButton>
         </RowFlexContainer>
         <RowFlexContainer justifyContent="space-between" width="100%" height="70%">
-          <ColumnFlexContainer width="70%" height="100%">
+          <ColumnFlexContainer width="70%" height="100%" justifyContent="space-between">
             <LeftNormalText color="white">이번 달 소비 현황</LeftNormalText>
             <TwoByTwoChips categoryList={categoryList} amountList={amountList} />
           </ColumnFlexContainer>
-          <ColumnFlexContainer width="30%" height="100%">
+          <ColumnFlexContainer width="25%" height="100%">
             <CircleGraph size={6} income={income} expend={expend} />
           </ColumnFlexContainer>
         </RowFlexContainer>
