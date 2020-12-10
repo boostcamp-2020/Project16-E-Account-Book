@@ -11,7 +11,7 @@ interface Props {
 
 const CreateAccountbookSetting: React.FC<Props> = ({ links, labelColor }: Props) => {
   return (
-    <ColumnFlexContainer margin="2rem 0 0 0 ">
+    <ColumnFlexContainer margin="2rem 0 1rem 0">
       <InviteAccountbookCard links={links} />
       <ChangeAccountbookColorCard labelColor={labelColor} />
     </ColumnFlexContainer>

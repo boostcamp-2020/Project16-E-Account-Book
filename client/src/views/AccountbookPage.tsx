@@ -37,11 +37,21 @@ const Accountbook: React.FC = () => {
     backgroundColor: myColor.primary.main,
   };
 
-  const MarginBox = styled.div`
+  const TopnavMarginBox = styled.div`
     width: 100%;
     height: 2rem; {/* <TopNavBar /> */
   `;
 
+  const PaperMarginBox = styled.div`
+    width: 100%;
+    height: 3rem; {/* <TopNavBar /> */
+  `;
+
+  const PaperContainer = styled.div`
+    width: 100%;
+    position: fixed;
+    z-index: 7;
+  `;
   const tabStyle = {
     textDecoration: 'none',
     color: 'black',
@@ -65,26 +75,29 @@ const Accountbook: React.FC = () => {
   return (
     <CenterContent>
       <TopNavBar />
-      <MarginBox />
-      <Paper className={classes.root}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          style={tabsStyle}
-          centered
-        >
-          <Link style={tabStyle} to="/accountbook/list">
-            <Tab label="내역" />
-          </Link>
-          <Link style={tabStyle} to="/accountbook/calendar">
-            <Tab label="달력" />
-          </Link>
-          <Link style={tabStyle} to="/accountbook/statistics">
-            <Tab label="통계" />
-          </Link>
-        </Tabs>
-      </Paper>
+      <TopnavMarginBox />
+      <PaperContainer>
+          <Paper className={classes.root}>
+            <Tabs
+            value={value}
+            onChange={handleChange}
+            indicatorColor="primary"
+            style={tabsStyle}
+            centered
+          >
+            <Link style={tabStyle} to="/accountbook/list">
+              <Tab label="내역" />
+            </Link>
+            <Link style={tabStyle} to="/accountbook/calendar">
+              <Tab label="달력" />
+            </Link>
+            <Link style={tabStyle} to="/accountbook/statistics">
+              <Tab label="통계" />
+            </Link>
+          </Tabs>
+        </Paper>
+      </PaperContainer>
+      <PaperMarginBox />
       <Switch>
         <Route path="/accountbook/list" render={renderTransaction} />
         <Route path="/accountbook/calendar" render={renderCalendar} />
