@@ -26,19 +26,17 @@ const MonthNav: React.FC = () => {
   };
 
   return (
-    <>
-      <RowFlexContainer width="100%">
-        <Button color={myColor.primary.black} onClick={preMonth}>
-          &lt;
-        </Button>
-        <MonthTextContainer>
-          <Text>{`${year}년 ${month}월`}</Text>
-        </MonthTextContainer>
-        <Button color={myColor.primary.black} onClick={nextMonth}>
-          &gt;
-        </Button>
-      </RowFlexContainer>
-    </>
+    <RowFlexContainer width="100%" position="fixed">
+      <Button color={myColor.primary.black} onClick={preMonth}>
+        &lt;
+      </Button>
+      <MonthTextContainer>
+        <Text>{`${year}년 ${month}월`}</Text>
+      </MonthTextContainer>
+      <Button color={myColor.primary.black} onClick={nextMonth}>
+        &gt;
+      </Button>
+    </RowFlexContainer>
   );
 };
 
