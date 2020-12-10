@@ -7,7 +7,20 @@ export default {
 };
 
 export const stickGraph = (): JSX.Element => {
-  return <StickGraph />;
+  const percent = 70.6;
+  const outColor = 'white';
+  const inColor = 'pink';
+  const width = '400px';
+  const height = '40px';
+  return (
+    <StickGraph
+      percent={percent}
+      outColor={outColor}
+      inColor={inColor}
+      width={width}
+      height={height}
+    />
+  );
 };
 
 stickGraph.story = {
