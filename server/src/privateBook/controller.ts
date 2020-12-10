@@ -1,7 +1,9 @@
+/* eslint-disable no-await-in-loop */
 import * as response from '../utils/response';
 import 'dotenv/config';
 import * as Service from './service';
 import { TransactionList } from '../interface/transaction';
+import { getPastMonthList } from '../utils/date';
 
 export const createTransaction = async (ctx: any) => {
   const userId = ctx.userData.uid;
@@ -47,5 +49,25 @@ export const getCategoryStatistic = async (ctx: any) => {
     income,
     expenditure,
   };
+  response.success(ctx, result);
+};
+
+export const getPastFourMonthStatistics = async (ctx: any) => {
+  const userId = ctx.userData.uid;
+  const accountbookId = await Service.getAccountBookId(userId);
+
+  const dateList = getPastMonthList(4);
+  const result: number[][] = [];
+
+  for (const date of dateList) {
+    const startDate = date[0];
+    const endDate = date[1];
+
+    const expend = await Service.getMonthlyStatisticsExpend(accountbookId, startDate, endDate);
+    const income = await Service.getMonthlyStatisticsIncome(accountbookId, startDate, endDate);
+
+    result.push([Number(income), Number(expend)]);
+  }
+
   response.success(ctx, result);
 };
