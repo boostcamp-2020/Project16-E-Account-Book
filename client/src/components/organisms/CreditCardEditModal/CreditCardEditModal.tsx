@@ -28,7 +28,7 @@ const CreditCardEditModal: React.FC = () => {
     console.log(result);
   };
 
-  const cardNameList = ['신한카드', '하나카드', '카카오페이', '신한카드', '하나카드', '카카오페이'];
+  const cardNameList = ['하나카드', '카카오페이', '신한카드'];
   const cardList = cardNameList.map((cardName) => <CreditCard name={cardName} />);
   return (
     <Modal title={title}>
