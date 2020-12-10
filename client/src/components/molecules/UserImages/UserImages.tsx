@@ -10,19 +10,19 @@ interface Props {
 
 const UserImages = styled.div`
   display: flex;
-  flex-direction: row-reverse;
-  width: 80px;
+  width: 60px;
 `;
 
 const Images = styled.div`
-  width: 20px;
+  width: 15px;
 `;
 
 const userImages: React.FC<Props> = ({ links }: Props) => {
   let userLink: string[] = links;
   if (links.length >= 3) {
     userLink = links.slice(0, 3);
-    userLink.unshift(NoOne);
+    // userLink.unshift(NoOne);
+    userLink.push(NoOne);
   }
   const allImage = userLink.map((user) => (
     <Images>

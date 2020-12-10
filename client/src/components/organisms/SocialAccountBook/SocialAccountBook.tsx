@@ -19,9 +19,8 @@ const Container = styled.button`
 
 const LeftBox = styled.div`
   display: flex;
-  flex: 1;
+  flex: 1.8;
   align-items: center;
-  margin-left: 1em;
 `;
 
 const CenterBox = styled.div`
@@ -32,7 +31,7 @@ const CenterBox = styled.div`
 
 const RightBox = styled.div`
   display: flex;
-  flex: 1;
+  flex: 1.6;
   align-items: center;
 `;
 
@@ -55,7 +54,7 @@ const socialAccountBook: React.FC<SocialBook> = ({
 
   return (
     <Container onClick={toSocialAccountBook}>
-      <SquircleCard backgroundColor={color}>
+      <SquircleCard backgroundColor={color} height="90px">
         <LeftBox>
           <UserImages links={images} />
         </LeftBox>
@@ -64,7 +63,7 @@ const socialAccountBook: React.FC<SocialBook> = ({
         </CenterBox>
         <RightBox>
           <CardNumberText
-            fontSize="1rem"
+            fontSize="0.6rem"
             inMoney={Number(incomeSum)}
             exMoney={Number(expenditureSum)}
           />
