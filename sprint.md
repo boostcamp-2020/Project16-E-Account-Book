@@ -2,6 +2,35 @@
 
 # Sprint 4
 
+## 💻 Day 3
+### 📌 [FE] 거래 내역 추가 기능 구현
+- 거래 내역 추가에 사용되는 `TransactionForm` component를 거래 내역 수정에서 재활용하는 것을 고려해서 개발해야 했기 때문에 시간이 오래걸렸다.
+- 구현 방법으로 아래의 세가지 방법을 생각해냈다.
+    - Redux를 활용한 값 제어
+        - 각 요소별로 reducer를 만들어야한다.
+        - reducer와 action을 활용하여 연결할 수 있게 component들을 분리해주어야 한다.
+    - state를 props로 넘겨주어 값 제어
+        - 하위 컴포넌트로 props를 넘겨줘야 하기 때문에 모든 하위 컴포넌트의 props 설정을 추가해주어야 한다.
+    - form 태그를 이용한 값 제어
+- 위 세가지 중 아래의 두번째와 세번째 방법을 섞어 개발하는 것이 가장 좋다고 판단하였다.
+- `TransactionForm` component에서 useState를 정의하여 사용자의 입력값을 제어하였다.
+- page 단에서 form 태그로 `TransactionForm` component를 감싸 submit event를 제어해주었다.
+    - form 태그의 모든 하위 컴포넌트가 submit버튼으로 동작하는 문제가 있었고 이는 기존의 버튼에 type을 명시해주지 않아서 임을 알게 되었다. 따라서 기존에 사용되던 버튼에 `type=button` 을 명시해주었다. 등록 기능을 수행하는 버튼에만 props를 통해 `type=submit` 으로 지정해주었다.
+- 수정 페이지에서의 동작을 고려하여 page 단에서 initValue를 넘겨주면 form에서 state를 변경할 수 있도록 하였다.
+
+
+### 📌 [FE] 스큐머 모피즘
+- [다시 돌아온 스큐어 모피즘](https://brunch.co.kr/@outlines/41)
+- [식어가는 뉴모피즘](https://wormwlrm.github.io/2020/03/10/Neumorphism-the-zombie-trend.html)
+- 뉴모피즘의 인기는 점점 식어갈 것이고, 머테리얼과 스큐어 모피즘의 2강 체제가 계속 될 것이다.
+
+### 📌 [BE] 소셜 가계부 생성 
+- 소셜 가계부 생성과 동시에 social_accountbook과 social_accountbook_user에 동시에 생성해주어야 한다. 따라서 각각 create에 대한 controller와 service를 구현하고, 가계부 생성 controller에서 social_accountbook_user 생성 service를 함께 추가적으로 호출해주는 구조로 설계하였다.
+
+### 📌 [FE] 가계부 분석
+- Axios 로 데이터를 받아 화면에 추가할때 데이터를 전처리 하는 부분에서 비동기 오류가 발생했다.
+받아오는 페이지에서 데이터를 바로 사용하지 않기 때문에, 해당 컴포넌트로 넘기는데 완전히 전처리 되지 않은 상태의 데이터가 넘어가는 문제였는데 Redux Store 를 사용하여 갱신하고 해당 컴포넌트에서 데이터를 바로 사용하는것이 해결방안 일 것 같다.
+
 ## 💻 Day 2
 ### 📌 [FE] 뉴모피즘 UI
 - [뉴모피즘은 새로운 UI 트렌드가 될 수 있을까](https://brunch.co.kr/@cliche-cliche/32)

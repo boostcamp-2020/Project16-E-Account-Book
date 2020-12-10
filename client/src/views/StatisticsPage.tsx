@@ -38,10 +38,6 @@ const StatisticsPage: React.FC = () => {
     initFourMonthData();
   }, []);
 
-  const onClick = () => {
-    return true;
-  };
-
   return (
     <>
       <MonthNav />
@@ -50,7 +46,6 @@ const StatisticsPage: React.FC = () => {
         rightButtonName="지출"
         leftCallback={setIsIncome}
         rightCallback={setIsExpenditure}
-        onClick={onClick}
       />
       <ColumFlexContainer width="100%" alignItems="center">
         <FourMonthStatistics data={fourMonthData} />

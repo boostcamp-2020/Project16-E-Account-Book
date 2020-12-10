@@ -9,6 +9,8 @@ interface OptionData {
 
 interface Props extends selectProps {
   options: OptionData[];
+  value?: any;
+  onChange?: any;
 }
 
 interface selectProps {
@@ -23,6 +25,8 @@ const defaultProps = {
   width: '8rem',
   height: '1.2rem',
   fontSize: '1rem',
+  value: undefined,
+  onChange: undefined,
 };
 
 const Select = styled.select<selectProps>`
@@ -54,11 +58,26 @@ const Option = styled.option`
 const getOptionList = (options: Array<OptionData>) =>
   options.map((value) => <Option value={value.id}>{value.name}</Option>);
 
-const DropdownMenu: React.FC<Props> = ({ width, height, fontSize, color, options }: Props) => {
+const DropdownMenu: React.FC<Props> = ({
+  width,
+  height,
+  fontSize,
+  color,
+  options,
+  value,
+  onChange,
+}: Props) => {
   const optionList = getOptionList(options);
 
   return (
-    <Select width={width} height={height} fontSize={fontSize} color={color}>
+    <Select
+      width={width}
+      height={height}
+      fontSize={fontSize}
+      color={color}
+      value={value}
+      onChange={onChange}
+    >
       <Option value="">선택안함</Option>
       {optionList}
     </Select>

@@ -64,7 +64,7 @@ const iconDetailButton: React.FC<Props> = ({ color, name, onClick }: Props) => {
   };
 
   return (
-    <Button onClick={onClick} color={color}>
+    <Button type="button" onClick={onClick} color={color}>
       {selectIcon(name)}
       <RowFlexContainer>
         <ButtonName>{name}</ButtonName>

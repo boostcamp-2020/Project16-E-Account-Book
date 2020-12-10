@@ -8,7 +8,6 @@ interface Props extends sizeProps {
   rightCallback: React.Dispatch<React.SetStateAction<boolean>>;
   leftButtonName: string;
   rightButtonName: string;
-  onClick: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 }
 
 interface sizeProps {

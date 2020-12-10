@@ -5,12 +5,14 @@ import myColor from '@theme/color';
 interface Props {
   backgroundColor?: string;
   color?: string;
+  isSubmit?: boolean;
   children: React.ReactChild;
   onClick?: () => void;
 }
 
 const defaultProps = {
   backgroundColor: myColor.primary.accent,
+  isSubmit: false,
   color: 'white',
   onClick: undefined,
 };
@@ -26,9 +28,20 @@ const Button = styled.button<Props>`
   color: ${(props) => props.color};
 `;
 
-const RoundLongButton: React.FC<Props> = ({ backgroundColor, color, children, onClick }: Props) => {
+const RoundLongButton: React.FC<Props> = ({
+  backgroundColor,
+  color,
+  isSubmit,
+  children,
+  onClick,
+}: Props) => {
   return (
-    <Button onClick={onClick} backgroundColor={backgroundColor} color={color}>
+    <Button
+      type={isSubmit ? 'submit' : 'button'}
+      onClick={onClick}
+      backgroundColor={backgroundColor}
+      color={color}
+    >
       {children}
     </Button>
   );

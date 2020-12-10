@@ -7,7 +7,10 @@ export default {
 };
 
 export const inputWithText = (): JSX.Element => {
-  return <InputWithText title="금액" />;
+  const onChange = () => {
+    return true;
+  };
+  return <InputWithText title="금액" value="" onChange={onChange} />;
 };
 
 inputWithText.story = {

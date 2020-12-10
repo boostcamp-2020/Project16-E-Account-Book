@@ -6,7 +6,9 @@ import { TransactionList } from '../interface/transaction';
 import { getPastMonthList } from '../utils/date';
 
 export const createTransaction = async (ctx: any) => {
-  const { accountbookId, categoryId, paymentId, date, title, amount } = ctx.request.body;
+  const userId = ctx.userData.uid;
+  const accountbookId = await Service.getAccountBookId(userId);
+  const { categoryId, paymentId, date, title, amount } = ctx.request.body;
   const transaction = [accountbookId, categoryId, paymentId, date, title, amount];
   const result = await Service.createTransaction(transaction);
   response.success(ctx, result);
