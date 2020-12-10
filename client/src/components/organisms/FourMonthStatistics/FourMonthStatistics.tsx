@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { getPastMonthList } from '@utils/calcMonth';
+import { getPastMonthList } from '@utils/date';
 import { numberToMoney } from '@utils/number';
 import getRandomKey from '@utils/random';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
@@ -68,14 +68,13 @@ const PressedMonthBtn = styled.div`
 
 const FourMonthStatistics: React.FC<props> = ({ data }: props) => {
   let maxHeight = 0;
-  const monthList = getPastMonthList(4).reverse();
+  const monthList = getPastMonthList(4);
 
   const [monthIndex, setMonthIndex] = useState(0);
 
   const changeMonth = (index) => {
     setMonthIndex(index);
   };
-
   data.forEach((month) => {
     if (month[income] > maxHeight) maxHeight = month[income];
     if (month[expend] > maxHeight) maxHeight = month[expend];

@@ -9,7 +9,7 @@ const Container = styled.div`
 `;
 
 const FloatRightBottomContainer = styled.div`
-  position: absolute;
+  position: fixed;
   right: 1.6em;
   bottom: 1.6em;
 `;

@@ -164,6 +164,7 @@ const transactionForm: React.FC<Props> = ({ initData }: Props) => {
           width="100%"
           value={paymentId}
           onChange={(e) => inputChange(e, setPaymentId)}
+          isIncome={isIncome}
         />
         <input readOnly value={Number(isIncome)} hidden />
       </InputContainer>

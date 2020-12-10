@@ -8,7 +8,13 @@ import FiveWeekStatistics from '@organisms/FiveWeekStatistics';
 import { useSelector } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
 import { getAxiosData } from '@utils/axios';
+import styled from 'styled-components';
 import * as API from '@utils/api';
+
+const MonthNavMarginBox = styled.div`
+width: 100%;
+height: 2rem; {/* <TopNavBar /> */
+`;
 
 const StatisticsPage: React.FC = () => {
   const year = useSelector((state: RootState) => state.date.year);
@@ -25,16 +31,16 @@ const StatisticsPage: React.FC = () => {
   const initFourMonthData = async () => {
     const master =
       accountbookType === 'SOCIAL'
-        ? await getAxiosData(`${API.GET_SOCIAL_FOUR_MONTH_STATISTICS}+${accountbookId}`)
-        : await getAxiosData(`${API.GET_PRIVATE_FOUR_MONTH_STATISTICS}`);
+        ? await getAxiosData(API.GET_SOCIAL_FOUR_MONTH_STATISTICS(accountbookId))
+        : await getAxiosData(API.GET_PRIVATE_FOUR_MONTH_STATISTICS);
     setFourMonthData(master.data.reverse());
   };
 
   const initFiveWeekData = async () => {
     const master =
       accountbookType === 'SOCIAL'
-        ? await getAxiosData(`${API.GET_SOCIAL_FIVE_WEEK_STATISTICS}+${accountbookId}`)
-        : await getAxiosData(`${API.GET_PRIVATE_FIVE_WEEK_STATISTICS}`);
+        ? await getAxiosData(API.GET_SOCIAL_FIVE_WEEK_STATISTICS(accountbookId))
+        : await getAxiosData(API.GET_PRIVATE_FIVE_WEEK_STATISTICS);
     setFiveWeekData(master.data);
   };
 
@@ -53,6 +59,7 @@ const StatisticsPage: React.FC = () => {
   return (
     <>
       <MonthNav />
+      <MonthNavMarginBox />
       <ToggleButton
         leftButtonName="수입"
         rightButtonName="지출"

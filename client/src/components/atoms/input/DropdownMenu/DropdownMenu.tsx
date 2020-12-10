@@ -11,6 +11,7 @@ interface Props extends selectProps {
   options: OptionData[];
   value?: any;
   onChange?: any;
+  isIncome?: boolean;
 }
 
 interface selectProps {
@@ -27,6 +28,7 @@ const defaultProps = {
   fontSize: '1rem',
   value: undefined,
   onChange: undefined,
+  isIncome: false,
 };
 
 const Select = styled.select<selectProps>`
@@ -70,6 +72,7 @@ const DropdownMenu: React.FC<Props> = ({
   options,
   value,
   onChange,
+  isIncome,
 }: Props) => {
   const optionList = getOptionList(options);
 
@@ -81,6 +84,7 @@ const DropdownMenu: React.FC<Props> = ({
       color={color}
       value={value}
       onChange={onChange}
+      disabled={isIncome}
     >
       <Option key="-1" value="">
         선택안함

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import firstDayOfWeek from '@utils/firstDayOfWeek';
-import numberOfMonth from '@utils/numberOfMonth';
-import makeMonth from '@utils/makeMonth';
+import { firstDayOfWeek, makeMonth, numberOfMonth } from '@utils/date';
 import MonthNav from '@molecules/MonthNav';
 import CheckBoxWithNumber from '@molecules/CheckBoxWithNumber';
 import MoneyOfWeek from '@molecules/MoneyOfWeek';
@@ -11,8 +9,11 @@ import DayBox from '@molecules/DayBox';
 import Color from '@theme/color';
 import sliceArray from '@utils/sliceArray';
 import { showModal } from '@actions/modal/type';
-import { useDispatch } from 'react-redux';
 import { getTransaction } from '@actions/transaction/type';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '@reducers/rootReducer';
+import DailyTransactionModal from '@organisms/DailyTransactionModal';
+import getRandomKey from '@utils/random.ts';
 
 interface Props {
   dateData: string;
@@ -44,6 +45,11 @@ const EmptyBox = styled.div`
   background: ${Color.calendar.main};
   border: 1px solid ${Color.calendar.border};
   box-sizing: border-box;
+`;
+
+const MonthNavMarginBox = styled.div`
+width: 100%;
+height: 2rem; {/* <TopNavBar /> */
 `;
 
 const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
@@ -91,6 +97,7 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
   return (
     <Calendar>
       <MonthNav />
+      <MonthNavMarginBox />
       <Filter>
         <CheckBoxWithNumber
           checked={inCheck}
@@ -114,7 +121,7 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
       <Week startDay="일" width="100%" height="100%" color="black" />
       {allArr.map((weeks) => {
         return (
-          <WeeklyDiv>
+          <WeeklyDiv key={getRandomKey()}>
             <MoneyOfWeek
               fontWeight="bold"
               fontSize="12px"
@@ -130,7 +137,7 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
             <WeekDiv>
               {weeks.map((day) => {
                 if (day.date === 0) {
-                  return <EmptyBox />;
+                  return <EmptyBox key={getRandomKey()} />;
                 }
                 return (
                   <>

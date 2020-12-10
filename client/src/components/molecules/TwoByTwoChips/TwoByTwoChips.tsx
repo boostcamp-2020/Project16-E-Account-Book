@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import { numberToMoney } from '@utils/number';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import SquircleShortChips from '@atoms/div/SquircleShortChips';
+import { CategorySum } from '@interfaces/accountbook';
 
 interface props {
-  categoryList: Array<string>;
-  amountList: Array<number>;
+  data: CategorySum[];
 }
 
 const ChipsContainer = styled.div`
@@ -17,29 +17,22 @@ const ChipsContainer = styled.div`
   box-sizing: border-box;
 `;
 
-const TwoByTwoChips: React.FC<props> = ({ categoryList, amountList }: props) => {
+const TwoByTwoChips: React.FC<props> = ({ data }: props) => {
+  const chips = data.map((category) => {
+    const { name } = category;
+    const money = Number(category.money);
+    return (
+      <ChipsContainer key={name}>
+        <SquircleShortChips width="100%" backgroundColor={myColor.primary.white}>
+          {`${name}  ${numberToMoney(money)}`}
+        </SquircleShortChips>
+      </ChipsContainer>
+    );
+  });
+
   return (
     <RowFlexContainer width="100%" height="60%" flexWrap="wrap">
-      <ChipsContainer>
-        <SquircleShortChips width="100%" backgroundColor={myColor.primary.white}>
-          {`${categoryList[0]} ${numberToMoney(amountList[0])}`}
-        </SquircleShortChips>
-      </ChipsContainer>
-      <ChipsContainer>
-        <SquircleShortChips width="100%" backgroundColor={myColor.primary.white}>
-          {`${categoryList[1]} ${numberToMoney(amountList[1])}`}
-        </SquircleShortChips>
-      </ChipsContainer>
-      <ChipsContainer>
-        <SquircleShortChips width="100%" backgroundColor={myColor.primary.white}>
-          {`${categoryList[2]} ${numberToMoney(amountList[2])}`}
-        </SquircleShortChips>
-      </ChipsContainer>
-      <ChipsContainer>
-        <SquircleShortChips width="100%" backgroundColor={myColor.primary.white}>
-          {`${categoryList[3]} ${numberToMoney(amountList[3])}`}
-        </SquircleShortChips>
-      </ChipsContainer>
+      {chips}
     </RowFlexContainer>
   );
 };
