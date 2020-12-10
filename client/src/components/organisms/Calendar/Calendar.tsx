@@ -11,9 +11,8 @@ import DayBox from '@molecules/DayBox';
 import Color from '@theme/color';
 import sliceArray from '@utils/sliceArray';
 import { showModal } from '@actions/modal/type';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@reducers/rootReducer';
-import DailyTransactionModal from '@organisms/DailyTransactionModal';
+import { useDispatch } from 'react-redux';
+import { getTransaction } from '@actions/transaction/type';
 
 interface Props {
   dateData: string;
@@ -49,7 +48,6 @@ const EmptyBox = styled.div`
 
 const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
   const dispatch = useDispatch();
-  const modalView = useSelector((state: RootState) => state.modal.view);
   const openModal = (view: string) => {
     dispatch(showModal(view));
   };
@@ -87,6 +85,7 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
   });
   const allArr = sliceArray(allDay, 7);
   const onClick = (thisDay) => {
+    dispatch(getTransaction(monthData, thisDay));
     openModal(`${thisDay}Result`);
   };
   return (
