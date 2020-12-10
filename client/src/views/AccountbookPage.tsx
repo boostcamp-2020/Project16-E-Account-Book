@@ -103,7 +103,7 @@ const Accountbook: React.FC = () => {
         <Route path="/accountbook/list" render={renderTransaction} />
         <Route path="/accountbook/calendar" render={renderCalendar} />
         <Route path="/accountbook/statistics" render={renderStatistics} />
-        <Redirect from="*" to="/accountbook/calendar" />
+        <Redirect from="*" to="accountbook/calendar" />
       </Switch>
     </CenterContent>
   );
