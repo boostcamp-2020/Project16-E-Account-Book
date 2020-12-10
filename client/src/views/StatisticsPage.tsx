@@ -27,6 +27,7 @@ const StatisticsPage: React.FC = () => {
   const [isExpenditure, setIsExpenditure] = useState(false);
   const [fourMonthData, setFourMonthData] = useState([]);
   const [fiveWeekData, setFiveWeekData] = useState([]);
+  const [stickData, setStickData] = useState({});
 
   const initFourMonthData = async () => {
     const master =
@@ -44,6 +45,22 @@ const StatisticsPage: React.FC = () => {
     setFiveWeekData(master.data);
   };
 
+  const initStickData = async () => {
+    let result;
+    switch (accountbookType) {
+      case 'PRIVATE':
+        result = await getAxiosData();
+        setStickData(result);
+        break;
+      case 'SOCIAL':
+        result = await getAxiosData();
+        setStickData(result);
+        break;
+      default:
+        break;
+    }
+  };
+
   useEffect(() => {
     console.log(isIncome);
     console.log(isExpenditure);
@@ -54,7 +71,8 @@ const StatisticsPage: React.FC = () => {
   useEffect(() => {
     initFourMonthData();
     initFiveWeekData();
-  }, []);
+    initStickData();
+  }, [dateData]);
 
   return (
     <>
