@@ -9,6 +9,7 @@ import DayBox from '@molecules/DayBox';
 import Color from '@theme/color';
 import sliceArray from '@utils/sliceArray';
 import { showModal } from '@actions/modal/type';
+import { getTransaction } from '@actions/transaction/type';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
 import DailyTransactionModal from '@organisms/DailyTransactionModal';
@@ -53,7 +54,6 @@ height: 2rem; {/* <TopNavBar /> */
 
 const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
   const dispatch = useDispatch();
-  const modalView = useSelector((state: RootState) => state.modal.view);
   const openModal = (view: string) => {
     dispatch(showModal(view));
   };
@@ -91,6 +91,7 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
   });
   const allArr = sliceArray(allDay, 7);
   const onClick = (thisDay) => {
+    dispatch(getTransaction(monthData, thisDay));
     openModal(`${thisDay}Result`);
   };
   return (
@@ -123,7 +124,7 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
           <WeeklyDiv key={getRandomKey()}>
             <MoneyOfWeek
               fontWeight="bold"
-              fontSize="15px"
+              fontSize="12px"
               InMoney={weeks.reduce((acc, cur) => acc + cur.inmoney, 0)}
               ExMoney={weeks.reduce((acc, cur) => acc + cur.exmoney, 0)}
               InColor={Color.money.income}
@@ -145,8 +146,8 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
                       width="100%"
                       height="3.3rem"
                       onClick={() => onClick(day.date)}
-                      InMoney={day.inmoney}
-                      ExMoney={day.exmoney}
+                      InMoney={day.inmoney === 0 ? -1 : day.inmoney}
+                      ExMoney={day.exmoney === 0 ? -1 : day.exmoney}
                       InColor={Color.money.income}
                       ExColor={Color.money.expenditure}
                       fontWeight="bold"
@@ -154,9 +155,6 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
                       inCheck={inCheck}
                       exCheck={exCheck}
                     />
-                    {modalView === `${day.date}Result` && (
-                      <DailyTransactionModal month={dateData} date={day.date} />
-                    )}
                   </>
                 );
               })}

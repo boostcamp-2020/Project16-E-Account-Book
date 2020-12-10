@@ -16,7 +16,7 @@ const TransactionPage: React.FC = () => {
   const dateData = `${year}-${month}`;
   const dispatch = useDispatch();
   const changeTransaction = (newList: any) => {
-    dispatch(getTransaction(newList));
+    dispatch(getTransaction(newList, 0));
   };
   useEffect(() => {
     // eslint-disable-next-line consistent-return

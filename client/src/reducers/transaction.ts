@@ -4,10 +4,12 @@ type TransactionAction = ReturnType<typeof getTransaction>;
 
 type TransactionState = {
   transactionList: [];
+  selectDate: number;
 };
 
 const initialState: TransactionState = {
   transactionList: [],
+  selectDate: 0,
 };
 
 const transaction = (
@@ -16,7 +18,10 @@ const transaction = (
 ): TransactionState => {
   switch (action.type) {
     case GET_TRANSACTION:
-      return { transactionList: action.payload };
+      return {
+        transactionList: action.payload.transactionList,
+        selectDate: action.payload.selectDate,
+      };
     default:
       return state;
   }

@@ -43,6 +43,16 @@ const MoneyOfWeek = styled.div<SizeProps>`
   background: ${myColor.calendar.main};
 `;
 
+const DIV1 = styled.div`
+  flex: 2.5;
+  text-align: end;
+`;
+const DIV2 = styled.div`
+  flex: 1;
+`;
+const DIV3 = styled.div`
+  flex: 1;
+`;
 const moneyOfWeek: React.FC<Props> = ({
   fontWeight,
   fontSize,
@@ -57,13 +67,22 @@ const moneyOfWeek: React.FC<Props> = ({
 }: Props) => {
   return (
     <MoneyOfWeek width={width} height={height}>
-      주간💰
-      {inCheck && (
-        <Income fontWeight={fontWeight} fontSize={fontSize} color={InColor} money={InMoney} />
-      )}
-      {exCheck && (
-        <Expenditure fontWeight={fontWeight} fontSize={fontSize} color={ExColor} money={ExMoney} />
-      )}
+      <DIV1>주간💰 &nbsp;</DIV1>
+      <DIV2>
+        {inCheck && (
+          <Income fontWeight={fontWeight} fontSize={fontSize} color={InColor} money={InMoney} />
+        )}
+      </DIV2>
+      <DIV3>
+        {exCheck && (
+          <Expenditure
+            fontWeight={fontWeight}
+            fontSize={fontSize}
+            color={ExColor}
+            money={ExMoney}
+          />
+        )}
+      </DIV3>
     </MoneyOfWeek>
   );
 };
