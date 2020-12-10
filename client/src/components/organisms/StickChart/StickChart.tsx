@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import StickWithText from '@molecules/StickWithText';
+import myColor from '@theme/color';
 
 interface Props {
   data: any;
@@ -12,14 +13,26 @@ const StickChart = styled.div`
 `;
 
 const stickChart: React.FC<Props> = ({ data }: Props) => {
-  const stick = data.income.map((ele) => {
+  const incomeColor = [
+    myColor.statistic.incomeOne,
+    myColor.statistic.incomeTwo,
+    myColor.statistic.incomeThree,
+    myColor.statistic.incomeFour,
+  ];
+  const expenditureColor = [
+    myColor.statistic.expenditureOne,
+    myColor.statistic.expenditureTwo,
+    myColor.statistic.expenditureThree,
+    myColor.statistic.expenditureFour,
+  ];
+  const incomeStick = data.income.map((ele, index) => {
     const { name } = ele;
     const money = Number(ele.money);
     const percent = Number(ele.percent);
-    const inColor = 'pink';
+    const inColor: any = incomeColor[index];
     const outColor = 'white';
     const height = '40px';
-    const width = '100%';
+    const width = '80%';
     return (
       <StickWithText
         name={name}
@@ -33,7 +46,28 @@ const stickChart: React.FC<Props> = ({ data }: Props) => {
     );
   });
 
-  return <StickChart>{stick}</StickChart>;
+  const expenditureStick = data.expenditure.map((ele, index) => {
+    const { name } = ele;
+    const money = Number(ele.money);
+    const percent = Number(ele.percent);
+    const inColor: any = expenditureColor[index];
+    const outColor = 'white';
+    const height = '40px';
+    const width = '80%';
+    return (
+      <StickWithText
+        name={name}
+        money={money}
+        percent={percent}
+        inColor={inColor}
+        outColor={outColor}
+        height={height}
+        width={width}
+      />
+    );
+  });
+
+  return <StickChart>{true ? incomeStick : expenditureStick}</StickChart>;
 };
 
 export default stickChart;

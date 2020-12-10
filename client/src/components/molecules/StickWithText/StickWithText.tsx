@@ -17,9 +17,9 @@ interface Props {
 const StickWithText = styled.div`
   display: flex;
   align-items: center;
-  width: 500px;
-  border: 2px solid #e5e5e5;
-  border-radius: 10px;
+  width: 100%;
+  border: 0.2px solid #e5e5e5;
+  margin: 0 0 20px;
 `;
 
 const Div1 = styled.div`
@@ -31,14 +31,14 @@ const Div2 = styled.div`
   flex: 1;
 `;
 const Div3 = styled.div`
-  flex: 5;
+  flex: 4;
 `;
 const Div4 = styled.div`
+  display: flex;
+  flex-direction: row;
   flex: 1;
 `;
-const Div5 = styled.div`
-  flex: 1;
-`;
+
 const stickWithText: React.FC<Props> = ({
   name,
   money,
@@ -51,11 +51,17 @@ const stickWithText: React.FC<Props> = ({
   return (
     <StickWithText>
       <Div1>
-        <CenterLargeText fontSize="11px">{name}</CenterLargeText>
+        <CenterLargeText color="#c18160" fontSize="11px">
+          {name}
+        </CenterLargeText>
       </Div1>
       <Div2>
-        <CenterLargeText fontSize="11px">{percent}</CenterLargeText>
-        <CenterLargeText fontSize="11px">%</CenterLargeText>
+        <CenterLargeText color="#c18160" fontSize="11px">
+          {percent}
+        </CenterLargeText>
+        <CenterLargeText color="#c18160" fontSize="11px">
+          %
+        </CenterLargeText>
       </Div2>
       <Div3>
         <StickGraph
@@ -67,11 +73,11 @@ const stickWithText: React.FC<Props> = ({
         />
       </Div3>
       <Div4>
-        <NumberText fontWeight="bold" fontSize="11px" color="black" money={money} />
+        <NumberText color="#c18160" fontWeight="bold" fontSize="11px" money={money} />
+        <CenterLargeText color="#c18160" fontSize="11px">
+          원
+        </CenterLargeText>
       </Div4>
-      <Div5>
-        <CenterLargeText fontSize="11px">원</CenterLargeText>
-      </Div5>
     </StickWithText>
   );
 };
