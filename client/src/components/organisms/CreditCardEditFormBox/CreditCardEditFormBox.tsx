@@ -5,7 +5,11 @@ import LeftSmallText from '@atoms/p/LeftSmallText';
 import RoundShortButton from '@atoms/button/RoundShortButton';
 import Input from '@atoms/input/Input';
 
-const CreditCardEditFormBox: React.FC = () => {
+interface Props {
+  buttonEvent: (data) => any;
+}
+
+const CreditCardEditFormBox: React.FC<Props> = ({ buttonEvent }: Props) => {
   const [name, setName] = useState('');
 
   const nameChangeHandler = (event: any) => {
@@ -16,7 +20,7 @@ const CreditCardEditFormBox: React.FC = () => {
       <LeftSmallText>결재 수단 이름</LeftSmallText>
       <RowFlexContainer width="100%" margin="2rem 0 0 0 " justifyContent="space-between">
         <Input width="70%" value={name} onChange={nameChangeHandler} />
-        <RoundShortButton>등록</RoundShortButton>
+        <RoundShortButton onClick={() => buttonEvent(name)}>등록</RoundShortButton>
       </RowFlexContainer>
     </ColumnFlexContainer>
   );
