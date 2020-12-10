@@ -26,7 +26,7 @@ const MonthNav: React.FC = () => {
   };
 
   return (
-    <RowFlexContainer width="100%" position="fixed" backgroundColor="white">
+    <RowFlexContainer width="100%" position="fixed" backgroundColor="white" zIndex="7">
       <Button color={myColor.primary.black} onClick={preMonth}>
         &lt;
       </Button>
