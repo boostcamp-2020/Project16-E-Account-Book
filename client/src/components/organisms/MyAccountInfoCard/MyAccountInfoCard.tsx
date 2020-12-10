@@ -12,10 +12,11 @@ import CircleGraph from '@atoms/graph/CircleGraph';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setPrivate } from '@actions/accountbook/type';
+import { PrivateBook } from '@interfaces/accountbook';
 
 interface Props {
   link: string;
-  info: any;
+  info: PrivateBook;
 }
 
 interface squircleCardProps {
@@ -40,11 +41,7 @@ const MyAccountInfoCard: React.FC<Props> = ({ link, info }: Props) => {
     dispatch(setPrivate());
     history.push('/accountbook');
   };
-  console.log(info);
-  const categoryList = ['a', 'b', 'c', 'd'];
-  const amountList = [1, 2, 3, 4];
-  const income = 123;
-  const expend = 60;
+
   return (
     <SquircleCard {...squircleCardArgs}>
       <ColumnFlexContainer width="100%" height="100%">
@@ -63,10 +60,10 @@ const MyAccountInfoCard: React.FC<Props> = ({ link, info }: Props) => {
         <RowFlexContainer justifyContent="space-between" width="100%" height="70%">
           <ColumnFlexContainer width="70%" height="100%" justifyContent="space-between">
             <LeftNormalText color="white">이번 달 소비 현황</LeftNormalText>
-            <TwoByTwoChips categoryList={categoryList} amountList={amountList} />
+            <TwoByTwoChips data={info.category} />
           </ColumnFlexContainer>
           <ColumnFlexContainer width="25%" height="100%">
-            <CircleGraph size={6} income={income} expend={expend} />
+            <CircleGraph size={6} income={Number(info.income)} expend={Number(info.expenditure)} />
           </ColumnFlexContainer>
         </RowFlexContainer>
       </ColumnFlexContainer>
