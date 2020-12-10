@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ColumnFlexContainer from '@atoms/div/ColumnFlexContainer';
 import myColor from '@theme/color';
-import ntm from '@utils/numberToMoney';
+import { numberToMoney } from '@utils/number';
 
 interface Props {
   maxWidth: number;
@@ -102,11 +102,11 @@ const RowBarGraph: React.FC<Props> = ({ maxWidth, amount, type }: Props) => {
       <WhiteBar>
         {type === 'income' ? (
           <IncomeBar width={(amount / maxWidth) * 100}>
-            <div>{ntm.number2Money(amount)}</div>
+            <div>{numberToMoney(amount)}</div>
           </IncomeBar>
         ) : (
           <ExpendBar width={(amount / maxWidth) * 100}>
-            <div>{ntm.number2Money(amount)}</div>
+            <div>{numberToMoney(amount)}</div>
           </ExpendBar>
         )}
       </WhiteBar>

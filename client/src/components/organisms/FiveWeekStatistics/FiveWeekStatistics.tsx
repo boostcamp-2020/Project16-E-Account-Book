@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ntm from '@utils/numberToMoney';
+import { numberToMoney } from '@utils/number';
 import getRandomKey from '@utils/random';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import ColumnFlexContainer from '@atoms/div/ColumnFlexContainer';
@@ -89,7 +89,7 @@ const FiveWeekStatistics: React.FC<props> = ({ data, isIncome }: props) => {
       <RowFlexContainer width="100%" height="15%" justifyContent="space-between">
         <TitleBox>요약</TitleBox>
         <TotalBox>
-          {`총 ${isIncome === true ? '수입' : '지출'} ${ntm.number2Money(
+          {`총 ${isIncome === true ? '수입' : '지출'} ${numberToMoney(
             isIncome === true ? totalIncome : totalExpend,
           )}원`}
         </TotalBox>
