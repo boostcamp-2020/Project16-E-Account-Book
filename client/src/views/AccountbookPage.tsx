@@ -77,8 +77,8 @@ const Accountbook: React.FC = () => {
       <TopNavBar />
       <TopnavMarginBox />
       <PaperContainer>
-          <Paper className={classes.root}>
-            <Tabs
+        <Paper className={classes.root}>
+          <Tabs
             value={value}
             onChange={handleChange}
             indicatorColor="primary"
