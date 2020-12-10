@@ -12,6 +12,7 @@ import { showModal } from '@actions/modal/type';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
 import DailyTransactionModal from '@organisms/DailyTransactionModal';
+import getRandomKey from '@utils/random.ts';
 
 interface Props {
   dateData: string;
@@ -113,7 +114,7 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
       <Week startDay="일" width="100%" height="100%" color="black" />
       {allArr.map((weeks) => {
         return (
-          <WeeklyDiv>
+          <WeeklyDiv key={getRandomKey()}>
             <MoneyOfWeek
               fontWeight="bold"
               fontSize="15px"
@@ -129,7 +130,7 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
             <WeekDiv>
               {weeks.map((day) => {
                 if (day.date === 0) {
-                  return <EmptyBox />;
+                  return <EmptyBox key={getRandomKey()} />;
                 }
                 return (
                   <>
