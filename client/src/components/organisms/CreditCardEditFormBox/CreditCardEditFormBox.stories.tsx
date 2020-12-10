@@ -6,8 +6,12 @@ export default {
   component: CreditCardEditFormBox,
 };
 
+const testFunc = (data: any) => {
+  return data;
+};
+
 export const creditCardEditFormBox = (): JSX.Element => {
-  return <CreditCardEditFormBox />;
+  return <CreditCardEditFormBox buttonEvent={() => testFunc([1, 2, 3])} />;
 };
 
 creditCardEditFormBox.story = {
