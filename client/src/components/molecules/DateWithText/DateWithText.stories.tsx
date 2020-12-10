@@ -7,7 +7,10 @@ export default {
 };
 
 export const dateWithText = (): JSX.Element => {
-  return <DateWithText type="time" title="시간" />;
+  const onChange = () => {
+    return true;
+  };
+  return <DateWithText type="time" title="시간" value="" onChange={onChange} />;
 };
 
 dateWithText.story = {

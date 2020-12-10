@@ -37,7 +37,16 @@ export const getDailyTransaction = async (ctx: Context) => {
 };
 
 export const createTransaction = async (ctx: any) => {
-  const { accountbookId, userId, categoryId, paymentId, date, title, amount } = ctx.request.body;
+  const userId = ctx.userData.uid;
+  const { accountbookId, categoryId, paymentId, date, title, amount } = ctx.request.body;
+
+  const bookIdList = await Service.getBelongSocialBookList(userId);
+
+  if (!bookIdList.includes(Number(accountbookId))) {
+    response.fail(ctx, 403, message.NO_SOCIAL_AUTHORIZED);
+    return;
+  }
+
   const transaction = [accountbookId, userId, categoryId, paymentId, date, title, amount];
   const result = await Service.createTransaction(transaction);
   response.success(ctx, result);

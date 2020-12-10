@@ -10,6 +10,8 @@ interface Props {
   width?: string;
   margin?: string;
   justifyContent?: string;
+  value: any;
+  onChange: any;
 }
 
 const defaultProps = {
@@ -22,13 +24,28 @@ const Container = styled.div`
   margin-right: 10px;
 `;
 
-const dateWithText: React.FC<Props> = ({ width, title, margin, justifyContent, type }: Props) => {
+const dateWithText: React.FC<Props> = ({
+  value,
+  onChange,
+  width,
+  title,
+  margin,
+  justifyContent,
+  type,
+}: Props) => {
   return (
     <DateWithText width={width} margin={margin} justifyContent={justifyContent}>
       <Container>
         <Text>{title}</Text>
       </Container>
-      <Input type={type} width="70%" textAlign="center" placeholder="00:00" />
+      <Input
+        value={value}
+        onChange={onChange}
+        type={type}
+        width="70%"
+        textAlign="center"
+        placeholder="00:00"
+      />
     </DateWithText>
   );
 };

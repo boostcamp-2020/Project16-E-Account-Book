@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import nTm from '@utils/numberToMoney';
+import { numberToMoney } from '@utils/number';
 
 interface Props extends FontProps {
   money: number;
@@ -19,7 +19,7 @@ const NumberText = styled.p<FontProps>`
 `;
 
 const numberText: React.FC<Props> = ({ fontWeight, fontSize, color, money }: Props) => {
-  const numberMoney = nTm.number2Money(money);
+  const numberMoney = numberToMoney(money);
   return (
     <NumberText fontWeight={fontWeight} fontSize={fontSize} color={color}>
       {numberMoney}
