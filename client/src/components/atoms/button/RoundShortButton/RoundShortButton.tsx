@@ -7,6 +7,7 @@ interface Props {
   color?: string;
   children: React.ReactChild;
   border?: string;
+  isSubmit?: boolean;
   onClick?: () => void;
 }
 
@@ -14,6 +15,7 @@ const defaultProps = {
   backgroundColor: myColor.primary.accent,
   color: 'white',
   border: 'solid 1px',
+  isSubmit: false,
   onClick: undefined,
 };
 
@@ -36,10 +38,17 @@ const RoundShortButton: React.FC<Props> = ({
   color,
   children,
   border,
+  isSubmit,
   onClick,
 }: Props) => {
   return (
-    <Button onClick={onClick} backgroundColor={backgroundColor} color={color} border={border}>
+    <Button
+      type={isSubmit ? 'submit' : 'button'}
+      onClick={onClick}
+      backgroundColor={backgroundColor}
+      color={color}
+      border={border}
+    >
       {children}
     </Button>
   );

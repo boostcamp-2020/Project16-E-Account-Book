@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import myColor from '@theme/color';
-import ntm from '@utils/numberToMoney';
+import { numberToMoney } from '@utils/number';
 
 interface Props {
   maxHeight: number;
@@ -101,12 +101,12 @@ const TwoBarGraph: React.FC<Props> = ({ maxHeight, income, expend }: Props) => {
     <RowFlexContainer width="100%" height="100%" alignItems="center" justifyContent="space-around">
       <WhiteBar>
         <IncomeBar height={(income / maxHeight) * 100}>
-          <div>{ntm.number2Money(income)}</div>
+          <div>{numberToMoney(income)}</div>
         </IncomeBar>
       </WhiteBar>
       <WhiteBar>
         <ExpendBar height={(expend / maxHeight) * 100}>
-          <div>{ntm.number2Money(expend)}</div>
+          <div>{numberToMoney(expend)}</div>
         </ExpendBar>
       </WhiteBar>
     </RowFlexContainer>

@@ -1,7 +1,7 @@
 import React from 'react';
 import myColor from '@theme/color';
 import styled from 'styled-components';
-import ntm from '@utils/numberToMoney';
+import { numberToMoney } from '@utils/number';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import SquircleShortChips from '@atoms/div/SquircleShortChips';
 
@@ -21,22 +21,22 @@ const TwoByTwoChips: React.FC<props> = ({ categoryList, amountList }: props) => 
     <RowFlexContainer width="100%" height="100%" flexWrap="wrap">
       <ChipsContainer>
         <SquircleShortChips width="100%" backgroundColor={myColor.primary.white}>
-          {`${categoryList[0]} ${ntm.number2Money(amountList[0])}`}
+          {`${categoryList[0]} ${numberToMoney(amountList[0])}`}
         </SquircleShortChips>
       </ChipsContainer>
       <ChipsContainer>
         <SquircleShortChips width="100%" backgroundColor={myColor.primary.white}>
-          {`${categoryList[1]} ${ntm.number2Money(amountList[1])}`}
+          {`${categoryList[1]} ${numberToMoney(amountList[1])}`}
         </SquircleShortChips>
       </ChipsContainer>
       <ChipsContainer>
         <SquircleShortChips width="100%" backgroundColor={myColor.primary.white}>
-          {`${categoryList[2]} ${ntm.number2Money(amountList[2])}`}
+          {`${categoryList[2]} ${numberToMoney(amountList[2])}`}
         </SquircleShortChips>
       </ChipsContainer>
       <ChipsContainer>
         <SquircleShortChips width="100%" backgroundColor={myColor.primary.white}>
-          {`${categoryList[3]} ${ntm.number2Money(amountList[3])}`}
+          {`${categoryList[3]} ${numberToMoney(amountList[3])}`}
         </SquircleShortChips>
       </ChipsContainer>
     </RowFlexContainer>

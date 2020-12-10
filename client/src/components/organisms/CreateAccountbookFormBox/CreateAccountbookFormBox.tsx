@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ColumnFlexContainer from '@atoms/div/ColumnFlexContainer';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import LeftLargeText from '@atoms/p/LeftLargeText';
@@ -9,11 +9,24 @@ import colorUtils from '@utils/color';
 
 interface Props {
   backgroundColor: string;
+  buttonEvent: (data) => any;
 }
 
-const CreateAccountbookFormBox: React.FC<Props> = ({ backgroundColor }: Props) => {
+const CreateAccountbookFormBox: React.FC<Props> = ({ buttonEvent, backgroundColor }: Props) => {
   const fontColor = colorUtils.getFontColor(backgroundColor);
   const buttonColor = fontColor === 'white' ? 'black' : 'white';
+
+  const [name, setName] = useState();
+  const [description, setDescription] = useState();
+
+  const nameChangeHandler = (event: any) => {
+    setName(event.target.value);
+  };
+
+  const descriptionChangeHandler = (event: any) => {
+    setDescription(event.target.value);
+  };
+
   return (
     <SquircleCard width="100%" backgroundColor={backgroundColor} height="15rem">
       <ColumnFlexContainer
@@ -27,14 +40,33 @@ const CreateAccountbookFormBox: React.FC<Props> = ({ backgroundColor }: Props) =
           <LeftLargeText color={fontColor} fontWeight="bold">
             가계부 생성
           </LeftLargeText>
-          <RoundShortButton border="none" backgroundColor={buttonColor} color={fontColor}>
+          <RoundShortButton
+            border="none"
+            backgroundColor={buttonColor}
+            color={fontColor}
+            onClick={() => buttonEvent(name)}
+          >
             생성
           </RoundShortButton>
         </RowFlexContainer>
         <RowFlexContainer width="100%" justifyContent="baseline">
-          <LeftLargeText color={fontColor}>이름을 입력해주세요.</LeftLargeText>
+          <TextArea
+            value={name}
+            width="50%"
+            height="100%"
+            onChange={nameChangeHandler}
+            fontColor={fontColor}
+            fontSize="17pt"
+            backgroundColor={backgroundColor}
+            placeholder="이름을 입력해주세요."
+          />
         </RowFlexContainer>
-        <TextArea width="100%" height="30%" />
+        <TextArea
+          value={description}
+          width="100%"
+          height="30%"
+          onChange={descriptionChangeHandler}
+        />
       </ColumnFlexContainer>
     </SquircleCard>
   );

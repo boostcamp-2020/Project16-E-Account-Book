@@ -23,7 +23,10 @@ const StatisticsPage: React.FC = () => {
   const [fiveWeekData, setFiveWeekData] = useState([]);
 
   const initFourMonthData = async () => {
-    const master = await getAxiosData(`${API.GET_SOCIAL_FOUR_MONTH_STATISTICS}+${accountbookId}`);
+    const master =
+      accountbookType === 'SOCIAL'
+        ? await getAxiosData(`${API.GET_SOCIAL_FOUR_MONTH_STATISTICS}+${accountbookId}`)
+        : await getAxiosData(`${API.GET_PRIVATE_FOUR_MONTH_STATISTICS}`);
     setFourMonthData(master.data.reverse());
   };
 
@@ -47,10 +50,6 @@ const StatisticsPage: React.FC = () => {
     initFiveWeekData();
   }, []);
 
-  const onClick = () => {
-    return true;
-  };
-
   return (
     <>
       <MonthNav />
@@ -59,7 +58,6 @@ const StatisticsPage: React.FC = () => {
         rightButtonName="지출"
         leftCallback={setIsIncome}
         rightCallback={setIsExpenditure}
-        onClick={onClick}
       />
       <ColumFlexContainer width="100%" alignItems="center">
         <FiveWeekStatistics data={fiveWeekData} isIncome={isIncome} />

@@ -7,10 +7,7 @@ export default {
 };
 
 export const transactionForm = (): JSX.Element => {
-  const onClick = () => {
-    return true;
-  };
-  return <TransactionForm onClick={onClick} />;
+  return <TransactionForm />;
 };
 
 transactionForm.story = {
