@@ -28,13 +28,18 @@ const MarginBox = styled.div`
 `;
 
 const PositionBox = styled.div`
-  margin-top: 3rem;
+  margin-top: 0.3rem;
   width: 90%;
 `;
 
-const CardBox = styled.div`
+const MasterBooksBox = styled.div`
   width: 100%;
-  margin-top: 6rem;
+  margin-top: 5rem;
+`;
+
+const SocialBooksBox = styled.div`
+  width: 100%;
+  margin-bottom: 1rem;
 `;
 
 const MainPage: React.FC = () => {
@@ -76,7 +81,7 @@ const MainPage: React.FC = () => {
         <TopNavBar />
         <ColumFlexContainer width="100%" alignItems="center">
           <MarginBox />
-          <AccountBookBackground height="250px">
+          <AccountBookBackground height="230px">
             <ColumFlexContainer width="100%" height="100%" alignItems="center">
               <RowFlexContainer width="90%" alignItems="center" justifyContent="space-between">
                 <LeftNormalText>
@@ -95,16 +100,16 @@ const MainPage: React.FC = () => {
             </ColumFlexContainer>
           </AccountBookBackground>
           <ColumFlexContainer width="90%">
-            <CardBox>
+            <MasterBooksBox>
               {masterBooks.map((book) => {
                 return <SocialAccountBook key={book.id} {...book} />;
               })}
-            </CardBox>
-            <CardBox>
+            </MasterBooksBox>
+            <SocialBooksBox>
               {socialBooks.map((book) => {
                 return <SocialAccountBook key={book.id} {...book} />;
               })}
-            </CardBox>
+            </SocialBooksBox>
           </ColumFlexContainer>
         </ColumFlexContainer>
       </CenterContent>

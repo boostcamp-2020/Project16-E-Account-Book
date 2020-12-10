@@ -14,6 +14,7 @@ const Container = styled.button`
   border: 0px;
   width: 100%;
   cursor: pointer;
+  padding: 0px;
 `;
 
 const LeftBox = styled.div`
