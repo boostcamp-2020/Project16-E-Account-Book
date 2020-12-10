@@ -52,7 +52,7 @@ const CreateAccountbookFormBox: React.FC<Props> = ({ buttonEvent, backgroundColo
         <RowFlexContainer width="100%" justifyContent="baseline">
           <TextArea
             value={name}
-            width="50%"
+            width="100%"
             height="100%"
             onChange={nameChangeHandler}
             fontColor={fontColor}
@@ -66,6 +66,7 @@ const CreateAccountbookFormBox: React.FC<Props> = ({ buttonEvent, backgroundColo
           width="100%"
           height="30%"
           onChange={descriptionChangeHandler}
+          placeholder="가계부에 대한 설명을 써주세요."
         />
       </ColumnFlexContainer>
     </SquircleCard>
