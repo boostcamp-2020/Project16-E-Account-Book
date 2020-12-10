@@ -40,8 +40,8 @@ const MyAccountInfoCard: React.FC<Props> = ({ link, info }: Props) => {
     history.push('/accountbook');
   };
   console.log(info);
-  const categoryList = ['a', 'b', 'c'];
-  const amountList = [1, 2, 3];
+  const categoryList = ['a', 'b', 'c', 'd'];
+  const amountList = [1, 2, 3, 4];
   const income = 123;
   const expend = 60;
   return (
