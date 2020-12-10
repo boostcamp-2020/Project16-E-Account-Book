@@ -35,15 +35,15 @@ const WeekDiv = styled.div`
 `;
 
 const Calendar = styled.div`
-  border: 2px solid pink;
+  border: 2px solid ${Color.calendar.border};
   border-radius: 5px;
 `;
 
 const EmptyBox = styled.div`
   width: 100%;
   height: 3.3rem;
-  background: pink;
-  border: 1px solid pink;
+  background: ${Color.calendar.main};
+  border: 1px solid ${Color.calendar.border};
   box-sizing: border-box;
 `;
 

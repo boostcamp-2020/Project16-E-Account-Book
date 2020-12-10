@@ -9,33 +9,38 @@ import { useDispatch } from 'react-redux';
 import qs from 'qs';
 import axios from 'axios';
 import * as API from '@utils/api';
+import { useHistory } from 'react-router-dom';
 
 interface props {
   location: any;
 }
 
 const LoginPage: React.FC<props> = ({ location }: props) => {
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const slogan = '지갑 속 꿀 같은 돈을 지키는 첫번째 방법';
+
+  const getJWT = async (code, site, state) => {
+    const { data } = await axios.post(API.GET_JWT, {
+      code,
+      site,
+      state,
+    });
+    return data;
+  };
+
   useEffect(() => {
     const { code, site, state }: any = qs.parse(location.search, {
       ignoreQueryPrefix: true,
     });
-    const getJWT = async () => {
-      const { data } = await axios.post(API.GET_JWT, {
-        code,
-        site,
-        state,
-      });
-      return data;
-    };
+
     if (code) {
       (async () => {
-        const jwtToken = await getJWT();
+        const jwtToken = await getJWT(code, site, state);
         localStorage.setItem('jwt', jwtToken);
         dispatch(login());
-        document.location.href = '/';
+        history.push('/');
       })();
     }
   }, []);

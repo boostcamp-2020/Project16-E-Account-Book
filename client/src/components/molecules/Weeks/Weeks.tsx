@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import myColor from '@theme/color';
 
 interface Props extends SizeProps, textProps {
   startDay: string;
@@ -34,7 +35,7 @@ const Day = styled.div<textProps>`
   justify-content: center;
   align-items: center;
   width: 100%;
-  border: 1px solid pink;
+  border: 1px solid ${myColor.calendar.border};
   color: ${(props) => props.color};
 `;
 

@@ -72,7 +72,7 @@ const input: React.FC<Props> = ({
       fontSize={fontSize}
       textAlign={textAlign}
       color={color}
-      value={value}
+      value={value || ''}
       onChange={onChange}
       required={isRequired}
     />

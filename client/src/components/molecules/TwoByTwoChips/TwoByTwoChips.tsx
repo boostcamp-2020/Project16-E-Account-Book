@@ -12,13 +12,14 @@ interface props {
 
 const ChipsContainer = styled.div`
   width: 50%;
+  height: 40%;
   padding: 3px;
   box-sizing: border-box;
 `;
 
 const TwoByTwoChips: React.FC<props> = ({ categoryList, amountList }: props) => {
   return (
-    <RowFlexContainer width="100%" height="100%" flexWrap="wrap">
+    <RowFlexContainer width="100%" height="60%" flexWrap="wrap">
       <ChipsContainer>
         <SquircleShortChips width="100%" backgroundColor={myColor.primary.white}>
           {`${categoryList[0]} ${numberToMoney(amountList[0])}`}
