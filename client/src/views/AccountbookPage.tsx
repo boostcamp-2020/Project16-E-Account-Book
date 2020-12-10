@@ -37,7 +37,7 @@ const Accountbook: React.FC = () => {
     backgroundColor: myColor.primary.main,
   };
 
-  const TopnavMarginBox = styled.div`
+  const TopNavMarginBox = styled.div`
     width: 100%;
     height: 2rem; {/* <TopNavBar /> */
   `;
@@ -76,7 +76,7 @@ const Accountbook: React.FC = () => {
   return (
     <CenterContent>
       <TopNavBar />
-      <TopnavMarginBox />
+      <TopNavMarginBox />
       <PaperContainer>
         <Paper className={classes.root}>
           <Tabs

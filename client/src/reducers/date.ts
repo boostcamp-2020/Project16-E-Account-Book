@@ -1,6 +1,16 @@
-import { PRE_MONTH, NEXT_MONTH, subMonth, addMonth } from '@actions/date/type';
+import {
+  INIT_MONTH,
+  PRE_MONTH,
+  NEXT_MONTH,
+  initMonth,
+  subMonth,
+  addMonth,
+} from '@actions/date/type';
 
-type MonthAction = ReturnType<typeof subMonth> | ReturnType<typeof addMonth>;
+type MonthAction =
+  | ReturnType<typeof initMonth>
+  | ReturnType<typeof subMonth>
+  | ReturnType<typeof addMonth>;
 
 type MonthState = {
   year: number;
@@ -14,8 +24,10 @@ const initialState: MonthState = {
   month: today.getMonth() + 1,
 };
 
-const modal = (state: MonthState = initialState, action: MonthAction): MonthState => {
+const date = (state: MonthState = initialState, action: MonthAction): MonthState => {
   switch (action.type) {
+    case INIT_MONTH:
+      return initialState;
     case PRE_MONTH:
       if (state.month === 1) {
         return { year: state.year - 1, month: 12 };
@@ -31,4 +43,4 @@ const modal = (state: MonthState = initialState, action: MonthAction): MonthStat
   }
 };
 
-export default modal;
+export default date;
