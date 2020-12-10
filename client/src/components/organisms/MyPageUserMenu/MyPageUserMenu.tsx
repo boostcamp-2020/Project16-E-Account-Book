@@ -20,6 +20,10 @@ const ButtonContainer = styled.div`
   margin-left: auto;
 `;
 
+const Container = styled.div`
+  margin: 48px 20px 0px;
+`;
+
 const MyPageUserMenu: React.FC<Props> = ({ name, profile }: Props) => {
   const dispatch = useDispatch();
 
@@ -28,22 +32,24 @@ const MyPageUserMenu: React.FC<Props> = ({ name, profile }: Props) => {
     dispatch(logout());
   };
   return (
-    <RowFlexContainer margin="48px 20px 0px">
-      <UserImage link={profile} />
-      <ColumnFlexContainer alignItems="flex-start" margin="0 20px">
-        <P>
-          <Span>{name}</Span> 님
-        </P>
-        <P>안녕하세요</P>
-      </ColumnFlexContainer>
-      <ButtonContainer>
-        <Logout onClick={deleteJWT} color={myColor.primary.black}>
+    <Container>
+      <RowFlexContainer>
+        <UserImage link={profile} />
+        <ColumnFlexContainer alignItems="flex-start" margin="0 20px">
+          <P>
+            <Span>{name}</Span> 님
+          </P>
+          <P>안녕하세요</P>
+        </ColumnFlexContainer>
+        <ButtonContainer>
           <Link to="login">
-            <Span>로그아웃</Span>
+            <Logout onClick={deleteJWT} color={myColor.primary.black}>
+              <Span>로그아웃</Span>
+            </Logout>
           </Link>
-        </Logout>
-      </ButtonContainer>
-    </RowFlexContainer>
+        </ButtonContainer>
+      </RowFlexContainer>
+    </Container>
   );
 };
 
