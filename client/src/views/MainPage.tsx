@@ -98,7 +98,11 @@ const MainPage: React.FC = () => {
               </RowFlexContainer>
               <RowFlexContainer width="90%">
                 <LeftLargeText>
-                  이번 달은 식비 지출이 많네요 다음달엔 조금만 줄여보세요
+                  <>
+                    이번 달 소비습관 Good~!😉
+                    <br />
+                    잘하고 있어요!
+                  </>
                 </LeftLargeText>
               </RowFlexContainer>
               <PositionBox>
