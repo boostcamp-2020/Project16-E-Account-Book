@@ -12,6 +12,7 @@ import CircleGraph from '@atoms/graph/CircleGraph';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setPrivate } from '@actions/accountbook/type';
+import { initMonth } from '@actions/date/type';
 import { PrivateBook } from '@interfaces/accountbook';
 
 interface Props {
@@ -39,6 +40,7 @@ const MyAccountInfoCard: React.FC<Props> = ({ link, info }: Props) => {
 
   const toMyAccountBook = () => {
     dispatch(setPrivate());
+    dispatch(initMonth());
     history.push('/accountbook');
   };
 

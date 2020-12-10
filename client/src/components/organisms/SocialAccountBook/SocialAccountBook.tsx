@@ -7,6 +7,7 @@ import CardNumberText from '@molecules/CardNumberText';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setSocial } from '@actions/accountbook/type';
+import { initMonth } from '@actions/date/type';
 import { SocialBook } from '@interfaces/accountbook';
 
 const Container = styled.button`
@@ -49,6 +50,7 @@ const socialAccountBook: React.FC<SocialBook> = ({
 
   const toSocialAccountBook = () => {
     dispatch(setSocial(id));
+    dispatch(initMonth());
     history.push('/accountbook');
   };
 
