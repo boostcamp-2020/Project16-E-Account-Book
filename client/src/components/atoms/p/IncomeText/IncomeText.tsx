@@ -27,7 +27,7 @@ const incomeText: React.FC<Props> = ({ fontWeight, fontSize, color, money }: Pro
   const incomeMoney = numberToMoney(money);
   return (
     <IncomeText fontWeight={fontWeight} fontSize={fontSize} color={color}>
-      {money === 0 ? <br /> : <>+ {incomeMoney}</>}
+      {money === 0 ? <br /> : `+${incomeMoney}`}
     </IncomeText>
   );
 };
