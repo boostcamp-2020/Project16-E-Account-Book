@@ -10,9 +10,7 @@ import Color from '@theme/color';
 import sliceArray from '@utils/sliceArray';
 import { showModal } from '@actions/modal/type';
 import { getTransaction } from '@actions/transaction/type';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@reducers/rootReducer';
-import DailyTransactionModal from '@organisms/DailyTransactionModal';
+import { useDispatch } from 'react-redux';
 import getRandomKey from '@utils/random.ts';
 
 interface Props {
