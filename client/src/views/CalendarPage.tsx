@@ -16,8 +16,9 @@ const CalendarPage: React.FC = () => {
   const dateData = `${year}-${month}`;
   const dispatch = useDispatch();
   const changeTransaction = (newList: any) => {
-    dispatch(getTransaction(newList));
+    dispatch(getTransaction(newList, 0));
   };
+
   useEffect(() => {
     // eslint-disable-next-line consistent-return
     const getTransactionList = async (type: string): Promise<any> => {
@@ -44,6 +45,9 @@ const CalendarPage: React.FC = () => {
     <>
       <Calendar dateData={dateData} monthData={transactionList} />
       <NewTransactionButton />
+      {modalView === `${day.date}Result` && (
+        <DailyTransactionModal month={dateData} date={day.date} />
+      )}
     </>
   );
 };

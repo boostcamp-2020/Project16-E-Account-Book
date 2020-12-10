@@ -149,9 +149,6 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
                       inCheck={inCheck}
                       exCheck={exCheck}
                     />
-                    {modalView === `${day.date}Result` && (
-                      <DailyTransactionModal month={dateData} date={day.date} />
-                    )}
                   </>
                 );
               })}
