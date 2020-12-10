@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import firstDayOfWeek from '@utils/firstDayOfWeek';
-import numberOfMonth from '@utils/numberOfMonth';
-import makeMonth from '@utils/makeMonth';
+import { firstDayOfWeek, makeMonth, numberOfMonth } from '@utils/date';
 import MonthNav from '@molecules/MonthNav';
 import CheckBoxWithNumber from '@molecules/CheckBoxWithNumber';
 import MoneyOfWeek from '@molecules/MoneyOfWeek';
