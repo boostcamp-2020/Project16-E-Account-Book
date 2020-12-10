@@ -4,6 +4,8 @@ import myColor from '@theme/color';
 import Text from '@atoms/p/LeftLargeText';
 import Button from '@atoms/button/IconDetailButton';
 import FlexContainer from '@atoms/div/RowFlexContainer';
+import { useDispatch } from 'react-redux';
+import { showModal } from '@actions/modal/type';
 
 interface Props {
   margin: string;
@@ -14,6 +16,10 @@ const Container = styled.div<Props>`
 `;
 
 const createTransactionHeader: React.FC = () => {
+  const dispatch = useDispatch();
+  const openModal = (view: string) => {
+    dispatch(showModal(view));
+  };
   return (
     <FlexContainer width="100%" margin="4rem 0 0">
       <Text>새로운 내역을 추가해보세요!</Text>
@@ -21,7 +27,7 @@ const createTransactionHeader: React.FC = () => {
         <Button name="csv" color={myColor.primary.green} />
       </Container>
       <Container margin="24px">
-        <Button name="sms" />
+        <Button name="sms" onClick={() => openModal('sms')} />
       </Container>
     </FlexContainer>
   );

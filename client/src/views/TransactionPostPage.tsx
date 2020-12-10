@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
 import { postAxios } from '@utils/axios';
 import * as API from '@utils/api';
+import SmsParsingModal from '@organisms/SmsParsingModal';
 
 // eslint-disable-next-line no-shadow
 enum Form {
@@ -30,6 +31,7 @@ const Container = styled.div`
 const TransactionPostPage: React.FC = () => {
   const accountbookType = useSelector((state: RootState) => state.accountbook.type);
   const accountbookId = useSelector((state: RootState) => state.accountbook.socialId);
+  const modalView = useSelector((state: RootState) => state.modal.view);
 
   const history = useHistory();
   const cancel = () => {
@@ -73,6 +75,7 @@ const TransactionPostPage: React.FC = () => {
 
   return (
     <>
+      {modalView !== 'none' ? <SmsParsingModal /> : undefined}
       <CenterContent>
         <TopNavBar />
         <Container>
