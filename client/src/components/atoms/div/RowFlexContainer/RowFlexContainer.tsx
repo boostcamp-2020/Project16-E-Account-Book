@@ -15,6 +15,7 @@ interface Props {
   borderStyle?: string;
   position?: string;
   backgroundColor?: string;
+  zIndex?: string;
 }
 
 const defaultProps = {
@@ -31,11 +32,14 @@ const defaultProps = {
   padding: '0',
   position: 'static',
   backgroundColor: 'transparant',
+  zIndex: 'auto',
 };
 
 const Div = styled.div<Props>`
   display: flex;
   flex-direction: row;
+  max-width: 1195px;
+  z-index: ${(props) => props.zIndex};
   justify-content: ${(props) => props.justifyContent};
   align-content: ${(props) => props.alignContent};
   align-items: ${(props) => props.alignItems};
