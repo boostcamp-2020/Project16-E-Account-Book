@@ -13,11 +13,8 @@ import { useDispatch } from 'react-redux';
 import { setPrivate } from '@actions/accountbook/type';
 
 interface Props {
-  categoryList: Array<string>;
-  amountList: Array<number>;
-  income: number;
-  expend: number;
   link: string;
+  info: any;
 }
 
 interface squircleCardProps {
@@ -34,13 +31,7 @@ const squircleCardArgs: squircleCardProps = {
   flexFlow: 'column',
 };
 
-const MyAccountInfoCard: React.FC<Props> = ({
-  categoryList,
-  amountList,
-  income,
-  expend,
-  link,
-}: Props) => {
+const MyAccountInfoCard: React.FC<Props> = ({ link, info }: Props) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -48,7 +39,11 @@ const MyAccountInfoCard: React.FC<Props> = ({
     dispatch(setPrivate());
     history.push('/accountbook');
   };
-
+  console.log(info);
+  const categoryList = ['a', 'b', 'c'];
+  const amountList = [1, 2, 3];
+  const income = 123;
+  const expend = 60;
   return (
     <SquircleCard {...squircleCardArgs}>
       <ColumnFlexContainer width="100%" height="100%">
