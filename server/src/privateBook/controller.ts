@@ -1,11 +1,16 @@
+/* eslint-disable no-await-in-loop */
 import * as response from '../utils/response';
 import 'dotenv/config';
 import * as Service from './service';
 import { TransactionList } from '../interface/transaction';
 import { makeAnalysisData } from '../utils/makeAnalysisData';
+import { getPastMonthList } from '../utils/date';
+
 
 export const createTransaction = async (ctx: any) => {
-  const { accountbookId, categoryId, paymentId, date, title, amount } = ctx.request.body;
+  const userId = ctx.userData.uid;
+  const accountbookId = await Service.getAccountBookId(userId);
+  const { categoryId, paymentId, date, title, amount } = ctx.request.body;
   const transaction = [accountbookId, categoryId, paymentId, date, title, amount];
   const result = await Service.createTransaction(transaction);
   response.success(ctx, result);
@@ -57,4 +62,24 @@ export const getMonthAnalysis = async (ctx: any) => {
   const expenditure = await Service.getMonthExpenditureData(bookId);
   const data = makeAnalysisData(category, income.income, expenditure.expenditure);
   response.success(ctx, data);
+};
+
+export const getPastFourMonthStatistics = async (ctx: any) => {
+  const userId = ctx.userData.uid;
+  const accountbookId = await Service.getAccountBookId(userId);
+
+  const dateList = getPastMonthList(4);
+  const result: number[][] = [];
+
+  for (const date of dateList) {
+    const startDate = date[0];
+    const endDate = date[1];
+
+    const expend = await Service.getMonthlyStatisticsExpend(accountbookId, startDate, endDate);
+    const income = await Service.getMonthlyStatisticsIncome(accountbookId, startDate, endDate);
+
+    result.push([Number(income), Number(expend)]);
+  }
+
+  response.success(ctx, result);
 };

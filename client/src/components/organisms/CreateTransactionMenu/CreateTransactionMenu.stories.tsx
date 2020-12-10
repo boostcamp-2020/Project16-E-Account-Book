@@ -10,7 +10,7 @@ export const createTransactionMenu = (): JSX.Element => {
   const onClick = () => {
     return true;
   };
-  return <CreateTransactionMenu submit={onClick} cancel={onClick} />;
+  return <CreateTransactionMenu cancel={onClick} />;
 };
 
 createTransactionMenu.story = {

@@ -4,7 +4,6 @@ import RoundLongButton from '@atoms/button/RoundLongButton';
 import myColor from '@theme/color';
 
 interface Props {
-  submit: () => void;
   cancel: () => void;
 }
 
@@ -17,10 +16,10 @@ const BottomDiv = styled.div`
   margin: 0px -20px;
 `;
 
-const createTransactionMenu: React.FC<Props> = ({ submit, cancel }: Props) => {
+const createTransactionMenu: React.FC<Props> = ({ cancel }: Props) => {
   return (
     <BottomDiv>
-      <RoundLongButton onClick={submit}>등록</RoundLongButton>
+      <RoundLongButton isSubmit>등록</RoundLongButton>
       <RoundLongButton onClick={cancel} backgroundColor={myColor.primary.cancel}>
         취소
       </RoundLongButton>

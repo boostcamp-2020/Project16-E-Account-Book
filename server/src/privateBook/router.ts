@@ -12,4 +12,6 @@ router.get('/statistic/category/:year/:month', Controller.getCategoryStatistic);
 
 router.get('/analysis', Controller.getMonthAnalysis);
 
+router.get('/statistics/monthly/', Controller.getPastFourMonthStatistics);
+
 export default router;
