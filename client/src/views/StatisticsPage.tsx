@@ -49,7 +49,7 @@ const StatisticsPage: React.FC = () => {
     let result;
     switch (accountbookType) {
       case 'PRIVATE':
-        result = await getAxiosData();
+        result = await getAxiosData(API.GET_PRIVATE_STATISTIC_CATEGORY(year, month));
         setStickData(result);
         break;
       case 'SOCIAL':

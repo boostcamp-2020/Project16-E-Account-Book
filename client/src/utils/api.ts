@@ -37,3 +37,6 @@ export const GET_PRIVATE_FOUR_MONTH_STATISTICS = `${process.env.REACT_APP_BASE_U
 export const POST_PRIVATE_TRANSACTION = `${process.env.REACT_APP_BASE_URL}/api/private/transaction`;
 
 export const POST_SOCIAL_TRANSACTION = `${process.env.REACT_APP_BASE_URL}/api/social/transaction`;
+
+export const GET_PRIVATE_STATISTIC_CATEGORY = (year: number, month: number): string =>
+  `${process.env.REACT_APP_BASE_URL}/api/private/statistic/category/${year}/${month}`;
