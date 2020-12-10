@@ -32,16 +32,24 @@ const DailyTotal = styled.div<SizeProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   border: 1px solid ${myColor.calendar.border};
   border-radius: 3px;
+  box-sizing: border-box;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   font-size: 3px;
   color: ${myColor.primary.cancel};
 `;
 
-const TitleDiv = styled.div`
-  flex: 1;
+const AmountBox = styled.div`
+  display: flex;
+  flex-flow: row;
+  width: 45%;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const dailyTotal: React.FC<Props> = ({
@@ -63,9 +71,11 @@ const dailyTotal: React.FC<Props> = ({
   })`;
   return (
     <DailyTotal width={width} height={height}>
-      <TitleDiv>{title}</TitleDiv>
-      <Income fontWeight={fontWeight} fontSize={fontSize} color={InColor} money={InMoney} />
-      <Expenditure fontWeight={fontWeight} fontSize={fontSize} color={ExColor} money={ExMoney} />
+      <div>{title}</div>
+      <AmountBox>
+        <Income fontWeight={fontWeight} fontSize={fontSize} color={InColor} money={InMoney} />
+        <Expenditure fontWeight={fontWeight} fontSize={fontSize} color={ExColor} money={ExMoney} />
+      </AmountBox>
     </DailyTotal>
   );
 };

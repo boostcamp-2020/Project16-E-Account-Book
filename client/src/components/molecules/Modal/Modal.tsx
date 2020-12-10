@@ -20,20 +20,24 @@ interface modalProps {
 
 const defaultProps = {
   title: '',
-  width: '80%',
+  width: '70%',
   height: '60%',
 };
 
 const ModalBackground = styled.div`
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   background-color: ${myColor.background.translucentBlack};
-  z-index: 3;
+  z-index: 10;
 `;
 
 const ModalContainer = styled.div`
   position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,7 +54,7 @@ const Modal = styled.div<modalProps>`
   border: 0;
   border-radius: 8px;
   padding: 10px 40px;
-  z-index: 4;
+  z-index: 20;
 `;
 
 const ButtonContainer = styled.div`

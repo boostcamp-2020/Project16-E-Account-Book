@@ -32,6 +32,7 @@ const TransactionInfo: React.FC<props> = ({ data }: props) => {
         <RoundShortChips
           backgroundColor={data.payment === null ? myColor.primary.main : myColor.primary.accent}
           margin="0px 10px 0px 0px"
+          fontSize="0.5rem"
         >
           {data.category}
         </RoundShortChips>

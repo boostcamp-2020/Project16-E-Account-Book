@@ -19,7 +19,10 @@ interface dataProps {
 
 const DailyTransaction = styled.div`
   border: 1px solid ${myColor.calendar.border};
+  box-sizing: border-box;
   border-radius: 5px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   &:hover {
     background-color: ${myColor.calendar.main};
     transform: scale(1.2);
