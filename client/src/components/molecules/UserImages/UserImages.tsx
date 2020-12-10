@@ -21,7 +21,6 @@ const userImages: React.FC<Props> = ({ links }: Props) => {
   let userLink: string[] = links;
   if (links.length >= 3) {
     userLink = links.slice(0, 3);
-    // userLink.unshift(NoOne);
     userLink.push(NoOne);
   }
   const allImage = userLink.map((user) => (
