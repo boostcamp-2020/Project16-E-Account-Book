@@ -64,8 +64,8 @@ const CreateButton: React.FC<Props> = ({ link }: Props) => {
             height="100%"
             points="15 7 35 7 45 25 35 43 15 43 5 25"
             fill={myColor.primary.main}
-            stroke={myColor.primary.kakaoBlack}
-            strokeWidth="2"
+            stroke={myColor.primary.brown}
+            strokeWidth="0.8"
             filter="url(#shadow-filter)"
           />
           <line x1="20" x2="30" y1="25" y2="25" stroke={myColor.primary.brown} strokeWidth="2" />
