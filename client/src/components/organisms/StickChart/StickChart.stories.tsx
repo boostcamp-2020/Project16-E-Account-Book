@@ -7,24 +7,33 @@ export default {
 };
 
 export const stickChart = (): JSX.Element => {
-  const percent = 70.6;
-  const outColor = 'white';
-  const inColor = 'pink';
-  const width = '400px';
-  const height = '40px';
-  const name = '저축/비용';
-  const money = 32213;
-  return (
-    <StickChart
-      percent={percent}
-      outColor={outColor}
-      inColor={inColor}
-      width={width}
-      height={height}
-      name={name}
-      money={money}
-    />
-  );
+  const data = {
+    income: [
+      {
+        name: '기타수입',
+        money: 8480,
+        percent: 45.4,
+      },
+      {
+        name: '용돈',
+        money: 5400,
+        percent: 28.9,
+      },
+      {
+        name: '사업수입',
+        money: 4804,
+        percent: 25.7,
+      },
+    ],
+    expenditure: [
+      {
+        name: '식비',
+        money: 95190,
+        percent: 100,
+      },
+    ],
+  };
+  return <StickChart data={data} />;
 };
 
 stickChart.story = {
