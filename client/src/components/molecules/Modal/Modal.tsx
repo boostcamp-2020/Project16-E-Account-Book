@@ -20,7 +20,7 @@ interface modalProps {
 
 const defaultProps = {
   title: '',
-  width: '80%',
+  width: '70%',
   height: '60%',
 };
 
