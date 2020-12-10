@@ -72,7 +72,7 @@ const MainPage: React.FC = () => {
   };
 
   const getAnalysis = async () => {
-    const { data } = await getAxiosData(`${API.GET_PRIVATE_ANALYSIS}`);
+    const { data } = await getAxiosData(API.GET_PRIVATE_ANALYSIS);
     setPrivateBook(data);
   };
 
