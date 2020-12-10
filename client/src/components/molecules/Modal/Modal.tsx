@@ -31,7 +31,7 @@ const ModalBackground = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: ${myColor.background.translucentBlack};
-  z-index: 3;
+  z-index: 10;
 `;
 
 const ModalContainer = styled.div`
@@ -54,7 +54,7 @@ const Modal = styled.div<modalProps>`
   border: 0;
   border-radius: 8px;
   padding: 10px 40px;
-  z-index: 10;
+  z-index: 20;
 `;
 
 const ButtonContainer = styled.div`
