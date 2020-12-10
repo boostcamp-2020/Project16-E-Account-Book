@@ -43,6 +43,7 @@ const Accountbook: React.FC = () => {
   const PaperContainer = styled.div`
     width: 100%;
     position: fixed;
+    z-index: 7;
   `;
   const tabStyle = {
     textDecoration: 'none',
