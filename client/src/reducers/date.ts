@@ -24,7 +24,7 @@ const initialState: MonthState = {
   month: today.getMonth() + 1,
 };
 
-const modal = (state: MonthState = initialState, action: MonthAction): MonthState => {
+const date = (state: MonthState = initialState, action: MonthAction): MonthState => {
   switch (action.type) {
     case INIT_MONTH:
       return initialState;
@@ -43,4 +43,4 @@ const modal = (state: MonthState = initialState, action: MonthAction): MonthStat
   }
 };
 
-export default modal;
+export default date;
