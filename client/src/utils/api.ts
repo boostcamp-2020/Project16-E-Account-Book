@@ -22,6 +22,10 @@ export const POST_CREATE_SOCIAL = `${process.env.REACT_APP_BASE_URL}/api/social/
 
 export const GET_SOCIAL_FOUR_MONTH_STATISTICS = `${process.env.REACT_APP_BASE_URL}/api/social/statistics/monthly/`;
 
+export const GET_SOCIAL_FIVE_WEEK_STATISTICS = `${process.env.REACT_APP_BASE_URL}/api/social/statistic/weeks/`;
+
+export const GET_PRIVATE_FIVE_WEEK_STATISTICS = `${process.env.REACT_APP_BASE_URL}/api/private/statistic/weeks`;
+
 export const GET_PRIVATE_ANALYSIS = `${process.env.REACT_APP_BASE_URL}/api/private/analysis`;
 
 export const GET_PRIVATE_FOUR_MONTH_STATISTICS = `${process.env.REACT_APP_BASE_URL}/api/private/statistics/monthly/`;

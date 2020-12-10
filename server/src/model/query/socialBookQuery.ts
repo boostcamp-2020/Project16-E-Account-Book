@@ -52,12 +52,18 @@ const socialBookQuery = {
   CREATE_SOCIAL_TRANSACTION:
     'INSERT INTO social_transaction (accountbook_id, user_id, category_id, payment_id, date, title, amount) VALUES(?,?,?,?,?,?,?)',
   READ_MONTHLY_STATISTICS_EXPEND: `
-  SELECT SUM(amount) FROM social_transaction 
-  WHERE accountbook_id = ? AND date >= ? AND date < ? AND payment_id IS NOT NULL`,
+    SELECT SUM(amount) FROM social_transaction 
+    WHERE accountbook_id = ? AND date >= ? AND date < ? AND payment_id IS NOT NULL`,
   READ_MONTHLY_STATISTICS_INCOME: `
-  SELECT SUM(amount) FROM social_transaction 
-  WHERE accountbook_id = ? AND date >= ? AND date < ? AND payment_id IS NULL`,
-  CREATE_SOCIAL_ACCOUNTBOOK:
+    SELECT SUM(amount) FROM social_transaction 
+    WHERE accountbook_id = ? AND date >= ? AND date < ? AND payment_id IS NULL`,
+  READ_SOCIAL_WEEKLY_STATISTICS_EXPEND: `
+    SELECT SUM(amount) FROM social_transaction 
+    WHERE accountbook_id = ? AND date >= ? AND date <= ? AND payment_id IS NOT NULL`,
+  READ_SOCIAL_WEEKLY_STATISTICS_INCOME: `
+    SELECT SUM(amount) FROM social_transaction 
+    WHERE accountbook_id = ? AND date >= ? AND date <= ? AND payment_id IS NULL`,
+  CREATE_SOCIAL_ACCOUNTBOOK: 
     'INSERT INTO social_accountbook (master_id, name, description, color) VALUES(?,?,?,?)',
   CREATE_SOCIAL_ACCOUNTBOOK_USERS:
     'INSERT INTO social_accountbook_users (user_id, accountbook_id, state) VALUES(?,?,?)',

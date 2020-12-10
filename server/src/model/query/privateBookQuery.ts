@@ -20,6 +20,12 @@ const privateBookQuery = {
     FROM private_transaction
     WHERE accountbook_id = ? AND year(date) = ? AND month(date) = ? AND payment_id IS NOT NULL
     GROUP BY category_id ORDER BY SUM(amount) DESC;`,
+  READ_PRIVATE_WEEKLY_STATISTICS_EXPEND: `
+    SELECT SUM(amount) FROM private_transaction 
+    WHERE accountbook_id = ? AND date >= ? AND date <= ? AND payment_id IS NOT NULL`,
+  READ_PRIVATE_WEEKLY_STATISTICS_INCOME: `
+    SELECT SUM(amount) FROM private_transaction 
+    WHERE accountbook_id = ? AND date >= ? AND date <= ? AND payment_id IS NULL`,
   READ_PRIVATE_MONTH_TRANSACTION: `
     SELECT SUM(amount) as money, 
     (SELECT name FROM category WHERE category.id = private_transaction.category_id) as name

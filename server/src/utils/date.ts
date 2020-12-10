@@ -15,5 +15,54 @@ export const getPastMonthList = (count: number) => {
       month -= 1;
     }
   }
+  return result.reverse();
+};
+
+const minusOneDay = (date: Date): Date => {
+  let minusDate = '';
+  const smallMonthList = [2, 4, 6, 9, 11];
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+
+  let leapYear: boolean;
+
+  if (year % 4 === 0 && year % 400 === 0 && year % 100 === 0) leapYear = true;
+  else if (year % 4 === 0 && year % 100 === 0) leapYear = false;
+  else if (year % 4 === 0) leapYear = true;
+  else leapYear = false;
+
+  if (day === 1) {
+    if (smallMonthList.includes(month)) minusDate = `${year}-${month - 1}-${31}`;
+    else if (month === 3) {
+      if (leapYear) minusDate = `${year}-${month - 1}-${29}`;
+      else minusDate = `${year}-${month - 1}-${28}`;
+    } else if (month === 1) minusDate = `${year - 1}-${12}-${31}`;
+    else minusDate = `${year}-${month - 1}-${30}`;
+  } else minusDate = `${year}-${month}-${day - 1}`;
+
+  return new Date(minusDate);
+};
+
+const dateToString = (date: Date): string => {
+  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+};
+
+export const getPastWeekList = (count: number) => {
+  const result: string[][] = [];
+
+  let endDate: Date = new Date();
+  let startDate: Date = new Date();
+
+  for (let index = 0; index < count; index += 1) {
+    while (true) {
+      if (startDate.getDay() === 0) break;
+      startDate = minusOneDay(startDate);
+    }
+
+    result.push([dateToString(startDate), dateToString(endDate)]);
+    startDate = minusOneDay(startDate);
+    endDate = startDate;
+  }
   return result;
 };

@@ -4,7 +4,7 @@ import * as response from '../utils/response';
 import message from '../utils/message';
 import 'dotenv/config';
 import * as Service from './service';
-import { getPastMonthList } from '../utils/date';
+import { getPastMonthList, getPastWeekList } from '../utils/date';
 import { TransactionList } from '../interface/transaction';
 
 export const getSocialBooks = async (ctx: Context) => {
@@ -89,6 +89,33 @@ export const getPastFourMonthStatistics = async (ctx: any) => {
     result.push([Number(income), Number(expend)]);
   }
 
+  response.success(ctx, result);
+};
+
+export const getPastFiveWeekStatistic = async (ctx: any) => {
+  const { bookId } = ctx.params;
+  const dateList = getPastWeekList(5);
+  const startDate = 0;
+  const endDate = 1;
+  const income = [];
+  const expend = [];
+
+  for (let index = 0; index < dateList.length; index += 1) {
+    const incomeData = Number(
+      await Service.getWeeksIncome(bookId, dateList[index][startDate], dateList[index][endDate]),
+    );
+    const expendData = Number(
+      await Service.getWeeksExpend(bookId, dateList[index][startDate], dateList[index][endDate]),
+    );
+    income.push(incomeData);
+    expend.push(expendData);
+  }
+
+  const result = {
+    income,
+    expend,
+    dateList,
+  };
   response.success(ctx, result);
 };
 
