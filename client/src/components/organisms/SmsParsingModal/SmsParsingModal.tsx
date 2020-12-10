@@ -7,7 +7,11 @@ import TextArea from '@atoms/textarea/TextArea';
 import { hideModal } from '@actions/modal/type';
 import { useDispatch } from 'react-redux';
 
-const SmsParsingModal: React.FC = () => {
+interface props {
+  setData: any;
+}
+
+const SmsParsingModal: React.FC<props> = ({ setData }: props) => {
   const [message, setMessage] = useState('');
   const dispatch = useDispatch();
   const closeModal = () => {
@@ -17,7 +21,10 @@ const SmsParsingModal: React.FC = () => {
 
   const changeHandler = (event) => {
     setMessage(event.target.value);
-    console.log(message);
+  };
+
+  const submitHandler = (parsedData) => {
+    setData(parsedData);
   };
 
   const paymentList = [
@@ -53,7 +60,6 @@ const SmsParsingModal: React.FC = () => {
     paymentList.forEach((card) => {
       if (sms.match(card)) {
         newData.cardName = card;
-        console.log('카드이름은', card);
       }
     });
     const parsedSMSDatas = parseSMS(sms);
@@ -83,8 +89,8 @@ const SmsParsingModal: React.FC = () => {
         <TextArea width="100%" height="60%" value={message} onChange={changeHandler} />
         <RoundLongButton
           onClick={() => {
+            submitHandler(solution(message));
             closeModal();
-            solution(message);
           }}
         >
           등록

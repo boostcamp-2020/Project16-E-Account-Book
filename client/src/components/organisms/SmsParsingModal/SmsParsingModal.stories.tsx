@@ -7,7 +7,7 @@ export default {
 };
 
 export const smsParsingModal = (): JSX.Element => {
-  return <SmsParsingModal />;
+  return <SmsParsingModal setData={() => undefined} />;
 };
 
 smsParsingModal.story = {
