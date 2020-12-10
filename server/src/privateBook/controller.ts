@@ -3,7 +3,9 @@ import * as response from '../utils/response';
 import 'dotenv/config';
 import * as Service from './service';
 import { TransactionList } from '../interface/transaction';
+import { makeAnalysisData } from '../utils/makeAnalysisData';
 import { getPastMonthList } from '../utils/date';
+
 
 export const createTransaction = async (ctx: any) => {
   const userId = ctx.userData.uid;
@@ -50,6 +52,16 @@ export const getCategoryStatistic = async (ctx: any) => {
     expenditure,
   };
   response.success(ctx, result);
+};
+
+export const getMonthAnalysis = async (ctx: any) => {
+  const userId = ctx.userData.uid;
+  const bookId = await Service.getAccountBookId(userId);
+  const category = await Service.getMonthCategoryData(bookId);
+  const income = await Service.getMonthIncomeData(bookId);
+  const expenditure = await Service.getMonthExpenditureData(bookId);
+  const data = makeAnalysisData(category, income.income, expenditure.expenditure);
+  response.success(ctx, data);
 };
 
 export const getPastFourMonthStatistics = async (ctx: any) => {

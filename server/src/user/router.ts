@@ -4,6 +4,6 @@ const Router = require('@koa/router');
 
 const router = new Router();
 
-router.get('/name', Controller.getUserName);
+router.get('/info', Controller.getUserInfo);
 
 export default router;
