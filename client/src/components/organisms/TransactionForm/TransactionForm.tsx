@@ -45,6 +45,7 @@ const transactionForm: React.FC<Props> = ({ initData }: Props) => {
   const modalView = useSelector((state: RootState) => state.modal.view);
   const [isIncome, setIsIncome] = useState(true);
   const [isExpenditure, setIsExpenditure] = useState(false);
+  const currDate = new Date();
 
   const [title, setTitle] = useState<string>();
   const [amount, setAmount] = useState<string>();
@@ -52,7 +53,12 @@ const transactionForm: React.FC<Props> = ({ initData }: Props) => {
   const [time, setTime] = useState<string>();
   const [categoryId, setCategoryId] = useState<number | string>();
   const [paymentId, setPaymentId] = useState<number | string>();
-  const [parsedData, setParsedData] = useState(undefined);
+  const [parsedData, setParsedData] = useState({
+    cardName: undefined,
+    amount: undefined,
+    date: undefined,
+    time: undefined,
+  });
 
   const titleInputChange = (e) => {
     const input = e.target.value;
@@ -102,7 +108,18 @@ const transactionForm: React.FC<Props> = ({ initData }: Props) => {
   }, []);
 
   useEffect(() => {
-    console.log(parsedData);
+    if (parsedData.amount !== undefined) {
+      const amountNumber = Number(parsedData.amount);
+      setAmount(numberToMoney(amountNumber));
+    }
+
+    if (parsedData.time !== undefined) setTime(parsedData.time);
+    if (parsedData.date !== undefined) setDate(`${currDate.getFullYear()}-${parsedData.date}`);
+    if (parsedData.cardName !== undefined) {
+      payment.forEach((el) => {
+        if (el.name === parsedData.cardName) setPaymentId(el.id);
+      });
+    }
   }, [parsedData]);
 
   return (

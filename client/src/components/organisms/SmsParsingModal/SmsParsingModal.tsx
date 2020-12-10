@@ -71,8 +71,8 @@ const SmsParsingModal: React.FC<props> = ({ setData }: props) => {
       if (data.includes(':')) {
         newData.time = data.match(/[0-9]{2}:[0-9]{2}/)[0];
       }
-      if (data.includes('/')) {
-        newData.date = data.match(/[0-9]{2}\/[0-9]{2}/)[0];
+      if (data.includes('-')) {
+        newData.date = data.match(/[0-9]{2}-[0-9]{2}/)[0];
       }
     });
     return newData;
