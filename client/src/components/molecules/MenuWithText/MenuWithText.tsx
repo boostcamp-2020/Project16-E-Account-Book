@@ -13,6 +13,7 @@ interface Props extends sizeProps {
   title: string;
   value?: any;
   onChange?: any;
+  isIncome?: boolean;
 }
 
 interface sizeProps {
@@ -23,6 +24,7 @@ const defaultProps = {
   width: '15%',
   value: undefined,
   onChange: undefined,
+  isIncome: false,
 };
 
 const MenuWithText = styled.div<sizeProps>`
@@ -31,11 +33,24 @@ const MenuWithText = styled.div<sizeProps>`
   width: ${(props) => props.width};
 `;
 
-const menuWithText: React.FC<Props> = ({ width, title, options, value, onChange }: Props) => {
+const menuWithText: React.FC<Props> = ({
+  width,
+  title,
+  options,
+  value,
+  onChange,
+  isIncome,
+}: Props) => {
   return (
     <MenuWithText width={width}>
       <Text>{title}</Text>
-      <DropdownMenu width="70%" options={options} value={value} onChange={onChange} />
+      <DropdownMenu
+        width="70%"
+        options={options}
+        value={value}
+        onChange={onChange}
+        isIncome={isIncome}
+      />
     </MenuWithText>
   );
 };
