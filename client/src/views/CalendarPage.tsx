@@ -24,12 +24,10 @@ const CalendarPage: React.FC = () => {
       let result;
       switch (type) {
         case 'PRIVATE':
-          result = await getAxiosData(`${API.GET_TRANSACTION_PRIVATE_LIST}/${year}/${month}`);
+          result = await getAxiosData(API.GET_TRANSACTION_PRIVATE_LIST(year, month));
           return result;
         case 'SOCIAL':
-          result = await getAxiosData(
-            `${API.GET_TRANSACTION_SOCIAL_LIST}/${accountbookId}/${year}/${month}`,
-          );
+          result = await getAxiosData(API.GET_TRANSACTION_SOCIAL_LIST(accountbookId, year, month));
           return result;
         default:
           break;

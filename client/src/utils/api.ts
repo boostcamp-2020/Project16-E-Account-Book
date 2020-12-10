@@ -2,9 +2,11 @@ import 'dotenv/config';
 
 export const GET_JWT = `${process.env.REACT_APP_BASE_URL}/login/`;
 
-export const GET_TRANSACTION_SOCIAL_LIST = `${process.env.REACT_APP_BASE_URL}/api/social/transaction/list`;
+export const GET_TRANSACTION_SOCIAL_LIST = (bookId: number, year: number, month: number): string =>
+  `${process.env.REACT_APP_BASE_URL}/api/social/transaction/list/${bookId}/${year}/${month}`;
 
-export const GET_TRANSACTION_PRIVATE_LIST = `${process.env.REACT_APP_BASE_URL}/api/private/transaction/list`;
+export const GET_TRANSACTION_PRIVATE_LIST = (year: number, month: number): string =>
+  `${process.env.REACT_APP_BASE_URL}/api/private/transaction/list/${year}/${month}`;
 
 export const GET_USER_INFO = `${process.env.REACT_APP_BASE_URL}/api/user/info`;
 
@@ -20,9 +22,11 @@ export const GET_PAYMENT = `${process.env.REACT_APP_BASE_URL}/api/payment`;
 
 export const POST_CREATE_SOCIAL = `${process.env.REACT_APP_BASE_URL}/api/social/createAccountbook`;
 
-export const GET_SOCIAL_FOUR_MONTH_STATISTICS = `${process.env.REACT_APP_BASE_URL}/api/social/statistics/monthly/`;
+export const GET_SOCIAL_FOUR_MONTH_STATISTICS = (bookId: number): string =>
+  `${process.env.REACT_APP_BASE_URL}/api/social/statistics/monthly/${bookId}`;
 
-export const GET_SOCIAL_FIVE_WEEK_STATISTICS = `${process.env.REACT_APP_BASE_URL}/api/social/statistic/weeks/`;
+export const GET_SOCIAL_FIVE_WEEK_STATISTICS = (bookId: number): string =>
+  `${process.env.REACT_APP_BASE_URL}/api/social/statistic/weeks/${bookId}`;
 
 export const GET_PRIVATE_FIVE_WEEK_STATISTICS = `${process.env.REACT_APP_BASE_URL}/api/private/statistic/weeks`;
 

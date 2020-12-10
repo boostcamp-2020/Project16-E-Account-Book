@@ -13,7 +13,7 @@ import Bold from '@atoms/span/BoldSpan';
 import SocialAccountBook from '@organisms/SocialAccountBook';
 import { useSelector } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
-import { SocialBook } from '@interfaces/accountbook';
+import { SocialBook, PrivateBook } from '@interfaces/accountbook';
 import { getAxiosData } from '@utils/axios';
 import * as API from '@utils/api';
 
@@ -42,16 +42,23 @@ const SocialBooksBox = styled.div`
   margin-bottom: 1rem;
 `;
 
+const initPrivate = {
+  category: [],
+  income: '0',
+  expenditure: '0',
+};
+
 const MainPage: React.FC = () => {
-  const [masterBooks, setMasterBooks] = useState<SocialBook[]>([]);
-  const [socialBooks, setSocialBooks] = useState<SocialBook[]>([]);
   const userName = useSelector((state: RootState) => state.user.name);
   const userImage = useSelector((state: RootState) => state.user.image);
-  const [infos, setInfo] = useState<any>('');
+
+  const [privateBook, setPrivateBook] = useState<PrivateBook>(initPrivate);
+  const [masterBooks, setMasterBooks] = useState<SocialBook[]>([]);
+  const [socialBooks, setSocialBooks] = useState<SocialBook[]>([]);
 
   const chipsArgs: chipsProps = {
     link: userImage,
-    info: infos,
+    info: privateBook,
   };
 
   const initMasterBooks = async () => {
@@ -65,8 +72,8 @@ const MainPage: React.FC = () => {
   };
 
   const getAnalysis = async () => {
-    const { data } = await getAxiosData(`${API.GET_PRIVATE_ANALYSIS}`);
-    setInfo(data);
+    const { data } = await getAxiosData(API.GET_PRIVATE_ANALYSIS);
+    setPrivateBook(data);
   };
 
   useEffect(() => {
@@ -74,6 +81,7 @@ const MainPage: React.FC = () => {
     initSocialBooks();
     getAnalysis();
   }, []);
+
   return (
     <>
       <CenterContent>
