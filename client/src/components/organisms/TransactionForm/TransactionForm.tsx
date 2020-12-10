@@ -88,7 +88,6 @@ const transactionForm: React.FC<Props> = ({ initData }: Props) => {
       const initDate = getDate(initData.date);
       const initTime = getTime(initData.date);
       const initPayment = initData.paymentId;
-      console.log(initDate);
       setTitle(initData.title);
       setAmount(initAmount);
       setDate(initDate);
