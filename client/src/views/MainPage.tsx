@@ -61,7 +61,6 @@ const MainPage: React.FC = () => {
 
   const getAnalysis = async () => {
     const { data } = await getAxiosData(`${API.GET_PRIVATE_ANALYSIS}`);
-    console.log(data);
     setInfo(data);
   };
 

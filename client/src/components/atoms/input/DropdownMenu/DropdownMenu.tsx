@@ -56,7 +56,11 @@ const Option = styled.option`
 `;
 
 const getOptionList = (options: Array<OptionData>) =>
-  options.map((value) => <Option value={value.id}>{value.name}</Option>);
+  options.map((value) => (
+    <Option key={value.id} value={value.id}>
+      {value.name}
+    </Option>
+  ));
 
 const DropdownMenu: React.FC<Props> = ({
   width,
@@ -78,7 +82,9 @@ const DropdownMenu: React.FC<Props> = ({
       value={value}
       onChange={onChange}
     >
-      <Option value="">선택안함</Option>
+      <Option key="-1" value="">
+        선택안함
+      </Option>
       {optionList}
     </Select>
   );

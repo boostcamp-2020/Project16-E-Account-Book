@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import TransactionInfo from '@molecules/TransactionInfo';
+import myColor from '@theme/color';
 
 interface Props {
   data: dataProps;
@@ -17,10 +18,10 @@ interface dataProps {
 }
 
 const DailyTransaction = styled.div`
-  border: 1px solid pink;
+  border: 1px solid ${myColor.calendar.border};
   border-radius: 5px;
   &:hover {
-    background-color: pink;
+    background-color: ${myColor.calendar.main};
     transform: scale(1.2);
   }
 `;

@@ -12,6 +12,13 @@ import TransactionPage from '@views/TransactionPage';
 import CalendarPage from '@views/CalendarPage';
 import StatisticsPage from '@views/StatisticsPage';
 
+// eslint-disable-next-line no-shadow
+enum Menu {
+  Transaction,
+  Calendar,
+  Statistic,
+}
+
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
@@ -20,7 +27,7 @@ const useStyles = makeStyles({
 
 const Accountbook: React.FC = () => {
   const classes = useStyles();
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(1);
 
   const handleChange = (event: React.ChangeEvent<any>, newValue: number) => {
     setValue(newValue);
@@ -40,6 +47,21 @@ const Accountbook: React.FC = () => {
     color: 'black',
   };
 
+  const renderTransaction = () => {
+    setValue(Menu.Transaction);
+    return <TransactionPage />;
+  };
+
+  const renderCalendar = () => {
+    setValue(Menu.Calendar);
+    return <CalendarPage />;
+  };
+
+  const renderStatistics = () => {
+    setValue(Menu.Statistic);
+    return <StatisticsPage />;
+  };
+
   return (
     <CenterContent>
       <TopNavBar />
@@ -52,22 +74,22 @@ const Accountbook: React.FC = () => {
           style={tabsStyle}
           centered
         >
-          <Link style={tabStyle} to="/accountbook/list" onClick={() => setValue(0)}>
+          <Link style={tabStyle} to="/accountbook/list">
             <Tab label="내역" />
           </Link>
-          <Link style={tabStyle} to="/accountbook/calendar" onClick={() => setValue(1)}>
+          <Link style={tabStyle} to="/accountbook/calendar">
             <Tab label="달력" />
           </Link>
-          <Link style={tabStyle} to="/accountbook/statistics" onClick={() => setValue(2)}>
+          <Link style={tabStyle} to="/accountbook/statistics">
             <Tab label="통계" />
           </Link>
         </Tabs>
       </Paper>
       <Switch>
-        <Route path="/accountbook/list" component={TransactionPage} />
-        <Route path="/accountbook/calendar" component={CalendarPage} />
-        <Route path="/accountbook/statistics" component={StatisticsPage} />
-        <Redirect from="*" to="/accountbook/list" />
+        <Route path="/accountbook/list" render={renderTransaction} />
+        <Route path="/accountbook/calendar" render={renderCalendar} />
+        <Route path="/accountbook/statistics" render={renderStatistics} />
+        <Redirect from="*" to="/accountbook/calendar" />
       </Switch>
     </CenterContent>
   );

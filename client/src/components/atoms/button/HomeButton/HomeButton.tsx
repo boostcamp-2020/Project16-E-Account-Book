@@ -7,6 +7,8 @@ const HomeButton = styled.button`
   border: 0;
   background-color: transparent;
   cursor: pointer;
+  font-weight: bold;
+  margin-left: 10px;
 `;
 
 const homeButton: React.FC = () => {

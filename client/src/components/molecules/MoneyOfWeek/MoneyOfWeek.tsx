@@ -37,10 +37,10 @@ const MoneyOfWeek = styled.div<SizeProps>`
   align-items: center;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
-  border: 1px solid pink;
+  border: 1px solid ${myColor.calendar.border};
   border-radius: 3px;
   font-size: 3px;
-  color: ${myColor.primary.cancel};
+  background: ${myColor.calendar.main};
 `;
 
 const moneyOfWeek: React.FC<Props> = ({
