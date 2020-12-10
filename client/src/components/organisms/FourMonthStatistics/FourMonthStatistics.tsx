@@ -68,14 +68,13 @@ const PressedMonthBtn = styled.div`
 
 const FourMonthStatistics: React.FC<props> = ({ data }: props) => {
   let maxHeight = 0;
-  const monthList = getPastMonthList(4).reverse();
+  const monthList = getPastMonthList(4);
 
   const [monthIndex, setMonthIndex] = useState(0);
 
   const changeMonth = (index) => {
     setMonthIndex(index);
   };
-
   data.forEach((month) => {
     if (month[income] > maxHeight) maxHeight = month[income];
     if (month[expend] > maxHeight) maxHeight = month[expend];
