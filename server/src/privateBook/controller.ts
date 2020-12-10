@@ -60,16 +60,15 @@ export const getPastFiveWeekStatistic = async (ctx: any) => {
   const expend = [];
 
   for (let index = 0; index < dateList.length; index += 1) {
-    income.push(
-      Number(
-        await Service.getWeeksIncome(bookId, dateList[index][startDate], dateList[index][endDate]),
-      ),
+    const incomeData = Number(
+      await Service.getWeeksIncome(bookId, dateList[index][startDate], dateList[index][endDate]),
     );
-    expend.push(
-      Number(
-        await Service.getWeeksExpend(bookId, dateList[index][startDate], dateList[index][endDate]),
-      ),
+    const expendData = Number(
+      await Service.getWeeksExpend(bookId, dateList[index][startDate], dateList[index][endDate]),
     );
+
+    income.push(incomeData);
+    expend.push(expendData);
   }
 
   const result = {

@@ -40,7 +40,6 @@ const StatisticsPage: React.FC = () => {
     console.log(isExpenditure);
     console.log(accountbookType);
     console.log(accountbookId);
-    alert('hello');
   }, [dateData]);
 
   useEffect(() => {
