@@ -49,6 +49,7 @@ const DayBox = styled.div<SizeProps>`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   box-sizing: border-box;
+  font-family: MapoGoldenPier;
   &:hover {
     background-color: ${myColor.calendar.main};
     animation: ${rotate} 0.5s;
