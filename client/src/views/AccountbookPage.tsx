@@ -44,13 +44,14 @@ const Accountbook: React.FC = () => {
 
   const PaperMarginBox = styled.div`
     width: 100%;
-    height: 3rem; {/* <TopNavBar /> */
+    height: 2.9rem; {/* <TopNavBar /> */
   `;
 
   const PaperContainer = styled.div`
     width: 100%;
     position: fixed;
     z-index: 7;
+    max-width: 1200px;
   `;
   const tabStyle = {
     textDecoration: 'none',

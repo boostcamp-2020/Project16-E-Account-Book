@@ -46,6 +46,11 @@ const EmptyBox = styled.div`
   box-sizing: border-box;
 `;
 
+const MonthNavMarginBox = styled.div`
+width: 100%;
+height: 2rem; {/* <TopNavBar /> */
+`;
+
 const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
   const dispatch = useDispatch();
   const modalView = useSelector((state: RootState) => state.modal.view);
@@ -91,6 +96,7 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
   return (
     <Calendar>
       <MonthNav />
+      <MonthNavMarginBox />
       <Filter>
         <CheckBoxWithNumber
           checked={inCheck}

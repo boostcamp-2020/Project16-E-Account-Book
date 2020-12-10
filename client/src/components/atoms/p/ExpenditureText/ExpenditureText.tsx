@@ -27,7 +27,7 @@ const expenditureText: React.FC<Props> = ({ fontWeight, fontSize, color, money }
   const expenditureMoney = numberToMoney(money);
   return (
     <ExpenditureText fontWeight={fontWeight} fontSize={fontSize} color={color}>
-      {money === 0 ? <br /> : <>- {expenditureMoney}</>}
+      {money === 0 ? <br /> : `-${expenditureMoney}`}
     </ExpenditureText>
   );
 };
