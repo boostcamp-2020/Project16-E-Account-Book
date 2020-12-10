@@ -25,7 +25,7 @@ const userImages: React.FC<Props> = ({ links }: Props) => {
   }
   const allImage = userLink.map((user) => (
     <Images>
-      <UserImage link={user} key={getRandomKey()} />
+      <UserImage size="40px" link={user} key={getRandomKey()} />
     </Images>
   ));
   return <UserImages>{allImage}</UserImages>;
