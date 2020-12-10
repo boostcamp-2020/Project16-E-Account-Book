@@ -34,7 +34,7 @@ const PositionBox = styled.div`
 
 const MasterBooksBox = styled.div`
   width: 100%;
-  margin-top: 5rem;
+  margin-top: 4rem;
 `;
 
 const SocialBooksBox = styled.div`
