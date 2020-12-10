@@ -117,7 +117,7 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
           <WeeklyDiv>
             <MoneyOfWeek
               fontWeight="bold"
-              fontSize="15px"
+              fontSize="12px"
               InMoney={weeks.reduce((acc, cur) => acc + cur.inmoney, 0)}
               ExMoney={weeks.reduce((acc, cur) => acc + cur.exmoney, 0)}
               InColor={Color.money.income}
@@ -139,8 +139,8 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
                       width="100%"
                       height="3.3rem"
                       onClick={() => onClick(day.date)}
-                      InMoney={day.inmoney}
-                      ExMoney={day.exmoney}
+                      InMoney={day.inmoney === 0 ? -1 : day.inmoney}
+                      ExMoney={day.exmoney === 0 ? -1 : day.exmoney}
                       InColor={Color.money.income}
                       ExColor={Color.money.expenditure}
                       fontWeight="bold"
