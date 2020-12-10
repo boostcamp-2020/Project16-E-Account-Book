@@ -40,3 +40,10 @@ export const POST_SOCIAL_TRANSACTION = `${process.env.REACT_APP_BASE_URL}/api/so
 
 export const GET_PRIVATE_STATISTIC_CATEGORY = (year: number, month: number): string =>
   `${process.env.REACT_APP_BASE_URL}/api/private/statistic/category/${year}/${month}`;
+
+export const GET_SOCIAL_STATISTIC_CATEGORY = (
+  bookId: number,
+  year: number,
+  month: number,
+): string =>
+  `${process.env.REACT_APP_BASE_URL}/api/social/statistic/category/${bookId}/${year}/${month}`;

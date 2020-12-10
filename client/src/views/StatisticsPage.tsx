@@ -53,7 +53,7 @@ const StatisticsPage: React.FC = () => {
         setStickData(result);
         break;
       case 'SOCIAL':
-        result = await getAxiosData();
+        result = await getAxiosData(API.GET_SOCIAL_STATISTIC_CATEGORY(accountbookId, year, month));
         setStickData(result);
         break;
       default:
