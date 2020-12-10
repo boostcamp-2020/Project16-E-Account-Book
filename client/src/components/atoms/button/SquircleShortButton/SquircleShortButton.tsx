@@ -19,6 +19,7 @@ const Button = styled.button<Props>`
   width: 10rem;
   min-width: 60px;
   max-width: 80px;
+  height: 32px;
   font-weight: bold;
   font-size: 0.8rem;
   border: 0px;

@@ -1,5 +1,6 @@
 import React from 'react';
 import myColor from '@theme/color';
+import Bold from '@atoms/span/BoldSpan';
 import SquircleCard from '@atoms/div/SquircleCard';
 import UserImage from '@atoms/img/UserImage';
 import TwoByTwoChips from '@molecules/TwoByTwoChips';
@@ -54,7 +55,9 @@ const MyAccountInfoCard: React.FC<Props> = ({ link, info }: Props) => {
           alignContent="center"
         >
           <UserImage size="36px" link={link} />
-          <LeftNormalText color="white">내 가계부</LeftNormalText>
+          <LeftNormalText>
+            <Bold color="white">내 가계부</Bold>
+          </LeftNormalText>
           <SquircleShortButton onClick={toMyAccountBook}>조회하기</SquircleShortButton>
         </RowFlexContainer>
         <RowFlexContainer justifyContent="space-between" width="100%" height="70%">
