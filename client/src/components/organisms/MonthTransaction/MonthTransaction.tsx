@@ -11,6 +11,11 @@ interface Props {
   monthData: any[];
 }
 
+const MonthNavMarginBox = styled.div`
+width: 100%;
+height: 2rem; {/* <TopNavBar /> */
+`;
+
 const Filter = styled.div`
   display: flex;
   justify-content: space-around;
@@ -85,6 +90,7 @@ const monthTransaction: React.FC<Props> = ({ dateData, monthData }: Props) => {
   return (
     <MonthTransaction>
       <MonthNav />
+      <MonthNavMarginBox />
       <Filter>
         <CheckBoxWithNumber
           checked={inCheck}
