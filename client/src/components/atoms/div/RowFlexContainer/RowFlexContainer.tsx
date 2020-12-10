@@ -13,6 +13,7 @@ interface Props {
   flexWrap?: string;
   borderWidth?: string;
   borderStyle?: string;
+  position?: string;
 }
 
 const defaultProps = {
@@ -27,6 +28,7 @@ const defaultProps = {
   borderStyle: '',
   children: '',
   padding: '0',
+  position: 'static',
 };
 
 const Div = styled.div<Props>`
@@ -42,6 +44,7 @@ const Div = styled.div<Props>`
   flex-wrap: ${(props) => props.flexWrap};
   border-width: ${(props) => props.borderWidth};
   border-style: ${(props) => props.borderStyle};
+  position: ${(props) => props.position};
 `;
 
 const RowFlexContainer: React.FC<Props> = ({ children, ...props }: Props) => {
