@@ -4,6 +4,7 @@ import MonthNav from '@molecules/MonthNav';
 import ColumFlexContainer from '@atoms/div/ColumnFlexContainer';
 import FourMonthStatistics from '@organisms/FourMonthStatistics';
 import FiveWeekStatistics from '@organisms/FiveWeekStatistics';
+import StickStatistics from '@organisms/StickChart';
 
 import { useSelector } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
@@ -50,11 +51,11 @@ const StatisticsPage: React.FC = () => {
     switch (accountbookType) {
       case 'PRIVATE':
         result = await getAxiosData(API.GET_PRIVATE_STATISTIC_CATEGORY(year, month));
-        setStickData(result);
+        setStickData(result.data);
         break;
       case 'SOCIAL':
         result = await getAxiosData(API.GET_SOCIAL_STATISTIC_CATEGORY(accountbookId, year, month));
-        setStickData(result);
+        setStickData(result.data);
         break;
       default:
         break;
@@ -85,6 +86,7 @@ const StatisticsPage: React.FC = () => {
         rightCallback={setIsExpenditure}
       />
       <ColumFlexContainer width="100%" alignItems="center">
+        <StickStatistics data={stickData} isIncome={isIncome} />
         <FiveWeekStatistics data={fiveWeekData} isIncome={isIncome} />
         <FourMonthStatistics data={fourMonthData} />
       </ColumFlexContainer>

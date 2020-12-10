@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import StickGraph from '@atoms/graph/StickGraph';
 import NumberText from '@atoms/p/NumberText';
 import CenterLargeText from '@atoms/p/CenterLargeText';
+import myColor from '@theme/color';
 
 interface Props {
   name: string;
@@ -16,29 +17,36 @@ interface Props {
 
 const StickWithText = styled.div`
   display: flex;
+  color: white;
   align-items: center;
+  justify-content: space-around;
+  font-size: 0.8rem;
   width: 100%;
-  border: 0.2px solid #e5e5e5;
-  margin: 0 0 20px;
+  height: 100%;
+  border-radius: 8px;
+  background: #2f2e2d;
+  box-shadow: 5px 5px 10px #1f1e1d, -5px -5px 10px #3f3e3d;
 `;
 
 const Div1 = styled.div`
-  flex: 1;
+  width: 10%;
 `;
 const Div2 = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex: 1;
+  width: 3%;
 `;
 const Div3 = styled.div`
-  flex: 4;
+  width: 3%;
 `;
 const Div4 = styled.div`
   display: flex;
   flex-direction: row;
-  flex: 1;
+  width: 50%;
 `;
-
+const Div5 = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 20%;
+`;
 const stickWithText: React.FC<Props> = ({
   name,
   money,
@@ -51,19 +59,21 @@ const stickWithText: React.FC<Props> = ({
   return (
     <StickWithText>
       <Div1>
-        <CenterLargeText color="#c18160" fontSize="11px">
+        <CenterLargeText color={myColor.primary.white} fontSize="9px">
           {name}
         </CenterLargeText>
       </Div1>
       <Div2>
-        <CenterLargeText color="#c18160" fontSize="11px">
+        <CenterLargeText color={myColor.primary.white} fontSize="9px">
           {percent}
-        </CenterLargeText>
-        <CenterLargeText color="#c18160" fontSize="11px">
-          %
         </CenterLargeText>
       </Div2>
       <Div3>
+        <CenterLargeText color={myColor.primary.white} fontSize="9px">
+          %
+        </CenterLargeText>
+      </Div3>
+      <Div4>
         <StickGraph
           inColor={inColor}
           outColor={outColor}
@@ -71,13 +81,13 @@ const stickWithText: React.FC<Props> = ({
           height={height}
           percent={percent}
         />
-      </Div3>
-      <Div4>
-        <NumberText color="#c18160" fontWeight="bold" fontSize="11px" money={money} />
-        <CenterLargeText color="#c18160" fontSize="11px">
+      </Div4>
+      <Div5>
+        <NumberText color={myColor.primary.white} fontWeight="bold" fontSize="9px" money={money} />
+        <CenterLargeText color={myColor.primary.white} fontSize="9px">
           원
         </CenterLargeText>
-      </Div4>
+      </Div5>
     </StickWithText>
   );
 };

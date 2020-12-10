@@ -7,6 +7,7 @@ export default {
 };
 
 export const stickChart = (): JSX.Element => {
+  const isIncome = true;
   const data = {
     income: [
       {
@@ -33,7 +34,7 @@ export const stickChart = (): JSX.Element => {
       },
     ],
   };
-  return <StickChart data={data} />;
+  return <StickChart data={data} isIncome={isIncome} />;
 };
 
 stickChart.story = {

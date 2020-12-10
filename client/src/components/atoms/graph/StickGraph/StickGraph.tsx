@@ -26,8 +26,6 @@ const StickGraph = styled.div<Props>`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   background-color: ${(props) => props.outColor};
-  border: 0.2px solid #e5e5e5;
-  box-shadow: 2px 2px 2px 2px #e5e5e5;
 `;
 
 const Bar = styled.div<InProps>`
