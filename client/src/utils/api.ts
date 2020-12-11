@@ -51,4 +51,3 @@ export const GET_SOCIAL_STATISTIC_CATEGORY = (
 export const POST_PAYMENT = `${process.env.REACT_APP_BASE_URL}/api/payment`;
 
 export const DELETE_PAYMENT = `${process.env.REACT_APP_BASE_URL}/api/payment`;
-
