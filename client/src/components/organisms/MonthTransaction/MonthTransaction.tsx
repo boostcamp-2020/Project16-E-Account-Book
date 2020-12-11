@@ -23,6 +23,7 @@ const Filter = styled.div`
 
 const MonthTransaction = styled.div`
   border: 1px solid ${Color.calendar.border};
+  box-sizing: border-box;
   border-radius: 5px;
 `;
 

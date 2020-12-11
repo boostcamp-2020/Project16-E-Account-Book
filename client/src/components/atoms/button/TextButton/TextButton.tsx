@@ -4,6 +4,7 @@ import myColor from '@theme/color';
 
 interface Props {
   color?: string;
+  padding?: string;
   children: React.ReactChild | React.ReactChild[];
   onClick?: () => void;
 }
@@ -11,6 +12,7 @@ interface Props {
 const defaultProps = {
   color: myColor.primary.accent,
   onClick: undefined,
+  padding: '0.25rem 0',
 };
 
 const Button = styled.button<Props>`
@@ -19,14 +21,14 @@ const Button = styled.button<Props>`
   border: 0px;
   border-radius: 25px;
   cursor: pointer;
-  padding: 0.25rem 0;
+  padding: ${(props) => props.padding};
   background-color: transparent;
   color: ${(props) => props.color};
 `;
 
-const TextButton: React.FC<Props> = ({ color, children, onClick }: Props) => {
+const TextButton: React.FC<Props> = ({ color, padding, children, onClick }: Props) => {
   return (
-    <Button type="button" onClick={onClick} color={color}>
+    <Button type="button" onClick={onClick} color={color} padding={padding}>
       {children}
     </Button>
   );

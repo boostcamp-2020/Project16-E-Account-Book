@@ -10,6 +10,7 @@ interface Props {
   width?: string;
   height?: string;
   flexWrap?: string;
+  zIndex?: string;
 }
 
 const defaultProps = {
@@ -20,6 +21,7 @@ const defaultProps = {
   width: '',
   height: '',
   flexWrap: 'nowrap',
+  zIndex: 'auto',
 };
 
 const Div = styled.div<Props>`
@@ -32,6 +34,7 @@ const Div = styled.div<Props>`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   flex-wrap: ${(props) => props.flexWrap};
+  z-index: ${(props) => props.zIndex};
 `;
 
 const ColumnFlexContainer: React.FC<Props> = ({ children, ...props }: Props) => {

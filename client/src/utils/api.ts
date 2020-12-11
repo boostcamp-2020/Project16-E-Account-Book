@@ -47,3 +47,8 @@ export const GET_SOCIAL_STATISTIC_CATEGORY = (
   month: number,
 ): string =>
   `${process.env.REACT_APP_BASE_URL}/api/social/statistic/category/${bookId}/${year}/${month}`;
+
+export const POST_PAYMENT = `${process.env.REACT_APP_BASE_URL}/api/payment`;
+
+export const DELETE_PAYMENT = `${process.env.REACT_APP_BASE_URL}/api/payment`;
+

@@ -35,7 +35,7 @@ const StatisticsPage: React.FC = () => {
       accountbookType === 'SOCIAL'
         ? await getAxiosData(API.GET_SOCIAL_FOUR_MONTH_STATISTICS(accountbookId))
         : await getAxiosData(API.GET_PRIVATE_FOUR_MONTH_STATISTICS);
-    setFourMonthData(master.data.reverse());
+    setFourMonthData(master.data);
   };
 
   const initFiveWeekData = async () => {

@@ -23,11 +23,14 @@ const userImages: React.FC<Props> = ({ links }: Props) => {
     userLink = links.slice(0, 3);
     userLink.push(NoOne);
   }
-  const allImage = userLink.map((user) => (
-    <Images key={getRandomKey()}>
-      <UserImage size="40px" link={user} />
-    </Images>
-  ));
+  const allImage = userLink.map((user, index) => {
+    const zIndex = 4 - index;
+    return (
+      <Images key={getRandomKey()}>
+        <UserImage size="40px" link={user} zIndex={zIndex} />
+      </Images>
+    );
+  });
   return <UserImages>{allImage}</UserImages>;
 };
 

@@ -13,12 +13,11 @@ const Container = styled.div`
 const TransactionPostPage: React.FC = () => {
   const history = useHistory();
   const cancel = () => {
-    history.go(-1);
+    history.goBack();
   };
   const onClick = () => {
     return true;
   };
-
   return (
     <>
       <CenterContent>
