@@ -43,6 +43,16 @@ const myColor: Colors = {
     border: '#dadada',
     main: '#efefef',
   },
+  statistic: {
+    expenditureOne: '#324F7E',
+    expenditureTwo: '#5A75A1',
+    expenditureThree: '#859BBF',
+    expenditureFour: '#A7BBDB',
+    incomeOne: '#D4D424',
+    incomeTwo: '#E2E24E',
+    incomeThree: '#EFEF8C',
+    incomeFour: '#F7F788',
+  },
 };
 
 export default myColor;
