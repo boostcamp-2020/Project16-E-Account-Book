@@ -47,6 +47,8 @@ const privateBookQuery = {
   READ_PRIVATE_MONTHLY_STATISTICS_INCOME: `
     SELECT SUM(amount) FROM private_transaction 
     WHERE accountbook_id = ? AND date >= ? AND date < ? AND payment_id IS NULL`,
+  UPDATE_PRIVATE_TRANSACTION: `UPDATE private_transaction SET category_id = ?, payment_id = ?, date = ?, title = ?, amount = ?
+  WHERE id = ?`,
 };
 
 export default privateBookQuery;

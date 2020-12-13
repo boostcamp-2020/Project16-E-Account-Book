@@ -34,9 +34,10 @@ export const getWeeksIncome = async (bookId: number, startDate: string, endDate:
   const result = await sql(query.READ_PRIVATE_WEEKLY_STATISTICS_INCOME, [
     bookId,
     startDate,
-    `${endDate} 23:59:59`]);
+    `${endDate} 23:59:59`,
+  ]);
   return result[0]['SUM(amount)'];
-}
+};
 
 export const getMonthCategoryData = async (bookId: number) => {
   const result = await sql(query.READ_PRIVATE_MONTH_TRANSACTION, [bookId]);
@@ -57,7 +58,7 @@ export const getMonthlyStatisticsExpend = async (
   bookId: number,
   startDate: string,
   endDate: string,
-  ) => {
+) => {
   const result = await sql(query.READ_PRIVATE_MONTHLY_STATISTICS_EXPEND, [
     bookId,
     startDate,
@@ -86,4 +87,9 @@ export const getMonthlyStatisticsIncome = async (
     endDate,
   ]);
   return result[0]['SUM(amount)'];
+};
+
+export const updateTransaction = async (transaction: (string | number)[]) => {
+  const result = await sql(query.UPDATE_PRIVATE_TRANSACTION, transaction);
+  return result;
 };

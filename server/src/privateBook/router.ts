@@ -16,4 +16,6 @@ router.get('/analysis', Controller.getMonthAnalysis);
 
 router.get('/statistics/monthly/', Controller.getPastFourMonthStatistics);
 
+router.put('/transaction', Controller.updateTransaction);
+
 export default router;

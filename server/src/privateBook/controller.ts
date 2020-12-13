@@ -3,7 +3,7 @@ import * as response from '../utils/response';
 import 'dotenv/config';
 import * as Service from './service';
 import { TransactionList } from '../interface/transaction';
-import { getPastWeekList, getPastMonthList  } from '../utils/date';
+import { getPastWeekList, getPastMonthList } from '../utils/date';
 import { makeAnalysisData } from '../utils/makeAnalysisData';
 
 export const createTransaction = async (ctx: any) => {
@@ -82,7 +82,6 @@ export const getPastFiveWeekStatistic = async (ctx: any) => {
   response.success(ctx, result);
 };
 
-
 export const getMonthAnalysis = async (ctx: any) => {
   const userId = ctx.userData.uid;
   const bookId = await Service.getAccountBookId(userId);
@@ -110,5 +109,12 @@ export const getPastFourMonthStatistics = async (ctx: any) => {
     result.push([Number(income), Number(expend)]);
   }
 
+  response.success(ctx, result);
+};
+
+export const updateTransaction = async (ctx: any) => {
+  const { id, categoryId, paymentId, date, title, amount } = ctx.request.body;
+  const transaction = [categoryId, paymentId, date, title, amount, id];
+  const result = await Service.updateTransaction(transaction);
   response.success(ctx, result);
 };
