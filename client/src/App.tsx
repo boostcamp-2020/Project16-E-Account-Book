@@ -14,7 +14,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
 import { setCategory } from '@actions/category/type';
 import { setPayment } from '@actions/payment/type';
-import { setPrivate } from '@actions/accountbook/type';
+import { setPrivate, setSocial } from '@actions/accountbook/type';
 import { getAxiosData } from '@utils/axios';
 import { logout, setUser } from '@actions/user/type';
 import * as API from '@utils/api';
@@ -45,7 +45,11 @@ const App: React.FC = () => {
   };
 
   const initAccountBook = () => {
-    dispatch(setPrivate());
+    if (localStorage.getItem('account_book_type') === 'SOCIAL') {
+      dispatch(setSocial(Number(localStorage.getItem('account_book_id'))));
+    } else {
+      dispatch(setPrivate());
+    }
   };
 
   useEffect(() => {

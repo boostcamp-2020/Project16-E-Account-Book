@@ -28,7 +28,7 @@ const MyPageUserMenu: React.FC<Props> = ({ name, profile }: Props) => {
   const dispatch = useDispatch();
 
   const deleteJWT = () => {
-    localStorage.removeItem('jwt');
+    localStorage.clear();
     dispatch(logout());
   };
   return (

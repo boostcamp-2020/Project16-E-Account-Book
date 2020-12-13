@@ -41,7 +41,7 @@ const CalendarPage: React.FC = () => {
       const { data } = await getTransactionList(accountbookType);
       changeTransaction(data);
     })();
-  }, [dateData]);
+  }, [dateData, accountbookId]);
   return (
     <>
       {modalView === `${selectDate}Result` && (
