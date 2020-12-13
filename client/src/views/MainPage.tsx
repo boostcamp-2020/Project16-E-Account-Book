@@ -44,8 +44,8 @@ const SocialBooksBox = styled.div`
 
 const initPrivate = {
   category: [],
-  income: '0',
-  expenditure: '0',
+  income: 0,
+  expenditure: 0,
 };
 
 const MainPage: React.FC = () => {

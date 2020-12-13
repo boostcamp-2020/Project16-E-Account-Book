@@ -14,6 +14,6 @@ export interface SocialBook {
 
 export interface PrivateBook {
   category: CategorySum[];
-  income: string | null;
-  expenditure: string | null;
+  income: number | null;
+  expenditure: number | null;
 }

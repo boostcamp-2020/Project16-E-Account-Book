@@ -4,8 +4,8 @@ import { Doughnut } from 'react-chartjs-2';
 import myColor from '@theme/color';
 
 interface Props extends containerProps {
-  income: number;
-  expend: number;
+  income: number | null;
+  expend: number | null;
 }
 interface containerProps {
   size: number;
