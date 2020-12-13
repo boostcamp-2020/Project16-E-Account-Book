@@ -5,6 +5,8 @@ import CenterContent from '@molecules/CenterContent';
 import TransactionForm from '@organisms/TransactionForm';
 import EditTransactionMenu from '@organisms/EditTransactionMenu';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { hideModal } from '@actions/modal/type';
 
 const Container = styled.div`
   margin: 40px 20px 0px;
@@ -12,6 +14,10 @@ const Container = styled.div`
 
 const TransactionPostPage: React.FC = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  dispatch(hideModal());
+
   const cancel = () => {
     history.goBack();
   };
