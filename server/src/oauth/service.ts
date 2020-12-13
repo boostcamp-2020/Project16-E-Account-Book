@@ -43,6 +43,12 @@ const getOAuthUserData = async (url: string, token: string, tokenType: string) =
   return tokenType === 'token' ? data : data.response;
 };
 
+const createBasePayment = async (userId: number) => {
+  const basePaymentId = await sql(query.GET_PAYMENT_ID_BY_NAME, ['현금']);
+
+  await sql(query.CREATE_USER_PAYMENTS, [userId, basePaymentId]);
+};
+
 const insertUser = async (props: InsertUser) => {
   const { pid, email, name, region, picture, color, isSunday, oAuthOrigin } = props;
   const result = await sql(query.CREATE_USER, [
@@ -77,4 +83,5 @@ export {
   insertUser,
   findUser,
   createPrivateAccountbook,
+  createBasePayment,
 };

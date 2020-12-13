@@ -69,6 +69,7 @@ const oauth = async (ctx: any) => {
   if (!userId) {
     userId = await Service.insertUser(userData);
     await Service.createPrivateAccountbook(userId);
+    await Service.createBasePayment(userId);
   }
 
   data.uid = userId;
