@@ -80,6 +80,7 @@ const socialBookQuery = {
     FROM social_accountbook_users invitation
     LEFT OUTER JOIN social_accountbook book ON invitation.accountbook_id = book.id
     WHERE user_id = ? AND state = 1;`,
+  UPDATE_SOCIAL_INVITATION: `UPDATE social_accountbook_users SET state = ? WHERE user_id = ? AND id = ? AND state = 1;`,
 };
 
 export default socialBookQuery;

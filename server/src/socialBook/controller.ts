@@ -181,3 +181,13 @@ export const getInvitation = async (ctx: any) => {
 
   response.success(ctx, result);
 };
+
+export const patchInvitation = async (ctx: any) => {
+  const userId = ctx.userData.uid;
+  const { id } = ctx.params;
+  const { accept } = ctx.request.body;
+
+  await Service.patchInvitation(userId, id, accept);
+
+  response.success(ctx, id);
+};

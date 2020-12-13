@@ -1,8 +1,15 @@
+/* eslint-disable no-unused-vars */
 import 'dotenv/config';
 import sql from '../model/db';
 import query from '../model/query';
 import { UserImage, SocialInfo, SocialBookId } from '../interface/social';
 import { getCategoryPercentData } from '../utils/accountbook';
+
+// eslint-disable-next-line no-shadow
+enum INVITATION {
+  REJECT = -2,
+  ACCEPT = 2,
+}
 
 export const getSocialBooks = async (userId: number) => {
   const socialBookList = await sql(query.READ_SOCIAL_BOOK_LIST, [userId]);
@@ -150,5 +157,16 @@ export const updateTransaction = async (transaction: (string | number)[]) => {
 
 export const getInvitation = async (userId: string) => {
   const result = await sql(query.GET_SOCIAL_INVITATION, [userId]);
+  return result;
+};
+
+export const patchInvitation = async (userId: string, id: number, accept: boolean) => {
+  let state;
+  if (accept) {
+    state = INVITATION.ACCEPT;
+  } else {
+    state = INVITATION.REJECT;
+  }
+  const result = await sql(query.UPDATE_SOCIAL_INVITATION, [state, userId, id]);
   return result;
 };

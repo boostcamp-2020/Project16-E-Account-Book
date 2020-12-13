@@ -26,4 +26,6 @@ router.put('/transaction', Controller.updateTransaction);
 
 router.get('/invitation', Controller.getInvitation);
 
+router.patch('/invitation/:id', Controller.patchInvitation);
+
 export default router;
