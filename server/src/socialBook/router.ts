@@ -24,4 +24,6 @@ router.post('/createAccountbook', Controller.createAccountbook);
 
 router.put('/transaction', Controller.updateTransaction);
 
+router.post('/invitation', Controller.inviteAccountbookUser);
+
 export default router;
