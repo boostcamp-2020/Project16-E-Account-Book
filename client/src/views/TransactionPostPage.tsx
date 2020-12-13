@@ -33,7 +33,8 @@ const TransactionPostPage: React.FC = () => {
   const previous = useSelector((state: RootState) => state.previous.previous);
   const history = useHistory();
   const cancel = () => {
-    window.location.href = `${previous}`;
+    console.log(previous);
+    history.goBack();
   };
 
   const postTransaction = async (data) => {
@@ -47,7 +48,7 @@ const TransactionPostPage: React.FC = () => {
       default:
         break;
     }
-    history.go(-1);
+    history.goBack();
   };
 
   const submitHandler = (event) => {

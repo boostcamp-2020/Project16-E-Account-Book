@@ -9,7 +9,6 @@ import AccountbookPage from '@views/AccountbookPage';
 import NotFoundPage from '@views/NotFoundPage';
 import GlobalStyle from '@shared/global';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
-import { CookiesProvider } from 'react-cookie';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
 import { setCategory } from '@actions/category/type';
@@ -79,12 +78,10 @@ const App: React.FC = () => {
   );
 
   return (
-    <CookiesProvider>
-      <BrowserRouter>
-        {login ? mainRouter : loginRouter}
-        <GlobalStyle />
-      </BrowserRouter>
-    </CookiesProvider>
+    <BrowserRouter>
+      {login ? mainRouter : loginRouter}
+      <GlobalStyle />
+    </BrowserRouter>
   );
 };
 
