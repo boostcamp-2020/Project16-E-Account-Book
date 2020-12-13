@@ -27,11 +27,25 @@ const ScrollDiv = styled.div`
 const CreditCardEditModal: React.FC = () => {
   const payments = useSelector((state: RootState) => state.payment.payment);
 
+  const deleteButtonClick = async (name: any) => {
+    const result = window.confirm(
+      '해당 결제수단 관련 내역이 모두 삭제됩니다. 삭제를 진행하시겠습니까?',
+    );
+    if (result) {
+      // await Axios.deleteAxios(API.DELETE_PAYMENT(name));
+      console.log(name);
+    }
+  };
+
   const dispatch = useDispatch();
-  let cardList = payments.map((cardName) => <CreditCard name={cardName.name} />);
+  let cardList = payments.map((cardName) => (
+    <CreditCard buttonEvent={deleteButtonClick} name={cardName.name} />
+  ));
 
   useEffect(() => {
-    cardList = payments.map((cardName) => <CreditCard name={cardName.name} />);
+    cardList = payments.map((cardName) => (
+      <CreditCard buttonEvent={deleteButtonClick} name={cardName.name} />
+    ));
   }, [payments]);
 
   const title = '결제 수단 관리';
