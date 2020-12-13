@@ -73,8 +73,7 @@ const socialBookQuery = {
     JOIN assortment as at ON ct.assortment_id = at.id 
     LEFT OUTER JOIN payment as py ON py.id = st.payment_id 
     WHERE st.accountbook_id = ? AND year(st.date) = ? AND month(st.date) = ? ORDER BY st.date`,
-  UPDATE_SOCIAL_TRANSACTION: `UPDATE social_transaction SET category_id = ?, payment_id = ?, date = ?, title = ?, amount = ?
-    WHERE id = ?`,
+  UPDATE_SOCIAL_TRANSACTION: `UPDATE social_transaction SET category_id = ?, payment_id = ?, date = ?, title = ?, amount = ? WHERE id = ?`,
 };
 
 export default socialBookQuery;

@@ -170,6 +170,6 @@ export const getTransactionList = async (ctx: any) => {
 export const updateTransaction = async (ctx: any) => {
   const { id, categoryId, paymentId, date, title, amount } = ctx.request.body;
   const transaction = [categoryId, paymentId, date, title, amount, id];
-  const result = await Service.updateTransaction(transaction);
-  response.success(ctx, result);
+  await Service.updateTransaction(transaction);
+  response.success(ctx, id);
 };
