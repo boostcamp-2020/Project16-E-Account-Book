@@ -44,10 +44,11 @@ const socialAccountBook: React.FC<SocialBook> = ({
   incomeSum,
   expenditureSum,
   images,
+  isMaster,
 }: SocialBook) => {
   const dispatch = useDispatch();
   const history = useHistory();
-
+  console.log(isMaster);
   const toSocialAccountBook = () => {
     localStorage.setItem('account_book_type', `SOCIAL`);
     localStorage.setItem('account_book_id', `${id}`);
