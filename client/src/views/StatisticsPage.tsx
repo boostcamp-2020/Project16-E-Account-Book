@@ -28,7 +28,7 @@ const StatisticsPage: React.FC = () => {
   const accountbookId = useSelector((state: RootState) => state.accountbook.socialId);
   const dateData = `${year}-${month}`;
 
-  const [isIncome, setIsIncome] = useState(true);
+  const [isIncome, setIsIncome] = useState(false);
   const [isExpenditure, setIsExpenditure] = useState(false);
   const [fourMonthData, setFourMonthData] = useState([]);
   const [fiveWeekData, setFiveWeekData] = useState([]);
@@ -84,6 +84,7 @@ const StatisticsPage: React.FC = () => {
       <MonthNav />
       <MonthNavMarginBox />
       <ToggleButton
+        initRight={!isIncome}
         leftButtonName="수입"
         rightButtonName="지출"
         leftCallback={setIsIncome}

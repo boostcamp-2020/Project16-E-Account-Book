@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Button from '@atoms/button/RoundShortButton';
 import myColor from '@theme/color';
@@ -8,6 +8,7 @@ interface Props extends sizeProps {
   rightCallback: React.Dispatch<React.SetStateAction<boolean>>;
   leftButtonName: string;
   rightButtonName: string;
+  initRight?: boolean;
 }
 
 interface sizeProps {
@@ -18,6 +19,7 @@ interface sizeProps {
 const defaultProps = {
   width: '170px',
   height: '50px',
+  initRight: false,
 };
 
 const ToggleButtonContainer = styled.div<sizeProps>`
@@ -35,6 +37,7 @@ let leftColor = myColor.primary.accent;
 let rightColor = 'white';
 
 const ToggleButton: React.FC<Props> = ({
+  initRight,
   leftCallback,
   rightCallback,
   leftButtonName,
@@ -50,6 +53,12 @@ const ToggleButton: React.FC<Props> = ({
       rightColor = 'white';
     }
   };
+
+  useEffect(() => {
+    if (initRight) {
+      changeColor(false);
+    }
+  }, []);
 
   return (
     <ToggleButtonContainer {...args}>
