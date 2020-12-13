@@ -77,7 +77,7 @@ const App: React.FC = () => {
         <Route path="/accountbook/social/new" component={CreateAccountbookPage} />
         <Route path="/accountbook/transaction/new" component={TransactionPostPage} />
         <Route path="/accountbook" component={AccountbookPage} />
-        <Route path="/accountbookedit" component={AccountbookEditPage} />
+        <Route path="/social/edit" component={AccountbookEditPage} />
         <Route exact path="/" component={MainPage} />
         <Route path="/*" component={NotFoundPage} />
       </Switch>

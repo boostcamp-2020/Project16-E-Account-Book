@@ -57,7 +57,7 @@ const socialAccountBook: React.FC<SocialBook> = ({
     dispatch(initMonth());
     history.push('/accountbook');
   };
-
+  const moveUrl = `/social/edit/:${id}`;
   return (
     <>
       <Container onClick={toSocialAccountBook}>
@@ -78,13 +78,15 @@ const socialAccountBook: React.FC<SocialBook> = ({
         </SquircleCard>
       </Container>
       {isMaster && (
-        <NavButton
-          moveUrl="/accountbookedit"
-          name="setting"
-          width="20%"
-          height="20%"
-          iconColor={myColor.primary.black}
-        />
+        <>
+          <NavButton
+            moveUrl={moveUrl}
+            name="setting"
+            width="20%"
+            height="20%"
+            iconColor={myColor.primary.black}
+          />
+        </>
       )}
     </>
   );
