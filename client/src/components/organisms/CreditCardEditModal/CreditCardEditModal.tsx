@@ -7,6 +7,9 @@ import styled from 'styled-components';
 import CreditCard from '@molecules/CreditCard';
 import * as Axios from '@utils/axios';
 import * as API from '@utils/api';
+// import { setPayment } from '@actions/payment/type';
+import { useSelector } from 'react-redux';
+import { RootState } from '@reducers/rootReducer';
 
 const ScrollDiv = styled.div`
   overflow: scroll;
@@ -20,6 +23,14 @@ const ScrollDiv = styled.div`
 `;
 
 const CreditCardEditModal: React.FC = () => {
+  // const [newPayments, setNewPayments] = useState([]);
+  const payments = useSelector((state: RootState) => state.payment.payment);
+
+  // const dispatch = useDispatch();
+  /*
+  const changePayments = (newPayments: any) => {
+    dispatch(setPayment(newPayments));
+  }; */
   const title = '결제 수단 관리';
 
   const createButtonClick = async (name: any) => {
@@ -28,8 +39,7 @@ const CreditCardEditModal: React.FC = () => {
     console.log(result);
   };
 
-  const cardNameList = ['하나카드', '카카오페이', '신한카드'];
-  const cardList = cardNameList.map((cardName) => <CreditCard name={cardName} />);
+  const cardList = payments.map((cardName) => <CreditCard name={cardName.name} />);
   return (
     <Modal title={title}>
       <CreditCardEditFormBox buttonEvent={createButtonClick} />
