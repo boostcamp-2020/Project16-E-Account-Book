@@ -44,7 +44,7 @@ const App: React.FC = () => {
     dispatch(setPayment(payment.data));
   };
 
-  const initAccountBook = async () => {
+  const initAccountBook = () => {
     if (localStorage.getItem('account_book_type') === 'SOCIAL') {
       dispatch(setSocial(Number(localStorage.getItem('account_book_id'))));
     } else {
