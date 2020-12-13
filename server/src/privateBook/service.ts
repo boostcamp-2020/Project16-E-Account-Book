@@ -89,6 +89,16 @@ export const getMonthlyStatisticsIncome = async (
   return result[0]['SUM(amount)'];
 };
 
+export const getTrendIncome = async (bookId: number, year: number, month: number) => {
+  const result = await sql(query.READ_PRIVATE_TREND_INCOME, [bookId, year, month]);
+  return result;
+};
+
+export const getTrendExpenditure = async (bookId: number, year: number, month: number) => {
+  const result = await sql(query.READ_PRIVATE_TREND_EXPENDITURE, [bookId, year, month]);
+  return result;
+};
+
 export const updateTransaction = async (transaction: (string | number)[]) => {
   const result = await sql(query.UPDATE_PRIVATE_TRANSACTION, transaction);
   return result;
