@@ -9,6 +9,8 @@ import { useDispatch } from 'react-redux';
 import { setSocial } from '@actions/accountbook/type';
 import { initMonth } from '@actions/date/type';
 import { SocialBook } from '@interfaces/accountbook';
+import NavButton from '@atoms/button/NavButton';
+import myColor from '@theme/color';
 
 const Container = styled.button`
   background-color: transparent;
@@ -48,7 +50,6 @@ const socialAccountBook: React.FC<SocialBook> = ({
 }: SocialBook) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  console.log(isMaster);
   const toSocialAccountBook = () => {
     localStorage.setItem('account_book_type', `SOCIAL`);
     localStorage.setItem('account_book_id', `${id}`);
@@ -58,23 +59,34 @@ const socialAccountBook: React.FC<SocialBook> = ({
   };
 
   return (
-    <Container onClick={toSocialAccountBook}>
-      <SquircleCard backgroundColor={color} height="90px">
-        <LeftBox>
-          <UserImages links={images} />
-        </LeftBox>
-        <CenterBox>
-          <CardInfo title={name} description={description} />
-        </CenterBox>
-        <RightBox>
-          <CardNumberText
-            fontSize="0.6rem"
-            inMoney={Number(incomeSum)}
-            exMoney={Number(expenditureSum)}
-          />
-        </RightBox>
-      </SquircleCard>
-    </Container>
+    <>
+      <Container onClick={toSocialAccountBook}>
+        <SquircleCard backgroundColor={color} height="90px">
+          <LeftBox>
+            <UserImages links={images} />
+          </LeftBox>
+          <CenterBox>
+            <CardInfo title={name} description={description} />
+          </CenterBox>
+          <RightBox>
+            <CardNumberText
+              fontSize="0.6rem"
+              inMoney={Number(incomeSum)}
+              exMoney={Number(expenditureSum)}
+            />
+          </RightBox>
+        </SquircleCard>
+      </Container>
+      {isMaster && (
+        <NavButton
+          moveUrl="/mypage"
+          name="setting"
+          width="20%"
+          height="20%"
+          iconColor={myColor.primary.black}
+        />
+      )}
+    </>
   );
 };
 
