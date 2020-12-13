@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import TransactionInfo from '@molecules/TransactionInfo';
 import myColor from '@theme/color';
+import { useHistory } from 'react-router-dom';
 
 interface Props {
   data: dataProps;
@@ -28,7 +29,13 @@ const DailyTransaction = styled.div`
     transform: scale(1.2);
   }
 `;
+
 const dailyTransaction: React.FC<Props> = ({ data }: Props) => {
+  const history = useHistory();
+  const moveToEditPage = () => {
+    history.push('/accountbook/transaction/edit');
+  };
+
   let money = 0;
   if (data.payment) {
     money = data.exmoney;
@@ -42,7 +49,7 @@ const dailyTransaction: React.FC<Props> = ({ data }: Props) => {
     payment: data.payment,
   };
   return (
-    <DailyTransaction>
+    <DailyTransaction onClick={moveToEditPage}>
       <TransactionInfo data={reformData} />
     </DailyTransaction>
   );

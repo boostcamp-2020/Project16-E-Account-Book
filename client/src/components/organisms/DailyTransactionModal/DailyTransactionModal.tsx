@@ -64,7 +64,7 @@ const DailyTransactionModal: React.FC<props> = ({ month, date }: props) => {
 
   const transactionList = dailyData.map((curr) => {
     return (
-      <StyledLink to="/">
+      <StyledLink to="/accountbook/transaction/edit">
         <TransactionInfo data={curr} />
       </StyledLink>
     );
