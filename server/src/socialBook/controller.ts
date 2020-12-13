@@ -173,3 +173,11 @@ export const updateTransaction = async (ctx: any) => {
   await Service.updateTransaction(transaction);
   response.success(ctx, id);
 };
+
+export const getInvitation = async (ctx: any) => {
+  const userId = ctx.userData.uid;
+
+  const result = await Service.getInvitation(userId);
+
+  response.success(ctx, result);
+};
