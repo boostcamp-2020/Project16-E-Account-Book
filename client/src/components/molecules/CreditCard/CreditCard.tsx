@@ -8,6 +8,7 @@ import MinusIcon from '@svg/minus.svg';
 import styled from 'styled-components';
 
 interface Props {
+  buttonEvent: (data) => any;
   name: string;
 }
 
@@ -20,7 +21,7 @@ const IconButtonContainer = styled.div`
   flex: 1;
 `;
 
-const CreditCard: React.FC<Props> = ({ name }: Props) => {
+const CreditCard: React.FC<Props> = ({ name, buttonEvent }: Props) => {
   return (
     <ColumnFlexContainer width="100%">
       <RowFlexContainer width="100%" justifyContent="space-around">
@@ -28,7 +29,7 @@ const CreditCard: React.FC<Props> = ({ name }: Props) => {
           <CenterNormalText>{name}</CenterNormalText>
         </TextContainer>
         <IconButtonContainer>
-          <IconButton>{MinusIcon}</IconButton>
+          <IconButton onClick={() => buttonEvent(name)}>{MinusIcon}</IconButton>
         </IconButtonContainer>
       </RowFlexContainer>
       <Line widthPercent="110" margin="0 0.5rem 0 0" />
