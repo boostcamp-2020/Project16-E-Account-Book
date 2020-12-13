@@ -16,6 +16,10 @@ const paymentQuery = {
   GET_PAYMENT_ID_BY_NAME: `
     SELECT id FROM payment WHERE name = ?
   `,
+
+  DELETE_USER_PAYMENTS: `
+    DELETE FROM user_payment WHERE payment_id = ?
+  `,
 };
 
 export default paymentQuery;
