@@ -30,10 +30,8 @@ const Container = styled.div`
 const TransactionPostPage: React.FC = () => {
   const accountbookType = useSelector((state: RootState) => state.accountbook.type);
   const accountbookId = useSelector((state: RootState) => state.accountbook.socialId);
-  const previous = useSelector((state: RootState) => state.previous.previous);
   const history = useHistory();
   const cancel = () => {
-    console.log(previous);
     history.goBack();
   };
 
