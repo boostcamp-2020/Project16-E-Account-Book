@@ -22,4 +22,6 @@ router.get('/statistic/weeks/:bookId', Controller.getPastFiveWeekStatistic);
 
 router.post('/createAccountbook', Controller.createAccountbook);
 
+router.put('/transaction', Controller.updateTransaction);
+
 export default router;

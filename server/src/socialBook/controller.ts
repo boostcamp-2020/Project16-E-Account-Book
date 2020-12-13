@@ -166,3 +166,10 @@ export const getTransactionList = async (ctx: any) => {
   });
   response.success(ctx, result);
 };
+
+export const updateTransaction = async (ctx: any) => {
+  const { id, categoryId, paymentId, date, title, amount } = ctx.request.body;
+  const transaction = [categoryId, paymentId, date, title, amount, id];
+  await Service.updateTransaction(transaction);
+  response.success(ctx, id);
+};

@@ -63,7 +63,7 @@ const socialBookQuery = {
   READ_SOCIAL_WEEKLY_STATISTICS_INCOME: `
     SELECT SUM(amount) FROM social_transaction 
     WHERE accountbook_id = ? AND date >= ? AND date <= ? AND payment_id IS NULL`,
-  CREATE_SOCIAL_ACCOUNTBOOK: 
+  CREATE_SOCIAL_ACCOUNTBOOK:
     'INSERT INTO social_accountbook (master_id, name, description, color) VALUES(?,?,?,?)',
   CREATE_SOCIAL_ACCOUNTBOOK_USERS:
     'INSERT INTO social_accountbook_users (user_id, accountbook_id, state) VALUES(?,?,?)',
@@ -73,6 +73,7 @@ const socialBookQuery = {
     JOIN assortment as at ON ct.assortment_id = at.id 
     LEFT OUTER JOIN payment as py ON py.id = st.payment_id 
     WHERE st.accountbook_id = ? AND year(st.date) = ? AND month(st.date) = ? ORDER BY st.date`,
+  UPDATE_SOCIAL_TRANSACTION: `UPDATE social_transaction SET category_id = ?, payment_id = ?, date = ?, title = ?, amount = ? WHERE id = ?`,
 };
 
 export default socialBookQuery;

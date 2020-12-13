@@ -88,3 +88,8 @@ export const getMonthlyStatisticsIncome = async (
   ]);
   return result[0]['SUM(amount)'];
 };
+
+export const updateTransaction = async (transaction: (string | number)[]) => {
+  const result = await sql(query.UPDATE_PRIVATE_TRANSACTION, transaction);
+  return result;
+};
