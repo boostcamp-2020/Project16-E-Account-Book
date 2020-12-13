@@ -7,4 +7,7 @@ export const getUserInfo = async (userId: number) => {
   return result;
 };
 
-export default getUserInfo;
+export const getUserByName = async (name: string) => {
+  const result = await sql(query.READ_USER_BY_NAME, [`%${name}%`]);
+  return result;
+};

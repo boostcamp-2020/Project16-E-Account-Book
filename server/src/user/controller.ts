@@ -9,4 +9,8 @@ export const getUserInfo = async (ctx: Context) => {
   response.success(ctx, result);
 };
 
-export default getUserInfo;
+export const getUserByName = async (ctx: Context) => {
+  const { name } = ctx.params;
+  const result = await Service.getUserByName(name);
+  response.success(ctx, result);
+};
