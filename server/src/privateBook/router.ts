@@ -22,4 +22,6 @@ router.get('/statistic/trend/expenditure/:year/:month', Controller.getTrendStati
 
 router.put('/transaction', Controller.updateTransaction);
 
+router.delete('/transaction/:id', Controller.deleteTransaction);
+
 export default router;

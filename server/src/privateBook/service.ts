@@ -103,3 +103,8 @@ export const updateTransaction = async (transaction: (string | number)[]) => {
   const result = await sql(query.UPDATE_PRIVATE_TRANSACTION, transaction);
   return result;
 };
+
+export const deleteTransaction = async (id: number) => {
+  const result = await sql(query.DELETE_PRIVATE_TRANSACTION, [id]);
+  return result;
+};

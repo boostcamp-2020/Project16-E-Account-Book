@@ -174,6 +174,12 @@ export const updateTransaction = async (ctx: any) => {
   response.success(ctx, id);
 };
 
+export const deleteTransaction = async (ctx: any) => {
+  const { id } = ctx.params;
+  await Service.deleteTransaction(id);
+  response.success(ctx, id);
+};
+
 export const inviteAccountbookUser = async (ctx: any) => {
   const { userId, accountbookId } = ctx.request.body;
   const result = await Service.inviteAccountbookUser(userId, accountbookId);

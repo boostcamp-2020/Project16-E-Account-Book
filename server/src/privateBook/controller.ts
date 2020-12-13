@@ -137,3 +137,9 @@ export const updateTransaction = async (ctx: any) => {
   await Service.updateTransaction(transaction);
   response.success(ctx, id);
 };
+
+export const deleteTransaction = async (ctx: any) => {
+  const { id } = ctx.params;
+  await Service.deleteTransaction(id);
+  response.success(ctx, id);
+};

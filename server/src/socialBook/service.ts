@@ -155,6 +155,11 @@ export const updateTransaction = async (transaction: (string | number)[]) => {
   return result;
 };
 
+export const deleteTransaction = async (id: number) => {
+  const result = await sql(query.DELETE_SOCIAL_TRANSACTION, [id]);
+  return result;
+};
+
 export const inviteAccountbookUser = async (userId: Number, accountbookId: Number) => {
   const result = await sql(query.CREATE_SOCIAL_ACCOUNTBOOK_USERS, [userId, accountbookId, 1]);
 
