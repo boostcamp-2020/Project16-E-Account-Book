@@ -49,6 +49,8 @@ const socialAccountBook: React.FC<SocialBook> = ({
   const history = useHistory();
 
   const toSocialAccountBook = () => {
+    localStorage.setItem('account_book_type', `SOCIAL`);
+    localStorage.setItem('account_book_id', `${id}`);
     dispatch(setSocial(id));
     dispatch(initMonth());
     history.push('/accountbook');

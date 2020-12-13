@@ -9,11 +9,12 @@ import AccountbookPage from '@views/AccountbookPage';
 import NotFoundPage from '@views/NotFoundPage';
 import GlobalStyle from '@shared/global';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
 import { setCategory } from '@actions/category/type';
 import { setPayment } from '@actions/payment/type';
-import { setPrivate } from '@actions/accountbook/type';
+import { setPrivate, setSocial } from '@actions/accountbook/type';
 import { getAxiosData } from '@utils/axios';
 import { logout, setUser } from '@actions/user/type';
 import * as API from '@utils/api';
@@ -43,8 +44,25 @@ const App: React.FC = () => {
     dispatch(setPayment(payment.data));
   };
 
-  const initAccountBook = () => {
-    dispatch(setPrivate());
+  const asyncLocalStorage = {
+    async setItem(key, value) {
+      await null;
+      return localStorage.setItem(key, value);
+    },
+    async getItem(key) {
+      await null;
+      return localStorage.getItem(key);
+    },
+  };
+
+  const initAccountBook = async () => {
+    if ((await asyncLocalStorage.getItem('account_book_type')) === 'SOCIAL') {
+      console.log('1');
+      await dispatch(setSocial(Number(localStorage.getItem('account_book_id'))));
+    } else {
+      console.log('2');
+      dispatch(setPrivate());
+    }
   };
 
   useEffect(() => {
@@ -78,10 +96,12 @@ const App: React.FC = () => {
   );
 
   return (
-    <BrowserRouter>
-      {login ? mainRouter : loginRouter}
-      <GlobalStyle />
-    </BrowserRouter>
+    <CookiesProvider>
+      <BrowserRouter>
+        {login ? mainRouter : loginRouter}
+        <GlobalStyle />
+      </BrowserRouter>
+    </CookiesProvider>
   );
 };
 
