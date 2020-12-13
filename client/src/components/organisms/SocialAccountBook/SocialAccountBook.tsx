@@ -79,7 +79,7 @@ const socialAccountBook: React.FC<SocialBook> = ({
       </Container>
       {isMaster && (
         <NavButton
-          moveUrl="/mypage"
+          moveUrl="/accountbookedit"
           name="setting"
           width="20%"
           height="20%"
