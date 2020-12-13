@@ -177,7 +177,6 @@ export const getInvitationMasterId = async (id: string) => {
 };
 
 export const deleteInvitation = async (id: string) => {
-  console.log('in');
   const result = await sql(query.DELETE_SOCIAL_INVITATION, [id]);
   return result;
 };
