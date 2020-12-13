@@ -28,4 +28,6 @@ router.get('/invitation', Controller.getInvitation);
 
 router.patch('/invitation/:id', Controller.patchInvitation);
 
+router.delete('/invitation/:id', Controller.deleteInvitation);
+
 export default router;

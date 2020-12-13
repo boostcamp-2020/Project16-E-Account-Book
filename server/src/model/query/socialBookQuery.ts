@@ -81,6 +81,11 @@ const socialBookQuery = {
     LEFT OUTER JOIN social_accountbook book ON invitation.accountbook_id = book.id
     WHERE user_id = ? AND state = 1;`,
   UPDATE_SOCIAL_INVITATION: `UPDATE social_accountbook_users SET state = ? WHERE user_id = ? AND id = ? AND state = 1;`,
+  GET_SOCIAL_INVITATION_MASTER: `
+    SELECT master_id as id FROM social_accountbook_users users
+    LEFT OUTER JOIN social_accountbook book ON book.id = users.accountbook_id
+    WHERE users.id = ?`,
+  DELETE_SOCIAL_INVITATION: `DELETE FROM social_accountbook_users WHERE id = ? AND state = 1;`,
 };
 
 export default socialBookQuery;

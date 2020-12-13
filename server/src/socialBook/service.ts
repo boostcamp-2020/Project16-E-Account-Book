@@ -170,3 +170,14 @@ export const patchInvitation = async (userId: string, id: number, accept: boolea
   const result = await sql(query.UPDATE_SOCIAL_INVITATION, [state, userId, id]);
   return result;
 };
+
+export const getInvitationMasterId = async (id: string) => {
+  const [result] = await sql(query.GET_SOCIAL_INVITATION_MASTER, [id]);
+  return result;
+};
+
+export const deleteInvitation = async (id: string) => {
+  console.log('in');
+  const result = await sql(query.DELETE_SOCIAL_INVITATION, [id]);
+  return result;
+};
