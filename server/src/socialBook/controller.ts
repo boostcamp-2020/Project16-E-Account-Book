@@ -227,3 +227,15 @@ export const deleteInvitation = async (ctx: any) => {
 
   response.success(ctx, id);
 };
+
+export const getTrendStatisticIncome = async (ctx: any) => {
+  const { accountbookId, year, month } = ctx.params;
+  const result = await Service.getTrendIncome(accountbookId, year, month);
+  response.success(ctx, result);
+};
+
+export const getTrendStatisticExpenditure = async (ctx: any) => {
+  const { accountbookId, year, month } = ctx.params;
+  const result = await Service.getTrendExpenditure(accountbookId, year, month);
+  response.success(ctx, result);
+};

@@ -191,3 +191,13 @@ export const deleteInvitation = async (id: string) => {
   const result = await sql(query.DELETE_SOCIAL_INVITATION, [id]);
   return result;
 };
+
+export const getTrendIncome = async (bookId: number, year: number, month: number) => {
+  const result = await sql(query.READ_SOCIAL_TREND_INCOME, [bookId, year, month]);
+  return result;
+};
+
+export const getTrendExpenditure = async (bookId: number, year: number, month: number) => {
+  const result = await sql(query.READ_SOCIAL_TREND_EXPENDITURE, [bookId, year, month]);
+  return result;
+};
