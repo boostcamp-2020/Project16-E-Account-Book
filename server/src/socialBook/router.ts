@@ -24,6 +24,8 @@ router.post('/createAccountbook', Controller.createAccountbook);
 
 router.put('/transaction', Controller.updateTransaction);
 
+router.post('/invitation', Controller.inviteAccountbookUser);
+
 router.get('/invitation', Controller.getInvitation);
 
 router.patch('/invitation/:id', Controller.patchInvitation);
