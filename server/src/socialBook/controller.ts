@@ -173,3 +173,45 @@ export const updateTransaction = async (ctx: any) => {
   await Service.updateTransaction(transaction);
   response.success(ctx, id);
 };
+
+export const getInvitation = async (ctx: any) => {
+  const userId = ctx.userData.uid;
+
+  const result = await Service.getInvitation(userId);
+
+  response.success(ctx, result);
+};
+
+export const patchInvitation = async (ctx: any) => {
+  const userId = ctx.userData.uid;
+  const { id } = ctx.params;
+  const { accept } = ctx.request.body;
+
+  await Service.patchInvitation(userId, id, accept);
+
+  response.success(ctx, id);
+};
+
+export const deleteInvitation = async (ctx: any) => {
+  const userId = ctx.userData.uid;
+  const { id } = ctx.params;
+  const master = await Service.getInvitationMasterId(id);
+
+  if (master === undefined) {
+    response.fail(ctx, 403, message.NO_SOCIAL_INVITATION);
+    return;
+  }
+
+  if (master.id !== userId) {
+    response.fail(ctx, 403, message.NO_SOCIAL_AUTHORIZED);
+    return;
+  }
+
+  const result = await Service.deleteInvitation(id);
+  if (result.affectedRows === 0) {
+    response.fail(ctx, 403, message.NO_INVITATION_WAITING_STATE);
+    return;
+  }
+
+  response.success(ctx, id);
+};
