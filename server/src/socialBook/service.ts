@@ -142,3 +142,8 @@ export const getTransactionList = async (searchInfo: (string | number)[]) => {
   const result = await sql(query.GET_SOCIAL_TRANSACTIONLIST, searchInfo);
   return result;
 };
+
+export const updateTransaction = async (transaction: (string | number)[]) => {
+  const result = await sql(query.UPDATE_SOCIAL_TRANSACTION, transaction);
+  return result;
+};
