@@ -26,6 +26,8 @@ const StickGraph = styled.div<Props>`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   background-color: ${(props) => props.outColor};
+  border-radius: 10px;
+  box-shadow: inset 5px 5px 7px #6b6b6b, inset -5px -5px 7px #ffffff;
 `;
 
 const Bar = styled.div<InProps>`
@@ -34,7 +36,8 @@ const Bar = styled.div<InProps>`
   text-align: right;
   background-color: ${(props) => props.inColor};
   box-sizing: border-box;
-  animation: ${(props) => linear(props.percent)} 5s;
+  border-radius: 10px;
+  animation: ${(props) => linear(props.percent)} 2s;
 `;
 
 const stickGraph: React.FC<Props> = ({ percent, outColor, inColor, width, height }: Props) => {

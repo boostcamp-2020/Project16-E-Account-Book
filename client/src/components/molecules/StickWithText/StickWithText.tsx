@@ -26,6 +26,7 @@ const StickWithText = styled.div`
   border-radius: 8px;
   background: #2f2e2d;
   box-shadow: 5px 5px 10px #1f1e1d, -5px -5px 10px #3f3e3d;
+  margin: 8px 0px;
 `;
 
 const Div1 = styled.div`
