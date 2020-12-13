@@ -5,11 +5,13 @@ import Line from '@atoms/hr/Line';
 import myColor from '@theme/color';
 import styled from 'styled-components';
 import CreditCard from '@molecules/CreditCard';
+import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import * as Axios from '@utils/axios';
 import * as API from '@utils/api';
 // import { setPayment } from '@actions/payment/type';
 import { useSelector } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
+import RoundShortButton from '@atoms/button/RoundShortButton';
 
 const ScrollDiv = styled.div`
   overflow: scroll;
@@ -45,6 +47,9 @@ const CreditCardEditModal: React.FC = () => {
       <CreditCardEditFormBox buttonEvent={createButtonClick} />
       <Line widthPercent="110" height="0.25rem" lineColor={myColor.primary.lightGray} />
       <ScrollDiv>{cardList}</ScrollDiv>
+      <RowFlexContainer justifyContent="flex-end">
+        <RoundShortButton>저장</RoundShortButton>
+      </RowFlexContainer>
     </Modal>
   );
 };
