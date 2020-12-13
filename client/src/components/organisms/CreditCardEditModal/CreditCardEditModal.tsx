@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Modal from '@molecules/Modal';
 import CreditCardEditFormBox from '@organisms/CreditCardEditFormBox';
 import Line from '@atoms/hr/Line';
@@ -8,8 +8,8 @@ import CreditCard from '@molecules/CreditCard';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import * as Axios from '@utils/axios';
 import * as API from '@utils/api';
-// import { setPayment } from '@actions/payment/type';
-import { useSelector } from 'react-redux';
+import { setPayment } from '@actions/payment/type';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
 import RoundShortButton from '@atoms/button/RoundShortButton';
 
@@ -25,23 +25,24 @@ const ScrollDiv = styled.div`
 `;
 
 const CreditCardEditModal: React.FC = () => {
-  // const [newPayments, setNewPayments] = useState([]);
   const payments = useSelector((state: RootState) => state.payment.payment);
 
-  // const dispatch = useDispatch();
-  /*
-  const changePayments = (newPayments: any) => {
-    dispatch(setPayment(newPayments));
-  }; */
+  const dispatch = useDispatch();
+  let cardList = payments.map((cardName) => <CreditCard name={cardName.name} />);
+
+  useEffect(() => {
+    cardList = payments.map((cardName) => <CreditCard name={cardName.name} />);
+  }, [payments]);
+
   const title = '결제 수단 관리';
 
   const createButtonClick = async (name: any) => {
-    const result = await Axios.postAxios(API.POST_PAYMENT, name);
+    await Axios.postAxios(API.POST_PAYMENT, { name });
 
-    console.log(result);
+    const newPayment = await Axios.getAxiosData(API.GET_PAYMENT);
+    dispatch(setPayment(newPayment.data));
   };
 
-  const cardList = payments.map((cardName) => <CreditCard name={cardName.name} />);
   return (
     <Modal title={title}>
       <CreditCardEditFormBox buttonEvent={createButtonClick} />
