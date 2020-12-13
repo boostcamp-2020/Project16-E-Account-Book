@@ -1,13 +1,13 @@
 import React from 'react';
-import AccountBookAcceptModal from './AccountBookAcceptModal';
+import InvitationManagementModal from './InvitationManagementModal';
 
 export default {
   title: 'Organisms/AccountBookAcceptModal',
-  component: AccountBookAcceptModal,
+  component: InvitationManagementModal,
 };
 
 export const accountBookAcceptModal = (): JSX.Element => {
-  return <AccountBookAcceptModal />;
+  return <InvitationManagementModal />;
 };
 
 accountBookAcceptModal.story = {

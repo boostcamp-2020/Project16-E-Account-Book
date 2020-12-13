@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from '@molecules/Modal';
 
-const AccountBookAcceptModal: React.FC = () => {
+const InvitationManagementModal: React.FC = () => {
   const title = '가계부 승인/거절';
 
   return (
@@ -11,4 +11,4 @@ const AccountBookAcceptModal: React.FC = () => {
   );
 };
 
-export default AccountBookAcceptModal;
+export default InvitationManagementModal;

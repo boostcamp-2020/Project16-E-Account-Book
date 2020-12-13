@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from '@molecules/Modal';
 
-const AccountBookAcceptModal: React.FC = () => {
+const UserInfoSettingModal: React.FC = () => {
   const title = '개인 정보 변경';
 
   return (
@@ -11,4 +11,4 @@ const AccountBookAcceptModal: React.FC = () => {
   );
 };
 
-export default AccountBookAcceptModal;
+export default UserInfoSettingModal;

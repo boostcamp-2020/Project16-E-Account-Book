@@ -4,7 +4,7 @@ import BeeBackground from '@organisms/BeeBackground';
 import TopNavBar from '@organisms/TopNavBar';
 import MyPageUserMenu from '@organisms/MyPageUserMenu';
 import MyPageMenu from '@organisms/MyPageMenu';
-import AccountBookAcceptModal from '@organisms/AccountBookAcceptModal';
+import InvitationManagementModal from '@organisms/InvitationManagementModal';
 import CreditCardEditModal from '@organisms/CreditCardEditModal';
 import UserInfoSettingModal from '@organisms/UserInfoSettingModal';
 import { useSelector } from 'react-redux';
@@ -23,7 +23,7 @@ const MyPage: React.FC = () => {
         <MyPageUserMenu name={userName} profile={userImage} />
         <MyPageMenu />
       </CenterContent>
-      {modalView === 'AccountBookAccept' && <AccountBookAcceptModal />}
+      {modalView === 'AccountBookAccept' && <InvitationManagementModal />}
       {modalView === 'CreditCardEdit' && <CreditCardEditModal />}
       {modalView === 'UserInfoSetting' && <UserInfoSettingModal />}
     </>
