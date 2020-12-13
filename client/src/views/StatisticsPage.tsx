@@ -5,7 +5,6 @@ import ColumFlexContainer from '@atoms/div/ColumnFlexContainer';
 import FourMonthStatistics from '@organisms/FourMonthStatistics';
 import FiveWeekStatistics from '@organisms/FiveWeekStatistics';
 import StickStatistics from '@organisms/StickChart';
-
 import { useSelector } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
 import { getAxiosData } from '@utils/axios';
@@ -13,8 +12,13 @@ import styled from 'styled-components';
 import * as API from '@utils/api';
 
 const MonthNavMarginBox = styled.div`
-width: 100%;
-height: 2rem; {/* <TopNavBar /> */
+  width: 100%;
+  height: 2rem; {/* <TopNavBar /> */
+`;
+
+const Container = styled.div`
+  border: 2px solid white;
+  border-radius: 5px;
 `;
 
 const StatisticsPage: React.FC = () => {
@@ -24,7 +28,7 @@ const StatisticsPage: React.FC = () => {
   const accountbookId = useSelector((state: RootState) => state.accountbook.socialId);
   const dateData = `${year}-${month}`;
 
-  const [isIncome, setIsIncome] = useState(true);
+  const [isIncome, setIsIncome] = useState(false);
   const [isExpenditure, setIsExpenditure] = useState(false);
   const [fourMonthData, setFourMonthData] = useState([]);
   const [fiveWeekData, setFiveWeekData] = useState([]);
@@ -76,10 +80,11 @@ const StatisticsPage: React.FC = () => {
   }, [dateData]);
 
   return (
-    <>
+    <Container>
       <MonthNav />
       <MonthNavMarginBox />
       <ToggleButton
+        initRight={!isIncome}
         leftButtonName="수입"
         rightButtonName="지출"
         leftCallback={setIsIncome}
@@ -90,7 +95,7 @@ const StatisticsPage: React.FC = () => {
         <FiveWeekStatistics data={fiveWeekData} isIncome={isIncome} />
         <FourMonthStatistics data={fourMonthData} />
       </ColumFlexContainer>
-    </>
+    </Container>
   );
 };
 
