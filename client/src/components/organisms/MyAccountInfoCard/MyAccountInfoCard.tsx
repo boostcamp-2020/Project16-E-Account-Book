@@ -39,6 +39,8 @@ const MyAccountInfoCard: React.FC<Props> = ({ link, info }: Props) => {
   const history = useHistory();
 
   const toMyAccountBook = () => {
+    localStorage.setItem('account_book_type', `PRIVATE`);
+    localStorage.setItem('account_book_id', `0`);
     dispatch(setPrivate());
     dispatch(initMonth());
     history.push('/accountbook');

@@ -44,23 +44,10 @@ const App: React.FC = () => {
     dispatch(setPayment(payment.data));
   };
 
-  const asyncLocalStorage = {
-    async setItem(key, value) {
-      await null;
-      return localStorage.setItem(key, value);
-    },
-    async getItem(key) {
-      await null;
-      return localStorage.getItem(key);
-    },
-  };
-
   const initAccountBook = async () => {
-    if ((await asyncLocalStorage.getItem('account_book_type')) === 'SOCIAL') {
-      console.log('1');
-      await dispatch(setSocial(Number(localStorage.getItem('account_book_id'))));
+    if (localStorage.getItem('account_book_type') === 'SOCIAL') {
+      dispatch(setSocial(Number(localStorage.getItem('account_book_id'))));
     } else {
-      console.log('2');
       dispatch(setPrivate());
     }
   };
