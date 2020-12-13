@@ -4,6 +4,7 @@ import InvitationCard from './InvitationCard';
 interface Props {
   master: string;
   name: string;
+  time: string;
 }
 
 export default {
@@ -12,6 +13,7 @@ export default {
   argTypes: {
     master: { control: 'text' },
     name: { control: 'text' },
+    time: { control: 'text' },
   },
 };
 
@@ -29,4 +31,5 @@ invitationCard.story = {
 invitationCard.args = {
   master: '김도연',
   name: '부스트 동아리',
+  time: '2020-11-10 02:12:00',
 };

@@ -6,10 +6,12 @@ import Text from '@atoms/p/LeftNormalText';
 import BlueText from '@atoms/span/BoldSpan';
 import Button from '@atoms/button/RoundButton';
 import color from '@theme/color';
+import { getPastTimeString } from '@utils/date';
 
 interface Props {
   master: string;
   name: string;
+  time: string;
   callback: (isAccept: boolean) => void;
 }
 
@@ -20,11 +22,11 @@ const Container = styled.div`
   padding: 10px 10px 20px;
 `;
 
-const InvitationCard: React.FC<Props> = ({ master, name, callback }: Props) => {
+const InvitationCard: React.FC<Props> = ({ master, name, time, callback }: Props) => {
   return (
     <Container>
       <RowContainer justifyContent="flex-end">
-        <RightText color={color.primary.gray}>5 mintues ago...</RightText>
+        <RightText color={color.primary.gray}>{getPastTimeString(time)}</RightText>
       </RowContainer>
       <RowContainer margin="10px 0">
         <Text>
