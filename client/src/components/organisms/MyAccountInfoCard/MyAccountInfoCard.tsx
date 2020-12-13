@@ -65,7 +65,7 @@ const MyAccountInfoCard: React.FC<Props> = ({ link, info }: Props) => {
             <TwoByTwoChips data={info.category} />
           </ColumnFlexContainer>
           <ColumnFlexContainer width="25%" height="100%">
-            <CircleGraph size={6} income={Number(info.income)} expend={Number(info.expenditure)} />
+            <CircleGraph size={6} income={info.income} expend={info.expenditure} />
           </ColumnFlexContainer>
         </RowFlexContainer>
       </ColumnFlexContainer>
