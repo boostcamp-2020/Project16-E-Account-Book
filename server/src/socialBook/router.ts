@@ -24,4 +24,6 @@ router.post('/createAccountbook', Controller.createAccountbook);
 
 router.put('/transaction', Controller.updateTransaction);
 
+router.delete('/transaction/:id', Controller.deleteTransaction);
+
 export default router;
