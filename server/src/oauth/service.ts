@@ -50,7 +50,11 @@ const createBasePayment = async (userId: number) => {
 };
 
 const insertUser = async (props: InsertUser) => {
-  const { pid, email, name, region, picture, color, isSunday, oAuthOrigin } = props;
+  const { pid, email, name, region, color, isSunday, oAuthOrigin } = props;
+  let { picture } = props;
+  if (!picture) {
+    picture = process.env.DEFAULT_IMG;
+  }
   const result = await sql(query.CREATE_USER, [
     pid,
     email,
