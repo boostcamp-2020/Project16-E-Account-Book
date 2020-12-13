@@ -98,5 +98,5 @@ export const getPastTimeString = (date: string): string => {
     return `${Math.round(diffSecond / 60 / 60 / 24)} days ago...`;
   }
 
-  return date;
+  return getDate(date);
 };

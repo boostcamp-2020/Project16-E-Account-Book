@@ -76,7 +76,7 @@ const socialBookQuery = {
   UPDATE_SOCIAL_TRANSACTION: `UPDATE social_transaction SET category_id = ?, payment_id = ?, date = ?, title = ?, amount = ? WHERE id = ?`,
   DELETE_SOCIAL_TRANSACTION: `DELETE FROM social_transaction WHERE id = ?`,
   GET_SOCIAL_INVITATION: `
-    SELECT invitation.id, invited_at, name,
+    SELECT invitation.id, invited_at as time, name,
     (SELECT name FROM users WHERE master_id = users.id) as master
     FROM social_accountbook_users invitation
     LEFT OUTER JOIN social_accountbook book ON invitation.accountbook_id = book.id

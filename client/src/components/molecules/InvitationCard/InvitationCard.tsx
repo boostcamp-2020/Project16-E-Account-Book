@@ -18,8 +18,9 @@ interface Props {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid ${color.primary.gray};
+  border-bottom: 2px solid ${color.primary.lightGray};
   padding: 10px 10px 20px;
+  width: 100%;
 `;
 
 const InvitationCard: React.FC<Props> = ({ master, name, time, callback }: Props) => {
@@ -29,7 +30,7 @@ const InvitationCard: React.FC<Props> = ({ master, name, time, callback }: Props
         <RightText color={color.primary.gray}>{getPastTimeString(time)}</RightText>
       </RowContainer>
       <RowContainer margin="10px 0">
-        <Text>
+        <Text wordBreak="break-all">
           {master} 님이 <BlueText color={color.primary.accent}>{name}</BlueText> 가계부에
           초대하셨습니다.
         </Text>
