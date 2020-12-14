@@ -9,7 +9,7 @@ import colorUtils from '@utils/color';
 
 interface Props {
   backgroundColor: string;
-  buttonEvent: (data) => any;
+  buttonEvent: (name, description) => any;
 }
 
 const CreateAccountbookFormBox: React.FC<Props> = ({ buttonEvent, backgroundColor }: Props) => {
@@ -44,7 +44,7 @@ const CreateAccountbookFormBox: React.FC<Props> = ({ buttonEvent, backgroundColo
             border="none"
             backgroundColor={buttonColor}
             color={fontColor}
-            onClick={() => buttonEvent(name)}
+            onClick={() => buttonEvent(name, description)}
           >
             생성
           </RoundShortButton>
