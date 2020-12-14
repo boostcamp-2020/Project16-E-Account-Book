@@ -17,3 +17,10 @@ export interface PrivateBook {
   income: number | null;
   expenditure: number | null;
 }
+
+export interface Invitation {
+  id: number;
+  time: string;
+  name: string;
+  master: string;
+}
