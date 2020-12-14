@@ -112,9 +112,26 @@ const transactionForm: React.FC<Props> = ({ initData }: Props) => {
       setAmount(numberToMoney(state.amount));
       setDate(getDate(state.date));
       setTime(getTime(state.date));
-      if (state.payment === null) {
-        setIsIncome(true);
+
+      if (state.payment !== null) {
+        setIsIncome(true); // bug here
+        payment.forEach((pay) => {
+          if (pay.name === state.payment) {
+            setPaymentId(pay.id);
+          }
+        });
       }
+
+      income.forEach((category) => {
+        if (category.name === state.category) {
+          setCategoryId(category.id);
+        }
+      });
+      expenditure.forEach((category) => {
+        if (category.name === state.category) {
+          setCategoryId(category.id);
+        }
+      });
     }
   }, []);
 
