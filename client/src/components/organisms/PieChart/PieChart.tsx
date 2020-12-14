@@ -9,8 +9,8 @@ interface Props {
 }
 
 const Container = styled.div`
-  width: 550px;
-  height: 550px;
+  width: 90%;
+  height: 20rem;
   padding: 1rem;
   box-sizing: border-box;
   border-radius: 15px;
@@ -20,7 +20,7 @@ const Container = styled.div`
   margin-bottom: 1rem;
   display: flex;
   flex-flow: column;
-  justify-content: space-between;
+  align-items: center;
 `;
 
 const pieChart: React.FC<Props> = ({ data, isIncome }: Props) => {
@@ -28,7 +28,7 @@ const pieChart: React.FC<Props> = ({ data, isIncome }: Props) => {
     <PieGraph
       data={chartData}
       colors={color}
-      size={500}
+      size={250}
       backgroundColor={myColor.primary.black}
       fontColor="white"
     />

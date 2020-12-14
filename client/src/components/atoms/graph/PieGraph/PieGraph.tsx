@@ -34,8 +34,8 @@ const SVG = styled.svg<SVGProps>`
   version: 1.1;
   baseProfile: full;
   width: ${(props) => props.size}px;
-  height: ${(props) => props.size}px;
-  viewBox: 0 0 ${(props) => props.size} ${(props) => props.size};
+  height: ${(props) => props.size + 100}px;
+  viewBox: 0 0 ${(props) => props.size} ${(props) => props.size + 100};
   xmlns: http://www.w3.org/2000/svg';
 `;
 
@@ -54,15 +54,15 @@ const Group = styled.g<GroupProps>`
 
 const Text = styled.text`
   display: none;
-  font-size: 16px;
+  font-size: 14px;
   text-anchor: middle;
 `;
 
 const PercentText = styled.text`
   display: none;
   stroke: ${myColor.primary.reject};
-  stroke-width: 4;
-  font-size: 36px;
+  stroke-width: 3;
+  font-size: 24px;
   text-anchor: middle;
 `;
 
@@ -148,10 +148,10 @@ const PieGraph: React.FC<Props> = ({ size, data, colors, fontColor, backgroundCo
           fill={color}
           d={toPieChartItemPath(chartSize, chartSize, radiusIn, radiusOut, start, end)}
         />
-        <Text x="50%" y="45%">
+        <Text x="50%" y="93%">
           {info}
         </Text>
-        <PercentText x="50%" y="55%">
+        <PercentText x="50%" y="47%">
           {Math.round(percent)} %
         </PercentText>
       </Group>
