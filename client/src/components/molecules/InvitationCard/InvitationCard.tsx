@@ -9,10 +9,11 @@ import color from '@theme/color';
 import { getPastTimeString } from '@utils/date';
 
 interface Props {
+  id: number;
   master: string;
   name: string;
   time: string;
-  callback: (isAccept: boolean) => void;
+  callback: (id: number, isAccept: boolean) => void;
 }
 
 const Container = styled.div`
@@ -24,7 +25,7 @@ const Container = styled.div`
   box-sizing: border-box;
 `;
 
-const InvitationCard: React.FC<Props> = ({ master, name, time, callback }: Props) => {
+const InvitationCard: React.FC<Props> = ({ id, master, name, time, callback }: Props) => {
   return (
     <Container>
       <RowContainer justifyContent="flex-end">
@@ -37,9 +38,9 @@ const InvitationCard: React.FC<Props> = ({ master, name, time, callback }: Props
         </Text>
       </RowContainer>
       <RowContainer justifyContent="space-around">
-        <Button onClick={() => callback(true)}>수락</Button>
+        <Button onClick={() => callback(id, true)}>수락</Button>
         <Button
-          onClick={() => callback(false)}
+          onClick={() => callback(id, false)}
           backgroundColor={color.primary.lightGray}
           color={color.primary.black}
         >
