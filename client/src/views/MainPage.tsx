@@ -117,7 +117,7 @@ const MainPage: React.FC = () => {
             </MasterBooksBox>
             <SocialBooksBox>
               {socialBooks.map((book) => {
-                return <SocialAccountBook key={book.id} {...book} isMaster={false} />;
+                return <SocialAccountBook key={book.id} {...book} />;
               })}
             </SocialBooksBox>
           </ColumFlexContainer>

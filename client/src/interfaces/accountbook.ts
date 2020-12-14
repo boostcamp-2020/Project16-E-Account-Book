@@ -10,7 +10,7 @@ export interface SocialBook {
   incomeSum: string | null;
   expenditureSum: string | null;
   images: string[];
-  isMaster: boolean;
+  isMaster?: boolean;
 }
 
 export interface PrivateBook {

@@ -38,6 +38,10 @@ const RightBox = styled.div`
   align-items: center;
 `;
 
+const defaultProps = {
+  isMaster: false,
+};
+
 const socialAccountBook: React.FC<SocialBook> = ({
   id,
   name,
@@ -91,5 +95,7 @@ const socialAccountBook: React.FC<SocialBook> = ({
     </>
   );
 };
+
+socialAccountBook.defaultProps = defaultProps;
 
 export default socialAccountBook;
