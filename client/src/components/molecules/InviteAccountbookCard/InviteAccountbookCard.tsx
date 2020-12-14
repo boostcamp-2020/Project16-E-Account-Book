@@ -9,6 +9,9 @@ import SquircleShortButton from '@atoms/button/SquircleShortButton';
 
 interface Props {
   links: string[];
+  id: number;
+  backgroundColor: string;
+  name: string;
 }
 
 interface squircleCardProps {
@@ -18,20 +21,21 @@ interface squircleCardProps {
   flexFlow: string;
 }
 
-const squircleCardArgs: squircleCardProps = {
-  width: '100%',
-  height: '10rem',
-  backgroundColor: 'white',
-  flexFlow: 'column',
-};
+const InviteAccountbookCard: React.FC<Props> = ({ links, id, backgroundColor, name }: Props) => {
+  const squircleCardArgs: squircleCardProps = {
+    width: '100%',
+    height: '10rem',
+    backgroundColor,
+    flexFlow: 'column',
+  };
+  console.log(id, name);
 
-const InviteAccountbookCard: React.FC<Props> = ({ links }: Props) => {
   return (
     <SquircleCard {...squircleCardArgs}>
       <ColumnFlexContainer width="100%" height="100%">
         <RowFlexContainer width="100%" height="30%">
           <LeftNormalText fontWeight="bold" color={myColor.primary.black}>
-            초대 목록
+            사용자
           </LeftNormalText>
         </RowFlexContainer>
         <RowFlexContainer justifyContent="space-between" width="100%" height="70%">

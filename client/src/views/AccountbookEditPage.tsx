@@ -4,9 +4,16 @@ import myColor from '@theme/color';
 import CenterContent from '@molecules/CenterContent';
 import CreateAccountbookFormBox from '@organisms/CreateAccountbookFormBox';
 import TopNavBar from '@organisms/TopNavBar';
-import CreateAccountbookSetting from '@organisms/CreateAccountbookSetting';
+import InviteAccountbookCard from '@molecules/InviteAccountbookCard';
 import colorUtils from '@utils/color';
 import styled from 'styled-components';
+
+interface InviteProps {
+  links: string[];
+  id: number;
+  backgroundColor: string;
+  name: string;
+}
 
 const AccountbookEditPage: React.FC = () => {
   const createButtonClick = async (data: any) => {
@@ -19,6 +26,20 @@ const AccountbookEditPage: React.FC = () => {
   `;
 
   const backgroundColor = colorUtils.getRandomColor();
+
+  const links = [
+    'https://avatars2.githubusercontent.com/u/46099115?s=460&u=1e04610d430875d8189d2b212b8c2d9fc268b9db&v=4',
+    'https://avatars3.githubusercontent.com/u/55074799?s=460&u=2f70319c2f55ba5e26db060ba21d66a9cab35732&v=4',
+    'https://avatars2.githubusercontent.com/u/50297117?s=460&u=2ddc78ef0045b75f6fb405f1763304a7481d46e4&v=4',
+  ];
+
+  const InviteArgs: InviteProps = {
+    links,
+    id: 2,
+    backgroundColor: 'yellow',
+    name: '부캠동아리',
+  };
+
   return (
     <>
       <ColoredBackground backgroundColor={myColor.primary.lightGray} />
@@ -29,13 +50,7 @@ const AccountbookEditPage: React.FC = () => {
           backgroundColor={backgroundColor}
         />
         <SettingContainer>
-          <CreateAccountbookSetting
-            labelColor="blue"
-            links={[
-              'https://avatars2.githubusercontent.com/u/46099115?s=460&u=1e04610d430875d8189d2b212b8c2d9fc268b9db&v=4',
-              'https://avatars3.githubusercontent.com/u/55074799?s=460&u=2f70319c2f55ba5e26db060ba21d66a9cab35732&v=4',
-            ]}
-          />
+          <InviteAccountbookCard {...InviteArgs} />
         </SettingContainer>
       </CenterContent>
     </>
