@@ -45,6 +45,8 @@ const transactionForm: React.FC<Props> = ({ initData }: Props) => {
   const payment = useSelector((state: RootState) => state.payment.payment);
   const modalView = useSelector((state: RootState) => state.modal.view);
   const [isIncome, setIsIncome] = useState(false);
+  const [id, setId] = useState(-1);
+
   const currDate = new Date();
   const history = useHistory();
 
@@ -112,6 +114,7 @@ const transactionForm: React.FC<Props> = ({ initData }: Props) => {
       setAmount(numberToMoney(state.amount));
       setDate(getDate(state.date));
       setTime(getTime(state.date));
+      setId(state.id);
 
       if (state.payment !== null) {
         setIsIncome(true); // bug here
@@ -220,6 +223,7 @@ const transactionForm: React.FC<Props> = ({ initData }: Props) => {
             isIncome={isIncome}
           />
           <input readOnly value={Number(isIncome)} hidden />
+          <input name="id" value={Number(id)} hidden />
         </InputContainer>
       </ColumnFlexContainer>
     </>

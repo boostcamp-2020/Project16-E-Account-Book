@@ -51,3 +51,13 @@ export const GET_SOCIAL_STATISTIC_CATEGORY = (
 export const POST_PAYMENT = `${process.env.REACT_APP_BASE_URL}/api/payment`;
 
 export const DELETE_PAYMENT = `${process.env.REACT_APP_BASE_URL}/api/payment`;
+
+export const PUT_SOCIAL_TRANSACTION = `${process.env.REACT_APP_BASE_URL}/api/social/transaction`;
+
+export const PUT_PRIVATE_TRANSACTION = `${process.env.REACT_APP_BASE_URL}/api/private/transaction`;
+
+export const DELETE_SOCIAL_TRANSACTION = (id: number): string =>
+  `${process.env.REACT_APP_BASE_URL}/api/social/transaction/${id}`;
+
+export const DELETE_PRIVATE_TRANSACTION = (id: number): string =>
+  `${process.env.REACT_APP_BASE_URL}/api/private/transaction/${id}`;
