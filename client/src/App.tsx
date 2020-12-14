@@ -7,6 +7,7 @@ import CreateAccountbookPage from '@views/CreateAccountbookPage';
 import TransactionPostPage from '@views/TransactionPostPage';
 import AccountbookPage from '@views/AccountbookPage';
 import NotFoundPage from '@views/NotFoundPage';
+import AccountbookEditPage from '@views/AccountbookEditPage';
 import GlobalStyle from '@shared/global';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
@@ -14,7 +15,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
 import { setCategory } from '@actions/category/type';
 import { setPayment } from '@actions/payment/type';
-import { setPrivate } from '@actions/accountbook/type';
+import { setPrivate, setSocial } from '@actions/accountbook/type';
 import { getAxiosData } from '@utils/axios';
 import { logout, setUser } from '@actions/user/type';
 import * as API from '@utils/api';
@@ -45,7 +46,11 @@ const App: React.FC = () => {
   };
 
   const initAccountBook = () => {
-    dispatch(setPrivate());
+    if (localStorage.getItem('account_book_type') === 'SOCIAL') {
+      dispatch(setSocial(Number(localStorage.getItem('account_book_id'))));
+    } else {
+      dispatch(setPrivate());
+    }
   };
 
   useEffect(() => {
@@ -72,6 +77,7 @@ const App: React.FC = () => {
         <Route path="/accountbook/social/new" component={CreateAccountbookPage} />
         <Route path="/accountbook/transaction/new" component={TransactionPostPage} />
         <Route path="/accountbook" component={AccountbookPage} />
+        <Route path="/social/edit" component={AccountbookEditPage} />
         <Route exact path="/" component={MainPage} />
         <Route path="/*" component={NotFoundPage} />
       </Switch>

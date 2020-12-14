@@ -24,4 +24,21 @@ router.post('/createAccountbook', Controller.createAccountbook);
 
 router.put('/transaction', Controller.updateTransaction);
 
+router.delete('/transaction/:id', Controller.deleteTransaction);
+
+router.post('/invitation', Controller.inviteAccountbookUser);
+
+router.get('/invitation', Controller.getInvitation);
+
+router.patch('/invitation/:id', Controller.patchInvitation);
+
+router.delete('/invitation/:id', Controller.deleteInvitation);
+
+router.get('/statistic/trend/income/:bookId/:year/:month', Controller.getTrendStatisticIncome);
+
+router.get(
+  '/statistic/trend/expenditure/:bookId/:year/:month',
+  Controller.getTrendStatisticExpenditure,
+);
+
 export default router;

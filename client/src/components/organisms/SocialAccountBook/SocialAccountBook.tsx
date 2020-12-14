@@ -9,6 +9,8 @@ import { useDispatch } from 'react-redux';
 import { setSocial } from '@actions/accountbook/type';
 import { initMonth } from '@actions/date/type';
 import { SocialBook } from '@interfaces/accountbook';
+import NavButton from '@atoms/button/NavButton';
+import myColor from '@theme/color';
 
 const Container = styled.button`
   background-color: transparent;
@@ -36,6 +38,10 @@ const RightBox = styled.div`
   align-items: center;
 `;
 
+const defaultProps = {
+  isMaster: false,
+};
+
 const socialAccountBook: React.FC<SocialBook> = ({
   id,
   name,
@@ -44,35 +50,52 @@ const socialAccountBook: React.FC<SocialBook> = ({
   incomeSum,
   expenditureSum,
   images,
+  isMaster,
 }: SocialBook) => {
   const dispatch = useDispatch();
   const history = useHistory();
-
   const toSocialAccountBook = () => {
+    localStorage.setItem('account_book_type', `SOCIAL`);
+    localStorage.setItem('account_book_id', `${id}`);
     dispatch(setSocial(id));
     dispatch(initMonth());
     history.push('/accountbook');
   };
-
+  const moveUrl = `/social/edit/:${id}`;
   return (
-    <Container onClick={toSocialAccountBook}>
-      <SquircleCard backgroundColor={color} height="90px">
-        <LeftBox>
-          <UserImages links={images} />
-        </LeftBox>
-        <CenterBox>
-          <CardInfo title={name} description={description} />
-        </CenterBox>
-        <RightBox>
-          <CardNumberText
-            fontSize="0.6rem"
-            inMoney={Number(incomeSum)}
-            exMoney={Number(expenditureSum)}
+    <>
+      <Container onClick={toSocialAccountBook}>
+        <SquircleCard backgroundColor={color} height="90px">
+          <LeftBox>
+            <UserImages links={images} />
+          </LeftBox>
+          <CenterBox>
+            <CardInfo title={name} description={description} />
+          </CenterBox>
+          <RightBox>
+            <CardNumberText
+              fontSize="0.6rem"
+              inMoney={Number(incomeSum)}
+              exMoney={Number(expenditureSum)}
+            />
+          </RightBox>
+        </SquircleCard>
+      </Container>
+      {isMaster && (
+        <>
+          <NavButton
+            moveUrl={moveUrl}
+            name="setting"
+            width="20%"
+            height="20%"
+            iconColor={myColor.primary.black}
           />
-        </RightBox>
-      </SquircleCard>
-    </Container>
+        </>
+      )}
+    </>
   );
 };
+
+socialAccountBook.defaultProps = defaultProps;
 
 export default socialAccountBook;

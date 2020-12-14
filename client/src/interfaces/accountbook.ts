@@ -10,10 +10,18 @@ export interface SocialBook {
   incomeSum: string | null;
   expenditureSum: string | null;
   images: string[];
+  isMaster?: boolean;
 }
 
 export interface PrivateBook {
   category: CategorySum[];
   income: number | null;
   expenditure: number | null;
+}
+
+export interface Invitation {
+  id: number;
+  time: string;
+  name: string;
+  master: string;
 }

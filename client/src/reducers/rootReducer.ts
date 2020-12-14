@@ -6,7 +6,6 @@ import transaction from './transaction';
 import accountbook from './accountbook';
 import category from './category';
 import payment from './payment';
-import previous from './previous';
 
 const rootReducer = combineReducers({
   user,
@@ -16,7 +15,6 @@ const rootReducer = combineReducers({
   accountbook,
   category,
   payment,
-  previous,
 });
 
 export default rootReducer;

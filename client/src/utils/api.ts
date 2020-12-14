@@ -52,3 +52,5 @@ export const POST_PAYMENT = `${process.env.REACT_APP_BASE_URL}/api/payment`;
 
 export const DELETE_PAYMENT = (name: number): string =>
   `${process.env.REACT_APP_BASE_URL}/api/payment/${name}`;
+
+export const GET_INVITATION = `${process.env.REACT_APP_BASE_URL}/api/social/invitation`;

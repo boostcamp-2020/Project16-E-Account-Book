@@ -47,6 +47,18 @@ const privateBookQuery = {
   READ_PRIVATE_MONTHLY_STATISTICS_INCOME: `
     SELECT SUM(amount) FROM private_transaction 
     WHERE accountbook_id = ? AND date >= ? AND date < ? AND payment_id IS NULL`,
+  READ_PRIVATE_TREND_INCOME: `
+    SELECT SUM(amount) as money, date_format(date, '%d') as day
+    FROM private_transaction
+    WHERE accountbook_id = ? AND payment_id IS NULL
+    AND year(date) = ? AND month(date) = ?
+    GROUP BY day ORDER BY day`,
+  READ_PRIVATE_TREND_EXPENDITURE: `
+    SELECT SUM(amount) as money, date_format(date, '%d') as day
+    FROM private_transaction
+    WHERE accountbook_id = ? AND payment_id IS NOT NULL
+    AND year(date) = ? AND month(date) = ?
+    GROUP BY day ORDER BY day`,
   UPDATE_PRIVATE_TRANSACTION: `UPDATE private_transaction SET category_id = ?, payment_id = ?, date = ?, title = ?, amount = ? WHERE id = ?`,
   DELETE_PRIVATE_TRANSACTION: `DELETE FROM private_transaction WHERE id = ?`,
 };

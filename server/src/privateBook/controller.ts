@@ -115,9 +115,31 @@ export const getPastFourMonthStatistics = async (ctx: any) => {
   response.success(ctx, result);
 };
 
+export const getTrendStatisticIncome = async (ctx: any) => {
+  const { year, month } = ctx.params;
+  const userId = ctx.userData.uid;
+  const accountbookId = await Service.getAccountBookId(userId);
+  const result = await Service.getTrendIncome(accountbookId, year, month);
+  response.success(ctx, result);
+};
+
+export const getTrendStatisticExpenditure = async (ctx: any) => {
+  const { year, month } = ctx.params;
+  const userId = ctx.userData.uid;
+  const accountbookId = await Service.getAccountBookId(userId);
+  const result = await Service.getTrendExpenditure(accountbookId, year, month);
+  response.success(ctx, result);
+};
+
 export const updateTransaction = async (ctx: any) => {
   const { id, categoryId, paymentId, date, title, amount } = ctx.request.body;
   const transaction = [categoryId, paymentId, date, title, amount, id];
   await Service.updateTransaction(transaction);
+  response.success(ctx, id);
+};
+
+export const deleteTransaction = async (ctx: any) => {
+  const { id } = ctx.params;
+  await Service.deleteTransaction(id);
   response.success(ctx, id);
 };

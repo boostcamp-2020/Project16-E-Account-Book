@@ -1,8 +1,15 @@
+/* eslint-disable no-unused-vars */
 import 'dotenv/config';
 import sql from '../model/db';
 import query from '../model/query';
 import { UserImage, SocialInfo, SocialBookId } from '../interface/social';
 import { getCategoryPercentData } from '../utils/accountbook';
+
+// eslint-disable-next-line no-shadow
+enum INVITATION {
+  REJECT = -2,
+  ACCEPT = 2,
+}
 
 export const getSocialBooks = async (userId: number) => {
   const socialBookList = await sql(query.READ_SOCIAL_BOOK_LIST, [userId]);
@@ -145,5 +152,52 @@ export const getTransactionList = async (searchInfo: (string | number)[]) => {
 
 export const updateTransaction = async (transaction: (string | number)[]) => {
   const result = await sql(query.UPDATE_SOCIAL_TRANSACTION, transaction);
+  return result;
+};
+
+export const deleteTransaction = async (id: number) => {
+  const result = await sql(query.DELETE_SOCIAL_TRANSACTION, [id]);
+  return result;
+};
+
+export const inviteAccountbookUser = async (userId: Number, accountbookId: Number) => {
+  const result = await sql(query.CREATE_SOCIAL_ACCOUNTBOOK_USERS, [userId, accountbookId, 1]);
+
+  return result.insertId;
+};
+
+export const getInvitation = async (userId: string) => {
+  const result = await sql(query.GET_SOCIAL_INVITATION, [userId]);
+  return result;
+};
+
+export const patchInvitation = async (userId: string, id: number, accept: boolean) => {
+  let state;
+  if (accept) {
+    state = INVITATION.ACCEPT;
+  } else {
+    state = INVITATION.REJECT;
+  }
+  const result = await sql(query.UPDATE_SOCIAL_INVITATION, [state, userId, id]);
+  return result;
+};
+
+export const getInvitationMasterId = async (id: string) => {
+  const [result] = await sql(query.GET_SOCIAL_INVITATION_MASTER, [id]);
+  return result;
+};
+
+export const deleteInvitation = async (id: string) => {
+  const result = await sql(query.DELETE_SOCIAL_INVITATION, [id]);
+  return result;
+};
+
+export const getTrendIncome = async (bookId: number, year: number, month: number) => {
+  const result = await sql(query.READ_SOCIAL_TREND_INCOME, [bookId, year, month]);
+  return result;
+};
+
+export const getTrendExpenditure = async (bookId: number, year: number, month: number) => {
+  const result = await sql(query.READ_SOCIAL_TREND_EXPENDITURE, [bookId, year, month]);
   return result;
 };

@@ -20,6 +20,7 @@ export const socialAccountBook = (): JSX.Element => {
       expenditureSum="9932"
       color="#153721"
       id={1}
+      isMaster
     />
   );
 };

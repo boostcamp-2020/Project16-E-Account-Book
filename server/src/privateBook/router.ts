@@ -16,6 +16,12 @@ router.get('/analysis', Controller.getMonthAnalysis);
 
 router.get('/statistics/monthly/', Controller.getPastFourMonthStatistics);
 
+router.get('/statistic/trend/income/:year/:month', Controller.getTrendStatisticIncome);
+
+router.get('/statistic/trend/expenditure/:year/:month', Controller.getTrendStatisticExpenditure);
+
 router.put('/transaction', Controller.updateTransaction);
+
+router.delete('/transaction/:id', Controller.deleteTransaction);
 
 export default router;

@@ -1,3 +1,9 @@
+const SEC = 1;
+const MIN = SEC * 60;
+const HOUR = MIN * 60;
+const DAY = HOUR * 24;
+const WEEK = DAY * 7;
+
 const getNumberTwoDigits = (number: number): string => {
   return number >= 10 ? `${number}` : `0${number}`;
 };
@@ -69,4 +75,28 @@ export const numberOfMonth = (date: string): number => {
   const [year, month] = date.split('-');
   const days = new Date(Number(year), Number(month), 0).getDate();
   return days;
+};
+
+export const getPastTimeString = (date: string): string => {
+  const createTime = new Date(date);
+  const currentTime = new Date();
+  const diffSecond = (currentTime.getTime() - createTime.getTime()) / 1000;
+
+  if (diffSecond < MIN) {
+    return `${diffSecond} seconds ago...`;
+  }
+
+  if (diffSecond < HOUR) {
+    return `${Math.round(diffSecond / 60)} minutes ago...`;
+  }
+
+  if (diffSecond < DAY) {
+    return `${Math.round(diffSecond / 60 / 60)} hours ago...`;
+  }
+
+  if (diffSecond < WEEK) {
+    return `${Math.round(diffSecond / 60 / 60 / 24)} days ago...`;
+  }
+
+  return getDate(date);
 };

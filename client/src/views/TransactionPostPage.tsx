@@ -30,10 +30,9 @@ const Container = styled.div`
 const TransactionPostPage: React.FC = () => {
   const accountbookType = useSelector((state: RootState) => state.accountbook.type);
   const accountbookId = useSelector((state: RootState) => state.accountbook.socialId);
-  const previous = useSelector((state: RootState) => state.previous.previous);
   const history = useHistory();
   const cancel = () => {
-    window.location.href = `${previous}`;
+    history.goBack();
   };
 
   const postTransaction = async (data) => {
@@ -47,7 +46,7 @@ const TransactionPostPage: React.FC = () => {
       default:
         break;
     }
-    history.go(-1);
+    history.goBack();
   };
 
   const submitHandler = (event) => {
