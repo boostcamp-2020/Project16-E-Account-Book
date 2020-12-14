@@ -1,6 +1,30 @@
 # ✨ sprint ✨
 
 # Sprint 4
+
+## 💻 Day 5
+### 📌 [FE] 새로고침시 가계부 초기화 문제 localsotrage로 상태관리 개선
+    - 소셜 가계부에서 새로고침시 개인 가계부로 store 상태가 변경되는 오류가 있었다. 전체 페이지를 렌더링 할 때 initialize 하는게 문제 였는데, 이를 해결하기 위해 메인페이지에서 각 가계부 페이지로 이동할때 Loaclstorage를 이용해서 가계부의 type, id를 저장하였고 달력, 내역 페이지 진입시 Localsotrage 값을 바탕으로 Store를 관리하도록 로직을 변경했다.
+### 📌 [BE] MySQL 일별 합을 묶는 방법
+    - 꺾은선 그래프에서 사용할 일별 지출/수입 합을 반환하는 API를 구현해야 했다.
+    - 쿼리문에서 같은 날짜 별로 묶는 것이 문제였는데 아래와 같은 조건으로 해결할 수 있었다.
+    - 쿼리문 예시: 개인 가계부 지출합
+        ```SQL
+        SELECT SUM(amount) as money, date_format(date, '%d') as day
+        FROM private_transaction
+        WHERE accountbook_id = ? AND payment_id IS NOT NULL
+        AND year(date) = ? AND month(date) = ?
+        GROUP BY day ORDER BY day
+        ```
+        - `date_format(date, '%d') as day`를 통해 날짜만 뽑았다.
+        - `GROUP BY day`를 통해 결과를 날짜끼리 묶었다.
+        - `AND year(date) = ? AND month(date) = ?`를 통해 원하는 년-월의 데이터만 조회할 수 있도록 하였다.
+### 📌 [BE] PUT vs PATCH
+    - PUT은 ROW에 전체 값에 변동이 있을 때
+    - PATCH는 ROW의 일부분에 변동이 있을 때
+    - Restful한 API router 주소 체계에 대해서 고민하였다
+    - [REST API 제대로 알고 사용하기 By TOAST](https://meetup.toast.com/posts/92)
+
 ## 💻 Day 4
 ### 📌 [FE] CSS : Box-sizing 옵션
 - Border의 크기를 width에 포함할 것 인가를 정하는 옵션
