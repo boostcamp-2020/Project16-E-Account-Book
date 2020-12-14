@@ -50,7 +50,7 @@ export const GET_SOCIAL_STATISTIC_CATEGORY = (
 
 export const POST_PAYMENT = `${process.env.REACT_APP_BASE_URL}/api/payment`;
 
-export const DELETE_PAYMENT = (name: number): string =>
-  `${process.env.REACT_APP_BASE_URL}/api/payment/${name}`;
+export const DELETE_PAYMENT = (id: number): string =>
+  `${process.env.REACT_APP_BASE_URL}/api/payment/${id}`;
 
 export const GET_INVITATION = `${process.env.REACT_APP_BASE_URL}/api/social/invitation`;
