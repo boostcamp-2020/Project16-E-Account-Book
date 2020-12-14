@@ -44,7 +44,6 @@ const transactionForm: React.FC<Props> = ({ initData }: Props) => {
   const payment = useSelector((state: RootState) => state.payment.payment);
   const modalView = useSelector((state: RootState) => state.modal.view);
   const [isIncome, setIsIncome] = useState(false);
-  const [isExpenditure, setIsExpenditure] = useState(true);
   const currDate = new Date();
 
   const [title, setTitle] = useState<string>();
@@ -130,9 +129,8 @@ const transactionForm: React.FC<Props> = ({ initData }: Props) => {
           <ToggleButton
             leftButtonName="수입"
             rightButtonName="지출"
-            leftCallback={setIsIncome}
-            rightCallback={setIsExpenditure}
-            initRight={isExpenditure}
+            setIsIncome={setIsIncome}
+            isIncome={isIncome}
           />
           <DeleteButtonContainer>
             <TextButton onClick={clearInput}>모두 지우기</TextButton>
@@ -175,7 +173,7 @@ const transactionForm: React.FC<Props> = ({ initData }: Props) => {
               onChange={(e) => inputChange(e, setCategoryId)}
             />
           )}
-          {isExpenditure && (
+          {!isIncome && (
             <MenuWithText
               options={expenditure}
               title="카테고리"

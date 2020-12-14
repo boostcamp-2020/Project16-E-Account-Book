@@ -29,7 +29,6 @@ const StatisticsPage: React.FC = () => {
   const dateData = `${year}-${month}`;
 
   const [isIncome, setIsIncome] = useState(false);
-  const [isExpenditure, setIsExpenditure] = useState(false);
   const [fourMonthData, setFourMonthData] = useState([]);
   const [fiveWeekData, setFiveWeekData] = useState([]);
   const [stickData, setStickData] = useState({});
@@ -68,7 +67,6 @@ const StatisticsPage: React.FC = () => {
 
   useEffect(() => {
     console.log(isIncome);
-    console.log(isExpenditure);
     console.log(accountbookType);
     console.log(accountbookId);
   }, [dateData]);
@@ -84,11 +82,10 @@ const StatisticsPage: React.FC = () => {
       <MonthNav />
       <MonthNavMarginBox />
       <ToggleButton
-        initRight={!isIncome}
         leftButtonName="수입"
         rightButtonName="지출"
-        leftCallback={setIsIncome}
-        rightCallback={setIsExpenditure}
+        isIncome={isIncome}
+        setIsIncome={setIsIncome}
       />
       <ColumFlexContainer width="100%" alignItems="center">
         <StickStatistics data={stickData} isIncome={isIncome} />

@@ -1,14 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Button from '@atoms/button/RoundShortButton';
 import myColor from '@theme/color';
 
 interface Props extends sizeProps {
-  leftCallback: React.Dispatch<React.SetStateAction<boolean>>;
-  rightCallback: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsIncome: React.Dispatch<React.SetStateAction<boolean>>;
   leftButtonName: string;
   rightButtonName: string;
-  initRight?: boolean;
+  isIncome: boolean;
 }
 
 interface sizeProps {
@@ -19,7 +18,6 @@ interface sizeProps {
 const defaultProps = {
   width: '170px',
   height: '50px',
-  initRight: false,
 };
 
 const ToggleButtonContainer = styled.div<sizeProps>`
@@ -33,31 +31,27 @@ const ToggleButtonContainer = styled.div<sizeProps>`
   height: ${(props) => props.height};
 `;
 
-let leftColor = myColor.primary.accent;
-let rightColor = 'white';
-
 const ToggleButton: React.FC<Props> = ({
-  initRight,
-  leftCallback,
-  rightCallback,
   leftButtonName,
   rightButtonName,
+  isIncome,
+  setIsIncome,
   ...args
 }: Props) => {
-  const changeColor = (isLeft) => {
-    if (isLeft === false) {
-      leftColor = 'white';
-      rightColor = myColor.primary.accent;
+  const [leftColor, setLeftColor] = useState('white');
+  const [rightColor, setRightColor] = useState(myColor.primary.accent);
+  const changeColor = (income) => {
+    if (income === false) {
+      setLeftColor('white');
+      setRightColor(myColor.primary.accent);
     } else {
-      leftColor = myColor.primary.accent;
-      rightColor = 'white';
+      setLeftColor(myColor.primary.accent);
+      setRightColor('white');
     }
   };
 
   useEffect(() => {
-    if (initRight) {
-      changeColor(false);
-    }
+    changeColor(isIncome);
   }, []);
 
   return (
@@ -66,8 +60,7 @@ const ToggleButton: React.FC<Props> = ({
         backgroundColor={leftColor}
         color={rightColor}
         onClick={() => {
-          leftCallback(true);
-          rightCallback(false);
+          setIsIncome(true);
           changeColor(true);
         }}
       >
@@ -77,8 +70,7 @@ const ToggleButton: React.FC<Props> = ({
         backgroundColor={rightColor}
         color={leftColor}
         onClick={() => {
-          leftCallback(false);
-          rightCallback(true);
+          setIsIncome(false);
           changeColor(false);
         }}
       >
