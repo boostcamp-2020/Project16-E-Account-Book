@@ -43,16 +43,24 @@ const myColor: Colors = {
     border: '#dadada',
     main: '#efefef',
   },
-  statistic: {
-    expenditureOne: '#324F7E',
-    expenditureTwo: '#5A75A1',
-    expenditureThree: '#859BBF',
-    expenditureFour: '#A7BBDB',
-    incomeOne: '#D4D424',
-    incomeTwo: '#E2E24E',
-    incomeThree: '#EFEF8C',
-    incomeFour: '#F7F788',
-  },
 };
+
+export const incomeColor = ['#FFD969', '#FFD03D', '#CCA531', '#80671F', '#665B37'];
+
+export const expenditureColor = [
+  '#2E2F78',
+  '#4648B8',
+  '#5457DE',
+  '#5F61F8',
+  '#4A74E0',
+  '#53AFFC',
+  '#40C7E6',
+  '#47DFEF',
+  '#91E9F2',
+  '#BBF2F4',
+  '#97A6A8',
+  '#656F70',
+  '#454C4D',
+];
 
 export default myColor;

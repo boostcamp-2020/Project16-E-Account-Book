@@ -1,5 +1,5 @@
 import React from 'react';
-import myColor from '@theme/color';
+import { incomeColor } from '@theme/color';
 import PieGraph from './PieGraph';
 
 export default {
@@ -26,12 +26,6 @@ export const pieGraph = (): JSX.Element => {
     },
   ];
 
-  const incomeColor = [
-    myColor.statistic.incomeOne,
-    myColor.statistic.incomeTwo,
-    myColor.statistic.incomeThree,
-    myColor.statistic.incomeFour,
-  ];
   return <PieGraph data={incomeData} colors={incomeColor} size={500} />;
 };
 

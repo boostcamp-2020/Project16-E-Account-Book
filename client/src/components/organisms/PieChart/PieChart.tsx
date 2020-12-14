@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PieGraph from '@atoms/graph/PieGraph';
-import myColor from '@theme/color';
+import myColor, { incomeColor, expenditureColor } from '@theme/color';
 
 interface Props {
   data: any;
@@ -24,19 +24,6 @@ const Container = styled.div`
 `;
 
 const pieChart: React.FC<Props> = ({ data, isIncome }: Props) => {
-  const incomeColor = [
-    myColor.statistic.incomeOne,
-    myColor.statistic.incomeTwo,
-    myColor.statistic.incomeThree,
-    myColor.statistic.incomeFour,
-  ];
-  const expenditureColor = [
-    myColor.statistic.expenditureOne,
-    myColor.statistic.expenditureTwo,
-    myColor.statistic.expenditureThree,
-    myColor.statistic.expenditureFour,
-  ];
-
   const drawChart = (chartData: any, color: string[]) => (
     <PieGraph
       data={chartData}
