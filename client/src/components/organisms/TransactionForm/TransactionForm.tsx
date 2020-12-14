@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
 import { postData } from '@interfaces/transaction';
 import SmsParsingModal from '@organisms/SmsParsingModal';
+import { useHistory } from 'react-router-dom';
 
 interface Props {
   initData?: postData | undefined;
@@ -45,6 +46,7 @@ const transactionForm: React.FC<Props> = ({ initData }: Props) => {
   const modalView = useSelector((state: RootState) => state.modal.view);
   const [isIncome, setIsIncome] = useState(false);
   const currDate = new Date();
+  const history = useHistory();
 
   const [title, setTitle] = useState<string>();
   const [amount, setAmount] = useState<string>();
@@ -102,6 +104,16 @@ const transactionForm: React.FC<Props> = ({ initData }: Props) => {
       setCategoryId(initData.categoryId);
       if (initPayment) {
         setPaymentId(initPayment);
+      }
+    }
+    if (history.location.state !== undefined) {
+      const { state }: any = history.location;
+      setTitle(state.title);
+      setAmount(numberToMoney(state.amount));
+      setDate(getDate(state.date));
+      setTime(getTime(state.date));
+      if (state.payment === null) {
+        setIsIncome(true);
       }
     }
   }, []);

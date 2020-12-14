@@ -32,9 +32,6 @@ const DailyTransaction = styled.div`
 
 const dailyTransaction: React.FC<Props> = ({ data }: Props) => {
   const history = useHistory();
-  const moveToEditPage = () => {
-    history.push('/accountbook/transaction/edit');
-  };
 
   let money = 0;
   if (data.payment) {
@@ -43,10 +40,15 @@ const dailyTransaction: React.FC<Props> = ({ data }: Props) => {
     money = data.inmoney;
   }
   const reformData = {
+    id: data.id,
+    date: data.date,
     category: data.category,
     title: data.title,
     amount: money,
     payment: data.payment,
+  };
+  const moveToEditPage = () => {
+    history.push('/accountbook/transaction/edit', reformData);
   };
   return (
     <DailyTransaction onClick={moveToEditPage}>
