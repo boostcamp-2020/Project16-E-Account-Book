@@ -87,6 +87,18 @@ const socialBookQuery = {
     LEFT OUTER JOIN social_accountbook book ON book.id = users.accountbook_id
     WHERE users.id = ?`,
   DELETE_SOCIAL_INVITATION: `DELETE FROM social_accountbook_users WHERE id = ? AND state = 1;`,
+  READ_SOCIAL_TREND_INCOME: `
+    SELECT SUM(amount) as money, date_format(date, '%d') as day
+    FROM social_transaction
+    WHERE accountbook_id = ? AND payment_id IS NULL
+    AND year(date) = ? AND month(date) = ?
+    GROUP BY day ORDER BY day`,
+  READ_SOCIAL_TREND_EXPENDITURE: `
+    SELECT SUM(amount) as money, date_format(date, '%d') as day
+    FROM social_transaction
+    WHERE accountbook_id = ? AND payment_id IS NOT NULL
+    AND year(date) = ? AND month(date) = ?
+    GROUP BY day ORDER BY day`,
 };
 
 export default socialBookQuery;

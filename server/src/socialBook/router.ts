@@ -34,4 +34,11 @@ router.patch('/invitation/:id', Controller.patchInvitation);
 
 router.delete('/invitation/:id', Controller.deleteInvitation);
 
+router.get('/statistic/trend/income/:bookId/:year/:month', Controller.getTrendStatisticIncome);
+
+router.get(
+  '/statistic/trend/expenditure/:bookId/:year/:month',
+  Controller.getTrendStatisticExpenditure,
+);
+
 export default router;
