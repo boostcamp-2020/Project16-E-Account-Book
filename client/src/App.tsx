@@ -7,7 +7,7 @@ import CreateAccountbookPage from '@views/CreateAccountbookPage';
 import TransactionPostPage from '@views/TransactionPostPage';
 import AccountbookPage from '@views/AccountbookPage';
 import NotFoundPage from '@views/NotFoundPage';
-import AccountbookEditPage from '@views/AccountbookEditPage;
+import AccountbookEditPage from '@views/AccountbookEditPage';
 import GlobalStyle from '@shared/global';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
