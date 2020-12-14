@@ -22,6 +22,8 @@ const myColor: Colors = {
     white: '#FFFFFF',
     purple: '#6F70B9',
     green: '#008C16',
+    skyblue: '#D6DFFF',
+    mildGray: '#F0F0F0',
   },
   money: {
     expenditure: '#7392FF',

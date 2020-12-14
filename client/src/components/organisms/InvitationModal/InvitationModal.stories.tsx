@@ -7,7 +7,8 @@ export default {
 };
 
 export const invitationModal = (): JSX.Element => {
-  return <InvitationModal />;
+  const id = 2;
+  return <InvitationModal socialId={id} />;
 };
 
 invitationModal.story = {

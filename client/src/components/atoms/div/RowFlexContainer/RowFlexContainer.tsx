@@ -13,6 +13,7 @@ interface Props {
   flexWrap?: string;
   borderWidth?: string;
   borderStyle?: string;
+  borderRadius?: string;
   position?: string;
   backgroundColor?: string;
   zIndex?: string;
@@ -28,6 +29,7 @@ const defaultProps = {
   flexWrap: 'nowrap',
   borderWidth: '',
   borderStyle: '',
+  borderRadius: '',
   children: '',
   padding: '0',
   position: 'static',
@@ -50,6 +52,7 @@ const Div = styled.div<Props>`
   flex-wrap: ${(props) => props.flexWrap};
   border-width: ${(props) => props.borderWidth};
   border-style: ${(props) => props.borderStyle};
+  border-radius: ${(props) => props.borderRadius};
   position: ${(props) => props.position};
   background-color: ${(props) => props.backgroundColor};
 `;

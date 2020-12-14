@@ -30,6 +30,8 @@ const AccountbookEditPage: React.FC = () => {
 
   const backgroundColor = colorUtils.getRandomColor();
 
+  // TODO ROUTER 에서 links, backgroudColor, name, socialID 가져오기
+
   const links = [
     'https://avatars2.githubusercontent.com/u/46099115?s=460&u=1e04610d430875d8189d2b212b8c2d9fc268b9db&v=4',
     'https://avatars3.githubusercontent.com/u/55074799?s=460&u=2f70319c2f55ba5e26db060ba21d66a9cab35732&v=4',
@@ -41,6 +43,8 @@ const AccountbookEditPage: React.FC = () => {
     backgroundColor: 'yellow',
     name: '부캠동아리',
   };
+
+  const id = 2;
 
   return (
     <>
@@ -55,7 +59,7 @@ const AccountbookEditPage: React.FC = () => {
           <InviteAccountbookCard {...InviteArgs} />
         </SettingContainer>
       </CenterContent>
-      {modalView === 'InvitationModal' && <InvitationModal />}
+      {modalView === 'InvitationModal' && <InvitationModal socialId={id} />}
     </>
   );
 };
