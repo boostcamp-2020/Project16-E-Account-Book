@@ -9,8 +9,8 @@ export const getUserPayments = async (ctx: Context) => {
   response.success(ctx, result);
 };
 
-export const createUserPayments = async (ctx: any) => {
-  const { names } = ctx.request.body;
+export const createUserPayment = async (ctx: any) => {
+  const { name } = ctx.request.body;
   const userId = ctx.userData.uid;
 
   let createPaymentResult;
@@ -18,16 +18,14 @@ export const createUserPayments = async (ctx: any) => {
   let checkInclude;
   let newUserPaymentId;
 
-  for (const name of names) {
-    checkInclude = await Service.getPaymentIdByName(name);
-    if (checkInclude.length === 0) {
-      createPaymentResult = await Service.createPayments(name);
-      newUserPaymentId = createPaymentResult.insertId;
-    } else {
-      newUserPaymentId = checkInclude[0].id;
-    }
-    createUserPaymentResult = await Service.createUserPayments(userId, newUserPaymentId);
+  checkInclude = await Service.getPaymentIdByName(name);
+  if (checkInclude.length === 0) {
+    createPaymentResult = await Service.createPayments(name);
+    newUserPaymentId = createPaymentResult.insertId;
+  } else {
+    newUserPaymentId = checkInclude[0].id;
   }
+  createUserPaymentResult = await Service.createUserPayments(userId, newUserPaymentId);
 
   response.success(ctx, createUserPaymentResult.insertId);
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import CreditCard from './CreditCard';
 
 interface Props {
+  buttonEvent: (data) => any;
   name: string;
 }
 
