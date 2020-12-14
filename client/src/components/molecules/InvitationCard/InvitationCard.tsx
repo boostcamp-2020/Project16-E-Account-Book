@@ -21,6 +21,7 @@ const Container = styled.div`
   border-bottom: 2px solid ${color.primary.lightGray};
   padding: 10px 10px 20px;
   width: 100%;
+  box-sizing: border-box;
 `;
 
 const InvitationCard: React.FC<Props> = ({ master, name, time, callback }: Props) => {

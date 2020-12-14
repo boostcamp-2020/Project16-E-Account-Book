@@ -21,7 +21,6 @@ const MyPage: React.FC = () => {
   const [invitations, setInvitations] = useState<Invitation[]>([]);
 
   const getInvitation = async () => {
-    console.log(API.GET_INVITATION);
     const result = await getAxiosData(API.GET_INVITATION);
     setInvitations(result.data);
   };
