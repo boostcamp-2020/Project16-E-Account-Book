@@ -8,7 +8,7 @@ import CreateAccountbookSetting from '@organisms/CreateAccountbookSetting';
 import colorUtils from '@utils/color';
 import styled from 'styled-components';
 
-const CreateAccountbookPage: React.FC = () => {
+const AccountbookEditPage: React.FC = () => {
   const createButtonClick = async (data: any) => {
     console.log('1', data);
   };
@@ -42,4 +42,4 @@ const CreateAccountbookPage: React.FC = () => {
   );
 };
 
-export default CreateAccountbookPage;
+export default AccountbookEditPage;
