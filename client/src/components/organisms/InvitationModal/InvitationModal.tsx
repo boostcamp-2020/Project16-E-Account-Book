@@ -4,6 +4,7 @@ import Input from '@atoms/input/Input';
 import RoundShortButton from '@atoms/button/RoundShortButton';
 import * as API from '@utils/api';
 import { getAxiosData } from '@utils/axios';
+import UserInviteCard from '@molecules/UserInviteCard/UserInviteCard';
 // import styled from 'styled-components';
 
 const invitationModal: React.FC = () => {
