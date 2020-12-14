@@ -29,13 +29,7 @@ const AccountbookEditPage: React.FC = () => {
           backgroundColor={backgroundColor}
         />
         <SettingContainer>
-          <CreateAccountbookSetting
-            labelColor="blue"
-            links={[
-              'https://avatars2.githubusercontent.com/u/46099115?s=460&u=1e04610d430875d8189d2b212b8c2d9fc268b9db&v=4',
-              'https://avatars3.githubusercontent.com/u/55074799?s=460&u=2f70319c2f55ba5e26db060ba21d66a9cab35732&v=4',
-            ]}
-          />
+          <CreateAccountbookSetting labelColor="blue" />
         </SettingContainer>
       </CenterContent>
     </>
