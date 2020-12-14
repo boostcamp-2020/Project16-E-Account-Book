@@ -30,6 +30,10 @@ const InviteAccountbookCard: React.FC<Props> = ({ links, id, backgroundColor, na
   };
   console.log(id, name);
 
+  const openModal = () => {
+    console.log('123');
+  };
+
   return (
     <SquircleCard {...squircleCardArgs}>
       <ColumnFlexContainer width="100%" height="100%">
@@ -40,7 +44,8 @@ const InviteAccountbookCard: React.FC<Props> = ({ links, id, backgroundColor, na
         </RowFlexContainer>
         <RowFlexContainer justifyContent="space-between" width="100%" height="70%">
           <UserImages links={links} />
-          <SquircleShortButton>초대하기</SquircleShortButton>
+          {name}
+          <SquircleShortButton onClick={openModal}>초대하기</SquircleShortButton>
         </RowFlexContainer>
       </ColumnFlexContainer>
     </SquircleCard>
