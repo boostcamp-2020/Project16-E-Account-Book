@@ -5,6 +5,7 @@ import RoundShortButton from '@atoms/button/RoundShortButton';
 import * as API from '@utils/api';
 import { getAxiosData } from '@utils/axios';
 import UserInviteCard from '@molecules/UserInviteCard/UserInviteCard';
+import RowFlexContainer from '@atoms/div/RowFlexContainer';
 // import styled from 'styled-components';
 
 const invitationModal: React.FC = () => {
@@ -20,10 +21,34 @@ const invitationModal: React.FC = () => {
     setUserList(result.data);
   };
 
-  let userCards: any = userList.map((user) => <>{user.name}</>);
+  const callback = () => {
+    return true;
+  };
+
+  let userCards: any = userList.map((user) => (
+    <RowFlexContainer>
+      <UserInviteCard
+        key={user.id}
+        id={user.id}
+        name={user.name}
+        link={user.picture}
+        callback={callback}
+      />
+    </RowFlexContainer>
+  ));
 
   useEffect(() => {
-    userCards = userList.map((user) => <>{user.name}</>);
+    userCards = userList.map((user) => (
+      <RowFlexContainer>
+        <UserInviteCard
+          key={user.id}
+          id={user.id}
+          name={user.name}
+          link={user.picture}
+          callback={callback}
+        />
+      </RowFlexContainer>
+    ));
   }, [userList]);
 
   return (
