@@ -36,6 +36,12 @@ export const putAxios = async (api: string, data: any): Promise<AxiosResponse<an
   return result;
 };
 
+export const patchAxios = async (api: string, data: any): Promise<AxiosResponse<any>> => {
+  const config = getConfig();
+  const result = await axios.patch(api, data, config);
+  return result;
+};
+
 export const deleteAxios = async (api: string): Promise<AxiosResponse<any>> => {
   const config = getConfig();
   const result = await axios.delete(api, config);

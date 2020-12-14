@@ -3,7 +3,7 @@ import Modal from '@molecules/Modal';
 import Card from '@molecules/InvitationCard';
 import styled from 'styled-components';
 import { Invitation } from '@interfaces/accountbook';
-import { getAxiosData } from '@utils/axios';
+import { getAxiosData, patchAxios } from '@utils/axios';
 import * as API from '@utils/api';
 
 const Container = styled.div`
@@ -28,10 +28,12 @@ const InvitationManagementModal: React.FC = () => {
     getInvitation();
   }, []);
 
-  const postInvitation = (id: number, isAccept: boolean) => {
-    console.log(id, isAccept);
+  const postInvitation = async (id: number, isAccept: boolean) => {
+    const data = {
+      accept: isAccept,
+    };
+    await patchAxios(API.PATCH_INVITATION(id), data);
     getInvitation();
-    return true;
   };
 
   const invitationCards = () =>
