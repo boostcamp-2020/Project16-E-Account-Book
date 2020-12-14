@@ -10,7 +10,7 @@ import styled from 'styled-components';
 
 const CreateAccountbookPage: React.FC = () => {
   const createButtonClick = async (data: any) => {
-    console.log(data);
+    console.log('1', data);
   };
 
   const SettingContainer = styled.div`
