@@ -7,15 +7,18 @@ import TopNavBar from '@organisms/TopNavBar';
 import InviteAccountbookCard from '@molecules/InviteAccountbookCard';
 import colorUtils from '@utils/color';
 import styled from 'styled-components';
+import InvitationModal from '@organisms/InvitationModal';
+import { useSelector } from 'react-redux';
+import { RootState } from '@reducers/rootReducer';
 
 interface InviteProps {
   links: string[];
-  id: number;
   backgroundColor: string;
   name: string;
 }
 
 const AccountbookEditPage: React.FC = () => {
+  const modalView = useSelector((state: RootState) => state.modal.view);
   const createButtonClick = async (data: any) => {
     console.log(data);
   };
@@ -35,7 +38,6 @@ const AccountbookEditPage: React.FC = () => {
 
   const InviteArgs: InviteProps = {
     links,
-    id: 2,
     backgroundColor: 'yellow',
     name: '부캠동아리',
   };
@@ -53,6 +55,7 @@ const AccountbookEditPage: React.FC = () => {
           <InviteAccountbookCard {...InviteArgs} />
         </SettingContainer>
       </CenterContent>
+      {modalView === 'InvitationModal' && <InvitationModal />}
     </>
   );
 };

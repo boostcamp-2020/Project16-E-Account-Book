@@ -6,10 +6,11 @@ import myColor from '@theme/color';
 import UserImages from '@molecules/UserImages';
 import SquircleCard from '@atoms/div/SquircleCard';
 import SquircleShortButton from '@atoms/button/SquircleShortButton';
+import { showModal } from '@actions/modal/type';
+import { useDispatch } from 'react-redux';
 
 interface Props {
   links: string[];
-  id: number;
   backgroundColor: string;
   name: string;
 }
@@ -21,17 +22,18 @@ interface squircleCardProps {
   flexFlow: string;
 }
 
-const InviteAccountbookCard: React.FC<Props> = ({ links, id, backgroundColor, name }: Props) => {
+const InviteAccountbookCard: React.FC<Props> = ({ links, backgroundColor, name }: Props) => {
+  const dispatch = useDispatch();
+
+  const openModal = (view: string) => {
+    dispatch(showModal(view));
+  };
+
   const squircleCardArgs: squircleCardProps = {
     width: '100%',
     height: '10rem',
     backgroundColor,
     flexFlow: 'column',
-  };
-  console.log(id, name);
-
-  const openModal = () => {
-    console.log('123');
   };
 
   return (
@@ -45,7 +47,9 @@ const InviteAccountbookCard: React.FC<Props> = ({ links, id, backgroundColor, na
         <RowFlexContainer justifyContent="space-between" width="100%" height="70%">
           <UserImages links={links} />
           {name}
-          <SquircleShortButton onClick={openModal}>초대하기</SquircleShortButton>
+          <SquircleShortButton onClick={() => openModal('InvitationModal')}>
+            초대하기
+          </SquircleShortButton>
         </RowFlexContainer>
       </ColumnFlexContainer>
     </SquircleCard>
