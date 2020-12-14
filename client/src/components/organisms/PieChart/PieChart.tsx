@@ -37,12 +37,23 @@ const pieChart: React.FC<Props> = ({ data, isIncome }: Props) => {
     myColor.statistic.expenditureFour,
   ];
 
-  const incomePieChart = () => <PieGraph data={data.income} colors={incomeColor} size={500} />;
-  const expenditurePieChart = () => (
-    <PieGraph data={data.expenditure} colors={expenditureColor} size={500} />
+  const drawChart = (chartData: any, color: string[]) => (
+    <PieGraph
+      data={chartData}
+      colors={color}
+      size={500}
+      backgroundColor={myColor.primary.black}
+      fontColor="white"
+    />
   );
 
-  return <Container>{isIncome ? incomePieChart() : expenditurePieChart()}</Container>;
+  return (
+    <Container>
+      {isIncome
+        ? drawChart(data.income, incomeColor)
+        : drawChart(data.expenditure, expenditureColor)}
+    </Container>
+  );
 };
 
 export default pieChart;

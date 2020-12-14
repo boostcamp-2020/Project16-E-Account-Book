@@ -32,7 +32,7 @@ export const pieGraph = (): JSX.Element => {
     myColor.statistic.incomeThree,
     myColor.statistic.incomeFour,
   ];
-  return <PieGraph data={incomeData} colors={incomeColor} />;
+  return <PieGraph data={incomeData} colors={incomeColor} size={500} />;
 };
 
 pieGraph.story = {
