@@ -12,7 +12,7 @@ export const logout = (): ActionProps => ({
   type: LOGOUT,
 });
 
-export const setUser = (name: string, image: string): ActionProps => ({
+export const setUser = (name: string, image: string, isSunday: number): ActionProps => ({
   type: SET_USER,
-  payload: { name, image },
+  payload: { name, image, isSunday },
 });
