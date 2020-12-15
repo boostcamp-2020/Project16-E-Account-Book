@@ -23,7 +23,7 @@ interface PathProps {
 
 const defaultProps = {
   fontColor: myColor.primary.black,
-  backgroundColor: 'white',
+  backgroundColor: myColor.primary.white,
 };
 
 const SVG = styled.svg<SVGProps>`

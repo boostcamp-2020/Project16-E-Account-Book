@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import myColor from '@theme/color';
 
 interface Props extends ColorProps {
   onClick: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
@@ -22,7 +23,7 @@ const IconBackground = styled.div<ColorProps>`
 `;
 
 const CircleIconButton = styled.button`
-  background-color: white;
+  background-color: ${myColor.primary.white};
   border: 0;
 `;
 

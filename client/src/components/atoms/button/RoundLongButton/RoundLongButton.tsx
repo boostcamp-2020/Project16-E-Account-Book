@@ -13,7 +13,7 @@ interface Props {
 const defaultProps = {
   backgroundColor: myColor.primary.accent,
   isSubmit: false,
-  color: 'white',
+  color: myColor.primary.white,
   onClick: undefined,
 };
 

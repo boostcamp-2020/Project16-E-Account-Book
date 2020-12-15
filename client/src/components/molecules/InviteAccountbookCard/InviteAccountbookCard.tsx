@@ -21,7 +21,7 @@ interface squircleCardProps {
 const squircleCardArgs: squircleCardProps = {
   width: '100%',
   height: '10rem',
-  backgroundColor: 'white',
+  backgroundColor: myColor.primary.white,
   flexFlow: 'column',
 };
 

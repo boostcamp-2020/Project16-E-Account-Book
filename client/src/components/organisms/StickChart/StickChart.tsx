@@ -39,7 +39,7 @@ const stickChart: React.FC<Props> = ({ data, isIncome }: Props) => {
       const money = Number(ele.money);
       const percent = Number(ele.percent);
       const inColor: any = incomeColor[index];
-      const outColor = 'white';
+      const outColor = myColor.primary.white;
       const height = '40px';
       const width = '85%';
       return (
@@ -62,7 +62,7 @@ const stickChart: React.FC<Props> = ({ data, isIncome }: Props) => {
       const money = Number(ele.money);
       const percent = Number(ele.percent);
       const inColor: any = expenditureColor[index];
-      const outColor = 'white';
+      const outColor = myColor.primary.white;
       const height = '40px';
       const width = '85%';
       return (
