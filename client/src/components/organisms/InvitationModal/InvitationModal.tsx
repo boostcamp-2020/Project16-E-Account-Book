@@ -6,6 +6,7 @@ import * as API from '@utils/api';
 import { getAxiosData } from '@utils/axios';
 import UserInviteCard from '@molecules/UserInviteCard/UserInviteCard';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
+import ColumnFlexContainer from '@atoms/div/ColumnFlexContainer';
 import styled from 'styled-components';
 import MyColor from '@theme/color';
 
@@ -129,11 +130,15 @@ const invitationModal: React.FC<Props> = ({ socialId }: Props) => {
 
   return (
     <Modal title="초대하기">
-      ID 로 검색
-      <Input value={name} onChange={searchHandler} />
-      <RoundShortButton onClick={() => searchUserList(name)}>검색</RoundShortButton>
+      <RowFlexContainer width="100%"> ID 로 검색</RowFlexContainer>
+      <RowFlexContainer width="100%" justifyContent="space-between" padding="0 0 20px 0">
+        <Input value={name} onChange={searchHandler} />
+        <RoundShortButton onClick={() => searchUserList(name)}>검색</RoundShortButton>
+      </RowFlexContainer>
       <Container>{userCards}</Container>
-      초대 대기 목록
+      <ColumnFlexContainer width="100%" alignContent="center">
+        초대 대기 목록
+      </ColumnFlexContainer>
       <Container>{waitedCards}</Container>
     </Modal>
   );

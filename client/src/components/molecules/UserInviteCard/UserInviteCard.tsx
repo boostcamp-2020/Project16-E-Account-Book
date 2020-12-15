@@ -32,12 +32,12 @@ const userInviteCard: React.FC<Props> = ({
       justifyContent="space-between"
       backgroundColor={backgroundColor}
       padding="10px 10px"
-      margin="5px"
+      margin="5px 0 5px 0"
       alignItems="center"
       borderRadius="10px"
     >
       <UserImage link={link} />
-      <Name fontSize="10px">{name}</Name>
+      <Name fontSize="14px">{name}</Name>
       <RoundShortButton onClick={() => callback(true)}>{buttonName}</RoundShortButton>
     </RowFlexContainer>
   );

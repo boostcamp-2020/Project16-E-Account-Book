@@ -6,6 +6,9 @@ interface Props {
   alignContent?: string;
   alignItems?: string;
   margin?: string;
+  borderWidth?: string;
+  borderStyle?: string;
+  borderRadius?: string;
   children: React.ReactChild | React.ReactChild[];
   width?: string;
   height?: string;
@@ -22,6 +25,9 @@ const defaultProps = {
   height: '',
   flexWrap: 'nowrap',
   zIndex: 'auto',
+  borderWidth: '',
+  borderStyle: '',
+  borderRadius: '',
 };
 
 const Div = styled.div<Props>`
@@ -35,6 +41,9 @@ const Div = styled.div<Props>`
   height: ${(props) => props.height};
   flex-wrap: ${(props) => props.flexWrap};
   z-index: ${(props) => props.zIndex};
+  border-width: ${(props) => props.borderWidth};
+  border-style: ${(props) => props.borderStyle};
+  border-radius: ${(props) => props.borderRadius};
 `;
 
 const ColumnFlexContainer: React.FC<Props> = ({ children, ...props }: Props) => {
