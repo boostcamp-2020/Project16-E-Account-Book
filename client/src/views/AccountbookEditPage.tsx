@@ -35,7 +35,7 @@ const AccountbookEditPage: React.FC = () => {
   };
 
   const backgroundColor = colorUtils.getRandomColor();
-  const [inviteArgs, setInviteArgs] = useState<any>(initArgs);
+  const [inviteArgs, setInviteArgs] = useState<InviteProps>(initArgs);
 
   const initAccountbookCard = async () => {
     const { data } = await getAxiosData(API.GET_SOCIAL_BOOK(accountbookId));
