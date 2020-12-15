@@ -28,7 +28,7 @@ const App: React.FC = () => {
   const checkValidToken = async () => {
     try {
       const user = await getAxiosData(API.GET_USER_INFO);
-      dispatch(setUser(user.data.name, user.data.picture));
+      dispatch(setUser(user.data.name, user.data.picture, user.data.isSunday));
     } catch {
       localStorage.removeItem('jwt');
       dispatch(logout());
