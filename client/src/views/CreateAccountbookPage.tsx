@@ -13,6 +13,7 @@ import { RootState } from '@reducers/rootReducer';
 /* import * as Axios from '@utils/axios';
 import * as API from '@utils/api'; */
 
+const backgroundColor = colorUtils.getRandomColor();
 const CreateAccountbookPage: React.FC = () => {
   const modalView = useSelector((state: RootState) => state.modal.view);
 
@@ -30,7 +31,6 @@ const CreateAccountbookPage: React.FC = () => {
     margin-bottom: 1rem;
   `;
 
-  const backgroundColor = colorUtils.getRandomColor();
   return (
     <>
       <ColoredBackground backgroundColor={myColor.primary.lightGray} />
