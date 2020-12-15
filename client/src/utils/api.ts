@@ -10,6 +10,9 @@ export const GET_TRANSACTION_PRIVATE_LIST = (year: number, month: number): strin
 
 export const GET_USER_INFO = `${process.env.REACT_APP_BASE_URL}/api/user/info`;
 
+export const GET_SOCIAL_BOOK = (bookId: number): string =>
+  `${process.env.REACT_APP_BASE_URL}/api/social/${bookId}`;
+
 export const GET_SOCIAL_BOOKS = `${process.env.REACT_APP_BASE_URL}/api/social/list`;
 
 export const GET_MASTER_BOOKS = `${process.env.REACT_APP_BASE_URL}/api/social/list/master`;

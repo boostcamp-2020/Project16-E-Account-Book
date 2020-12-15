@@ -65,7 +65,7 @@ const socialAccountBook: React.FC<SocialBook> = ({
   const setSocialId = () => {
     dispatch(setSocial(id));
   };
-  const moveUrl = `/social/edit/:${id}`;
+  const moveUrl = '/social/edit';
   return (
     <>
       <Container onClick={toSocialAccountBook}>
