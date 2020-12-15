@@ -29,12 +29,12 @@ const InviteAccountbookCard: React.FC<Props> = ({ links, backgroundColor, name }
     dispatch(showModal(view));
   };
 
-const squircleCardArgs: squircleCardProps = {
-  width: '100%',
-  height: '10rem',
-  backgroundColor: myColor.primary.white,
-  flexFlow: 'column',
-};
+  const squircleCardArgs: squircleCardProps = {
+    width: '100%',
+    height: '10rem',
+    backgroundColor,
+    flexFlow: 'column',
+  };
 
   return (
     <SquircleCard {...squircleCardArgs}>

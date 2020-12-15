@@ -35,7 +35,6 @@ const StatisticsPage: React.FC = () => {
   const dateData = `${year}-${month}`;
 
   const [isIncome, setIsIncome] = useState(false);
-  const [, setIsExpenditure] = useState(false);
   const [fourMonthData, setFourMonthData] = useState([]);
   const [fiveWeekData, setFiveWeekData] = useState([]);
   const [categoryData, setCategoryData] = useState(initCategory);
