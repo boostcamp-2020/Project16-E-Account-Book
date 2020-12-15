@@ -31,7 +31,7 @@ const CreditCardEditModal: React.FC = () => {
       '해당 결제수단 관련 내역이 모두 삭제됩니다. 삭제를 진행하시겠습니까?',
     );
     if (result) {
-      let paymentPk = -1;
+      let paymentPk;
 
       if (payments.length === 1) {
         paymentPk = payments[0].id;
@@ -42,7 +42,7 @@ const CreditCardEditModal: React.FC = () => {
           }
         });
       }
-      if (paymentPk !== -1) {
+      if (paymentPk) {
         await Axios.deleteAxios(API.DELETE_PAYMENT(paymentPk));
         const newPayment = await Axios.getAxiosData(API.GET_PAYMENT);
         dispatch(setPayment(newPayment.data));
