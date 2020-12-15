@@ -68,6 +68,9 @@ export const DELETE_PAYMENT = (id: number): string =>
 
 export const GET_INVITATION = `${process.env.REACT_APP_BASE_URL}/api/social/invitation`;
 
+export const GET_SOCIAL_WAITING_USER_LIST = (bookId: number): string =>
+  `${process.env.REACT_APP_BASE_URL}/api/social/invitation/waiting/${bookId}`;
+
 export const GET_SEARCHED_USER_LIST = (name: string): string =>
   `${process.env.REACT_APP_BASE_URL}/api/user/list/${name}`;
 

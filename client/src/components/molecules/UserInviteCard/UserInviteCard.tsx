@@ -6,7 +6,8 @@ import RowFlexContainer from '@atoms/div/RowFlexContainer';
 
 interface Props {
   link: string;
-  id: number;
+  stateId: number;
+  userId: number;
   bookId: number;
   name: string;
   callback: (boolean) => void;
@@ -16,14 +17,15 @@ interface Props {
 
 const userInviteCard: React.FC<Props> = ({
   link,
-  id,
+  stateId,
+  userId,
   bookId,
   name,
   callback,
   backgroundColor,
   buttonName,
 }: Props) => {
-  console.log(id, bookId);
+  console.log(stateId, userId, bookId);
 
   // TODO onclick 에 id, bookid, 취소인지 초대하기인지 넘겨주기 ? Axios 로 데이터 보내기
 
