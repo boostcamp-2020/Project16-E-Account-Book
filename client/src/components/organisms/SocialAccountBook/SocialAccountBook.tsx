@@ -61,6 +61,10 @@ const socialAccountBook: React.FC<SocialBook> = ({
     dispatch(initMonth());
     history.push('/accountbook');
   };
+
+  const setSocialId = () => {
+    dispatch(setSocial(id));
+  };
   const moveUrl = `/social/edit/:${id}`;
   return (
     <>
@@ -84,6 +88,7 @@ const socialAccountBook: React.FC<SocialBook> = ({
       {isMaster && (
         <>
           <NavButton
+            onClick={setSocialId}
             moveUrl={moveUrl}
             name="setting"
             width="20%"
