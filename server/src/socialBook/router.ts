@@ -14,25 +14,27 @@ router.get('/transaction/list/:accountbookId/:year/:month', Controller.getTransa
 
 router.post('/transaction', Controller.createTransaction);
 
-router.get('/statistic/category/:bookId/:year/:month', Controller.getCategoryStatistic);
-
-router.get('/statistics/monthly/:bookId', Controller.getPastFourMonthStatistics);
-
-router.get('/statistic/weeks/:bookId', Controller.getPastFiveWeekStatistic);
-
 router.post('/createAccountbook', Controller.createAccountbook);
 
 router.put('/transaction', Controller.updateTransaction);
 
 router.delete('/transaction/:id', Controller.deleteTransaction);
 
-router.post('/invitation', Controller.inviteAccountbookUser);
-
 router.get('/invitation', Controller.getInvitation);
+
+router.post('/invitation', Controller.inviteAccountbookUser);
 
 router.patch('/invitation/:id', Controller.patchInvitation);
 
 router.delete('/invitation/:id', Controller.deleteInvitation);
+
+router.get('/invitation/waiting/:bookId', Controller.getInvitationWaitingUsers);
+
+router.get('/statistic/category/:bookId/:year/:month', Controller.getCategoryStatistic);
+
+router.get('/statistics/monthly/:bookId', Controller.getPastFourMonthStatistics);
+
+router.get('/statistic/weeks/:bookId', Controller.getPastFiveWeekStatistic);
 
 router.get('/statistic/trend/income/:bookId/:year/:month', Controller.getTrendStatisticIncome);
 

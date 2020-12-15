@@ -100,6 +100,11 @@ const socialBookQuery = {
     WHERE accountbook_id = ? AND payment_id IS NOT NULL
     AND year(date) = ? AND month(date) = ?
     GROUP BY day ORDER BY day`,
+  READ_INVITATION_WAITING_USERS: `
+    SELECT sau.id, sau.user_id, sau.invited_at, users.email, users.name, users.picture, users.oauth_origin FROM social_accountbook_users as sau
+    JOIN users ON users.id = sau.user_id
+    where sau.state = 1 AND sau.accountbook_id = ?
+  `,
 };
 
 export default socialBookQuery;

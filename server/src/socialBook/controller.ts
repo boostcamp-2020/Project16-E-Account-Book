@@ -239,3 +239,9 @@ export const getTrendStatisticExpenditure = async (ctx: any) => {
   const result = await Service.getTrendExpenditure(bookId, year, month);
   response.success(ctx, result);
 };
+
+export const getInvitationWaitingUsers = async (ctx: any) => {
+  const { bookId } = ctx.params;
+  const result = await Service.getInvitationWaitingUsers(bookId);
+  response.success(ctx, result);
+};
