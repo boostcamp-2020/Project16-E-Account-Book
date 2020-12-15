@@ -5,6 +5,7 @@ import NotificationPage from '@views/NotificationPage';
 import MyPage from '@views/MyPage';
 import CreateAccountbookPage from '@views/CreateAccountbookPage';
 import TransactionPostPage from '@views/TransactionPostPage';
+import TransactionEditPage from '@views/TransactionEditPage';
 import AccountbookPage from '@views/AccountbookPage';
 import NotFoundPage from '@views/NotFoundPage';
 import AccountbookEditPage from '@views/AccountbookEditPage';
@@ -76,6 +77,7 @@ const App: React.FC = () => {
         <Route path="/mypage" component={MyPage} />
         <Route path="/accountbook/social/new" component={CreateAccountbookPage} />
         <Route path="/accountbook/transaction/new" component={TransactionPostPage} />
+        <Route path="/accountbook/transaction/edit" component={TransactionEditPage} />
         <Route path="/accountbook" component={AccountbookPage} />
         <Route path="/social/edit" component={AccountbookEditPage} />
         <Route exact path="/" component={MainPage} />
