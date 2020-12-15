@@ -7,10 +7,15 @@ import TopNavBar from '@organisms/TopNavBar';
 import CreateAccountbookSetting from '@organisms/CreateAccountbookSetting';
 import colorUtils from '@utils/color';
 import styled from 'styled-components';
+import CreateAccountbookColorModal from '@organisms/CreateAccountbookColorModal';
+import { useSelector } from 'react-redux';
+import { RootState } from '@reducers/rootReducer';
 /* import * as Axios from '@utils/axios';
 import * as API from '@utils/api'; */
 
 const CreateAccountbookPage: React.FC = () => {
+  const modalView = useSelector((state: RootState) => state.modal.view);
+
   const createButtonClick = async (name: any, description: any) => {
     const data = {
       name,
@@ -39,6 +44,9 @@ const CreateAccountbookPage: React.FC = () => {
           <CreateAccountbookSetting labelColor={backgroundColor} />
         </SettingContainer>
       </CenterContent>
+      {modalView === 'CreateAccountbookColor' && (
+        <CreateAccountbookColorModal currentColor={backgroundColor} />
+      )}
     </>
   );
 };
