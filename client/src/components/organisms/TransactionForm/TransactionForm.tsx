@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
 import { postData } from '@interfaces/transaction';
 import SmsParsingModal from '@organisms/SmsParsingModal';
+import { useHistory } from 'react-router-dom';
 
 interface Props {
   initData?: postData | undefined;
@@ -44,8 +45,10 @@ const transactionForm: React.FC<Props> = ({ initData }: Props) => {
   const payment = useSelector((state: RootState) => state.payment.payment);
   const modalView = useSelector((state: RootState) => state.modal.view);
   const [isIncome, setIsIncome] = useState(false);
-  const [isExpenditure, setIsExpenditure] = useState(true);
+  const [id, setId] = useState(-1);
+
   const currDate = new Date();
+  const history = useHistory();
 
   const [title, setTitle] = useState<string>();
   const [amount, setAmount] = useState<string>();
@@ -105,6 +108,34 @@ const transactionForm: React.FC<Props> = ({ initData }: Props) => {
         setPaymentId(initPayment);
       }
     }
+    if (history.location.state !== undefined) {
+      const { state }: any = history.location;
+      setTitle(state.title);
+      setAmount(numberToMoney(state.amount));
+      setDate(getDate(state.date));
+      setTime(getTime(state.date));
+      setId(state.id);
+
+      if (!state.payment) {
+        setIsIncome(true); // bug here
+        payment.forEach((pay) => {
+          if (pay.name === state.payment) {
+            setPaymentId(pay.id);
+          }
+        });
+      }
+
+      income.forEach((category) => {
+        if (category.name === state.category) {
+          setCategoryId(category.id);
+        }
+      });
+      expenditure.forEach((category) => {
+        if (category.name === state.category) {
+          setCategoryId(category.id);
+        }
+      });
+    }
   }, []);
 
   useEffect(() => {
@@ -130,9 +161,8 @@ const transactionForm: React.FC<Props> = ({ initData }: Props) => {
           <ToggleButton
             leftButtonName="수입"
             rightButtonName="지출"
-            leftCallback={setIsIncome}
-            rightCallback={setIsExpenditure}
-            initRight={isExpenditure}
+            setIsIncome={setIsIncome}
+            isIncome={isIncome}
           />
           <DeleteButtonContainer>
             <TextButton onClick={clearInput}>모두 지우기</TextButton>
@@ -175,7 +205,7 @@ const transactionForm: React.FC<Props> = ({ initData }: Props) => {
               onChange={(e) => inputChange(e, setCategoryId)}
             />
           )}
-          {isExpenditure && (
+          {!isIncome && (
             <MenuWithText
               options={expenditure}
               title="카테고리"
@@ -193,6 +223,7 @@ const transactionForm: React.FC<Props> = ({ initData }: Props) => {
             isIncome={isIncome}
           />
           <input readOnly value={Number(isIncome)} hidden />
+          <input name="id" value={Number(id)} hidden />
         </InputContainer>
       </ColumnFlexContainer>
     </>

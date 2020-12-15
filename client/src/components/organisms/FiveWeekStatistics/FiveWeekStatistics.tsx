@@ -32,7 +32,7 @@ const Container = styled.div`
 
 const TitleBox = styled.div`
   display: flex;
-  color: white;
+  color: ${myColor.primary.white};
   align-items: center;
   justify-content: space-around;
   font-size: 0.8rem;
@@ -45,7 +45,7 @@ const TitleBox = styled.div`
 
 const TotalBox = styled.div`
   display: flex;
-  color: white;
+  color: ${myColor.primary.white};
   align-items: center;
   justify-content: space-around;
   font-size: 0.8rem;
@@ -59,7 +59,7 @@ const TotalBox = styled.div`
 const WeekBox = styled.div`
   display: flex;
   justify-content: center;
-  color: white;
+  color: ${myColor.primary.white};
   align-items: center;
   font-size: 0.1rem;
   width: 100%;

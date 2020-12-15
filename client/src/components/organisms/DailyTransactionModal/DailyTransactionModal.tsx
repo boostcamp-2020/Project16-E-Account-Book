@@ -6,7 +6,7 @@ import TransactionInfo from '@molecules/TransactionInfo';
 import myColor from '@theme/color';
 import { useSelector } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 interface props {
   date: number;
@@ -24,7 +24,7 @@ const ScrollDiv = styled.div`
   height: 80%;
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.div`
   text-decoration: none;
   &:focus,
   &:hover {
@@ -49,6 +49,7 @@ const DailyTransactionModal: React.FC<props> = ({ month, date }: props) => {
     payment: string;
     title: string;
     amount: number;
+    date: string;
   }> = [];
   allTransactionList.forEach((e: any) => {
     if (new Date(e.date).getDate() === date) {
@@ -58,13 +59,24 @@ const DailyTransactionModal: React.FC<props> = ({ month, date }: props) => {
         payment: e.payment,
         title: e.title,
         amount: e.inmoney + e.exmoney,
+        date: e.date,
       });
     }
   });
 
+  const history = useHistory();
+
+  const moveToEditPage = (state) => {
+    history.push('/accountbook/transaction/edit', state);
+  };
+
   const transactionList = dailyData.map((curr) => {
     return (
-      <StyledLink to="/">
+      <StyledLink
+        onClick={() => {
+          moveToEditPage(curr);
+        }}
+      >
         <TransactionInfo data={curr} />
       </StyledLink>
     );
