@@ -12,4 +12,11 @@ const getRandomColor = (): string => {
   return color;
 };
 
-export default { getFontColor, getRandomColor };
+const getRandomColorInList = (colorList: string[][]): any => {
+  const rowRandom = Math.floor(Math.random() * colorList.length);
+  const colRandom = Math.floor(Math.random() * colorList[0].length);
+
+  return colorList[rowRandom][colRandom];
+};
+
+export default { getFontColor, getRandomColor, getRandomColorInList };
