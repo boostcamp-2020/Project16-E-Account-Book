@@ -65,6 +65,9 @@ export const DELETE_SOCIAL_TRANSACTION = (id: number): string =>
 export const DELETE_PRIVATE_TRANSACTION = (id: number): string =>
   `${process.env.REACT_APP_BASE_URL}/api/private/transaction/${id}`;
 
+export const DELETE_SOCIAL_INVITATION = (id: number): string =>
+  `${process.env.REACT_APP_BASE_URL}/api/social/invitation/${id}`;
+
 export const DELETE_PAYMENT = (id: number): string =>
   `${process.env.REACT_APP_BASE_URL}/api/payment/${id}`;
 

@@ -4,7 +4,7 @@ import Name from '@atoms/p/CenterNormalText/CenterNormalText';
 import RoundShortButton from '@atoms/button/RoundShortButton';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import * as API from '@utils/api';
-import { postAxios } from '@utils/axios';
+import { postAxios, deleteAxios } from '@utils/axios';
 
 interface Props {
   link: string;
@@ -25,16 +25,16 @@ const userInviteCard: React.FC<Props> = ({
   backgroundColor,
   buttonName,
 }: Props) => {
-  console.log(stateId, userId, bookId);
-
-  // TODO onclick 에 id, bookid, 취소인지 초대하기인지 넘겨주기 ? Axios 로 데이터 보내기
   const setInvite = async () => {
-    const data = {
-      userId,
-      accountbookId: bookId,
-    };
-    const result = await postAxios(API.POST_SOCIAL_INVITATION, data);
-    console.log(data, result);
+    if (stateId) {
+      await deleteAxios(API.DELETE_SOCIAL_INVITATION(stateId));
+    } else {
+      const data = {
+        userId,
+        accountbookId: bookId,
+      };
+      await postAxios(API.POST_SOCIAL_INVITATION, data);
+    }
   };
 
   return (
