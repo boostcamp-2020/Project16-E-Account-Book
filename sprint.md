@@ -3,11 +3,11 @@
 # sprint 5
 
 ## 💻 Day 1
-- [FE] 수입/지출 토글버튼 버그 수정
+### 📌 [FE] 수입/지출 토글버튼 버그 수정
     - Color를 State로 주지 않아 바로 반영되지 않던 문제 해결
     - income, expend로 분할된 state를 하나로 통합
 
-- [FE] SVG를 활용한 PieChart 구현
+### 📌 [FE] SVG를 활용한 PieChart 구현
     - 파이차트의 구조
         ```tsx
             <svg>
