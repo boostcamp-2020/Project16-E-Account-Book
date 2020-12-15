@@ -10,10 +10,11 @@ import styled from 'styled-components';
 import CreateAccountbookColorModal from '@organisms/CreateAccountbookColorModal';
 import { useSelector } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
+import ColorList from '@theme/colorList';
 /* import * as Axios from '@utils/axios';
 import * as API from '@utils/api'; */
 
-const backgroundColor = colorUtils.getRandomColor();
+const backgroundColor = colorUtils.getRandomColorInList(ColorList);
 const CreateAccountbookPage: React.FC = () => {
   const modalView = useSelector((state: RootState) => state.modal.view);
 
