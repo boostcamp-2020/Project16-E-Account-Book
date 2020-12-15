@@ -38,15 +38,15 @@ const ToggleButton: React.FC<Props> = ({
   setIsIncome,
   ...args
 }: Props) => {
-  const [leftColor, setLeftColor] = useState('white');
+  const [leftColor, setLeftColor] = useState(myColor.primary.white);
   const [rightColor, setRightColor] = useState(myColor.primary.accent);
   const changeColor = (income) => {
     if (income === false) {
-      setLeftColor('white');
+      setLeftColor(myColor.primary.white);
       setRightColor(myColor.primary.accent);
     } else {
       setLeftColor(myColor.primary.accent);
-      setRightColor('white');
+      setRightColor(myColor.primary.white);
     }
   };
 

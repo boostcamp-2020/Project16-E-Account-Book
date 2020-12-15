@@ -116,7 +116,7 @@ const transactionForm: React.FC<Props> = ({ initData }: Props) => {
       setTime(getTime(state.date));
       setId(state.id);
 
-      if (state.payment !== null) {
+      if (!state.payment) {
         setIsIncome(true); // bug here
         payment.forEach((pay) => {
           if (pay.name === state.payment) {
