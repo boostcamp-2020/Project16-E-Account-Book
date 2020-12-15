@@ -1,12 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from '@molecules/Modal';
 import Card from '@molecules/InvitationCard';
 import styled from 'styled-components';
 import { Invitation } from '@interfaces/accountbook';
-
-interface Props {
-  data: Invitation[];
-}
+import { getAxiosData, patchAxios } from '@utils/axios';
+import * as API from '@utils/api';
 
 const Container = styled.div`
   overflow: scroll;
@@ -16,21 +14,36 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const InvitationManagementModal: React.FC<Props> = ({ data }: Props) => {
+const InvitationManagementModal: React.FC = () => {
   const title = '가계부 승인/거절';
 
-  const callback = () => {
-    return true;
+  const [invitations, setInvitations] = useState<Invitation[]>([]);
+
+  const getInvitation = async () => {
+    const result = await getAxiosData(API.GET_INVITATION);
+    setInvitations(result.data);
   };
 
-  const invitationCards = (invitations: Invitation[]) =>
+  useEffect(() => {
+    getInvitation();
+  }, []);
+
+  const postInvitation = async (id: number, isAccept: boolean) => {
+    const data = {
+      accept: isAccept,
+    };
+    await patchAxios(API.PATCH_INVITATION(id), data);
+    getInvitation();
+  };
+
+  const invitationCards = () =>
     invitations.map((invitation) => (
-      <Card key={invitation.id} callback={callback} {...invitation} />
+      <Card key={invitation.id} callback={postInvitation} {...invitation} />
     ));
 
   return (
     <Modal title={title}>
-      <Container>{invitationCards(data)}</Container>
+      <Container>{invitationCards()}</Container>
     </Modal>
   );
 };

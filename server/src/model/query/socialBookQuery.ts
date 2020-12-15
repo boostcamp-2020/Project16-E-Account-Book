@@ -66,7 +66,7 @@ const socialBookQuery = {
   CREATE_SOCIAL_ACCOUNTBOOK:
     'INSERT INTO social_accountbook (master_id, name, description, color) VALUES(?,?,?,?)',
   CREATE_SOCIAL_ACCOUNTBOOK_USERS:
-    'INSERT INTO social_accountbook_users (user_id, accountbook_id, state) VALUES(?,?,?)',
+    'INSERT INTO social_accountbook_users (user_id, accountbook_id, state, invited_at) VALUES(?,?,?, NOW())',
   GET_SOCIAL_TRANSACTIONLIST: `
     SELECT st.id, st.date, py.name, ct.name as category, st.title, st.amount, at.name as assortment FROM social_transaction as st 
     JOIN category as ct ON st.category_id = ct.id 

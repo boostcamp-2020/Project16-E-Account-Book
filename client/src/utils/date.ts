@@ -83,7 +83,7 @@ export const getPastTimeString = (date: string): string => {
   const diffSecond = (currentTime.getTime() - createTime.getTime()) / 1000;
 
   if (diffSecond < MIN) {
-    return `${diffSecond} seconds ago...`;
+    return `${Math.round(diffSecond)} seconds ago...`;
   }
 
   if (diffSecond < HOUR) {
