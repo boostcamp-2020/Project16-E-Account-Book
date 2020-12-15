@@ -66,7 +66,7 @@ const socialBookQuery = {
   CREATE_SOCIAL_ACCOUNTBOOK:
     'INSERT INTO social_accountbook (master_id, name, description, color) VALUES(?,?,?,?)',
   CREATE_SOCIAL_ACCOUNTBOOK_USERS:
-    'INSERT INTO social_accountbook_users (user_id, accountbook_id, state) VALUES(?,?,?)',
+    'INSERT INTO social_accountbook_users (user_id, accountbook_id, state, invited_at) VALUES(?,?,?, NOW())',
   GET_SOCIAL_TRANSACTIONLIST: `
     SELECT st.id, st.date, py.name, ct.name as category, st.title, st.amount, at.name as assortment FROM social_transaction as st 
     JOIN category as ct ON st.category_id = ct.id 
@@ -75,6 +75,7 @@ const socialBookQuery = {
     WHERE st.accountbook_id = ? AND year(st.date) = ? AND month(st.date) = ? ORDER BY st.date`,
   UPDATE_SOCIAL_TRANSACTION: `UPDATE social_transaction SET category_id = ?, payment_id = ?, date = ?, title = ?, amount = ? WHERE id = ?`,
   DELETE_SOCIAL_TRANSACTION: `DELETE FROM social_transaction WHERE id = ?`,
+  DELETE_SOCIAL_TRANSACTION_BY_USERID_PAYMENTID: `DELETE FROM social_transaction WHERE user_id = ? AND payment_id = ?`,
   GET_SOCIAL_INVITATION: `
     SELECT invitation.id, invited_at as time, name,
     (SELECT name FROM users WHERE master_id = users.id) as master

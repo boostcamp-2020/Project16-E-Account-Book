@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import myColor from '@theme/color';
 
 interface Props extends DescriptionProps, BoxProps {
   description: string;
@@ -25,7 +26,7 @@ const CheckBox = styled.div`
 
 const Mark = styled.svg`
   fill: none;
-  stroke: white;
+  stroke: ${myColor.primary.white};
   stroke-width: 3px;
 `;
 

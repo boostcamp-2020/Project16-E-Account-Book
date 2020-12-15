@@ -24,7 +24,7 @@ export const toggleButton = ({ ...args }: Props): JSX.Element => {
   return (
     <>
       <p>{testState}</p>
-      <ToggleButton leftCallback={setTestState} rightCallback={setTestState} {...args} />
+      <ToggleButton setIsIncome={setTestState} isIncome={testState} {...args} />
     </>
   );
 };

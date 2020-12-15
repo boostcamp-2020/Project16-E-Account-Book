@@ -1,5 +1,4 @@
 import React from 'react';
-// import styled from 'styled-components';
 import ColumnFlexContainer from '@atoms/div/ColumnFlexContainer';
 import ChangeAccountbookColorCard from '@molecules/ChangeAccountbookColorCard';
 

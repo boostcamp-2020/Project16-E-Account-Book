@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import myColor, { incomeColor, expenditureColor } from '@theme/color';
 import StickWithText from '@molecules/StickWithText';
-import myColor from '@theme/color';
 import getRandomKey from '@utils/random';
 
 interface Props {
@@ -25,18 +25,6 @@ const StickChart = styled.div`
 `;
 
 const stickChart: React.FC<Props> = ({ data, isIncome }: Props) => {
-  const incomeColor = [
-    myColor.statistic.incomeOne,
-    myColor.statistic.incomeTwo,
-    myColor.statistic.incomeThree,
-    myColor.statistic.incomeFour,
-  ];
-  const expenditureColor = [
-    myColor.statistic.expenditureOne,
-    myColor.statistic.expenditureTwo,
-    myColor.statistic.expenditureThree,
-    myColor.statistic.expenditureFour,
-  ];
   let maxFourIncome = [];
   let maxFourExpenditure = [];
   if (data.income) {
@@ -51,7 +39,7 @@ const stickChart: React.FC<Props> = ({ data, isIncome }: Props) => {
       const money = Number(ele.money);
       const percent = Number(ele.percent);
       const inColor: any = incomeColor[index];
-      const outColor = 'white';
+      const outColor = myColor.primary.white;
       const height = '40px';
       const width = '85%';
       return (
@@ -74,7 +62,7 @@ const stickChart: React.FC<Props> = ({ data, isIncome }: Props) => {
       const money = Number(ele.money);
       const percent = Number(ele.percent);
       const inColor: any = expenditureColor[index];
-      const outColor = 'white';
+      const outColor = myColor.primary.white;
       const height = '40px';
       const width = '85%';
       return (
