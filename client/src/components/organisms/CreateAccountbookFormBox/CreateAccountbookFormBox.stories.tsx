@@ -7,14 +7,15 @@ export default {
   component: CreateAccountbookFormBox,
 };
 
-const testFunc = (data: any) => {
-  return data;
+const testFunc = (name: any, description: any) => {
+  console.log(name, description);
+  return name;
 };
 
 export const createAccountbookFormBox = (): JSX.Element => {
   return (
     <CreateAccountbookFormBox
-      buttonEvent={testFunc('123')}
+      buttonEvent={testFunc('슈퍼가계부', '슈퍼가계부 입니다')}
       backgroundColor={myColor.primary.main}
     />
   );

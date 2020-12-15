@@ -11,14 +11,12 @@ import styled from 'styled-components';
 import * as API from '@utils/api'; */
 
 const CreateAccountbookPage: React.FC = () => {
-  const createButtonClick = async (data: any) => {
-    /* const data = {
+  const createButtonClick = async (name: any, description: any) => {
+    const data = {
       name,
       description,
-      usersList,
-      color,
     };
-    const result = await Axios.postAxios(API.POST_CREATE_SOCIAL, data); */
+    // const result = await Axios.postAxios(API.POST_CREATE_SOCIAL, data);
     console.log(data);
   };
 
@@ -38,7 +36,7 @@ const CreateAccountbookPage: React.FC = () => {
           backgroundColor={backgroundColor}
         />
         <SettingContainer>
-          <CreateAccountbookSetting labelColor="blue" />
+          <CreateAccountbookSetting labelColor={backgroundColor} />
         </SettingContainer>
       </CenterContent>
     </>
