@@ -45,5 +45,5 @@ export const deleteUserPayment = async (ctx: any) => {
 
   await Service.deleteRelatedSocialTransaction(userId, paymentId);
 
-  response.success(ctx, 'success');
+  response.success(ctx, paymentId);
 };
