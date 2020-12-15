@@ -11,7 +11,7 @@ interface Props {
 
 const defaultProps = {
   backgroundColor: myColor.primary.accent,
-  color: 'white',
+  color: myColor.primary.white,
   onClick: undefined,
 };
 

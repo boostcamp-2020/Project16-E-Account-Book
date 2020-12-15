@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import myColor from '@theme/color';
 
 interface Props {
   children: React.ReactChild;
@@ -20,7 +21,7 @@ const Button = styled.button`
   width: 50px;
   height: 50px;
   border: none;
-  background-color: white;
+  background-color: ${myColor.primary.white};
 `;
 
 const IconButton: React.FC<Props> = ({ onClick, children }: Props) => {

@@ -81,7 +81,6 @@ const MainPage: React.FC = () => {
     initSocialBooks();
     getAnalysis();
   }, []);
-
   return (
     <>
       <CenterContent>
@@ -113,7 +112,7 @@ const MainPage: React.FC = () => {
           <ColumFlexContainer width="90%">
             <MasterBooksBox>
               {masterBooks.map((book) => {
-                return <SocialAccountBook key={book.id} {...book} />;
+                return <SocialAccountBook key={book.id} {...book} isMaster />;
               })}
             </MasterBooksBox>
             <SocialBooksBox>

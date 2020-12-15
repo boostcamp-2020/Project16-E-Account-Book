@@ -13,8 +13,20 @@ const paymentQuery = {
     INSERT into payment (name) VALUES(?)
   `,
 
+  DELETE_PAYMENTS: `
+    DELETE FROM payment WHERE id = ?
+  `,
+
   GET_PAYMENT_ID_BY_NAME: `
     SELECT id FROM payment WHERE name = ?
+  `,
+
+  DELETE_USER_PAYMENTS: `
+    DELETE FROM user_payment WHERE id = ?
+  `,
+
+  GET_PAYMENT_ID_BY_PK: `
+    SELECT payment_id FROM user_payment WHERE id = ? 
   `,
 };
 

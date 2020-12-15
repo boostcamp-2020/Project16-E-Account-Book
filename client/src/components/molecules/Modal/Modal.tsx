@@ -49,7 +49,7 @@ const Modal = styled.div<modalProps>`
   max-width: 800px;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
-  background-color: white;
+  background-color: ${myColor.primary.white};
   box-shadow: 8px 8px 8px -4px #7b7b7b;
   border: 0;
   border-radius: 8px;

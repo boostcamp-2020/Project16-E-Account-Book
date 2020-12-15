@@ -61,3 +61,12 @@ export const DELETE_SOCIAL_TRANSACTION = (id: number): string =>
 
 export const DELETE_PRIVATE_TRANSACTION = (id: number): string =>
   `${process.env.REACT_APP_BASE_URL}/api/private/transaction/${id}`;
+
+export const DELETE_PAYMENT = (id: number): string =>
+  `${process.env.REACT_APP_BASE_URL}/api/payment/${id}`;
+
+export const GET_INVITATION = `${process.env.REACT_APP_BASE_URL}/api/social/invitation`;
+
+export const PATCH_INVITATION = (id: number): string =>
+  `${process.env.REACT_APP_BASE_URL}/api/social/invitation/${id}`;
+
