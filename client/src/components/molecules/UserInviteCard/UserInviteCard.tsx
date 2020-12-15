@@ -3,29 +3,42 @@ import UserImage from '@atoms/img/UserImage/UserImage';
 import Name from '@atoms/p/CenterNormalText/CenterNormalText';
 import RoundShortButton from '@atoms/button/RoundShortButton';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
+import * as API from '@utils/api';
+import { postAxios, deleteAxios } from '@utils/axios';
 
 interface Props {
   link: string;
-  id: number;
+  stateId?: number;
+  userId: number;
   bookId: number;
   name: string;
-  callback: (boolean) => void;
+  callback: any;
   backgroundColor: string;
   buttonName: string;
 }
 
 const userInviteCard: React.FC<Props> = ({
   link,
-  id,
+  stateId,
+  userId,
   bookId,
   name,
   callback,
   backgroundColor,
   buttonName,
 }: Props) => {
-  console.log(id, bookId);
-
-  // TODO onclick 에 id, bookid, 취소인지 초대하기인지 넘겨주기 ? Axios 로 데이터 보내기
+  const setInvite = async () => {
+    if (stateId) {
+      await deleteAxios(API.DELETE_SOCIAL_INVITATION(stateId));
+    } else {
+      const data = {
+        userId,
+        accountbookId: bookId,
+      };
+      await postAxios(API.POST_SOCIAL_INVITATION, data);
+    }
+    callback();
+  };
 
   return (
     <RowFlexContainer
@@ -38,7 +51,7 @@ const userInviteCard: React.FC<Props> = ({
     >
       <UserImage link={link} />
       <Name fontSize="10px">{name}</Name>
-      <RoundShortButton onClick={() => callback(true)}>{buttonName}</RoundShortButton>
+      <RoundShortButton onClick={() => setInvite()}>{buttonName}</RoundShortButton>
     </RowFlexContainer>
   );
 };
