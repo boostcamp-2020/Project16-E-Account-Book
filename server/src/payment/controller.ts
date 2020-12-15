@@ -2,6 +2,7 @@ import { Context } from 'koa';
 import * as response from '../utils/response';
 import 'dotenv/config';
 import * as Service from './service';
+import { getAccountBookId } from '../privateBook/service';
 
 export const getUserPayments = async (ctx: Context) => {
   const userId = ctx.userData.uid;
@@ -28,4 +29,21 @@ export const createUserPayment = async (ctx: any) => {
   createUserPaymentResult = await Service.createUserPayments(userId, newUserPaymentId);
 
   response.success(ctx, createUserPaymentResult.insertId);
+};
+
+export const deleteUserPayment = async (ctx: any) => {
+  const { id } = ctx.params;
+  const userId = ctx.userData.uid;
+
+  const privateAccountbookId = await getAccountBookId(userId);
+
+  const paymentId = await Service.geyPaymentIdByPk(id);
+
+  await Service.deleteUserPayment(id);
+
+  await Service.deleteRelatedPrivateTransaction(privateAccountbookId, paymentId);
+
+  await Service.deleteRelatedSocialTransaction(userId, paymentId);
+
+  response.success(ctx, paymentId);
 };

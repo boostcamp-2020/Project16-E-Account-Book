@@ -61,6 +61,7 @@ const privateBookQuery = {
     GROUP BY day ORDER BY day`,
   UPDATE_PRIVATE_TRANSACTION: `UPDATE private_transaction SET category_id = ?, payment_id = ?, date = ?, title = ?, amount = ? WHERE id = ?`,
   DELETE_PRIVATE_TRANSACTION: `DELETE FROM private_transaction WHERE id = ?`,
+  DELETE_PRIVATE_TRANSACTION_BY_PAYMENTID: `DELETE FROM private_transaction WHERE accountbook_id = ? AND payment_id = ?`,
 };
 
 export default privateBookQuery;
