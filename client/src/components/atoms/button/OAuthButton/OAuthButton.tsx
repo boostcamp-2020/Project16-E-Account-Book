@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Naver from '@svg/naver-logo.svg';
 import GitHub from '@svg/github-logo.svg';
+import myColor from '@theme/color';
 
 interface Props extends ColorProps {
   link: string;
@@ -26,7 +27,7 @@ const OAuthButton = styled.a`
 `;
 
 const OAuthIcon = styled.img`
-  background-color: white;
+  background-color: ${myColor.primary.white};
   height: 100%;
 `;
 
@@ -37,7 +38,7 @@ const OAuthName = styled.div<ColorProps>`
   align-items: center;
   height: 100%;
   background-color: ${(props) => props.backgroundColor};
-  color: white;
+  color: ${myColor.primary.white};
   border-radius: 5px;
   font-size: 18px;
   @media (max-width: 530px) {

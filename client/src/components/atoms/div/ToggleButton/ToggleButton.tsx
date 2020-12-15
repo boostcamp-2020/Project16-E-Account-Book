@@ -34,7 +34,7 @@ const ToggleButtonContainer = styled.div<sizeProps>`
 `;
 
 let leftColor = myColor.primary.accent;
-let rightColor = 'white';
+let rightColor = myColor.primary.white;
 
 const ToggleButton: React.FC<Props> = ({
   initRight,
@@ -46,11 +46,11 @@ const ToggleButton: React.FC<Props> = ({
 }: Props) => {
   const changeColor = (isLeft) => {
     if (isLeft === false) {
-      leftColor = 'white';
+      leftColor = myColor.primary.white;
       rightColor = myColor.primary.accent;
     } else {
       leftColor = myColor.primary.accent;
-      rightColor = 'white';
+      rightColor = myColor.primary.white;
     }
   };
 

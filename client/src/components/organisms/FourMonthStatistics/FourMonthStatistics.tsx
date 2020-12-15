@@ -28,7 +28,7 @@ const Container = styled.div`
 
 const InfoBox = styled.div`
   display: flex;
-  color: white;
+  color: ${myColor.primary.white};
   align-items: center;
   justify-content: space-around;
   font-size: 0.5rem;
@@ -41,7 +41,7 @@ const InfoBox = styled.div`
 const ConvexMonthBtn = styled.div`
   width: 20%;
   height: 60%;
-  color: white;
+  color: ${myColor.primary.white};
   border-radius: 10px;
   background: #2f2e2d;
   box-shadow: 5px 5px 10px #171616, -5px -5px 10px #474644;
@@ -55,7 +55,7 @@ const ConvexMonthBtn = styled.div`
 const PressedMonthBtn = styled.div`
   width: 20%;
   height: 60%;
-  color: white;
+  color: ${myColor.primary.white};
   border-radius: 10px;
   background: #2f2e2d;
   box-shadow: inset 5px 5px 8px #131212, inset -5px -5px 8px #4b4a48;

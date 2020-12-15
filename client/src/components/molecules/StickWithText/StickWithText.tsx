@@ -17,7 +17,7 @@ interface Props {
 
 const StickWithText = styled.div`
   display: flex;
-  color: white;
+  color: ${myColor.primary.white};
   align-items: center;
   justify-content: space-around;
   font-size: 0.8rem;
