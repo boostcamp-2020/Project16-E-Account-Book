@@ -40,6 +40,7 @@ const myColor: Colors = {
   oauth: {
     lightBlack: '#444444',
     green: '#4FA42B',
+    test: '#FFB421',
   },
   calendar: {
     border: '#dadada',

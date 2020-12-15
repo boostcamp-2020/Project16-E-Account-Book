@@ -3,10 +3,11 @@ import UserInviteCard from './UserInviteCard';
 
 interface Props {
   link: string;
-  id: number;
+  userId: number;
+  stateId: number;
   bookId: number;
   name: string;
-  callback: (boolean) => void;
+  callback: any;
   backgroundColor: string;
   buttonName: string;
 }
@@ -18,7 +19,8 @@ export default {
 
 export const userInviteCard = ({
   link,
-  id,
+  stateId,
+  userId,
   bookId,
   name,
   callback,
@@ -28,10 +30,11 @@ export const userInviteCard = ({
   return (
     <UserInviteCard
       link={link}
-      id={id}
+      stateId={stateId}
+      userId={userId}
       bookId={bookId}
-      name={name}
       callback={callback}
+      name={name}
       backgroundColor={backgroundColor}
       buttonName={buttonName}
     />

@@ -2,6 +2,9 @@ import 'dotenv/config';
 
 export const GET_JWT = `${process.env.REACT_APP_BASE_URL}/login/`;
 
+export const GET_TEST_LOGIN = (id: number): string =>
+  `${process.env.REACT_APP_BASE_URL}/login/test/${id}`;
+
 export const GET_TRANSACTION_SOCIAL_LIST = (bookId: number, year: number, month: number): string =>
   `${process.env.REACT_APP_BASE_URL}/api/social/transaction/list/${bookId}/${year}/${month}`;
 
@@ -9,6 +12,9 @@ export const GET_TRANSACTION_PRIVATE_LIST = (year: number, month: number): strin
   `${process.env.REACT_APP_BASE_URL}/api/private/transaction/list/${year}/${month}`;
 
 export const GET_USER_INFO = `${process.env.REACT_APP_BASE_URL}/api/user/info`;
+
+export const GET_SOCIAL_BOOK = (bookId: number): string =>
+  `${process.env.REACT_APP_BASE_URL}/api/social/${bookId}`;
 
 export const GET_SOCIAL_BOOKS = `${process.env.REACT_APP_BASE_URL}/api/social/list`;
 
@@ -38,6 +44,8 @@ export const POST_PRIVATE_TRANSACTION = `${process.env.REACT_APP_BASE_URL}/api/p
 
 export const POST_SOCIAL_TRANSACTION = `${process.env.REACT_APP_BASE_URL}/api/social/transaction`;
 
+export const POST_SOCIAL_INVITATION = `${process.env.REACT_APP_BASE_URL}/api/social/invitation`;
+
 export const GET_PRIVATE_STATISTIC_CATEGORY = (year: number, month: number): string =>
   `${process.env.REACT_APP_BASE_URL}/api/private/statistic/category/${year}/${month}`;
 
@@ -60,10 +68,16 @@ export const DELETE_SOCIAL_TRANSACTION = (id: number): string =>
 export const DELETE_PRIVATE_TRANSACTION = (id: number): string =>
   `${process.env.REACT_APP_BASE_URL}/api/private/transaction/${id}`;
 
+export const DELETE_SOCIAL_INVITATION = (id: number): string =>
+  `${process.env.REACT_APP_BASE_URL}/api/social/invitation/${id}`;
+
 export const DELETE_PAYMENT = (id: number): string =>
   `${process.env.REACT_APP_BASE_URL}/api/payment/${id}`;
 
 export const GET_INVITATION = `${process.env.REACT_APP_BASE_URL}/api/social/invitation`;
+
+export const GET_SOCIAL_WAITING_USER_LIST = (bookId: number): string =>
+  `${process.env.REACT_APP_BASE_URL}/api/social/invitation/waiting/${bookId}`;
 
 export const GET_SEARCHED_USER_LIST = (name: string): string =>
   `${process.env.REACT_APP_BASE_URL}/api/user/list/${name}`;

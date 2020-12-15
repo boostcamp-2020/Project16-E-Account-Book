@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Naver from '@svg/naver-logo.svg';
 import GitHub from '@svg/github-logo.svg';
+import Test from '@svg/test-logo.svg';
 import myColor from '@theme/color';
 
 interface Props extends ColorProps {
@@ -54,7 +55,7 @@ const oauthButton: React.FC<Props> = ({ link, backgroundColor, site, children }:
       case 'GitHub':
         return GitHub;
       default:
-        return Naver;
+        return Test;
     }
   };
   return (

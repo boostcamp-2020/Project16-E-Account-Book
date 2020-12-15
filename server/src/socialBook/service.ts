@@ -11,10 +11,32 @@ enum INVITATION {
   ACCEPT = 2,
 }
 
+export const getSocialBook = async (userId: number, accountBookId: number) => {
+  const socialBookInfo = await sql(query.READ_SOCIAL_BOOK, [userId, accountBookId]);
+  return socialBookInfo;
+};
+
+export const updateSocialBook = async (
+  masterId: number,
+  bookId: number,
+  name: string,
+  description: string,
+  color: string,
+) => {
+  const socialBookInfo = await sql(query.UPDATE_SOCIAL_BOOK, [
+    name,
+    description,
+    color,
+    bookId,
+    masterId,
+  ]);
+  return socialBookInfo;
+};
+
 export const getSocialBooks = async (userId: number) => {
   const socialBookList = await sql(query.READ_SOCIAL_BOOK_LIST, [userId]);
   const socialBookIdList = socialBookList.map((row: SocialBookId) => row.accountbook_id);
-  const bookList = await sql(query.READ_SOCIAL_BOOK, [socialBookIdList]);
+  const bookList = await sql(query.READ_SOCIAL_BOOKS, [socialBookIdList]);
   return bookList;
 };
 
@@ -200,4 +222,9 @@ export const getTrendIncome = async (bookId: number, year: number, month: number
 export const getTrendExpenditure = async (bookId: number, year: number, month: number) => {
   const result = await sql(query.READ_SOCIAL_TREND_EXPENDITURE, [bookId, year, month]);
   return result;
+};
+
+export const getInvitationWaitingUsers = async (bookId: number) => {
+  const userList = await sql(query.READ_INVITATION_WAITING_USERS, [bookId]);
+  return userList;
 };
