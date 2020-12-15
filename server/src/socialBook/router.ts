@@ -4,6 +4,10 @@ const Router = require('@koa/router');
 
 const router = new Router();
 
+router.get('/:bookId', Controller.getSocialBook);
+
+router.patch('/:bookId', Controller.updateSocialBook);
+
 router.get('/list', Controller.getSocialBooks);
 
 router.get('/list/master', Controller.getSocialBooksMaster);

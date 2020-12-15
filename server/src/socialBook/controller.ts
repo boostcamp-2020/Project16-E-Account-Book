@@ -7,6 +7,33 @@ import * as Service from './service';
 import { getPastMonthList, getPastWeekList } from '../utils/date';
 import { TransactionList } from '../interface/transaction';
 
+export const getSocialBook = async (ctx: Context) => {
+  const userId = ctx.userData.uid;
+  const { bookId } = ctx.params;
+  const socialBookResult = await Service.getSocialBook(userId, bookId);
+
+  if (socialBookResult.length === 0) {
+    response.fail(ctx, 403, message.NO_SOCIAL_AUTHORIZED);
+    return;
+  }
+
+  const [result] = await Service.getUserImages(socialBookResult);
+  response.success(ctx, result);
+};
+
+export const updateSocialBook = async (ctx: any) => {
+  const masterId = ctx.userData.uid;
+  const { bookId } = ctx.params;
+  const { name, description, color } = ctx.request.body;
+
+  const result = await Service.updateSocialBook(masterId, bookId, name, description, color);
+  if (result.affectedRows === 0) {
+    response.fail(ctx, 403, message.NO_SOCIAL_AUTHORIZED);
+    return;
+  }
+  response.success(ctx, bookId);
+};
+
 export const getSocialBooks = async (ctx: Context) => {
   const userId = ctx.userData.uid;
   const socialBookResult = await Service.getSocialBooks(userId);
