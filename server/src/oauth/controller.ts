@@ -1,8 +1,8 @@
 import 'dotenv/config';
 import * as Service from './service';
-import { InsertUser } from '../interface/user';
+import { InsertUser, OauthUserData } from '../interface/user';
 
-const oauth = async (ctx: any) => {
+export const oauth = async (ctx: any) => {
   const { code, site, state } = ctx.request.body;
 
   let client_id: string = '';
@@ -79,4 +79,14 @@ const oauth = async (ctx: any) => {
   ctx.body = jwtToken;
 };
 
-export { oauth };
+export const testAccount = async (ctx: any) => {
+  const { id } = ctx.params;
+  const testAcount: any = JSON.parse(process.env.TEST_ACCOUNT as string);
+  const data: OauthUserData = {
+    id: testAcount.list[id - 1].id,
+    uid: testAcount.list[id - 1].uid,
+  };
+
+  const jwtToken = Service.createJWTtoken(data, 'github');
+  ctx.body = jwtToken;
+};
