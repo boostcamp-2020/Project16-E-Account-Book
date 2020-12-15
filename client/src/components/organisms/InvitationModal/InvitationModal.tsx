@@ -56,6 +56,7 @@ const invitationModal: React.FC<Props> = ({ socialId }: Props) => {
     <RowFlexContainer>
       <UserInviteCard
         key={getRandomKey()}
+        callback={getWaitedUserList}
         userId={user.id}
         bookId={socialId}
         name={user.name}
@@ -70,6 +71,7 @@ const invitationModal: React.FC<Props> = ({ socialId }: Props) => {
     <RowFlexContainer>
       <UserInviteCard
         key={getRandomKey()}
+        callback={getWaitedUserList}
         stateId={user.id}
         userId={user.userId}
         bookId={socialId}
@@ -87,6 +89,7 @@ const invitationModal: React.FC<Props> = ({ socialId }: Props) => {
       <RowFlexContainer>
         <UserInviteCard
           key={getRandomKey()}
+          callback={getWaitedUserList}
           userId={user.id}
           bookId={socialId}
           name={user.name}
@@ -100,6 +103,7 @@ const invitationModal: React.FC<Props> = ({ socialId }: Props) => {
       <RowFlexContainer>
         <UserInviteCard
           key={getRandomKey()}
+          callback={getWaitedUserList}
           stateId={user.id}
           userId={user.userId}
           bookId={socialId}

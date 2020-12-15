@@ -12,6 +12,7 @@ interface Props {
   userId: number;
   bookId: number;
   name: string;
+  callback: any;
   backgroundColor: string;
   buttonName: string;
 }
@@ -22,6 +23,7 @@ const userInviteCard: React.FC<Props> = ({
   userId,
   bookId,
   name,
+  callback,
   backgroundColor,
   buttonName,
 }: Props) => {
@@ -35,6 +37,7 @@ const userInviteCard: React.FC<Props> = ({
       };
       await postAxios(API.POST_SOCIAL_INVITATION, data);
     }
+    callback();
   };
 
   return (
