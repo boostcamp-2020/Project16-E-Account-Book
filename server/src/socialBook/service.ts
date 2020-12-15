@@ -201,3 +201,8 @@ export const getTrendExpenditure = async (bookId: number, year: number, month: n
   const result = await sql(query.READ_SOCIAL_TREND_EXPENDITURE, [bookId, year, month]);
   return result;
 };
+
+export const getInvitationWaitingUsers = async (bookId: number) => {
+  const userList = await sql(query.READ_INVITATION_WAITING_USERS, [bookId]);
+  return userList;
+};
