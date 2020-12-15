@@ -21,7 +21,7 @@ interface InviteProps {
 
 const initArgs: InviteProps = {
   links: [
-    'https://avatars2.githubusercontent.com/u/46099115?s=460&u=1e04610d430875d8189d2b212b8c2d9fc268b9db&v=4',
+    'https://user-images.githubusercontent.com/50297117/102187552-770b3700-3ef7-11eb-819d-d24c9792a9d7.png',
   ],
   backgroundColor: myColor.primary.white,
   name: ' ',
