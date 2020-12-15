@@ -1,6 +1,7 @@
 const socialBookQuery = {
   READ_SOCIAL_BOOK_LIST: `SELECT accountbook_id FROM social_accountbook_users WHERE user_id = ? AND state = 2;`,
   READ_SOCIAL_BOOK: `SELECT id, name, description, color FROM social_accountbook WHERE master_id = ? AND id = ?`,
+  UPDATE_SOCIAL_BOOK: `UPDATE social_accountbook SET name = ?, description = ?, color = ? WHERE id = ? AND master_id = ?;`,
   READ_SOCIAL_BOOKS: `
     SELECT id, name, description, color,
     (SELECT SUM(amount)

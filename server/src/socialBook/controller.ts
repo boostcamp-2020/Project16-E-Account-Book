@@ -21,6 +21,19 @@ export const getSocialBook = async (ctx: Context) => {
   response.success(ctx, result);
 };
 
+export const updateSocialBook = async (ctx: any) => {
+  const masterId = ctx.userData.uid;
+  const { bookId } = ctx.params;
+  const { name, description, color } = ctx.request.body;
+
+  const result = await Service.updateSocialBook(masterId, bookId, name, description, color);
+  if (result.affectedRows === 0) {
+    response.fail(ctx, 403, message.NO_SOCIAL_AUTHORIZED);
+    return;
+  }
+  response.success(ctx, bookId);
+};
+
 export const getSocialBooks = async (ctx: Context) => {
   const userId = ctx.userData.uid;
   const socialBookResult = await Service.getSocialBooks(userId);
