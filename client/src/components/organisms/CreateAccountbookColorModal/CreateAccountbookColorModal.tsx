@@ -5,12 +5,7 @@ import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import ColorLabel from '@atoms/div/ColorLabel';
 import TextButton from '@atoms/button/TextButton';
 import styled from 'styled-components';
-// import myColor from '@theme/color';
-/* import * as Axios from '@utils/axios';
-import * as API from '@utils/api';
-import { setPayment } from '@actions/payment/type';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@reducers/rootReducer'; */
+import getRandomKey from '@utils/random';
 
 interface Props {
   currentColor: string;
@@ -56,11 +51,14 @@ const CreateAccountbookColorModal: React.FC<Props> = ({ currentColor }: Props) =
         <ColumnFlexContainer width="90%">
           {colorList.map((color) => {
             return (
-              <RowFlexContainer justifyContent="space-between" margin="0 0 2rem 0">
-                <ColorLabel backgroundColor={color[0]} />
-                <ColorLabel backgroundColor={color[1]} />
-                <ColorLabel backgroundColor={color[2]} />
-                <ColorLabel backgroundColor={color[3]} />
+              <RowFlexContainer
+                key={getRandomKey()}
+                justifyContent="space-between"
+                margin="0 0 2rem 0"
+              >
+                {color.map((ele) => (
+                  <ColorLabel key={getRandomKey()} backgroundColor={ele} />
+                ))}
               </RowFlexContainer>
             );
           })}
