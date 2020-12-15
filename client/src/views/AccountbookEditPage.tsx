@@ -11,7 +11,7 @@ import InvitationModal from '@organisms/InvitationModal';
 import { useSelector } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
 import * as API from '@utils/api';
-import { getAxiosData } from '../utils/axios';
+import { getAxiosData } from '@utils/axios';
 
 interface InviteProps {
   links: string[];

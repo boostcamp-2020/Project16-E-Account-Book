@@ -41,6 +41,8 @@ export const POST_PRIVATE_TRANSACTION = `${process.env.REACT_APP_BASE_URL}/api/p
 
 export const POST_SOCIAL_TRANSACTION = `${process.env.REACT_APP_BASE_URL}/api/social/transaction`;
 
+export const POST_SOCIAL_INVITATION = `${process.env.REACT_APP_BASE_URL}/api/social/invitation`;
+
 export const GET_PRIVATE_STATISTIC_CATEGORY = (year: number, month: number): string =>
   `${process.env.REACT_APP_BASE_URL}/api/private/statistic/category/${year}/${month}`;
 

@@ -7,7 +7,6 @@ interface Props {
   stateId: number;
   bookId: number;
   name: string;
-  callback: (boolean) => void;
   backgroundColor: string;
   buttonName: string;
 }
@@ -23,7 +22,6 @@ export const userInviteCard = ({
   userId,
   bookId,
   name,
-  callback,
   backgroundColor,
   buttonName,
 }: Props): JSX.Element => {
@@ -34,7 +32,6 @@ export const userInviteCard = ({
       userId={userId}
       bookId={bookId}
       name={name}
-      callback={callback}
       backgroundColor={backgroundColor}
       buttonName={buttonName}
     />

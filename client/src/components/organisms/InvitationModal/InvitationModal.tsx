@@ -8,6 +8,7 @@ import UserInviteCard from '@molecules/UserInviteCard/UserInviteCard';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import styled from 'styled-components';
 import MyColor from '@theme/color';
+import getRandomKey from '@utils/random';
 
 interface Props {
   socialId: number;
@@ -51,20 +52,14 @@ const invitationModal: React.FC<Props> = ({ socialId }: Props) => {
     setWaitedList(newArgs);
   };
 
-  const callback = () => {
-    return true;
-  };
-
   let userCards: any = userList.map((user) => (
     <RowFlexContainer>
       <UserInviteCard
-        key={user.id}
-        stateId={user.id}
-        userId={user.userId}
+        key={getRandomKey()}
+        userId={user.id}
         bookId={socialId}
         name={user.name}
         link={user.picture}
-        callback={callback}
         backgroundColor={MyColor.primary.skyblue}
         buttonName="초대하기"
       />
@@ -74,13 +69,12 @@ const invitationModal: React.FC<Props> = ({ socialId }: Props) => {
   let waitedCards: any = waitedList.map((user) => (
     <RowFlexContainer>
       <UserInviteCard
-        key={user.id}
+        key={getRandomKey()}
         stateId={user.id}
         userId={user.userId}
         bookId={socialId}
         name={user.name}
         link={user.picture}
-        callback={callback}
         backgroundColor={MyColor.primary.mildGray}
         buttonName="취소"
       />
@@ -92,13 +86,11 @@ const invitationModal: React.FC<Props> = ({ socialId }: Props) => {
     userCards = userList.map((user) => (
       <RowFlexContainer>
         <UserInviteCard
-          key={user.id}
-          stateId={user.id}
-          userId={user.userId}
+          key={getRandomKey()}
+          userId={user.id}
           bookId={socialId}
           name={user.name}
           link={user.picture}
-          callback={callback}
           backgroundColor={MyColor.primary.skyblue}
           buttonName="초대하기"
         />
@@ -107,13 +99,12 @@ const invitationModal: React.FC<Props> = ({ socialId }: Props) => {
     waitedCards = waitedList.map((user) => (
       <RowFlexContainer>
         <UserInviteCard
-          key={user.id}
+          key={getRandomKey()}
           stateId={user.id}
           userId={user.userId}
           bookId={socialId}
           name={user.name}
           link={user.picture}
-          callback={callback}
           backgroundColor={MyColor.primary.mildGray}
           buttonName="취소"
         />
