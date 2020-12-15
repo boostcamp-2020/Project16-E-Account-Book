@@ -4,6 +4,7 @@ import LogoWithSlogan from '@organisms/LogoWithSlogan';
 import CenterContent from '@molecules/CenterContent';
 import BeeBackground from '@organisms/BeeBackground';
 import EasyLogin from '@organisms/EasyLogin';
+import TestLogin from '@organisms/TestLogin';
 import { login } from '@actions/user/type';
 import { useDispatch } from 'react-redux';
 import qs from 'qs';
@@ -51,6 +52,7 @@ const LoginPage: React.FC<props> = ({ location }: props) => {
         <ColumFlexContainer>
           <LogoWithSlogan slogan={slogan} />
           <EasyLogin />
+          <TestLogin size={4} />
         </ColumFlexContainer>
       </CenterContent>
     </>

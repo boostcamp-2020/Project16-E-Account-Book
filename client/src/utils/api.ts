@@ -2,6 +2,9 @@ import 'dotenv/config';
 
 export const GET_JWT = `${process.env.REACT_APP_BASE_URL}/login/`;
 
+export const GET_TEST_LOGIN = (id: number): string =>
+  `${process.env.REACT_APP_BASE_URL}/login/test/${id}`;
+
 export const GET_TRANSACTION_SOCIAL_LIST = (bookId: number, year: number, month: number): string =>
   `${process.env.REACT_APP_BASE_URL}/api/social/transaction/list/${bookId}/${year}/${month}`;
 

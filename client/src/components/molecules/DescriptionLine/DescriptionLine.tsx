@@ -17,7 +17,7 @@ const TextContainer = styled.div`
 const DescriptionLine: React.FC<Props> = ({ description }: Props) => {
   const fontSize = '1vw';
   return (
-    <RowFlexContainer>
+    <RowFlexContainer margin="0 0 20px">
       <Line />
       <TextContainer>
         <Text color={myColor.primary.gray} fontSize={fontSize}>
