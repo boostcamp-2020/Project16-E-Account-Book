@@ -75,7 +75,7 @@ const invitationModal: React.FC<Props> = ({ socialId }: Props) => {
         link={user.picture}
         callback={callback}
         backgroundColor={MyColor.primary.skyblue}
-        isWaiting={false}
+        buttonName="초대하기"
       />
     </RowFlexContainer>
   ));
@@ -90,7 +90,7 @@ const invitationModal: React.FC<Props> = ({ socialId }: Props) => {
         link={user.picture}
         callback={callback}
         backgroundColor={MyColor.primary.mildGray}
-        isWaiting
+        buttonName="취소"
       />
     </RowFlexContainer>
   ));
@@ -107,7 +107,7 @@ const invitationModal: React.FC<Props> = ({ socialId }: Props) => {
           link={user.picture}
           callback={callback}
           backgroundColor={MyColor.primary.skyblue}
-          isWaiting={false}
+          buttonName="초대하기"
         />
       </RowFlexContainer>
     ));
@@ -121,7 +121,7 @@ const invitationModal: React.FC<Props> = ({ socialId }: Props) => {
           link={user.picture}
           callback={callback}
           backgroundColor={MyColor.primary.mildGray}
-          isWaiting
+          buttonName="취소"
         />
       </RowFlexContainer>
     ));

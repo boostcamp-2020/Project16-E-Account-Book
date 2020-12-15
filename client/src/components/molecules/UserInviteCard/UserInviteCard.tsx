@@ -1,5 +1,4 @@
 import React from 'react';
-// import styled from 'styled-components';
 import UserImage from '@atoms/img/UserImage/UserImage';
 import Name from '@atoms/p/CenterNormalText/CenterNormalText';
 import RoundShortButton from '@atoms/button/RoundShortButton';
@@ -12,7 +11,7 @@ interface Props {
   name: string;
   callback: (boolean) => void;
   backgroundColor: string;
-  isWaiting: boolean;
+  buttonName: string;
 }
 
 const userInviteCard: React.FC<Props> = ({
@@ -22,7 +21,7 @@ const userInviteCard: React.FC<Props> = ({
   name,
   callback,
   backgroundColor,
-  isWaiting,
+  buttonName,
 }: Props) => {
   console.log(id, bookId);
 
@@ -39,9 +38,7 @@ const userInviteCard: React.FC<Props> = ({
     >
       <UserImage link={link} />
       <Name fontSize="10px">{name}</Name>
-      <RoundShortButton onClick={() => callback(true)}>
-        {isWaiting ? '취소' : '초대하기'}
-      </RoundShortButton>
+      <RoundShortButton onClick={() => callback(true)}>{buttonName}</RoundShortButton>
     </RowFlexContainer>
   );
 };

@@ -8,7 +8,7 @@ interface Props {
   name: string;
   callback: (boolean) => void;
   backgroundColor: string;
-  isWaiting: boolean;
+  buttonName: string;
 }
 
 export default {
@@ -23,7 +23,7 @@ export const userInviteCard = ({
   name,
   callback,
   backgroundColor,
-  isWaiting,
+  buttonName,
 }: Props): JSX.Element => {
   return (
     <UserInviteCard
@@ -33,7 +33,7 @@ export const userInviteCard = ({
       name={name}
       callback={callback}
       backgroundColor={backgroundColor}
-      isWaiting={isWaiting}
+      buttonName={buttonName}
     />
   );
 };
