@@ -7,7 +7,14 @@ export default {
 };
 
 export const createAccountbookColorModal = (): JSX.Element => {
-  return <CreateAccountbookColorModal currentColor="blue" />;
+  return (
+    <CreateAccountbookColorModal
+      buttonEvent={() => {
+        console.log('storybook');
+      }}
+      currentColor="blue"
+    />
+  );
 };
 
 createAccountbookColorModal.story = {
