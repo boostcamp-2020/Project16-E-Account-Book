@@ -27,14 +27,17 @@ const initArgs: InviteProps = {
   name: ' ',
 };
 
+let backgroundColor = colorUtils.getRandomColor();
+
 const AccountbookEditPage: React.FC = () => {
   const modalView = useSelector((state: RootState) => state.modal.view);
   const accountbookId = useSelector((state: RootState) => state.accountbook.socialId);
-  const createButtonClick = async (data: any) => {
+  // const [accountbookMainColor, setAccountbookMainColor] = useState(backgroundColor)
+
+  const editButtonClick = async (data: any) => {
     console.log(data);
   };
 
-  const backgroundColor = colorUtils.getRandomColor();
   const [inviteArgs, setInviteArgs] = useState<InviteProps>(initArgs);
 
   const initAccountbookCard = async () => {
@@ -44,6 +47,7 @@ const AccountbookEditPage: React.FC = () => {
       backgroundColor: data.color,
       name: data.name,
     };
+    backgroundColor = data.color;
     setInviteArgs(newArgs);
   };
 
@@ -61,10 +65,7 @@ const AccountbookEditPage: React.FC = () => {
       <ColoredBackground backgroundColor={myColor.primary.lightGray} />
       <CenterContent>
         <TopNavBar backgroundColor={backgroundColor} />
-        <CreateAccountbookFormBox
-          buttonEvent={createButtonClick}
-          backgroundColor={backgroundColor}
-        />
+        <CreateAccountbookFormBox buttonEvent={editButtonClick} backgroundColor={backgroundColor} />
         <SettingContainer>
           <InviteAccountbookCard {...inviteArgs} />
         </SettingContainer>
