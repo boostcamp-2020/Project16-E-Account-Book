@@ -1,4 +1,4 @@
-const getColorList = () => {
+const getColorList = (): Array<Array<string>> => {
   return [
     ['#FF0000', '#FFBB00', '#ABF200', '#1DDB16'],
     ['#00D8FF', '#0054FF', '#5F00FF', '#FF00DD'],
