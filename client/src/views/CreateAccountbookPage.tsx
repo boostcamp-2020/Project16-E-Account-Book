@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import CreateAccountbookColorModal from '@organisms/CreateAccountbookColorModal';
 import { useSelector } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
+import { useHistory } from 'react-router-dom';
 import getColorList from '@theme/colorList';
 import * as Axios from '@utils/axios';
 import * as API from '@utils/api';
@@ -19,6 +20,7 @@ const backgroundColor = colorUtils.getRandomColorInList(getColorList());
 const CreateAccountbookPage: React.FC = () => {
   const modalView = useSelector((state: RootState) => state.modal.view);
   const [accountbookMainColor, setAccountbookMainColor] = useState(backgroundColor);
+  const history = useHistory();
 
   const createButtonClick = async (name: any, description: any) => {
     const data = {
@@ -29,7 +31,7 @@ const CreateAccountbookPage: React.FC = () => {
 
     await Axios.postAxios(API.POST_CREATE_SOCIAL, data);
 
-    window.alert('가계부 생성이 완료되었습니다!');
+    history.push('/');
   };
 
   const SettingContainer = styled.div`
@@ -39,7 +41,6 @@ const CreateAccountbookPage: React.FC = () => {
 
   const getAccountbookMainColor = (color) => {
     setAccountbookMainColor(color);
-    console.log(accountbookMainColor);
   };
   return (
     <>
