@@ -19,7 +19,7 @@ const getRandomColorInList = (colorList: string[][]): any => {
   return colorList[rowRandom][colRandom];
 };
 
-const getIndexinList = (targetColor, colorList: string[][]): any => {
+const getIndexinList = (targetColor: string, colorList: string[][]): any => {
   const data: Array<number> = [];
 
   for (let i = 0; i < colorList.length; i += 1) {
