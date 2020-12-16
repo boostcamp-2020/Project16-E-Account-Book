@@ -19,4 +19,19 @@ const getRandomColorInList = (colorList: string[][]): any => {
   return colorList[rowRandom][colRandom];
 };
 
-export default { getFontColor, getRandomColor, getRandomColorInList };
+const getIndexinList = (targetColor: string, colorList: string[][]): any => {
+  const data: Array<number> = [];
+
+  for (let i = 0; i < colorList.length; i += 1) {
+    for (let j = 0; j < colorList[0].length; j += 1) {
+      if (colorList[i][j] === targetColor) {
+        data.push(i);
+        data.push(j);
+      }
+    }
+  }
+
+  return data;
+};
+
+export default { getFontColor, getRandomColor, getRandomColorInList, getIndexinList };

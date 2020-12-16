@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import CheckSVG from '@svg/check.svg';
-import colorUtils from '@utils/color';
 
 interface Props extends SizeProps {
   backgroundColor: string;
+  children?: React.ReactChild;
   buttonEvent?: (data) => void;
 }
 
@@ -15,6 +14,7 @@ interface SizeProps {
 const defaultProps = {
   size: '1.5rem',
   buttonEvent: undefined,
+  children: undefined,
 };
 
 const Div = styled.div<Props>`
@@ -22,22 +22,12 @@ const Div = styled.div<Props>`
   width: ${(props) => props.size};
   height: ${(props) => props.size};
   border-radius: 50px;
+  padding-top: 0.15rem;
   display: flex;
   justify-content: center;
-  padding-top: 0.1rem;
 `;
 
-const ColorLabel: React.FC<Props> = ({ buttonEvent, size, backgroundColor }: Props) => {
-  const [checkDisplay, setCheckDisplay] = useState('none');
-
-  const changeCheckDisplay = () => {
-    if (checkDisplay === 'none') {
-      setCheckDisplay('');
-    } else {
-      setCheckDisplay('none');
-    }
-  };
-
+const ColorLabel: React.FC<Props> = ({ buttonEvent, size, backgroundColor, children }: Props) => {
   return (
     <Div
       size={size}
@@ -45,16 +35,10 @@ const ColorLabel: React.FC<Props> = ({ buttonEvent, size, backgroundColor }: Pro
       onClick={() => {
         if (buttonEvent) {
           buttonEvent(backgroundColor);
-          changeCheckDisplay();
         }
       }}
     >
-      <CheckSVG
-        width="70%"
-        height="70%"
-        display={checkDisplay}
-        fill={colorUtils.getFontColor(backgroundColor)}
-      />
+      {children}
     </Div>
   );
 };

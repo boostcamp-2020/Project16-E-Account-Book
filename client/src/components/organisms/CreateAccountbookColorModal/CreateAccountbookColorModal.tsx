@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from '@molecules/Modal';
 import ColumnFlexContainer from '@atoms/div/ColumnFlexContainer';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
@@ -7,8 +7,11 @@ import TextButton from '@atoms/button/TextButton';
 import styled from 'styled-components';
 import getRandomKey from '@utils/random';
 import getColorList from '@theme/colorList';
+import colorUtils from '@utils/color';
+import ColorLabelWithCheck from '@molecules/ColorLabelWithCheck';
 
 interface Props {
+  buttonEvent: (data) => any;
   currentColor: string;
 }
 
@@ -30,17 +33,34 @@ const ButtonDiv = styled.div`
   justify-content: flex-end;
 `;
 
-const CreateAccountbookColorModal: React.FC<Props> = ({ currentColor }: Props) => {
+const CreateAccountbookColorModal: React.FC<Props> = ({ buttonEvent, currentColor }: Props) => {
   const title = '색상 변경하기';
 
   const colorList = getColorList();
 
-  colorList[0][0] = currentColor;
+  let nowColor = currentColor;
+
+  const [curIndex, setCurIndex] = useState(colorUtils.getIndexinList(currentColor, colorList));
+
+  useEffect(() => {
+    nowColor = colorList[curIndex[0]][curIndex[1]];
+    console.log(nowColor);
+  }, [curIndex]);
+
+  const selectColor = (color) => {
+    setCurIndex(colorUtils.getIndexinList(color, colorList));
+  };
 
   return (
     <Modal title={title}>
       <ButtonDiv>
-        <TextButton>확인</TextButton>
+        <TextButton
+          onClick={() => {
+            buttonEvent(nowColor);
+          }}
+        >
+          확인
+        </TextButton>
       </ButtonDiv>
       <ScrollDiv>
         <ColumnFlexContainer width="90%">
@@ -51,9 +71,27 @@ const CreateAccountbookColorModal: React.FC<Props> = ({ currentColor }: Props) =
                 justifyContent="space-between"
                 margin="0 0 2rem 0"
               >
-                {color.map((ele) => (
-                  <ColorLabel key={getRandomKey()} backgroundColor={ele} />
-                ))}
+                {color.map((ele) => {
+                  if (
+                    JSON.stringify(colorUtils.getIndexinList(ele, colorList)) ===
+                    JSON.stringify(curIndex)
+                  ) {
+                    return (
+                      <ColorLabelWithCheck
+                        buttonEvent={selectColor}
+                        key={getRandomKey()}
+                        backgroundColor={ele}
+                      />
+                    );
+                  }
+                  return (
+                    <ColorLabel
+                      buttonEvent={selectColor}
+                      key={getRandomKey()}
+                      backgroundColor={ele}
+                    />
+                  );
+                })}
               </RowFlexContainer>
             );
           })}

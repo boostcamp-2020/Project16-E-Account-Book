@@ -4,7 +4,7 @@ import ColorLabel from './ColorLabel';
 interface Props {
   backgroundColor: string;
   size: string;
-  onClick?: () => void;
+  buttonEvent?: () => void;
 }
 
 export default {
