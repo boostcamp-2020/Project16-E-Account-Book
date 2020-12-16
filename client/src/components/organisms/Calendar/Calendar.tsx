@@ -32,9 +32,7 @@ const WeekDiv = styled.div`
   display: flex;
 `;
 
-const Calendar = styled.div`
-  border: 2px solid transparent;
-`;
+const Calendar = styled.div``;
 
 const EmptyBox = styled.div`
   width: 100%;
