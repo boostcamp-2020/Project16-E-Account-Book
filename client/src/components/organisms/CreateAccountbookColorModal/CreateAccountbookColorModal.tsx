@@ -44,7 +44,6 @@ const CreateAccountbookColorModal: React.FC<Props> = ({ buttonEvent, currentColo
 
   useEffect(() => {
     nowColor = colorList[curIndex[0]][curIndex[1]];
-    console.log(nowColor);
   }, [curIndex]);
 
   const selectColor = (color) => {
