@@ -4,27 +4,27 @@
 
 ## 💻 Day 1
 ### 📌 [FE] 수입/지출 토글버튼 버그 수정
-    - Color를 State로 주지 않아 바로 반영되지 않던 문제 해결
-    - income, expend로 분할된 state를 하나로 통합
+- Color를 State로 주지 않아 바로 반영되지 않던 문제 해결
+- income, expend로 분할된 state를 하나로 통합
 
 ### 📌 [FE] SVG를 활용한 PieChart 구현
-    - 파이차트의 구조
-        ```tsx
-            <svg>
-                <g>
-                    <path d={toPieChartItemPath(...)}>        # 부채꼴 도형
-                    <text></text>                             # name : money
-                    <text></text>                             # percent
-                </g>
-            </svg>
-        ```
-        - 위와 같은 구조를 갖도록 설계하였으며 카테고리당 `<g>...</g>` 의 컴포넌트를 만들어 삽입해주었다.
-    - 파이차트 path 계산
-        - `toPieChartItemPath(x, y, radiusIn, radiusOut, startAngle, endAngle)`를 통해 각 path를 그려주었다.
-        - **x, y** : 파이차트의 중심점
-        - **radiusIn, radiusOut** : 파이차트의 내부 반지름과 외부 반지름 값
-        - **startAngle, endAngle** : 시작각도(12시 방향이 0도)와 종료각도(시계방향)
-    - 초기 svg 의 틀을 잡는 것은 [링크](http://www.gisdeveloper.co.kr/?p=4705&unapproved=30494&moderation-hash=2dd8a7ec9ffc9f43e8261c36f23beced#comment-30494)를 참고하여 진행하였다.
+- 파이차트의 구조
+    ```tsx
+        <svg>
+            <g>
+                <path d={toPieChartItemPath(...)}>        # 부채꼴 도형
+                <text></text>                             # name : money
+                <text></text>                             # percent
+            </g>
+        </svg>
+    ```
+    - 위와 같은 구조를 갖도록 설계하였으며 카테고리당 `<g>...</g>` 의 컴포넌트를 만들어 삽입해주었다.
+- 파이차트 path 계산
+    - `toPieChartItemPath(x, y, radiusIn, radiusOut, startAngle, endAngle)`를 통해 각 path를 그려주었다.
+    - **x, y** : 파이차트의 중심점
+    - **radiusIn, radiusOut** : 파이차트의 내부 반지름과 외부 반지름 값
+    - **startAngle, endAngle** : 시작각도(12시 방향이 0도)와 종료각도(시계방향)
+- 초기 svg 의 틀을 잡는 것은 [링크](http://www.gisdeveloper.co.kr/?p=4705&unapproved=30494&moderation-hash=2dd8a7ec9ffc9f43e8261c36f23beced#comment-30494)를 참고하여 진행하였다.
 
 # Sprint 4
 
