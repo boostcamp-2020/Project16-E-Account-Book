@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import CheckSVG from '@svg/check.svg';
+import colorUtils from '@utils/color';
 
 interface Props extends SizeProps {
   backgroundColor: string;
-  onClick?: () => void;
+  buttonEvent?: (data) => void;
 }
 
 interface SizeProps {
@@ -12,7 +14,7 @@ interface SizeProps {
 
 const defaultProps = {
   size: '1.5rem',
-  onClick: undefined,
+  buttonEvent: undefined,
 };
 
 const Div = styled.div<Props>`
@@ -20,10 +22,41 @@ const Div = styled.div<Props>`
   width: ${(props) => props.size};
   height: ${(props) => props.size};
   border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  padding-top: 0.1rem;
 `;
 
-const ColorLabel: React.FC<Props> = ({ ...args }: Props) => {
-  return <Div {...args} />;
+const ColorLabel: React.FC<Props> = ({ buttonEvent, size, backgroundColor }: Props) => {
+  const [checkDisplay, setCheckDisplay] = useState('none');
+
+  const changeCheckDisplay = () => {
+    if (checkDisplay === 'none') {
+      setCheckDisplay('');
+    } else {
+      setCheckDisplay('none');
+    }
+  };
+
+  return (
+    <Div
+      size={size}
+      backgroundColor={backgroundColor}
+      onClick={() => {
+        if (buttonEvent) {
+          buttonEvent(backgroundColor);
+          changeCheckDisplay();
+        }
+      }}
+    >
+      <CheckSVG
+        width="70%"
+        height="70%"
+        display={checkDisplay}
+        fill={colorUtils.getFontColor(backgroundColor)}
+      />
+    </Div>
+  );
 };
 
 ColorLabel.defaultProps = defaultProps;
