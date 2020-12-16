@@ -17,10 +17,7 @@ const MonthNavMarginBox = styled.div`
   height: 2rem; {/* <TopNavBar /> */
 `;
 
-const Container = styled.div`
-  border: 2px solid white;
-  border-radius: 5px;
-`;
+const Container = styled.div``;
 
 const initCategory = {
   income: [],
