@@ -6,7 +6,7 @@ import ColorLabel from '@atoms/div/ColorLabel';
 import TextButton from '@atoms/button/TextButton';
 import styled from 'styled-components';
 import getRandomKey from '@utils/random';
-import ColorList from '@theme/colorList';
+import getColorList from '@theme/colorList';
 
 interface Props {
   currentColor: string;
@@ -33,7 +33,7 @@ const ButtonDiv = styled.div`
 const CreateAccountbookColorModal: React.FC<Props> = ({ currentColor }: Props) => {
   const title = '색상 변경하기';
 
-  const colorList = ColorList;
+  const colorList = getColorList();
 
   colorList[0][0] = currentColor;
 
