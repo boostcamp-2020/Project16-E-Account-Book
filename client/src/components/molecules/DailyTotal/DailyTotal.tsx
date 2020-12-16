@@ -35,11 +35,12 @@ const DailyTotal = styled.div<SizeProps>`
   justify-content: space-between;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
-  border: 1px solid ${myColor.calendar.border};
+  border-bottom: 1px solid ${myColor.calendar.border};
   border-radius: 3px;
   box-sizing: border-box;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  margin-top: 0.1rem;
   font-size: 3px;
   color: ${myColor.primary.cancel};
 `;
