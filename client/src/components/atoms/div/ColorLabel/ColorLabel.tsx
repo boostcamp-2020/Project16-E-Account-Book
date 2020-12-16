@@ -5,7 +5,7 @@ import colorUtils from '@utils/color';
 
 interface Props extends SizeProps {
   backgroundColor: string;
-  onClick?: (data) => void;
+  buttonEvent?: (data) => void;
 }
 
 interface SizeProps {
@@ -14,7 +14,7 @@ interface SizeProps {
 
 const defaultProps = {
   size: '1.5rem',
-  onClick: undefined,
+  buttonEvent: undefined,
 };
 
 const Div = styled.div<Props>`
@@ -27,14 +27,14 @@ const Div = styled.div<Props>`
   padding-top: 0.1rem;
 `;
 
-const ColorLabel: React.FC<Props> = ({ onClick, size, backgroundColor }: Props) => {
-  const [checked, setChecked] = useState('none');
+const ColorLabel: React.FC<Props> = ({ buttonEvent, size, backgroundColor }: Props) => {
+  const [checkDisplay, setCheckDisplay] = useState('none');
 
-  const changeChecked = () => {
-    if (checked === 'none') {
-      setChecked('');
+  const changeCheckDisplay = () => {
+    if (checkDisplay === 'none') {
+      setCheckDisplay('');
     } else {
-      setChecked('none');
+      setCheckDisplay('none');
     }
   };
 
@@ -43,16 +43,16 @@ const ColorLabel: React.FC<Props> = ({ onClick, size, backgroundColor }: Props) 
       size={size}
       backgroundColor={backgroundColor}
       onClick={() => {
-        if (onClick) {
-          onClick(backgroundColor);
-          changeChecked();
+        if (buttonEvent) {
+          buttonEvent(backgroundColor);
+          changeCheckDisplay();
         }
       }}
     >
       <CheckSVG
         width="70%"
         height="70%"
-        display={checked}
+        display={checkDisplay}
         fill={colorUtils.getFontColor(backgroundColor)}
       />
     </Div>
