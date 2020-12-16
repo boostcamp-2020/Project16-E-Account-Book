@@ -5,14 +5,13 @@ import CenterContent from '@molecules/CenterContent';
 import CreateAccountbookFormBox from '@organisms/CreateAccountbookFormBox';
 import TopNavBar from '@organisms/TopNavBar';
 import InviteAccountbookCard from '@molecules/InviteAccountbookCard';
-// import colorUtils from '@utils/color';
-// import getColorList from '@theme/colorList';
 import styled from 'styled-components';
 import InvitationModal from '@organisms/InvitationModal';
 import { useSelector } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
+import { useHistory } from 'react-router-dom';
 import * as API from '@utils/api';
-import { getAxiosData } from '@utils/axios';
+import { getAxiosData, patchAxios } from '@utils/axios';
 import CreateAccountbookColorModal from '@organisms/CreateAccountbookColorModal';
 import CreateAccountbookSetting from '@organisms/CreateAccountbookSetting';
 
@@ -30,15 +29,20 @@ const initArgs: InviteProps = {
   name: ' ',
 };
 
-// const backgroundColor = colorUtils.getRandomColorInList(getColorList());
-
 const AccountbookEditPage: React.FC = () => {
   const modalView = useSelector((state: RootState) => state.modal.view);
   const accountbookId = useSelector((state: RootState) => state.accountbook.socialId);
   const [accountbookMainColor, setAccountbookMainColor] = useState('#FF0000');
+  const history = useHistory();
 
   const editButtonClick = async (name: string, description: string) => {
-    console.log(name, description, accountbookMainColor);
+    const data = {
+      name,
+      description,
+      color: accountbookMainColor,
+    };
+    await patchAxios(API.PATCH_SOCIAL_ACCOUNTBOOK(accountbookId), data);
+    history.push('/');
   };
 
   const [inviteArgs, setInviteArgs] = useState<InviteProps>(initArgs);
