@@ -33,7 +33,7 @@ const WeekDiv = styled.div`
 `;
 
 const Calendar = styled.div`
-  border: 2px solid ${Color.calendar.border};
+  border: 2px solid transparent;
 `;
 
 const EmptyBox = styled.div`

@@ -49,10 +49,16 @@ const DIV1 = styled.div`
   text-align: end;
 `;
 const DIV2 = styled.div`
+  display: flex;
   flex: 1;
+  justify-content: flex-end;
+  padding: 0 4px 0 0;
 `;
 const DIV3 = styled.div`
+  display: flex;
   flex: 1;
+  justify-content: flex-end;
+  padding: 0 4px 0 0;
 `;
 const moneyOfWeek: React.FC<Props> = ({
   fontWeight,
