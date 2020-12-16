@@ -75,7 +75,8 @@ const AccountbookEditPage: React.FC = () => {
       <CenterContent>
         <TopNavBar backgroundColor={accountbookMainColor} />
         <CreateAccountbookFormBox
-          // buttonName="수정"
+          // eslint-disable-next-line jsx-a11y/aria-role
+          role="수정"
           buttonEvent={editButtonClick}
           backgroundColor={accountbookMainColor}
         />

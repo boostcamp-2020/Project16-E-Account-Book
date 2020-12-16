@@ -8,14 +8,19 @@ import RoundShortButton from '@atoms/button/RoundShortButton';
 import colorUtils from '@utils/color';
 
 interface Props {
+  role: string;
   backgroundColor: string;
   buttonEvent: (name, description) => any;
 }
 
-const CreateAccountbookFormBox: React.FC<Props> = ({ buttonEvent, backgroundColor }: Props) => {
+const CreateAccountbookFormBox: React.FC<Props> = ({
+  role,
+  buttonEvent,
+  backgroundColor,
+}: Props) => {
   const fontColor = colorUtils.getFontColor(backgroundColor);
   const buttonColor = fontColor === 'white' ? 'black' : 'white';
-
+  const title = `가계부 ${role}`;
   const [name, setName] = useState();
   const [description, setDescription] = useState();
 
@@ -38,7 +43,7 @@ const CreateAccountbookFormBox: React.FC<Props> = ({ buttonEvent, backgroundColo
       >
         <RowFlexContainer width="100%" justifyContent="space-between">
           <LeftLargeText color={fontColor} fontWeight="bold">
-            가계부 생성
+            {title}
           </LeftLargeText>
           <RoundShortButton
             border="none"
@@ -46,7 +51,7 @@ const CreateAccountbookFormBox: React.FC<Props> = ({ buttonEvent, backgroundColo
             color={fontColor}
             onClick={() => buttonEvent(name, description)}
           >
-            생성
+            {role}
           </RoundShortButton>
         </RowFlexContainer>
         <RowFlexContainer width="100%" justifyContent="baseline">

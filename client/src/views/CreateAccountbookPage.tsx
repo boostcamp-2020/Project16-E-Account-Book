@@ -48,6 +48,8 @@ const CreateAccountbookPage: React.FC = () => {
       <CenterContent>
         <TopNavBar backgroundColor={accountbookMainColor} />
         <CreateAccountbookFormBox
+          // eslint-disable-next-line jsx-a11y/aria-role
+          role="생성"
           buttonEvent={createButtonClick}
           backgroundColor={accountbookMainColor}
         />
