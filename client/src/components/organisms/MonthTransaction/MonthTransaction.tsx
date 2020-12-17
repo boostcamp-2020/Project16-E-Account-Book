@@ -21,11 +21,7 @@ const Filter = styled.div`
   justify-content: space-around;
 `;
 
-const MonthTransaction = styled.div`
-  border: 2px solid ${Color.calendar.border};
-  box-sizing: border-box;
-  border-radius: 5px;
-`;
+const MonthTransaction = styled.div``;
 
 const monthTransaction: React.FC<Props> = ({ dateData, monthData }: Props) => {
   monthData.sort((a, b): any => Number(new Date(b.date)) - Number(new Date(a.date)));

@@ -32,17 +32,11 @@ const WeekDiv = styled.div`
   display: flex;
 `;
 
-const Calendar = styled.div`
-  border: 2px solid ${Color.calendar.border};
-  border-radius: 5px;
-`;
+const Calendar = styled.div``;
 
 const EmptyBox = styled.div`
   width: 100%;
   height: 3.3rem;
-  background: ${Color.calendar.main};
-  border: 1px solid ${Color.calendar.border};
-  box-sizing: border-box;
 `;
 
 const MonthNavMarginBox = styled.div`
@@ -142,7 +136,7 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
                     <DayBox
                       date={day.date}
                       width="100%"
-                      height="3.3rem"
+                      height="3.8rem"
                       onClick={() => onClick(day.date)}
                       InMoney={day.inmoney === 0 ? -1 : day.inmoney}
                       ExMoney={day.exmoney === 0 ? -1 : day.exmoney}

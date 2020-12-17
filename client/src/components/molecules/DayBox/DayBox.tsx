@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components';
 import InText from '@atoms/p/IncomeText';
 import ExText from '@atoms/p/ExpenditureText';
 import myColor from '@theme/color';
+import ColumnFlexContainer from '@atoms/div/ColumnFlexContainer';
 
 interface Props extends SizeProps, TextProps {
   date: number;
@@ -45,7 +46,6 @@ const DayBox = styled.div<SizeProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid ${myColor.calendar.border};
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   box-sizing: border-box;
@@ -75,13 +75,27 @@ const dayBox: React.FC<Props> = ({
     <DayBox width={width} height={height} onClick={onClick}>
       {date !== 0 ? (
         <>
-          {date}
-          {inCheck && (
-            <InText money={InMoney} fontWeight={fontWeight} fontSize={fontSize} color={InColor} />
-          )}
-          {exCheck && (
-            <ExText money={ExMoney} fontWeight={fontWeight} fontSize={fontSize} color={ExColor} />
-          )}
+          <ColumnFlexContainer height="100%" justifyContent="space-between" alignItems="center">
+            <div>{date}</div>
+            <div>
+              {inCheck && (
+                <InText
+                  money={InMoney}
+                  fontWeight={fontWeight}
+                  fontSize={fontSize}
+                  color={InColor}
+                />
+              )}
+              {exCheck && (
+                <ExText
+                  money={ExMoney}
+                  fontWeight={fontWeight}
+                  fontSize={fontSize}
+                  color={ExColor}
+                />
+              )}
+            </div>
+          </ColumnFlexContainer>
         </>
       ) : (
         <></>
