@@ -11,8 +11,6 @@ import { useDispatch } from 'react-redux';
 
 interface Props {
   links: string[];
-  backgroundColor: string;
-  name: string;
 }
 
 interface squircleCardProps {
@@ -22,7 +20,7 @@ interface squircleCardProps {
   flexFlow: string;
 }
 
-const InviteAccountbookCard: React.FC<Props> = ({ links, backgroundColor, name }: Props) => {
+const InviteAccountbookCard: React.FC<Props> = ({ links }: Props) => {
   const dispatch = useDispatch();
 
   const openModal = (view: string) => {
@@ -30,9 +28,9 @@ const InviteAccountbookCard: React.FC<Props> = ({ links, backgroundColor, name }
   };
 
   const squircleCardArgs: squircleCardProps = {
-    width: '100%',
-    height: '10rem',
-    backgroundColor,
+    width: '90%',
+    height: '8rem',
+    backgroundColor: 'white',
     flexFlow: 'column',
   };
 
@@ -46,7 +44,6 @@ const InviteAccountbookCard: React.FC<Props> = ({ links, backgroundColor, name }
         </RowFlexContainer>
         <RowFlexContainer justifyContent="space-between" width="100%" height="70%">
           <UserImages links={links} />
-          {name}
           <SquircleShortButton onClick={() => openModal('InvitationModal')}>
             초대하기
           </SquircleShortButton>

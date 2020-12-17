@@ -8,12 +8,16 @@ import RoundShortButton from '@atoms/button/RoundShortButton';
 import colorUtils from '@utils/color';
 
 interface Props {
+  name: string;
+  description: string;
   role: string;
   backgroundColor: string;
   buttonEvent: (name, description) => any;
 }
 
 const CreateAccountbookFormBox: React.FC<Props> = ({
+  name: initName,
+  description: initDescription,
   role,
   buttonEvent,
   backgroundColor,
@@ -21,9 +25,9 @@ const CreateAccountbookFormBox: React.FC<Props> = ({
   const fontColor = colorUtils.getFontColor(backgroundColor);
   const buttonColor = fontColor === 'white' ? 'black' : 'white';
   const title = `가계부 ${role}`;
-  const [name, setName] = useState();
-  const [description, setDescription] = useState();
 
+  const [name, setName] = useState<string>(initName);
+  const [description, setDescription] = useState<string>(initDescription);
   const nameChangeHandler = (event: any) => {
     setName(event.target.value);
   };

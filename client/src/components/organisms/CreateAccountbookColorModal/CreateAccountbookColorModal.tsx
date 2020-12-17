@@ -62,7 +62,7 @@ const CreateAccountbookColorModal: React.FC<Props> = ({ buttonEvent, currentColo
         </TextButton>
       </ButtonDiv>
       <ScrollDiv>
-        <ColumnFlexContainer width="90%">
+        <ColumnFlexContainer width="100%">
           {colorList.map((color) => {
             return (
               <RowFlexContainer

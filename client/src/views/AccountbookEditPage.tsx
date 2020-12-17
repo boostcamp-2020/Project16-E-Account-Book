@@ -32,10 +32,14 @@ const initArgs: InviteProps = {
 const AccountbookEditPage: React.FC = () => {
   const modalView = useSelector((state: RootState) => state.modal.view);
   const accountbookId = useSelector((state: RootState) => state.accountbook.socialId);
-  const [accountbookMainColor, setAccountbookMainColor] = useState('#FF0000');
+  const [accountbookMainColor, setAccountbookMainColor] = useState('#FFFFFF');
   const history = useHistory();
 
   const editButtonClick = async (name: string, description: string) => {
+    if (name === '') {
+      alert('가계부 이름을 입력해주세요!');
+      return;
+    }
     const data = {
       name,
       description,
@@ -63,8 +67,11 @@ const AccountbookEditPage: React.FC = () => {
   }, []);
 
   const SettingContainer = styled.div`
-    width = 100%;
-    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 1rem 0;
   `;
 
   const getAccountbookMainColor = (color) => {
@@ -83,6 +90,8 @@ const AccountbookEditPage: React.FC = () => {
           role="수정"
           buttonEvent={editButtonClick}
           backgroundColor={accountbookMainColor}
+          name=""
+          description=""
         />
         <SettingContainer>
           <InviteAccountbookCard {...inviteArgs} />

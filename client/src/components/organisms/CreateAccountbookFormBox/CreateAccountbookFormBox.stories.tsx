@@ -15,6 +15,8 @@ const testFunc = (name: any, description: any) => {
 export const createAccountbookFormBox = (): JSX.Element => {
   return (
     <CreateAccountbookFormBox
+      name="가계부 이름"
+      description="가계부 설명"
       // eslint-disable-next-line jsx-a11y/aria-role
       role="생성"
       buttonEvent={testFunc('슈퍼가계부', '슈퍼가계부 입니다')}

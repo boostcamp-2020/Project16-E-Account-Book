@@ -22,7 +22,11 @@ const CreateAccountbookPage: React.FC = () => {
   const [accountbookMainColor, setAccountbookMainColor] = useState(backgroundColor);
   const history = useHistory();
 
-  const createButtonClick = async (name: any, description: any) => {
+  const createButtonClick = async (name: string, description: string) => {
+    if (name === '') {
+      alert('가계부 이름을 입력해주세요!');
+      return;
+    }
     const data = {
       name,
       description,
@@ -52,6 +56,8 @@ const CreateAccountbookPage: React.FC = () => {
           role="생성"
           buttonEvent={createButtonClick}
           backgroundColor={accountbookMainColor}
+          name=""
+          description=""
         />
         <SettingContainer>
           <CreateAccountbookSetting labelColor={accountbookMainColor} />

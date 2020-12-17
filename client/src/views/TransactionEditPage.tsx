@@ -57,7 +57,6 @@ const TransactionPostPage: React.FC = () => {
   };
 
   const deleteTransaction = async (id) => {
-    console.log(id);
     switch (accountbookType) {
       case 'PRIVATE':
         await deleteAxios(API.DELETE_PRIVATE_TRANSACTION(id));
