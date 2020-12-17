@@ -12,20 +12,13 @@ import TransactionPage from '@views/TransactionPage';
 import CalendarPage from '@views/CalendarPage';
 import StatisticsPage from '@views/StatisticsPage';
 
-// eslint-disable-next-line no-shadow
-enum Menu {
-  Transaction,
-  Calendar,
-  Statistic,
-}
-
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
   },
 });
 
-const Accountbook: React.FC = () => {
+const AccountbookPage: React.FC = () => {
   const classes = useStyles();
   const [value, setValue] = useState(1);
 
@@ -59,18 +52,15 @@ const Accountbook: React.FC = () => {
   };
 
   const renderTransaction = () => {
-    setValue(Menu.Transaction);
-    return <TransactionPage />;
+    return <TransactionPage callback={setValue} />;
   };
 
   const renderCalendar = () => {
-    setValue(Menu.Calendar);
-    return <CalendarPage />;
+    return <CalendarPage callback={setValue} />;
   };
 
   const renderStatistics = () => {
-    setValue(Menu.Statistic);
-    return <StatisticsPage />;
+    return <StatisticsPage callback={setValue} />;
   };
 
   return (
@@ -109,4 +99,4 @@ const Accountbook: React.FC = () => {
   );
 };
 
-export default Accountbook;
+export default AccountbookPage;
