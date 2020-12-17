@@ -45,12 +45,11 @@ const getOAuthUserData = async (url: string, token: string, tokenType: string) =
 
 const createBasePayment = async (userId: number) => {
   const basePaymentId = await sql(query.GET_PAYMENT_ID_BY_NAME, ['현금']);
-
-  await sql(query.CREATE_USER_PAYMENTS, [userId, basePaymentId]);
+  await sql(query.CREATE_USER_PAYMENTS, [userId, basePaymentId[0].id]);
 };
 
 const insertUser = async (props: InsertUser) => {
-  const { pid, email, name, region, color, isSunday, oAuthOrigin } = props;
+  const { pid, email, name, region, isSunday, oAuthOrigin } = props;
   let { picture } = props;
   if (!picture) {
     picture = process.env.DEFAULT_IMG;
@@ -61,7 +60,6 @@ const insertUser = async (props: InsertUser) => {
     name,
     region,
     picture,
-    color,
     isSunday,
     oAuthOrigin,
   ]);
@@ -77,7 +75,7 @@ const findUser = async (props: SelectUser) => {
 };
 
 const createPrivateAccountbook = async (userId: number) => {
-  await sql(query.CREATE_PRIVATE_BOOK, [userId, '내 가계부', '', '#F4C239']);
+  await sql(query.CREATE_PRIVATE_BOOK, [userId]);
 };
 
 export {

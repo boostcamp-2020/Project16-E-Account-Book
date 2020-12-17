@@ -1,5 +1,5 @@
 const privateBookQuery = {
-  CREATE_PRIVATE_BOOK: `INSERT INTO private_accountbook (user_id, name, description, color) VALUES(?,?,?,?)`,
+  CREATE_PRIVATE_BOOK: `INSERT INTO private_accountbook (user_id) VALUES(?)`,
   CREATE_PRIVATE_TRANSACTION: `INSERT INTO private_transaction (accountbook_id, category_id, payment_id, date, title, amount) VALUES(?,?,?,?,?,?)`,
   GET_PRIVATE_TRANSACTIONLIST: `
     SELECT pt.id, pt.date, py.name, ct.name as category, pt.title, pt.amount, at.name as assortment FROM private_transaction as pt 
