@@ -48,7 +48,15 @@ const myColor: Colors = {
   },
 };
 
-export const incomeColor = ['#FFD969', '#FFD03D', '#CCA531', '#80671F', '#665B37'];
+export const incomeColor = [
+  '#FFA500',
+  '#FFC31E',
+  '#FFE13C',
+  '#FADCA5',
+  '#FAFAB4',
+  '#F7F4ED',
+  '#FFFFFF',
+];
 
 export const expenditureColor = [
   '#2E2F78',
