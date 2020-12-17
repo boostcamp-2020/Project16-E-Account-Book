@@ -36,6 +36,10 @@ const AccountbookEditPage: React.FC = () => {
   const history = useHistory();
 
   const editButtonClick = async (name: string, description: string) => {
+    if (name === '') {
+      alert('가계부 이름을 입력해주세요!');
+      return;
+    }
     const data = {
       name,
       description,
