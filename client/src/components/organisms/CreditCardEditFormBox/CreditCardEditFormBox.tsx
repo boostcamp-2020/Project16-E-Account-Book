@@ -17,7 +17,7 @@ const CreditCardEditFormBox: React.FC<Props> = ({ buttonEvent }: Props) => {
   };
   return (
     <ColumnFlexContainer width="100%" margin="0 0 2rem 0" alignItems="baseline">
-      <LeftSmallText>결재 수단 이름</LeftSmallText>
+      <LeftSmallText>결제 수단 이름</LeftSmallText>
       <RowFlexContainer width="100%" margin="2rem 0 0 0 " justifyContent="space-between">
         <Input width="70%" value={name} onChange={nameChangeHandler} />
         <RoundShortButton onClick={() => buttonEvent(name)}>등록</RoundShortButton>
