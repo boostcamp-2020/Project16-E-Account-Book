@@ -37,8 +37,12 @@ export const updateSocialBook = async (ctx: any) => {
 export const getSocialBooks = async (ctx: Context) => {
   const userId = ctx.userData.uid;
   const socialBookResult = await Service.getSocialBooks(userId);
-  const result = await Service.getUserImages(socialBookResult);
-  response.success(ctx, result);
+  if (!socialBookResult) {
+    response.success(ctx, []);
+  } else {
+    const result = await Service.getUserImages(socialBookResult);
+    response.success(ctx, result);
+  }
 };
 
 export const getSocialBooksMaster = async (ctx: Context) => {
