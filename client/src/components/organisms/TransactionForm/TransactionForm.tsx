@@ -155,7 +155,7 @@ const transactionForm: React.FC<Props> = ({ initData }: Props) => {
 
   return (
     <>
-      {modalView !== 'none' ? <SmsParsingModal setData={setParsedData} /> : undefined}
+      {modalView === 'sms' && <SmsParsingModal setData={setParsedData} />}
       <ColumnFlexContainer width="100%" justifyContent="space-around">
         <RowFlexContainer width="100%" alignItems="center">
           <ToggleButton
