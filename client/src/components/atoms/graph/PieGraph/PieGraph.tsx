@@ -161,6 +161,15 @@ const PieGraph: React.FC<Props> = ({ size, data, colors, fontColor, backgroundCo
   const drawPieChart = () => {
     const pieComponents: any[] = [];
     let radiusSum = 0;
+    if (data.length === 1) {
+      const { name, money, percent } = data[0];
+      const radius = percent * 3.5999;
+      const info = `${name} : ${numberToMoney(money)} 원`;
+      const component = pieComponent(info, colors[0], radiusSum, radiusSum + radius, percent);
+      pieComponents.push(component);
+      radiusSum += radius;
+      return pieComponents;
+    }
     data.forEach((element, index) => {
       const { name, money, percent } = element;
       const radius = percent * 3.6;
@@ -169,7 +178,6 @@ const PieGraph: React.FC<Props> = ({ size, data, colors, fontColor, backgroundCo
       pieComponents.push(component);
       radiusSum += radius;
     });
-
     return pieComponents;
   };
   return (

@@ -63,7 +63,11 @@ const CreditCardEditModal: React.FC = () => {
 
   const title = '결제 수단 관리';
 
-  const createButtonClick = async (name: any) => {
+  const createButtonClick = async (name: string) => {
+    if (name === '') {
+      alert('이름을 입력해주세요.');
+      return;
+    }
     await Axios.postAxios(API.POST_PAYMENT, { name });
 
     const newPayment = await Axios.getAxiosData(API.GET_PAYMENT);
