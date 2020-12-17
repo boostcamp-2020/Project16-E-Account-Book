@@ -6,6 +6,7 @@ import { RootState } from '@reducers/rootReducer';
 import { getTransaction } from '@actions/transaction/type';
 import { getAxiosData } from '@utils/axios';
 import * as API from '@utils/api';
+import getRandomKey from '@utils/random';
 
 const TransactionPage: React.FC = () => {
   const year = useSelector((state: RootState) => state.date.year);
@@ -40,7 +41,7 @@ const TransactionPage: React.FC = () => {
   }, [dateData]);
   return (
     <>
-      <MonthTransaction dateData={dateData} monthData={transactionList} />
+      <MonthTransaction key={getRandomKey()} dateData={dateData} monthData={transactionList} />
       <NewTransactionButton />
     </>
   );
