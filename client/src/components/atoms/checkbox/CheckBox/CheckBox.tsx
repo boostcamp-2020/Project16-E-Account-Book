@@ -65,7 +65,7 @@ const Description = styled.div<DescriptionProps>`
 const Checkbox: React.FC<Props> = ({ onClick, checked, description, color }: Props) => {
   return (
     <CheckBox>
-      <Hidden checked={checked} />
+      <Hidden checked={checked} onChange={() => {}} />
       <Box checked={checked} color={color} onClick={onClick}>
         <Mark viewBox="0 0 24 24">
           <polyline points="20 6 9 17 4 12" />
