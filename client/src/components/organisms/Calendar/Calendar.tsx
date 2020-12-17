@@ -132,22 +132,21 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
                   return <EmptyBox key={getRandomKey()} />;
                 }
                 return (
-                  <>
-                    <DayBox
-                      date={day.date}
-                      width="100%"
-                      height="3.8rem"
-                      onClick={() => onClick(day.date)}
-                      InMoney={day.inmoney === 0 ? -1 : day.inmoney}
-                      ExMoney={day.exmoney === 0 ? -1 : day.exmoney}
-                      InColor={Color.money.income}
-                      ExColor={Color.money.expenditure}
-                      fontWeight="bold"
-                      fontSize="8px"
-                      inCheck={inCheck}
-                      exCheck={exCheck}
-                    />
-                  </>
+                  <DayBox
+                    key={getRandomKey()}
+                    date={day.date}
+                    width="100%"
+                    height="3.8rem"
+                    onClick={() => onClick(day.date)}
+                    InMoney={day.inmoney === 0 ? -1 : day.inmoney}
+                    ExMoney={day.exmoney === 0 ? -1 : day.exmoney}
+                    InColor={Color.money.income}
+                    ExColor={Color.money.expenditure}
+                    fontWeight="bold"
+                    fontSize="8px"
+                    inCheck={inCheck}
+                    exCheck={exCheck}
+                  />
                 );
               })}
             </WeekDiv>
