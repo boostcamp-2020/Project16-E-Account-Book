@@ -5,6 +5,7 @@ import Caution from '@svg/caution.svg';
 import CautionMent from '@atoms/p/CenterNormalText';
 
 interface Props {
+  color: string;
   children: React.ReactChild;
 }
 
@@ -12,11 +13,11 @@ const SVG = styled.img`
   border: 0;
 `;
 
-const preparationBox: React.FC<Props> = ({ children }: Props) => {
+const preparationBox: React.FC<Props> = ({ color, children }: Props) => {
   return (
     <ColumnFlexContainer margin="auto" alignItems="center">
       <SVG src={Caution} alt="caution" />
-      <CautionMent>{children}</CautionMent>
+      <CautionMent color={color}>{children}</CautionMent>
     </ColumnFlexContainer>
   );
 };

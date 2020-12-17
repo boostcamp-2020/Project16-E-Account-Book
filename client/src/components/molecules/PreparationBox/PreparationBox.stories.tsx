@@ -14,7 +14,7 @@ export default {
 };
 
 export const preparationBox = ({ children }: Props): JSX.Element => {
-  return <PreparationBox>{children}</PreparationBox>;
+  return <PreparationBox color="black">{children}</PreparationBox>;
 };
 
 preparationBox.story = {

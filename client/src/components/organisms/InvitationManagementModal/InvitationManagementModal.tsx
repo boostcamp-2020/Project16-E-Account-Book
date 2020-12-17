@@ -6,6 +6,7 @@ import { Invitation } from '@interfaces/accountbook';
 import { getAxiosData, patchAxios } from '@utils/axios';
 import * as API from '@utils/api';
 import PreparationBox from '@molecules/PreparationBox';
+import myColor from '@theme/color';
 
 const Container = styled.div`
   overflow: scroll;
@@ -46,7 +47,7 @@ const InvitationManagementModal: React.FC = () => {
     <Modal title={title}>
       <Container>
         {invitations.length === 0 ? (
-          <PreparationBox>내역이 없습니다</PreparationBox>
+          <PreparationBox color={myColor.primary.black}>내역이 없습니다</PreparationBox>
         ) : (
           invitationCards()
         )}

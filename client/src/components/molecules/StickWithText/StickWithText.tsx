@@ -33,17 +33,14 @@ const Div1 = styled.div`
   width: 10%;
 `;
 const Div2 = styled.div`
-  width: 3%;
+  width: 10%;
 `;
 const Div3 = styled.div`
-  width: 3%;
-`;
-const Div4 = styled.div`
   display: flex;
   flex-direction: row;
   width: 50%;
 `;
-const Div5 = styled.div`
+const Div4 = styled.div`
   display: flex;
   flex-direction: row;
   width: 20%;
@@ -57,6 +54,7 @@ const stickWithText: React.FC<Props> = ({
   inColor,
   outColor,
 }: Props) => {
+  const percents = `${percent}%`;
   return (
     <StickWithText>
       <Div1>
@@ -66,15 +64,10 @@ const stickWithText: React.FC<Props> = ({
       </Div1>
       <Div2>
         <CenterLargeText color={myColor.primary.white} fontSize="9px">
-          {percent}
+          {percents}
         </CenterLargeText>
       </Div2>
       <Div3>
-        <CenterLargeText color={myColor.primary.white} fontSize="9px">
-          %
-        </CenterLargeText>
-      </Div3>
-      <Div4>
         <StickGraph
           inColor={inColor}
           outColor={outColor}
@@ -82,13 +75,13 @@ const stickWithText: React.FC<Props> = ({
           height={height}
           percent={percent}
         />
-      </Div4>
-      <Div5>
+      </Div3>
+      <Div4>
         <NumberText color={myColor.primary.white} fontWeight="bold" fontSize="9px" money={money} />
         <CenterLargeText color={myColor.primary.white} fontSize="9px">
           원
         </CenterLargeText>
-      </Div5>
+      </Div4>
     </StickWithText>
   );
 };

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import myColor, { incomeColor, expenditureColor } from '@theme/color';
 import StickWithText from '@molecules/StickWithText';
 import getRandomKey from '@utils/random';
+import PreparationBox from '@molecules/PreparationBox';
 
 interface Props {
   data: any;
@@ -33,6 +34,7 @@ const stickChart: React.FC<Props> = ({ data, isIncome }: Props) => {
   if (data.expenditure) {
     maxFourExpenditure = data.expenditure.slice(0, 4);
   }
+
   const incomeStick = () =>
     maxFourIncome.map((ele: any, index) => {
       const { name } = ele;
@@ -79,7 +81,21 @@ const stickChart: React.FC<Props> = ({ data, isIncome }: Props) => {
       );
     });
 
-  return <StickChart>{isIncome ? incomeStick() : expenditureStick()}</StickChart>;
+  const checkIncomeValue = () => {
+    if (maxFourIncome.length >= 1) {
+      return incomeStick();
+    }
+    return <PreparationBox color={myColor.primary.white}>내역이 없습니다.</PreparationBox>;
+  };
+
+  const checkExpenditureValue = () => {
+    if (maxFourExpenditure.length >= 1) {
+      return expenditureStick();
+    }
+    return <PreparationBox color={myColor.primary.white}>내역이 없습니다.</PreparationBox>;
+  };
+
+  return <StickChart>{isIncome ? checkIncomeValue() : checkExpenditureValue()}</StickChart>;
 };
 
 export default stickChart;
