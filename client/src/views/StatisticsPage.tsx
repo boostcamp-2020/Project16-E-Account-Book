@@ -69,12 +69,6 @@ const StatisticsPage: React.FC = () => {
   };
 
   useEffect(() => {
-    console.log(isIncome);
-    console.log(accountbookType);
-    console.log(accountbookId);
-  }, [dateData]);
-
-  useEffect(() => {
     initFourMonthData();
     initFiveWeekData();
     initStickData();
