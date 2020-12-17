@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PieGraph from '@atoms/graph/PieGraph';
 import myColor, { incomeColor, expenditureColor } from '@theme/color';
+import PreparationBox from '@molecules/PreparationBox';
 
 interface Props {
   data: any;
@@ -34,13 +35,21 @@ const pieChart: React.FC<Props> = ({ data, isIncome }: Props) => {
     />
   );
 
-  return (
-    <Container>
-      {isIncome
-        ? drawChart(data.income, incomeColor)
-        : drawChart(data.expenditure, expenditureColor)}
-    </Container>
-  );
+  const checkIncomeValue = () => {
+    if (data.income.length >= 1) {
+      return drawChart(data.income, incomeColor.reverse());
+    }
+    return <PreparationBox color={myColor.primary.white}>내역이 없습니다.</PreparationBox>;
+  };
+
+  const checkExpenditureValue = () => {
+    if (data.expenditure.length >= 1) {
+      return drawChart(data.expenditure, expenditureColor);
+    }
+    return <PreparationBox color={myColor.primary.white}>내역이 없습니다.</PreparationBox>;
+  };
+
+  return <Container>{isIncome ? checkIncomeValue() : checkExpenditureValue()}</Container>;
 };
 
 export default pieChart;

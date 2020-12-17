@@ -32,6 +32,7 @@ const MonthNav: React.FC = () => {
       zIndex="7"
       padding="5px 0 0 0"
       margin="0 0 5px 0"
+      backgroundColor={myColor.primary.white}
     >
       <Button
         color={myColor.primary.black}
