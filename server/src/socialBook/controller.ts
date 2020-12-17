@@ -166,17 +166,17 @@ export const createAccountbookUser = async (ctx: any) => {
 };
 
 export const getTransactionList = async (ctx: any) => {
-  const { accountbookId, year, month } = ctx.params;
+  const { bookId, year, month } = ctx.params;
   const userId = ctx.userData.uid;
 
   const bookIdList = await Service.getBelongSocialBookList(userId);
 
-  if (!bookIdList.includes(Number(accountbookId))) {
+  if (!bookIdList.includes(Number(bookId))) {
     response.fail(ctx, 403, message.NO_SOCIAL_AUTHORIZED);
     return;
   }
 
-  const searchInfo = [accountbookId, year, month];
+  const searchInfo = [bookId, year, month];
   let result = await Service.getTransactionList(searchInfo);
   result = result.map((eachData: TransactionList) => {
     const inmoney = eachData.assortment === '수입' ? eachData.amount : 0;
