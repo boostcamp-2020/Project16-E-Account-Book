@@ -52,15 +52,18 @@ const AccountbookPage: React.FC = () => {
   };
 
   const renderTransaction = () => {
-    return <TransactionPage callback={setValue} />;
+    setValue(0);
+    return <TransactionPage />;
   };
 
   const renderCalendar = () => {
-    return <CalendarPage callback={setValue} />;
+    setValue(1);
+    return <CalendarPage />;
   };
 
   const renderStatistics = () => {
-    return <StatisticsPage callback={setValue} />;
+    setValue(2);
+    return <StatisticsPage />;
   };
 
   return (

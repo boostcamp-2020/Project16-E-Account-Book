@@ -8,12 +8,7 @@ import { getAxiosData } from '@utils/axios';
 import * as API from '@utils/api';
 import DailyTransactionModal from '@organisms/DailyTransactionModal';
 
-interface Props {
-  callback: any;
-}
-
-const CalendarPage: React.FC<Props> = ({ callback }: Props) => {
-  callback(1);
+const CalendarPage: React.FC = () => {
   const year = useSelector((state: RootState) => state.date.year);
   const month = useSelector((state: RootState) => state.date.month);
   const transactionList = useSelector((state: RootState) => state.transaction.transactionList);

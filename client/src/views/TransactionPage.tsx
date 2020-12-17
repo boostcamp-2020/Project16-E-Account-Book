@@ -7,12 +7,7 @@ import { getTransaction } from '@actions/transaction/type';
 import { getAxiosData } from '@utils/axios';
 import * as API from '@utils/api';
 
-interface Props {
-  callback: any;
-}
-
-const TransactionPage: React.FC<Props> = ({ callback }: Props) => {
-  callback(0);
+const TransactionPage: React.FC = () => {
   const year = useSelector((state: RootState) => state.date.year);
   const month = useSelector((state: RootState) => state.date.month);
   const transactionList = useSelector((state: RootState) => state.transaction.transactionList);
