@@ -118,7 +118,7 @@ const invitationModal: React.FC<Props> = ({ socialId }: Props) => {
 
   return (
     <Modal title="초대하기">
-      <RowFlexContainer width="100%"> ID 로 검색</RowFlexContainer>
+      <RowFlexContainer width="100%"> 사용자 이름으로 검색</RowFlexContainer>
       <RowFlexContainer width="100%" justifyContent="space-between" padding="0 0 20px 0">
         <Input value={name} onChange={searchHandler} />
         <RoundShortButton onClick={() => searchUserList(name)}>검색</RoundShortButton>

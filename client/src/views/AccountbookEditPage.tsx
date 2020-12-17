@@ -32,7 +32,7 @@ const initArgs: InviteProps = {
 const AccountbookEditPage: React.FC = () => {
   const modalView = useSelector((state: RootState) => state.modal.view);
   const accountbookId = useSelector((state: RootState) => state.accountbook.socialId);
-  const [accountbookMainColor, setAccountbookMainColor] = useState('#FF0000');
+  const [accountbookMainColor, setAccountbookMainColor] = useState('#FFFFFF');
   const history = useHistory();
 
   const editButtonClick = async (name: string, description: string) => {
@@ -83,6 +83,8 @@ const AccountbookEditPage: React.FC = () => {
           role="수정"
           buttonEvent={editButtonClick}
           backgroundColor={accountbookMainColor}
+          name=""
+          description=""
         />
         <SettingContainer>
           <InviteAccountbookCard {...inviteArgs} />

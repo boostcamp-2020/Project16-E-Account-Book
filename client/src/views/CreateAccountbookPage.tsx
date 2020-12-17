@@ -52,6 +52,8 @@ const CreateAccountbookPage: React.FC = () => {
           role="생성"
           buttonEvent={createButtonClick}
           backgroundColor={accountbookMainColor}
+          name=""
+          description=""
         />
         <SettingContainer>
           <CreateAccountbookSetting labelColor={accountbookMainColor} />
