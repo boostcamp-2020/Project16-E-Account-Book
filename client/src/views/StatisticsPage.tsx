@@ -11,6 +11,9 @@ import { RootState } from '@reducers/rootReducer';
 import { getAxiosData } from '@utils/axios';
 import styled from 'styled-components';
 import * as API from '@utils/api';
+import { CATEGORY, FIVE_WEEK, FOUR_MONTH } from '@utils/description';
+import InformationIcon from '@svg/information.svg.tsx';
+import myColor from '@theme/color';
 
 const MonthNavMarginBox = styled.div`
   width: 100%;
@@ -18,6 +21,8 @@ const MonthNavMarginBox = styled.div`
 `;
 
 const Container = styled.div``;
+
+const Description = styled.div``;
 
 const initCategory = {
   income: [],
@@ -69,31 +74,50 @@ const StatisticsPage: React.FC = () => {
   };
 
   useEffect(() => {
-    console.log(isIncome);
-    console.log(accountbookType);
-    console.log(accountbookId);
-  }, [dateData]);
-
-  useEffect(() => {
     initFourMonthData();
     initFiveWeekData();
     initStickData();
   }, [dateData]);
 
+  const sendInfo = (info) => {
+    return (
+      <InformationIcon
+        onClick={() => alert(info)}
+        height={16}
+        width={16}
+        fill={myColor.primary.gray}
+      />
+    );
+  };
+
   return (
     <Container>
       <MonthNav />
       <MonthNavMarginBox />
-      <ToggleButton
-        leftButtonName="수입"
-        rightButtonName="지출"
-        isIncome={isIncome}
-        setIsIncome={setIsIncome}
-      />
       <ColumFlexContainer width="100%" alignItems="center">
+        <ToggleButton
+          leftButtonName="수입"
+          rightButtonName="지출"
+          isIncome={isIncome}
+          setIsIncome={setIsIncome}
+        />
+      </ColumFlexContainer>
+      <ColumFlexContainer width="100%" alignItems="center">
+        <Description>
+          카테고리 분석 &nbsp;
+          {sendInfo(CATEGORY)}
+        </Description>
         <PieStatistics data={categoryData} isIncome={isIncome} />
         <StickStatistics data={categoryData} isIncome={isIncome} />
+        <Description>
+          5주 요약 분석 &nbsp;
+          {sendInfo(FIVE_WEEK)}
+        </Description>
         <FiveWeekStatistics data={fiveWeekData} isIncome={isIncome} />
+        <Description>
+          최근 4개월 분석 &nbsp;
+          {sendInfo(FOUR_MONTH)}
+        </Description>
         <FourMonthStatistics data={fourMonthData} />
       </ColumFlexContainer>
     </Container>
