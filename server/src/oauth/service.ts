@@ -77,7 +77,7 @@ const findUser = async (props: SelectUser) => {
 };
 
 const createPrivateAccountbook = async (userId: number) => {
-  await sql(query.CREATE_PRIVATE_BOOK, [userId, '내 가계부', '', '#F4C239']);
+  await sql(query.CREATE_PRIVATE_BOOK, [userId]);
 };
 
 export {
