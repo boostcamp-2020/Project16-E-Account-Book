@@ -22,7 +22,7 @@ const Container = styled.button`
 
 const LeftBox = styled.div`
   display: flex;
-  flex: 1.8;
+  flex: 1;
   align-items: center;
 `;
 
@@ -34,8 +34,17 @@ const CenterBox = styled.div`
 
 const RightBox = styled.div`
   display: flex;
-  flex: 1.6;
+  flex: 1.4;
   align-items: center;
+`;
+
+const Setting = styled.button`
+  float: right;
+  margin-right: 8px;
+  margin-top: -40px;
+  border: 0px;
+  background: transparent;
+  width: 20px;
 `;
 
 const defaultProps = {
@@ -65,7 +74,9 @@ const socialAccountBook: React.FC<SocialBook> = ({
   const setSocialId = () => {
     dispatch(setSocial(id));
   };
+
   const moveUrl = '/social/edit';
+
   return (
     <>
       <Container onClick={toSocialAccountBook}>
@@ -82,21 +93,21 @@ const socialAccountBook: React.FC<SocialBook> = ({
               inMoney={Number(incomeSum)}
               exMoney={Number(expenditureSum)}
             />
+            {isMaster && (
+              <Setting onClick={(e) => e.stopPropagation()}>
+                <NavButton
+                  onClick={setSocialId}
+                  moveUrl={moveUrl}
+                  name="setting"
+                  width="16px"
+                  height="16px"
+                  iconColor={myColor.primary.black}
+                />
+              </Setting>
+            )}
           </RightBox>
         </SquircleCard>
       </Container>
-      {isMaster && (
-        <>
-          <NavButton
-            onClick={setSocialId}
-            moveUrl={moveUrl}
-            name="setting"
-            width="20%"
-            height="20%"
-            iconColor={myColor.primary.black}
-          />
-        </>
-      )}
     </>
   );
 };
