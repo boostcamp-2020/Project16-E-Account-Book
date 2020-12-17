@@ -6,7 +6,6 @@ import * as API from '@utils/api';
 import { getAxiosData } from '@utils/axios';
 import UserInviteCard from '@molecules/UserInviteCard/UserInviteCard';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
-import ColumnFlexContainer from '@atoms/div/ColumnFlexContainer';
 import styled from 'styled-components';
 import MyColor from '@theme/color';
 import getRandomKey from '@utils/random';
@@ -125,9 +124,9 @@ const invitationModal: React.FC<Props> = ({ socialId }: Props) => {
         <RoundShortButton onClick={() => searchUserList(name)}>검색</RoundShortButton>
       </RowFlexContainer>
       <Container>{userCards}</Container>
-      <ColumnFlexContainer width="100%" alignContent="center">
+      <RowFlexContainer width="100%" margin="1rem 0">
         초대 대기 목록
-      </ColumnFlexContainer>
+      </RowFlexContainer>
       <Container>{waitedCards}</Container>
     </Modal>
   );

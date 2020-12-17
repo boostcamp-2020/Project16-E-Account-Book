@@ -12,7 +12,7 @@ interface SizeProps {
 }
 
 const defaultProps = {
-  size: '1.5rem',
+  size: '2rem',
   buttonEvent: undefined,
   children: undefined,
 };
@@ -21,7 +21,7 @@ const Div = styled.div<Props>`
   background-color: ${(props) => props.backgroundColor};
   width: ${(props) => props.size};
   height: ${(props) => props.size};
-  border-radius: 50px;
+  border-radius: 50%;
   padding-top: 0.15rem;
   display: flex;
   justify-content: center;

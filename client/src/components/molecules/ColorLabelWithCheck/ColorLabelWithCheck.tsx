@@ -13,7 +13,7 @@ interface SizeProps {
 }
 
 const defaultProps = {
-  size: '1.5rem',
+  size: '2rem',
   buttonEvent: undefined,
 };
 
