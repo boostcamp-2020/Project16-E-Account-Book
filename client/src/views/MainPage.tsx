@@ -17,7 +17,7 @@ import { SocialBook, PrivateBook } from '@interfaces/accountbook';
 import { getAxiosData } from '@utils/axios';
 import * as API from '@utils/api';
 import mainPageMentList from '@utils/mainPageMent';
-import { randomMent } from '@utils/random';
+import { getRandomMent } from '@utils/random';
 
 interface chipsProps {
   link: string;
@@ -100,7 +100,7 @@ const MainPage: React.FC = () => {
               </RowFlexContainer>
               <RowFlexContainer width="90%">
                 <LeftLargeText>
-                  <>{randomMent(mainPageMentList)}</>
+                  <>{getRandomMent(mainPageMentList)}</>
                 </LeftLargeText>
               </RowFlexContainer>
               <PositionBox>
