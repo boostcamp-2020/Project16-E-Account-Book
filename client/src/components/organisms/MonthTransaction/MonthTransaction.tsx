@@ -5,6 +5,7 @@ import CheckBoxWithNumber from '@molecules/CheckBoxWithNumber';
 import Color from '@theme/color';
 import DailyTotal from '@molecules/DailyTotal';
 import DailyTransaction from '@molecules/DailyTransaction';
+import getRandomKey from '@utils/random';
 
 interface Props {
   dateData: string;
@@ -114,6 +115,7 @@ const monthTransaction: React.FC<Props> = ({ dateData, monthData }: Props) => {
           return (
             <>
               <DailyTotal
+                key={getRandomKey()}
                 fontWeight="bold"
                 fontSize="15px"
                 InMoney={getDailyMoney(now, true)}
