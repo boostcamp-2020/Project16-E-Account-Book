@@ -4,7 +4,7 @@ const Router = require('@koa/router');
 
 const router = new Router();
 
-router.get('/info', Controller.getUserInfo);
+router.get('/myInfo', Controller.getMyInfo);
 
 router.get('/list/:name', Controller.getUserByName);
 
