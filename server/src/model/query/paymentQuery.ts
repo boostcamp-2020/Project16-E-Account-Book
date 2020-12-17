@@ -4,13 +4,13 @@ const paymentQuery = {
     FROM user_payment LEFT OUTER JOIN payment ON user_payment.payment_id = payment.id
     WHERE user_payment.user_id = ?`,
   CREATE_USER_PAYMENTS: `
-    INSERT into user_payment (user_id, payment_id) VALUES(?,?)
+    INSERT INTO user_payment (user_id, payment_id) VALUES(?,?)
     `,
   READ_PAYMENTS: `
     SELECT name From payment
   `,
   CREATE_PAYMENTS: `
-    INSERT into payment (name) VALUES(?)
+    INSERT INTO payment (name) VALUES(?)
   `,
 
   DELETE_PAYMENTS: `

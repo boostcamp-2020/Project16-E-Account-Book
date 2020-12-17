@@ -45,8 +45,7 @@ const getOAuthUserData = async (url: string, token: string, tokenType: string) =
 
 const createBasePayment = async (userId: number) => {
   const basePaymentId = await sql(query.GET_PAYMENT_ID_BY_NAME, ['현금']);
-
-  await sql(query.CREATE_USER_PAYMENTS, [userId, basePaymentId]);
+  await sql(query.CREATE_USER_PAYMENTS, [userId, basePaymentId[0].id]);
 };
 
 const insertUser = async (props: InsertUser) => {
