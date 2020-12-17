@@ -32,7 +32,7 @@
     "@typescript-eslint/no-use-before-define": ["error"],
     "import/no-unresolved": "off",
     "no-empty-function": "off",
-    "@typescript-eslint/no-empty-function": ["error"],
+    "@typescript-eslint/no-empty-function": ["off"],
     "prettier/prettier": [
       "error",
       {

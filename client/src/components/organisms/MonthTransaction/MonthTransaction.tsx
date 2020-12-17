@@ -127,11 +127,11 @@ const monthTransaction: React.FC<Props> = ({ dateData, monthData }: Props) => {
                 month={dateData}
                 date={now}
               />
-              <DailyTransaction data={info} />
+              <DailyTransaction key={getRandomKey()} data={info} />
             </>
           );
         }
-        return <DailyTransaction data={info} />;
+        return <DailyTransaction key={getRandomKey()} data={info} />;
       })}
     </MonthTransaction>
   );
