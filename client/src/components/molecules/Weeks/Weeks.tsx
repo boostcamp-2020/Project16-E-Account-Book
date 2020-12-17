@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import getRandomKey from '@utils/random.ts';
 
 interface Props extends SizeProps, textProps {
   startDay: string;
@@ -48,12 +49,24 @@ const weeks: React.FC<Props> = ({ startDay, width, height, color }: Props) => {
     <Weeks width={width} height={height}>
       {dayArray.map((ele: string) => {
         if (ele === '일') {
-          return <Day color="red">{ele}</Day>;
+          return (
+            <Day key={getRandomKey()} color="red">
+              {ele}
+            </Day>
+          );
         }
         if (ele === '토') {
-          return <Day color="blue">{ele}</Day>;
+          return (
+            <Day key={getRandomKey()} color="blue">
+              {ele}
+            </Day>
+          );
         }
-        return <Day color={color}>{ele}</Day>;
+        return (
+          <Day key={getRandomKey()} color={color}>
+            {ele}
+          </Day>
+        );
       })}
     </Weeks>
   );
