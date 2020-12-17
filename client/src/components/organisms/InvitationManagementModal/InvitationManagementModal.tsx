@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { Invitation } from '@interfaces/accountbook';
 import { getAxiosData, patchAxios } from '@utils/axios';
 import * as API from '@utils/api';
+import PreparationBox from '@molecules/PreparationBox';
 
 const Container = styled.div`
   overflow: scroll;
@@ -12,6 +13,7 @@ const Container = styled.div`
     display: none;
   }
   width: 100%;
+  height: 100%;
 `;
 
 const InvitationManagementModal: React.FC = () => {
@@ -40,10 +42,16 @@ const InvitationManagementModal: React.FC = () => {
     invitations.map((invitation) => (
       <Card key={invitation.id} callback={postInvitation} {...invitation} />
     ));
-
+  console.log(invitations);
   return (
     <Modal title={title}>
-      <Container>{invitationCards()}</Container>
+      <Container>
+        {invitations.length === 0 ? (
+          <PreparationBox>내역이 없습니다</PreparationBox>
+        ) : (
+          invitationCards()
+        )}
+      </Container>
     </Modal>
   );
 };
