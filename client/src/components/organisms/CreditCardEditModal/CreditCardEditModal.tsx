@@ -10,7 +10,7 @@ import * as API from '@utils/api';
 import { setPayment } from '@actions/payment/type';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
-import getRandomKey from '@utils/random';
+import { getRandomKey } from '@utils/random';
 
 const ScrollDiv = styled.div`
   overflow: scroll;

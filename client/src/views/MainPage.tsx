@@ -16,6 +16,8 @@ import { RootState } from '@reducers/rootReducer';
 import { SocialBook, PrivateBook } from '@interfaces/accountbook';
 import { getAxiosData } from '@utils/axios';
 import * as API from '@utils/api';
+import mainPageMentList from '@utils/mainPageMent';
+import { randomMent } from '@utils/random';
 
 interface chipsProps {
   link: string;
@@ -81,6 +83,7 @@ const MainPage: React.FC = () => {
     initSocialBooks();
     getAnalysis();
   }, []);
+
   return (
     <>
       <CenterContent>
@@ -97,11 +100,7 @@ const MainPage: React.FC = () => {
               </RowFlexContainer>
               <RowFlexContainer width="90%">
                 <LeftLargeText>
-                  <>
-                    이번 달 소비습관 Good~!😉
-                    <br />
-                    잘하고 있어요!
-                  </>
+                  <>{randomMent(mainPageMentList)}</>
                 </LeftLargeText>
               </RowFlexContainer>
               <PositionBox>

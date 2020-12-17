@@ -11,7 +11,7 @@ import sliceArray from '@utils/sliceArray';
 import { showModal } from '@actions/modal/type';
 import { getTransaction } from '@actions/transaction/type';
 import { useDispatch } from 'react-redux';
-import getRandomKey from '@utils/random.ts';
+import { getRandomKey } from '@utils/random.ts';
 
 interface Props {
   dateData: string;

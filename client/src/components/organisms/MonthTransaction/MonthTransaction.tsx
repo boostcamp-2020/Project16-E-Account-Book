@@ -5,7 +5,7 @@ import CheckBoxWithNumber from '@molecules/CheckBoxWithNumber';
 import Color from '@theme/color';
 import DailyTotal from '@molecules/DailyTotal';
 import DailyTransaction from '@molecules/DailyTransaction';
-import getRandomKey from '@utils/random';
+import { getRandomKey } from '@utils/random';
 
 interface Props {
   dateData: string;

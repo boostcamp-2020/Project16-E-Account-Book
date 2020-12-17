@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { numberToMoney } from '@utils/number';
-import getRandomKey from '@utils/random';
+import { getRandomKey } from '@utils/random';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import ColumnFlexContainer from '@atoms/div/ColumnFlexContainer';
 import RowBarGraph from '@atoms/graph/RowBarGraph';

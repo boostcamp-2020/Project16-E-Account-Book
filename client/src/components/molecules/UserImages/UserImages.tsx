@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import UserImage from '@atoms/img/UserImage';
 import NoOne from '@img/no-one.png';
-import getRandomKey from '@utils/random.ts';
+import { getRandomKey } from '@utils/random.ts';
 
 interface Props {
   links: string[];

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import getRandomKey from '@utils/random.ts';
+import { getRandomKey } from '@utils/random.ts';
 
 interface Props extends SizeProps, textProps {
   startDay: string;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { getPastMonthList } from '@utils/date';
 import { numberToMoney } from '@utils/number';
-import getRandomKey from '@utils/random';
+import { getRandomKey } from '@utils/random';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import TwoBarGraph from '@atoms/graph/TwoBarGraph';
 import myColor from '@theme/color';

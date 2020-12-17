@@ -5,7 +5,7 @@ import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import ColorLabel from '@atoms/div/ColorLabel';
 import TextButton from '@atoms/button/TextButton';
 import styled from 'styled-components';
-import getRandomKey from '@utils/random';
+import { getRandomKey } from '@utils/random';
 import getColorList from '@theme/colorList';
 import colorUtils from '@utils/color';
 import ColorLabelWithCheck from '@molecules/ColorLabelWithCheck';
