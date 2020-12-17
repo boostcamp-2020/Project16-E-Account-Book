@@ -42,7 +42,6 @@ const InvitationManagementModal: React.FC = () => {
     invitations.map((invitation) => (
       <Card key={invitation.id} callback={postInvitation} {...invitation} />
     ));
-  console.log(invitations);
   return (
     <Modal title={title}>
       <Container>

@@ -10,6 +10,7 @@ import * as API from '@utils/api';
 import { setPayment } from '@actions/payment/type';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
+import getRandomKey from '@utils/random';
 
 const ScrollDiv = styled.div`
   overflow: scroll;
@@ -51,12 +52,12 @@ const CreditCardEditModal: React.FC = () => {
   };
 
   let cardList = payments.map((cardName) => (
-    <CreditCard buttonEvent={deleteButtonClick} name={cardName.name} />
+    <CreditCard key={getRandomKey()} buttonEvent={deleteButtonClick} name={cardName.name} />
   ));
 
   useEffect(() => {
     cardList = payments.map((cardName) => (
-      <CreditCard buttonEvent={deleteButtonClick} name={cardName.name} />
+      <CreditCard key={getRandomKey()} buttonEvent={deleteButtonClick} name={cardName.name} />
     ));
   }, [payments]);
 
