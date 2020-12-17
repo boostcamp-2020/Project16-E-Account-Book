@@ -5,7 +5,6 @@ import StickWithText from '@molecules/StickWithText';
 import { getRandomKey } from '@utils/random';
 import PreparationBox from '@molecules/PreparationBox';
 
-
 interface Props {
   data: any;
   isIncome: boolean;
