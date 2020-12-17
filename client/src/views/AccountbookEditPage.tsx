@@ -5,13 +5,15 @@ import CenterContent from '@molecules/CenterContent';
 import CreateAccountbookFormBox from '@organisms/CreateAccountbookFormBox';
 import TopNavBar from '@organisms/TopNavBar';
 import InviteAccountbookCard from '@molecules/InviteAccountbookCard';
-import colorUtils from '@utils/color';
 import styled from 'styled-components';
 import InvitationModal from '@organisms/InvitationModal';
 import { useSelector } from 'react-redux';
 import { RootState } from '@reducers/rootReducer';
+import { useHistory } from 'react-router-dom';
 import * as API from '@utils/api';
-import { getAxiosData } from '@utils/axios';
+import { getAxiosData, patchAxios } from '@utils/axios';
+import CreateAccountbookColorModal from '@organisms/CreateAccountbookColorModal';
+import CreateAccountbookSetting from '@organisms/CreateAccountbookSetting';
 
 interface InviteProps {
   links: string[];
@@ -30,11 +32,19 @@ const initArgs: InviteProps = {
 const AccountbookEditPage: React.FC = () => {
   const modalView = useSelector((state: RootState) => state.modal.view);
   const accountbookId = useSelector((state: RootState) => state.accountbook.socialId);
-  const createButtonClick = async (data: any) => {
-    console.log(data);
+  const [accountbookMainColor, setAccountbookMainColor] = useState('#FF0000');
+  const history = useHistory();
+
+  const editButtonClick = async (name: string, description: string) => {
+    const data = {
+      name,
+      description,
+      color: accountbookMainColor,
+    };
+    await patchAxios(API.PATCH_SOCIAL_ACCOUNTBOOK(accountbookId), data);
+    history.push('/');
   };
 
-  const backgroundColor = colorUtils.getRandomColor();
   const [inviteArgs, setInviteArgs] = useState<InviteProps>(initArgs);
 
   const initAccountbookCard = async () => {
@@ -44,6 +54,7 @@ const AccountbookEditPage: React.FC = () => {
       backgroundColor: data.color,
       name: data.name,
     };
+    setAccountbookMainColor(data.color);
     setInviteArgs(newArgs);
   };
 
@@ -56,20 +67,35 @@ const AccountbookEditPage: React.FC = () => {
     margin-bottom: 1rem;
   `;
 
+  const getAccountbookMainColor = (color) => {
+    setAccountbookMainColor(color);
+    inviteArgs.backgroundColor = color;
+    setInviteArgs(inviteArgs);
+  };
+
   return (
     <>
       <ColoredBackground backgroundColor={myColor.primary.lightGray} />
       <CenterContent>
-        <TopNavBar backgroundColor={backgroundColor} />
+        <TopNavBar backgroundColor={accountbookMainColor} />
         <CreateAccountbookFormBox
-          buttonEvent={createButtonClick}
-          backgroundColor={backgroundColor}
+          // eslint-disable-next-line jsx-a11y/aria-role
+          role="수정"
+          buttonEvent={editButtonClick}
+          backgroundColor={accountbookMainColor}
         />
         <SettingContainer>
           <InviteAccountbookCard {...inviteArgs} />
+          <CreateAccountbookSetting labelColor={accountbookMainColor} />
         </SettingContainer>
       </CenterContent>
       {modalView === 'InvitationModal' && <InvitationModal socialId={accountbookId} />}
+      {modalView === 'CreateAccountbookColor' && (
+        <CreateAccountbookColorModal
+          buttonEvent={getAccountbookMainColor}
+          currentColor={accountbookMainColor}
+        />
+      )}
     </>
   );
 };

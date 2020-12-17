@@ -15,6 +15,8 @@ const testFunc = (name: any, description: any) => {
 export const createAccountbookFormBox = (): JSX.Element => {
   return (
     <CreateAccountbookFormBox
+      // eslint-disable-next-line jsx-a11y/aria-role
+      role="생성"
       buttonEvent={testFunc('슈퍼가계부', '슈퍼가계부 입니다')}
       backgroundColor={myColor.primary.main}
     />

@@ -84,3 +84,6 @@ export const GET_SEARCHED_USER_LIST = (name: string): string =>
 
 export const PATCH_INVITATION = (id: number): string =>
   `${process.env.REACT_APP_BASE_URL}/api/social/invitation/${id}`;
+
+export const PATCH_SOCIAL_ACCOUNTBOOK = (bookId: number): string =>
+  `${process.env.REACT_APP_BASE_URL}/api/social/${bookId}`;
