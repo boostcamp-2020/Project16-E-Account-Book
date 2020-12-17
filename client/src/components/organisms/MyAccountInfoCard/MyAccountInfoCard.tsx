@@ -14,6 +14,7 @@ import { useDispatch } from 'react-redux';
 import { setPrivate } from '@actions/accountbook/type';
 import { initMonth } from '@actions/date/type';
 import { PrivateBook } from '@interfaces/accountbook';
+import Text from '@atoms/p/CenterNormalText';
 
 interface Props {
   link: string;
@@ -46,6 +47,33 @@ const MyAccountInfoCard: React.FC<Props> = ({ link, info }: Props) => {
     history.push('/accountbook');
   };
 
+  const checkCategoryValue = () => {
+    if (info.category.length === 0) {
+      return (
+        <ColumnFlexContainer
+          width="100%"
+          justifyContent="space-evenly"
+          align-items="center"
+          margin="10px 0 0 0"
+          height="60%"
+        >
+          <Text color={myColor.primary.white} fontSize="12px">
+            이번 달 지출 내역이 없네요😥
+          </Text>
+          <Text color={myColor.primary.white} fontSize="14px">
+            지출 내역을 추가해보세요
+          </Text>
+        </ColumnFlexContainer>
+      );
+    }
+    return (
+      <ColumnFlexContainer width="70%" height="100%" justifyContent="space-between">
+        <LeftNormalText color="white">이번 달 소비 현황</LeftNormalText>
+        <TwoByTwoChips data={info.category} />
+      </ColumnFlexContainer>
+    );
+  };
+
   return (
     <SquircleCard {...squircleCardArgs}>
       <ColumnFlexContainer width="100%" height="100%">
@@ -62,10 +90,7 @@ const MyAccountInfoCard: React.FC<Props> = ({ link, info }: Props) => {
           <SquircleShortButton onClick={toMyAccountBook}>조회하기</SquircleShortButton>
         </RowFlexContainer>
         <RowFlexContainer justifyContent="space-between" width="100%" height="70%">
-          <ColumnFlexContainer width="70%" height="100%" justifyContent="space-between">
-            <LeftNormalText color="white">이번 달 소비 현황</LeftNormalText>
-            <TwoByTwoChips data={info.category} />
-          </ColumnFlexContainer>
+          {checkCategoryValue()}
           <ColumnFlexContainer width="25%" height="100%">
             <CircleGraph size={6} income={info.income} expend={info.expenditure} />
           </ColumnFlexContainer>
