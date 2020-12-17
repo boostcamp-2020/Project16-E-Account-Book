@@ -3,7 +3,7 @@ import ColumnFlexContainer from '@atoms/div/ColumnFlexContainer';
 import OAuthButton from '@atoms/button/OAuthButton';
 import myColor from '@theme/color';
 import 'dotenv/config';
-import getRandomKey from '@utils/random';
+import { getRandomKey } from '@utils/random';
 
 const OAuthButtonList: React.FC = () => {
   const authState = getRandomKey();

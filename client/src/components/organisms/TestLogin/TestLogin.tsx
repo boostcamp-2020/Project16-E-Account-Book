@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@molecules/TestLoginButton';
 import ColumnFlexContainer from '@atoms/div/ColumnFlexContainer';
 import DescriptionLine from '@molecules/DescriptionLine';
-import getRandomKey from '@utils/random';
+import { getRandomKey } from '@utils/random';
 import 'dotenv/config';
 
 interface Props {

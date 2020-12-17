@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import myColor, { incomeColor, expenditureColor } from '@theme/color';
 import StickWithText from '@molecules/StickWithText';
-import getRandomKey from '@utils/random';
+import { getRandomKey } from '@utils/random';
 import PreparationBox from '@molecules/PreparationBox';
+
 
 interface Props {
   data: any;

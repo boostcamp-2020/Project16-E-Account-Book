@@ -8,7 +8,7 @@ import UserInviteCard from '@molecules/UserInviteCard/UserInviteCard';
 import RowFlexContainer from '@atoms/div/RowFlexContainer';
 import styled from 'styled-components';
 import MyColor from '@theme/color';
-import getRandomKey from '@utils/random';
+import { getRandomKey } from '@utils/random';
 
 interface Props {
   socialId: number;

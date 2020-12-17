@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import myColor from '@theme/color';
-import getRandomKey from '@utils/random';
+import { getRandomKey } from '@utils/random';
 import { numberToMoney } from '@utils/number';
 
 interface Props extends SVGProps, GroupProps, PathProps {
