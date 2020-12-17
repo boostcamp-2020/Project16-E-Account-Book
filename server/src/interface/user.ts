@@ -17,7 +17,6 @@ interface InsertUser {
   name: string;
   region: string;
   picture: string | undefined;
-  color: string;
   isSunday: boolean;
   oAuthOrigin: string;
 }

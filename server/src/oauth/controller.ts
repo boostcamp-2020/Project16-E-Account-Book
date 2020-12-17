@@ -59,7 +59,6 @@ export const oauth = async (ctx: any) => {
     name: data.name,
     region: 'korea',
     picture: data.avatar_url,
-    color: '#123123',
     isSunday: true,
     oAuthOrigin: site,
   };
