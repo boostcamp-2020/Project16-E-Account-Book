@@ -67,8 +67,11 @@ const AccountbookEditPage: React.FC = () => {
   }, []);
 
   const SettingContainer = styled.div`
-    width = 100%;
-    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 1rem 0;
   `;
 
   const getAccountbookMainColor = (color) => {

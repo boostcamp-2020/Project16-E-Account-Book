@@ -28,8 +28,8 @@ const InviteAccountbookCard: React.FC<Props> = ({ links }: Props) => {
   };
 
   const squircleCardArgs: squircleCardProps = {
-    width: '100%',
-    height: '10rem',
+    width: '90%',
+    height: '8rem',
     backgroundColor: 'white',
     flexFlow: 'column',
   };

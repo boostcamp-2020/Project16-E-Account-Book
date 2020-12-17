@@ -8,7 +8,7 @@ interface Props {
 
 const CreateAccountbookSetting: React.FC<Props> = ({ labelColor }: Props) => {
   return (
-    <ColumnFlexContainer margin="1rem 0 2rem">
+    <ColumnFlexContainer width="100%" margin="1rem 0 2rem">
       <ChangeAccountbookColorCard labelColor={labelColor} />
     </ColumnFlexContainer>
   );
