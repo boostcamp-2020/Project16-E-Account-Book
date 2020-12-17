@@ -6,9 +6,13 @@ import { RootState } from '@reducers/rootReducer';
 import { getTransaction } from '@actions/transaction/type';
 import { getAxiosData } from '@utils/axios';
 import * as API from '@utils/api';
-import getRandomKey from '@utils/random';
 
-const TransactionPage: React.FC = () => {
+interface Props {
+  callback: any;
+}
+
+const TransactionPage: React.FC<Props> = ({ callback }: Props) => {
+  callback(0);
   const year = useSelector((state: RootState) => state.date.year);
   const month = useSelector((state: RootState) => state.date.month);
   const transactionList = useSelector((state: RootState) => state.transaction.transactionList);
@@ -41,7 +45,7 @@ const TransactionPage: React.FC = () => {
   }, [dateData]);
   return (
     <>
-      <MonthTransaction key={getRandomKey()} dateData={dateData} monthData={transactionList} />
+      <MonthTransaction dateData={dateData} monthData={transactionList} />
       <NewTransactionButton />
     </>
   );

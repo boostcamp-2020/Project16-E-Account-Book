@@ -24,7 +24,12 @@ const initCategory = {
   expenditure: [],
 };
 
-const StatisticsPage: React.FC = () => {
+interface Props {
+  callback: any;
+}
+
+const StatisticsPage: React.FC<Props> = ({ callback }: Props) => {
+  callback(2);
   const year = useSelector((state: RootState) => state.date.year);
   const month = useSelector((state: RootState) => state.date.month);
   const accountbookType = useSelector((state: RootState) => state.accountbook.type);
