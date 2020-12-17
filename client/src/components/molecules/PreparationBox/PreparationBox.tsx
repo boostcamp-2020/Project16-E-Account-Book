@@ -14,7 +14,7 @@ const SVG = styled.img`
 
 const preparationBox: React.FC<Props> = ({ children }: Props) => {
   return (
-    <ColumnFlexContainer margin="auto" alignItems="center">
+    <ColumnFlexContainer height="100%" margin="auto" alignItems="center" justifyContent="center">
       <SVG src={Caution} alt="caution" />
       <CautionMent>{children}</CautionMent>
     </ColumnFlexContainer>

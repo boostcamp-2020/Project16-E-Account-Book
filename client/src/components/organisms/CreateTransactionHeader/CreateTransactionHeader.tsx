@@ -20,11 +20,16 @@ const createTransactionHeader: React.FC = () => {
   const openModal = (view: string) => {
     dispatch(showModal(view));
   };
+
   return (
     <FlexContainer width="100%" margin="4rem 0 0">
       <Text>새로운 내역을 추가해보세요!</Text>
       <Container margin="auto">
-        <Button name="csv" color={myColor.primary.green} />
+        <Button
+          name="csv"
+          onClick={() => alert('현재 준비중인 서비스입니다.')}
+          color={myColor.primary.green}
+        />
       </Container>
       <Container margin="24px">
         <Button name="sms" onClick={() => openModal('sms')} />

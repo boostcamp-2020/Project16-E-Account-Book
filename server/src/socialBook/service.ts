@@ -36,6 +36,9 @@ export const updateSocialBook = async (
 export const getSocialBooks = async (userId: number) => {
   const socialBookList = await sql(query.READ_SOCIAL_BOOK_LIST, [userId]);
   const socialBookIdList = socialBookList.map((row: SocialBookId) => row.accountbook_id);
+  if (socialBookIdList.length === 0) {
+    return undefined;
+  }
   const bookList = await sql(query.READ_SOCIAL_BOOKS, [socialBookIdList]);
   return bookList;
 };
