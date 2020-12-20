@@ -37,7 +37,7 @@ const pieChart: React.FC<Props> = ({ data, isIncome }: Props) => {
 
   const checkIncomeValue = () => {
     if (data.income.length >= 1) {
-      return drawChart(data.income, incomeColor.reverse());
+      return drawChart(data.income, incomeColor);
     }
     return <PreparationBox color={myColor.primary.white}>내역이 없습니다.</PreparationBox>;
   };
