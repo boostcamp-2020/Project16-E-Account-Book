@@ -4,25 +4,39 @@ import StickGraph from './StickGraph';
 export default {
   title: 'Atoms/graph/StickGraph',
   component: StickGraph,
+  argTypes: {
+    percent: { control: 'number' },
+    outColor: { control: 'color' },
+    inColor: { control: 'color' },
+    width: { control: 'text' },
+    height: { control: 'text' },
+  },
 };
 
-export const stickGraph = (): JSX.Element => {
-  const percent = 70.6;
-  const outColor = 'white';
-  const inColor = 'pink';
-  const width = '400px';
-  const height = '40px';
-  return (
-    <StickGraph
-      percent={percent}
-      outColor={outColor}
-      inColor={inColor}
-      width={width}
-      height={height}
-    />
-  );
+interface Props extends InProps {
+  outColor: string;
+  width: string;
+  height: string;
+}
+
+interface InProps {
+  percent?: number;
+  inColor?: string;
+  height: string;
+}
+
+export const stickGraph = ({ ...args }: Props): JSX.Element => {
+  return <StickGraph {...args} />;
 };
 
 stickGraph.story = {
   name: 'StickGraph',
+};
+
+stickGraph.args = {
+  percent: 70.6,
+  outColor: 'white',
+  inColor: 'pink',
+  width: '400px',
+  height: '40px',
 };
