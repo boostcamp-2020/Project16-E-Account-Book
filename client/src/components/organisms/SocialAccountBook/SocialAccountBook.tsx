@@ -22,13 +22,13 @@ const Container = styled.button`
 
 const LeftBox = styled.div`
   display: flex;
-  flex: 1;
+  flex: 1.4;
   align-items: center;
 `;
 
 const CenterBox = styled.div`
   display: flex;
-  flex: 2;
+  flex: 1.6;
   align-items: center;
 `;
 
