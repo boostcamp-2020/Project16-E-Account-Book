@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { firstDayOfWeek, makeMonth, numberOfMonth } from '@utils/date';
@@ -78,8 +79,11 @@ const calendar: React.FC<Props> = ({ dateData, monthData }: Props) => {
     };
     preprocessData.push(buffer);
   });
+  // eslint-disable-next-line array-callback-return
   preprocessData.map((ele) => {
-    return Object.assign(allDay[ele.date + emptyDays - 1], ele);
+    if (allDay[ele.date + emptyDays - 1]) {
+      return Object.assign(allDay[ele.date + emptyDays - 1], ele);
+    }
   });
   const allArr = sliceArray(allDay, 7);
   const onClick = (thisDay) => {
