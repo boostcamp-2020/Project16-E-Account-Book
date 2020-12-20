@@ -5,10 +5,40 @@ import PieGraph from './PieGraph';
 export default {
   title: 'Atoms/graph/PieGraph',
   component: PieGraph,
+  argTypes: {
+    size: { control: 'number' },
+    fontColor: { control: 'color' },
+    backgroundColor: { control: 'color' },
+  },
 };
 
-export const pieGraph = (): JSX.Element => {
-  const incomeData = [
+interface Props extends SVGProps, GroupProps, PathProps {
+  data: any;
+  colors: string[];
+}
+
+interface SVGProps {
+  size: number;
+}
+
+interface GroupProps {
+  fontColor?: string;
+}
+
+interface PathProps {
+  backgroundColor?: string;
+}
+
+export const pieGraph = ({ ...args }: Props): JSX.Element => {
+  return <PieGraph {...args} />;
+};
+
+pieGraph.story = {
+  name: 'PieGraph',
+};
+
+pieGraph.args = {
+  data: [
     {
       name: '기타수입',
       money: 8480,
@@ -24,11 +54,8 @@ export const pieGraph = (): JSX.Element => {
       money: 4804,
       percent: 25.7,
     },
-  ];
-
-  return <PieGraph data={incomeData} colors={incomeColor} size={500} />;
-};
-
-pieGraph.story = {
-  name: 'PieGraph',
+  ],
+  colors: incomeColor,
+  size: 500,
+  backgroundColor: 'white',
 };
